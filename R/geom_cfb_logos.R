@@ -12,6 +12,7 @@
 #'   \item{**y**}{ - The y-coordinate.}
 #'   \item{**team**}{ - The team name or abbreviation. Must be one of [`valid_team_names()`].}
 #'   \item{`alpha = NULL`}{ - The alpha channel, i.e. transparency level, as a numerical value between 0 and 1.}
+#'   \item{`colour = NULL`}{ - The colour of the image. Managed with scale_color_*}
 #'   \item{`angle = 0`}{ - The angle of the image as a numerical value between 0° and 360°.}
 #'   \item{`hjust = 0.5`}{ - The horizontal adjustment relative to the given x coordinate. Must be a numerical value between 0 and 1.}
 #'   \item{`vjust = 0.5`}{ - The vertical adjustment relative to the given y coordinate. Must be a numerical value between 0 and 1.}
