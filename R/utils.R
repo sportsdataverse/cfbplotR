@@ -6,6 +6,6 @@
 #' valid_team_names()
 
 valid_team_names <- function(){
-  n <- sort(names(logo_list))
+  n <- names(logo_list)
   n
 }
