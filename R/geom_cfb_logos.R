@@ -136,12 +136,13 @@ GeomCFB <- ggplot2::ggproto(
         new <- magick::image_fx(img, expression = paste0(alpha[i], "*a"), channel = "alpha")
         grid <- grid::rasterGrob(new)
       }
+      if (!is.null(colour)) {
+        if (!is.na(colour[i])) {
+          img <- magick::image_read(logo_list[[team]])
+          new <- color_image(img,color = colour[i],alpha = alpha[i])
 
-      if (!is.null(colour[i]) & !is.na(colour[i])) {
-        img <- magick::image_read(logo_list[[team]])
-        new <- color_image(img,color = colour[i],alpha = alpha[i])
-
-        grid <- grid::rasterGrob(new)
+          grid <- grid::rasterGrob(new)
+        }
       }
 
       grid$vp <- grid::viewport(
