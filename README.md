@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# **nflplotR**
+# **cfbplotR**
 
 <!-- badges: start -->
 
@@ -10,7 +10,7 @@ status](https://img.shields.io/cran/v/cfbplotR?style=flat-square&logo=R&label=CR
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html)
 [![R build
-status](https://img.shields.io/github/workflow/status/verse/cfbplotR/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/cfbverse/cfbplotR/actions)
+status](https://img.shields.io/github/workflow/status/Kazink36/cfbplotR/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/Kazink36/cfbplotR/actions)
 <!-- badges: end -->
 
 The code for this package was copied heavily from
@@ -20,7 +20,7 @@ changes to support college football team logos.
 The goal of cfbplotR is to provide functions and geoms that help
 visualization of CFB related analysis. It provides a ggplot2 geom that
 does the heavy lifting of plotting CFB logos in high quality, with
-correct aspect ratio and possible transparency. This
+correct aspect ratio and possible transparency.
 
 ## Installation
 
