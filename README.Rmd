@@ -39,7 +39,7 @@ The goal of cfbplotR is to provide functions and geoms that help visualization o
 <!-- # install.packages("devtools") -->
 <!-- devtools::install_github("Kazink36/cfbplotR") -->
 <!-- ``` -->
-You can install `nflplotR` with 
+You can install `cfbplotR` with 
 
 ``` r
 if (!require("remotes")) install.packages("remotes")
