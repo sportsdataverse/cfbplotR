@@ -72,6 +72,17 @@
 #'   coord_cartesian(xlim = c(0.5,2.5), ylim = c(-0.75,.75)) +
 #'   theme_void()
 #' }
+#'
+#' # it's also possible to color the logos
+#' # make teams with an A red
+#' df$color <- ifelse(matches, "red", NA)
+#' ggplot(df, aes(x = a, y = b)) +
+#'   geom_cfb_logos(aes(team = teams, color = color), width = 0.075) +
+#'   geom_label(aes(label = teams), nudge_y = -0.35, alpha = 0.5) +
+#'   scale_color_identity() +
+#'   theme_void()
+#'
+#'
 geom_cfb_logos <- function(mapping = NULL, data = NULL,
                            stat = "identity", position = "identity",
                            ...,
@@ -100,12 +111,13 @@ GeomCFB <- ggplot2::ggproto(
   # non_missing_aes = c(""),
   default_aes = ggplot2::aes(
     alpha = NULL, angle = 0, hjust = 0.5,
-    vjust = 0.5, width = 1.0, height = 1.0
+    vjust = 0.5, width = 1.0, height = 1.0,
+    colour = NULL
   ),
   draw_panel = function(data, panel_params, coord, na.rm = FALSE) {
     data <- coord$transform(data, panel_params)
 
-    grobs <- lapply(seq_along(data$team), function(i, urls, alpha, data) {
+    grobs <- lapply(seq_along(data$team), function(i, urls, alpha, colour, data) {
       team <- data$team[i]
       if (is.null(alpha)) {
         grid <- grid::rasterGrob(magick::image_read(logo_list[[team]]))
@@ -125,6 +137,13 @@ GeomCFB <- ggplot2::ggproto(
         grid <- grid::rasterGrob(new)
       }
 
+      if (!is.null(colour[i]) & !is.na(colour[i])) {
+        img <- magick::image_read(logo_list[[team]])
+        new <- color_image(img,color = colour[i],alpha = alpha[i])
+
+        grid <- grid::rasterGrob(new)
+      }
+
       grid$vp <- grid::viewport(
         x = grid::unit(data$x[i], "native"),
         y = grid::unit(data$y[i], "native"),
@@ -141,7 +160,7 @@ GeomCFB <- ggplot2::ggproto(
       grid$name <- paste("cfb.grob", i, sep = ".")
 
       grid
-    }, urls = urls, alpha = data$alpha, data = data)
+    }, urls = urls, alpha = data$alpha,colour = data$colour, data = data)
 
     class(grobs) <- "gList"
 
@@ -149,3 +168,33 @@ GeomCFB <- ggplot2::ggproto(
   },
   draw_key = function(...) grid::nullGrob()
 )
+
+
+
+color_image <- function(img, color, alpha = NULL) {
+  if (is.null(color))
+    return(img)
+
+  if (length(color) > 1) {
+    stop("color should be a vector of length 1")
+  }
+
+  bitmap <- img[[1]]
+  col <- col2rgb(color)
+  bitmap[1,,] <- as.raw(col[1])
+  bitmap[2,,] <- as.raw(col[2])
+  bitmap[3,,] <- as.raw(col[3])
+
+  if (!is.null(alpha) && alpha != 1)
+    bitmap[4,,] <- as.raw(as.integer(bitmap[4,,]) * alpha)
+
+  magick::image_read(bitmap)
+}
+
+
+
+
+
+
+
+
