@@ -32,7 +32,7 @@ correct aspect ratio and possible transparency.
 <!-- devtools::install_github("Kazink36/cfbplotR") -->
 <!-- ``` -->
 
-You can install `nflplotR` with
+You can install `cfbplotR` with
 
 ``` r
 if (!require("remotes")) install.packages("remotes")
