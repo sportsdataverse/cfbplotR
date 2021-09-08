@@ -34,8 +34,7 @@
 #' library(ggplot2)
 #'
 #' team <- valid_team_names()
-#' # remove conference logos from this example
-#' team <- team[!team %in% c("AFC", "NFC")]
+#' team <- team[1:32]
 #'
 #' df <- data.frame(
 #'   a = rep(1:8, 4),
@@ -66,7 +65,7 @@
 #'   theme_void()
 #'
 #' # it's also possible to plot conference logos
-#' conf <- data.frame(a = 1:2, b = 0, teams = c("AFC", "NFC"))
+#' conf <- data.frame(a = 1:2, b = 0, teams = c("Pac-12", "ACC"))
 #' ggplot(conf, aes(x = a, y = b)) +
 #'   geom_cfb_logos(aes(team = teams), width = 0.3) +
 #'   geom_label(aes(label = teams), nudge_y = -0.4, alpha = 0.5) +
