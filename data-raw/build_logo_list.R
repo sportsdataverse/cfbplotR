@@ -10,10 +10,11 @@ temp_logos <-team_info %>%
   slice(1) %>%
   ungroup()
 
-conferences <- cfbfastR::cfbd_conferences() %>%
-  mutate(logo = glue::glue("https://a.espncdn.com/i/teamlogos/ncaa_conf/500/{conference_id}.png"))
+conferences <- cfbfastR::cfbd_conferences()
+conferences<- conferences %>%
+  mutate(logo = glue::glue("https://a.espncdn.com/i/teamlogos/ncaa_conf/500/{conference_id}.png")) %>%
+  filter(conference_id<100)
 temp_conf <- conferences %>%
-  filter(!conference_id %in% c(213)) %>%
   pivot_longer(c(name,abbreviation),values_to = "school") %>%
   select(-long_name,-conference_id,-name) %>%
   filter(!is.na(school)) %>%
