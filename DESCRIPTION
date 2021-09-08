@@ -10,7 +10,6 @@ Authors@R:
            family = "Lee",
            role = c("aut", "cre"),
            email = "13jaredlee@gmail.com")
-           
 Description: A set of functions to visualize College Football analysis in 'ggplot2'.
 URL: https://github.com/Kazink36/cfbplotR
 BugReports: https://github.com/Kazink36/cfbplotR/issues

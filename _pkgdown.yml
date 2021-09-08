@@ -1,0 +1,16 @@
+url: https://Kazink36.github.io/cfbplotR/
+
+authors:
+  Sebastian Carl:
+    href: https://twitter.com/mrcaseb
+  Jared Lee:
+    href: https://twitter.com/JaredDLee
+
+home:
+  title: cfbplotR • Plot CFB Team Logos
+  description: >
+    A set of functions to visualize College Football
+    analysis in 'ggplot2'.
+template:
+  params:
+    bootswatch: cosmo
