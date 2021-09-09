@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • cfbplotR</title>
+<title>Scale for college football team colors — scale_color_cfb • cfbplotR</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,8 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Scale for college football team colors — scale_color_cfb" />
+<meta property="og:description" content="These functions allows you to map college football team names as levels to the color and fill aesthetics" />
 
 
 
@@ -58,7 +59,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -105,60 +106,50 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Scale for college football team colors</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Kazink36/cfbplotR/blob/master/R/scale_color_cfb.R'><code>R/scale_color_cfb.R</code></a></small>
+    <div class="hidden name"><code>scale_color_cfb.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>These functions allows you to map college football team names as levels to the color and fill aesthetics</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>scale_color_cfb</span><span class='op'>(</span>alt_colors <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="geom_cfb_logos.html">geom_cfb_logos()</a></code> </p>
-        </td>
-        <td><p>ggplot2 Layer for Visualizing CFB Team Logos</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="geom_median_lines.html">geom_mean_lines()</a></code> <code><a href="geom_median_lines.html">geom_median_lines()</a></code> </p>
-        </td>
-        <td><p>ggplot2 Layer for Horizontal and Vertical Reference Lines</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="scale_color_cfb.html">scale_color_cfb()</a></code> <code><a href="scale_color_cfb.html">scale_fill_cfb()</a></code> </p>
-        </td>
-        <td><p>Scale for college football team colors</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="valid_team_names.html">valid_team_names()</a></code> </p>
-        </td>
-        <td><p>Output Valid CFB Team Names and Abbreviations</p></td>
-      </tr>
-    </tbody>
+<span class='fu'>scale_fill_cfb</span><span class='op'>(</span>alt_colors <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>alt_colors</th>
+      <td><p>Vector of team names to use the alternate color of.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Arguments passed on to scale_color_manual</p></td>
+    </tr>
     </table>
-  </div>
 
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/Kazink36/cfbplotR'>cfbplotR</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+  y <span class='op'>=</span> <span class='fl'>6</span><span class='op'>:</span><span class='fl'>9</span>,
+  teams <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Alabama"</span>,<span class='st'>"Florida State"</span>,<span class='st'>"Oregon"</span>,<span class='st'>"Utah"</span><span class='op'>)</span>
+ <span class='op'>)</span>
+ <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>teams</span>, y <span class='op'>=</span> <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>teams</span>, fill <span class='op'>=</span> <span class='va'>teams</span><span class='op'>)</span>, size <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>+</span>
+   <span class='fu'>scale_color_cfb</span><span class='op'>(</span>alt_colors <span class='op'>=</span> <span class='va'>df</span><span class='op'>$</span><span class='va'>teams</span><span class='op'>)</span> <span class='op'>+</span>
+   <span class='fu'>scale_fill_cfb</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_minimal</a></span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='img'><img src='scale_color_cfb-1.png' alt='' width='700' height='433' /></div></pre>
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>
