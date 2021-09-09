@@ -1,5 +1,9 @@
 url: https://Kazink36.github.io/cfbplotR/
 
+template:
+  params:
+    bootswatch: cosmo
+
 authors:
   Sebastian Carl:
     href: https://twitter.com/mrcaseb
@@ -11,6 +15,99 @@ home:
   description: >
     A set of functions to visualize College Football
     analysis in 'ggplot2'.
-template:
-  params:
-    bootswatch: cosmo
+  icon: fa-home
+  href: index.html
+
+navbar:
+  structure:
+    left: [home, intro, reference, articles, news, games, network, data, repo]
+    right: [twitter, github]
+  components:
+    twitter:
+      icon: "fab fa-twitter fa-lg"
+      href: http://twitter.com/JaredDLee
+    news:
+      icon: "fas fa-newspaper"
+      text: " News"
+      href: news/index.html
+    data:
+      icon: "fas fa-database"
+      text: " Data"
+      menu:
+      - text: "CFBData.com"
+        href: https://collegefootballdata.com
+      - text: "Data Repository"
+        href: https://github.com/saiemgilani/cfbfastR-data
+      - text: "Raw Data Repository"
+        href: https://github.com/saiemgilani/cfbfastR-raw
+    games:
+      icon: "fas fa-football-ball"
+      text: " GP"
+      href: http://gameonpaper.com/cfb
+    reference:
+      icon: "fas fa-code"
+      text: "Funcs"
+      href: reference/index.html
+      menu:
+      - text: "Function Index"
+        href: reference/index.html
+      - text: --------------------------------
+      - text: "Plot Logos"
+        href: reference/geom_cfb_logos.html
+      - text: "Add Median Lines"
+        href: reference/geom_median_lines.html
+      - text: "Team Colors"
+        href: reference/scale_color_cfb.html
+      - text: "Valid Names"
+        href: reference/valid_team_names.html
+    articles:
+      icon: "fas fa-book-reader"
+      text: "Articles"
+      menu:
+      - text: Vignettes
+        href: articles/index.html
+      - text: CFB Analytics with cfbfastR
+        href: articles/tutorial.html
+    network:
+      icon: "fas fa-project-diagram"
+      text: SDV
+      menu:
+      - text: SportsDataverse
+        href: https://sportsdataverse.org/
+      - text: --------------------------------
+      - text: R Packages
+      - text: cfbfastR
+        href: https://saiemgilani.github.io/cfbfastR/
+      - text: hoopR
+        href: https://hoopR.sportsdataverse.org/
+      - text: wehoop
+        href: https://wehoop.sportsdataverse.org/
+      - text: recruitR
+        href: https://saiemgilani.github.io/recruitR/
+      - text: puntr
+        href: https://puntalytics.github.io/puntr
+      - text: gamezoneR
+        href: https://jacklich10.github.io/gamezoneR/
+      # - text: baseballr
+      #   href: https://saiemgilani.github.io/baseballr/
+      - text: --------------------------------
+      - text: Python Packages
+      - text: cfbfastR-py
+        href: https://cfbfastR-py.sportsdataverse.org/
+      - text: hoopR-py
+        href: https://hoopR-py.sportsdataverse.org/
+      - text: wehoop-py
+        href: https://wehoop-py.sportsdataverse.org/
+      - text: --------------------------------
+      - text: Node.js Packages
+      - text: sportsdataverse.js
+        href: https://saiemgilani.github.io/sportsdataverse/
+    github:
+      icon: "fab fa-github fa-lg"
+      href: https://github.com/Kazink36/cfbplotR/
+    repo:
+      url:
+      home: https://github.com/Kazink36/cfbplotR/
+      source: https://github.com/Kazink36/cfbplotR/blob/master/
+      issue: https://github.com/Kazink36/cfbplotR/issues/issues/
+      user: https://github.com/Kazink36/
