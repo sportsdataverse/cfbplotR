@@ -131,7 +131,7 @@ ggplot(conf, aes(x = a, y = b)) +
   geom_label(aes(label = teams), nudge_y = -0.4, alpha = 0.5) +
   coord_cartesian(xlim = c(0.5,2.5), ylim = c(-0.75,.75)) +
   theme_void()
-}
+
 
 # it's also possible to color the logos
 # make teams with an A red
@@ -141,6 +141,6 @@ ggplot(df, aes(x = a, y = b)) +
   geom_label(aes(label = teams), nudge_y = -0.35, alpha = 0.5) +
   scale_color_identity() +
   theme_void()
-
+}
 
 }

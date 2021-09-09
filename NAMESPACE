@@ -3,4 +3,6 @@
 export(geom_cfb_logos)
 export(geom_mean_lines)
 export(geom_median_lines)
+export(scale_color_cfb)
+export(scale_fill_cfb)
 export(valid_team_names)
