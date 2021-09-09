@@ -1,0 +1,98 @@
+---
+title: "Using cfbplotR"
+output: html_document
+author: "Jared Lee <br><a href='https://twitter.com/JaredDLee' target='blank'><img src='https://img.shields.io/twitter/follow/JaredDLee?color=blue&label=%40JaredDLee&logo=twitter&style=for-the-badge' alt='@JaredDLee' /></a> <a href='https://github.com/Kazink36' target='blank'><img src='https://img.shields.io/github/followers/Kazink36?color=eee&logo=Github&style=for-the-badge' alt='@Kazink36' /></a>"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+This is a quick tutorial on how to use cfbplotR to quickly and easily include college football team logos in your ggplot.
+
+## Load and Process Data
+
+First we need to load the necessary libraries. [`cfbfastR`](https://saiemgilani.github.io/cfbfastR/index.html) will get us the data we want to use for analysis. [`cfbplotR`]()https://Kazink36.github.io/cfbplotR/index.html) will help us easily plot the results. `tidyverse` will help us do the necessary data manipulation and of course includes `ggplot2` that we will use for plotting. You can use the commented out code to install these packages if you don't already have them.
+
+```{r libraries}
+#remotes::install_github(repo = "saiemgilani/cfbfastR")
+#remotes::install_github(repo = "Kazink36/cfbplotR")
+#install.packages(tidyverse)
+
+library(cfbfastR)
+library(cfbplotR)
+library(tidyverse)
+```
+
+This first chunk of code will pull the play-by-play data from the first week of the 2021 season using `cfbfastR` and create the advanced metrics like EPA that we will be plotting (this will take a second). We'll also pull in the general team info so we can filter down to just teams in a power 5 conference.
+
+```{r pulldata}
+
+
+pbp <- cfbfastR::cfbd_pbp_data(2021, week = 1, epa_wpa = TRUE)
+
+team_info <- cfbfastR::cfbd_team_info()
+team_info <- team_info %>% 
+  select(team = school,conference) %>% 
+  filter(conference %in% c("Pac-12","ACC","SEC","Big Ten","Big 12"))
+
+```
+
+Now we quickly roll up the EPA data and find the EPA per rush and EPA per pass for every team in week 1 and take a look at our plotting data.
+
+```{r rollup}
+team_plot_data <- pbp %>% 
+  group_by(team = offense_play) %>% 
+  summarize(rush_epa = mean(if_else(rush == 1,EPA,NA_real_),na.rm = TRUE),
+            n_rush = sum(rush),
+            pass_epa = mean(if_else(pass == 1,EPA,NA_real_),na.rm = TRUE),
+            n_pass = sum(pass)) %>% 
+  filter(team %in% team_info$team) %>% 
+  left_join(team_info,by = "team")
+
+head(team_plot_data)
+```
+
+## Plotting with cfbplotR
+
+Now that the data is prepped, we can being to use `cfbplotR`. First we'll plot all the teams with Passing EPA on the x-axis and Rushing EPA on the y-axis with lines showing the median value for each. It's important to set width or height in `geom_cfb_logos` to small values. The default of 1 will create extremely large logos.
+
+```{r epa_plot}
+ggplot(team_plot_data, aes(x = pass_epa, y = rush_epa)) +
+  geom_median_lines(aes(v_var = pass_epa, h_var = rush_epa)) +
+  geom_cfb_logos(aes(team = team), width = 0.075) +
+  labs(x = "EPA per Pass",y = "EPA per Rush") +
+  theme_bw()
+```
+
+This is still pretty messy because of the large number of teams. Let's try to focus in on the Pac-12 teams with a couple of handy tools. We're going to add two columns to our data: one for the color and one for the alpha. Then we just add those two columns as aesthetics to `geom_cfb_logos` to turn the logos of non-Pac-12 teams grey and lower the alpha.
+
+```{r gray}
+team_plot_data %>% 
+  mutate(color = if_else(conference == "Pac-12",NA_character_,"gray50"),
+         alpha = if_else(conference == "Pac-12",1,.6)) %>% 
+  ggplot(aes(x = pass_epa, y = rush_epa)) +
+  geom_median_lines(aes(v_var = pass_epa, h_var = rush_epa)) +
+  geom_cfb_logos(aes(team = team, alpha = alpha, color = color), width = 0.075) +
+  scale_color_identity() +
+  labs(x = "EPA per Pass",y = "EPA per Rush") +
+  theme_bw()
+```
+
+Finally let's make a bar chart showing the Pac-12 EPA per pass for each team. Because `cfbplotR` creates a custom geom for ggplot, we can use `annotate()` to place a log anywhere we'd like. `scale_color_cfb()` and `scale_fill_cfb()` let us automatically use a teams primary color on a plot. The `alt_colors` argument lets us pass through a vector of team names that we want to use an alternate color for.
+
+```{r bar_chart}
+team_plot_data %>% 
+  filter(conference == "Pac-12") %>% 
+  mutate(team = fct_reorder(team,pass_epa)) %>% 
+  ggplot(aes(x = team, y = pass_epa)) +
+  # 
+  geom_col(aes(fill = team, color = team),size = 1.5) +
+  annotate(cfbplotR:::GeomCFB,x = "California",y = 0.2,team = "Pac-12",height = .35,alpha = .3) +
+  scale_fill_cfb() +
+  scale_color_cfb(alt_colors = team_plot_data$team) +
+  labs(x = "", y = "EPA per Pass") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 30,vjust = 0.5))
+```

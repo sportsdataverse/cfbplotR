@@ -24,9 +24,14 @@ temp_conf <- conferences %>%
 
 combined <- bind_rows(temp_logos,temp_conf)
 
-logo_list <- combined$logo
-names(logo_list) <- combined$school
+logo_list <- lapply(combined$school, function(x){
+  url <- combined$logo[combined$school == x]
+  curl::curl_fetch_memory(url)$content
+})
+logo_list <- rlang::set_names(logo_list, combined$school)
+#logo_list <- combined$logo
+#names(logo_list) <- combined$school
 
 logo_list
 
-usethis::use_data(logo_list)
+usethis::use_data(logo_list, internal = TRUE, overwrite = TRUE)
