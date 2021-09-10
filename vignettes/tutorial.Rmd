@@ -13,7 +13,7 @@ This is a quick tutorial on how to use cfbplotR to quickly and easily include co
 
 ## Load and Process Data
 
-First we need to load the necessary libraries. [`cfbfastR`](https://saiemgilani.github.io/cfbfastR/index.html) will get us the data we want to use for analysis. [`cfbplotR`]()https://Kazink36.github.io/cfbplotR/index.html) will help us easily plot the results. `tidyverse` will help us do the necessary data manipulation and of course includes `ggplot2` that we will use for plotting. You can use the commented out code to install these packages if you don't already have them.
+First we need to load the necessary libraries. [`cfbfastR`](https://saiemgilani.github.io/cfbfastR/index.html) will get us the data we want to use for analysis. [`cfbplotR`](https://Kazink36.github.io/cfbplotR/index.html) will help us easily plot the results. `tidyverse` will help us do the necessary data manipulation and of course includes `ggplot2` that we will use for plotting. You can use the commented out code to install these packages if you don't already have them.
 
 ```{r libraries}
 #remotes::install_github(repo = "saiemgilani/cfbfastR")
