@@ -33,7 +33,7 @@ library(cfbplotR)
 
 df <- data.frame(team = valid_team_names()[1:8],logo = valid_team_names()[1:8])
 
-df \%>\%
+table <- df \%>\%
  gt() \%>\%
  gt_fmt_cfb(columns = "logo")
 

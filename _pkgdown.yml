@@ -62,7 +62,7 @@ navbar:
       - text: --------------------------------
       - text: "Tables"
       - text: "Add Logos"
-        href: reference/gt_fmt_cfb.R
+        href: reference/gt_fmt_cfb.html
       - text: --------------------------------
       - text: "Utilties"
       - text: "Valid Names"
