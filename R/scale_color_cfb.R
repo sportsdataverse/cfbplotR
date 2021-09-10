@@ -1,5 +1,5 @@
 #' @name scale_color_cfb
-#' @aliases scale_color_cfb scale_fill_cfb
+#' @aliases scale_color_cfb scale_colour_cfb scale_fill_cfb
 #' @title
 #' Scale for college football team colors
 #'
@@ -31,6 +31,10 @@ scale_color_cfb <- function(alt_colors = NULL,...) {
 
   ggplot2::scale_color_manual(values = values,...,guide = NULL)
 }
+
+#' @rdname  scale_color_cfb
+#' @export
+scale_colour_cfb <- scale_color_cfb
 
 #' @rdname scale_color_cfb
 #' @export
