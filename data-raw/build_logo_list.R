@@ -68,4 +68,27 @@ combined <- bind_rows(temp_logos,temp_conf)
 logo_list <- combined$logo
 names(logo_list) <- combined$school
 
+
+
+# Check for missing logos
+ind <- NA
+
+for (i in 1:length(logo_list)) {
+tryCatch(
+  expr ={
+    Sys.sleep(.1)
+    magick::image_read(logo_list[[i]])
+    },
+  error = function(e) {
+    message("The following error has occured:")
+    message(e)
+    ind <<- append(ind,i)
+  },
+  finally = {}
+  )
+}
+ind <- ind[-1]
+
+logo_list <- logo_list[-ind]
+
 usethis::use_data(logo_list, internal = TRUE, overwrite = TRUE)
