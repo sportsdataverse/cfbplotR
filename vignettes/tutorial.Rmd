@@ -70,8 +70,8 @@ This is still pretty messy because of the large number of teams. Let's try to fo
 
 ```{r gray}
 team_plot_data %>% 
-  mutate(color = if_else(conference == "Pac-12",NA_character_,"gray50"),
-         alpha = if_else(conference == "Pac-12",1,.6)) %>% 
+  mutate(color = if_else(conference == "Pac-12",NA_character_,"gray30"),
+         alpha = if_else(conference == "Pac-12",1,.8)) %>% 
   ggplot(aes(x = pass_epa, y = rush_epa)) +
   geom_median_lines(aes(v_var = pass_epa, h_var = rush_epa)) +
   geom_cfb_logos(aes(team = team, alpha = alpha, color = color), width = 0.075) +

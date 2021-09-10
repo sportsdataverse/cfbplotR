@@ -120,7 +120,31 @@ GeomCFB <- ggplot2::ggproto(
 
     grobs <- lapply(seq_along(data$team), function(i, urls, alpha, colour, data) {
       team <- data$team[i]
-      if (is.null(alpha)) {
+
+      if (!is.null(colour)) {
+        if (!is.na(colour[i])) {
+          img <- magick::image_read(logo_list[[team]])
+          new <- color_image(img,color = colour[i],alpha = alpha[i])
+
+          grid <- grid::rasterGrob(new)
+        } else if (is.null(alpha)) {
+          grid <- grid::rasterGrob(magick::image_read(logo_list[[team]]))
+        } else if (length(alpha) == 1L) {
+          if (as.numeric(alpha) <= 0 || as.numeric(alpha) >= 1) {
+            cli::cli_abort("aesthetic {.var alpha} requires a value between {.val 0} and {.val 1}")
+          }
+          img <- magick::image_read(logo_list[[team]])
+          new <- magick::image_fx(img, expression = paste0(alpha, "*a"), channel = "alpha")
+          grid <- grid::rasterGrob(new)
+        } else {
+          if (any(as.numeric(alpha) < 0) || any(as.numeric(alpha) > 1)) {
+            cli::cli_abort("aesthetics {.var alpha} require values between {.val 0} and {.val 1}")
+          }
+          img <- magick::image_read(logo_list[[team]])
+          new <- magick::image_fx(img, expression = paste0(alpha[i], "*a"), channel = "alpha")
+          grid <- grid::rasterGrob(new)
+        }
+      } else if (is.null(alpha)) {
         grid <- grid::rasterGrob(magick::image_read(logo_list[[team]]))
       } else if (length(alpha) == 1L) {
         if (as.numeric(alpha) <= 0 || as.numeric(alpha) >= 1) {
@@ -137,14 +161,7 @@ GeomCFB <- ggplot2::ggproto(
         new <- magick::image_fx(img, expression = paste0(alpha[i], "*a"), channel = "alpha")
         grid <- grid::rasterGrob(new)
       }
-      if (!is.null(colour)) {
-        if (!is.na(colour[i])) {
-          img <- magick::image_read(logo_list[[team]])
-          new <- color_image(img,color = colour[i],alpha = alpha[i])
 
-          grid <- grid::rasterGrob(new)
-        }
-      }
 
       grid$vp <- grid::viewport(
         x = grid::unit(data$x[i], "native"),
