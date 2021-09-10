@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cfbplotR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9002</span>
       </span>
     </div>
 
@@ -83,7 +83,7 @@
       <a href="../articles/index.html">Vignettes</a>
     </li>
     <li>
-      <a href="../articles/tutorial.html">CFB Analytics with cfbfastR</a>
+      <a href="../articles/tutorial.html">Using cfbplotR</a>
     </li>
   </ul>
 </li>
@@ -217,7 +217,7 @@
 <div id="load-and-process-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#load-and-process-data" class="anchor"></a>Load and Process Data</h2>
-<p>First we need to load the necessary libraries. <a href="https://saiemgilani.github.io/cfbfastR/index.html"><code>cfbfastR</code></a> will get us the data we want to use for analysis. <a href="https://Kazink36.github.io/cfbplotR/index.html" class="uri"><code>cfbplotR</code></a> will help us easily plot the results. <code>tidyverse</code> will help us do the necessary data manipulation and of course includes <code>ggplot2</code> that we will use for plotting. You can use the commented out code to install these packages if you don’t already have them.</p>
+<p>First we need to load the necessary libraries. <a href="https://saiemgilani.github.io/cfbfastR/index.html"><code>cfbfastR</code></a> will get us the data we want to use for analysis. <a href="https://Kazink36.github.io/cfbplotR/index.html"><code>cfbplotR</code></a> will help us easily plot the results. <code>tidyverse</code> will help us do the necessary data manipulation and of course includes <code>ggplot2</code> that we will use for plotting. You can use the commented out code to install these packages if you don’t already have them.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#remotes::install_github(repo = "saiemgilani/cfbfastR")</span>
 <span class="co">#remotes::install_github(repo = "Kazink36/cfbplotR")</span>
@@ -228,7 +228,7 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
 <pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.3     ✓ dplyr   1.0.7
+## ✓ tibble  3.1.4     ✓ dplyr   1.0.7
 ## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
 ## ✓ readr   2.0.1     ✓ forcats 0.5.1</code></pre>
 <pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -237,7 +237,7 @@
 <p>This first chunk of code will pull the play-by-play data from the first week of the 2021 season using <code>cfbfastR</code> and create the advanced metrics like EPA that we will be plotting (this will take a second). We’ll also pull in the general team info so we can filter down to just teams in a power 5 conference.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pbp</span> <span class="op">&lt;-</span> <span class="fu">cfbfastR</span><span class="fu">::</span><span class="fu"><a href="http://saiemgilani.github.io/cfbfastR/reference/cfbd_pbp_data.html">cfbd_pbp_data</a></span><span class="op">(</span><span class="fl">2021</span>, week <span class="op">=</span> <span class="fl">1</span>, epa_wpa <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## • Start processing of 69 games...</code></pre>
+<pre><code>## • 09:16:34 | Start processing of {game_count} games...</code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">team_info</span> <span class="op">&lt;-</span> <span class="fu">cfbfastR</span><span class="fu">::</span><span class="fu"><a href="http://saiemgilani.github.io/cfbfastR/reference/cfbd_team_info.html">cfbd_team_info</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">team_info</span> <span class="op">&lt;-</span> <span class="va">team_info</span> <span class="op">%&gt;%</span> 
@@ -279,8 +279,8 @@
 <p>This is still pretty messy because of the large number of teams. Let’s try to focus in on the Pac-12 teams with a couple of handy tools. We’re going to add two columns to our data: one for the color and one for the alpha. Then we just add those two columns as aesthetics to <code>geom_cfb_logos</code> to turn the logos of non-Pac-12 teams grey and lower the alpha.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">team_plot_data</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>color <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span>,<span class="cn">NA_character_</span>,<span class="st">"gray50"</span><span class="op">)</span>,
-         alpha <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span>,<span class="fl">1</span>,<span class="fl">.6</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu">mutate</span><span class="op">(</span>color <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span>,<span class="cn">NA_character_</span>,<span class="st">"gray30"</span><span class="op">)</span>,
+         alpha <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span>,<span class="fl">1</span>,<span class="fl">.8</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pass_epa</span>, y <span class="op">=</span> <span class="va">rush_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/geom_mean_lines.html">geom_median_lines</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>v_var <span class="op">=</span> <span class="va">pass_epa</span>, h_var <span class="op">=</span> <span class="va">rush_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/geom_cfb_logos.html">geom_cfb_logos</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">team</span>, alpha <span class="op">=</span> <span class="va">alpha</span>, color <span class="op">=</span> <span class="va">color</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">0.075</span><span class="op">)</span> <span class="op">+</span>
