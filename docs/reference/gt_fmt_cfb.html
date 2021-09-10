@@ -75,7 +75,7 @@ the necessary boilerplate already applied." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cfbplotR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9003</span>
       </span>
     </div>
 
@@ -100,6 +100,7 @@ the necessary boilerplate already applied." />
       <a href="../reference/index.html">Function Index</a>
     </li>
     <li class="divider"></li>
+    <li class="dropdown-header">Plots</li>
     <li>
       <a href="../reference/geom_cfb_logos.html">Plot Logos</a>
     </li>
@@ -109,6 +110,13 @@ the necessary boilerplate already applied." />
     <li>
       <a href="../reference/scale_color_cfb.html">Team Colors</a>
     </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Tables</li>
+    <li>
+      <a href="../reference/gt_fmt_cfb.R">Add Logos</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Utilties</li>
     <li>
       <a href="../reference/valid_team_names.html">Valid Names</a>
     </li>
@@ -294,7 +302,374 @@ the necessary boilerplate already applied.</p>
 <span class='va'>df</span> <span class='op'>%&gt;%</span>
  <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
  <span class='fu'>gt_fmt_cfb</span><span class='op'>(</span>columns <span class='op'>=</span> <span class='st'>"logo"</span><span class='op'>)</span>
-
+</div><div class='output co'>#&gt; &lt;div id="mwlefoodfi" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"&gt;
+#&gt;   &lt;style&gt;html {
+#&gt;   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_table {
+#&gt;   display: table;
+#&gt;   border-collapse: collapse;
+#&gt;   margin-left: auto;
+#&gt;   margin-right: auto;
+#&gt;   color: #333333;
+#&gt;   font-size: 16px;
+#&gt;   font-weight: normal;
+#&gt;   font-style: normal;
+#&gt;   background-color: #FFFFFF;
+#&gt;   width: auto;
+#&gt;   border-top-style: solid;
+#&gt;   border-top-width: 2px;
+#&gt;   border-top-color: #A8A8A8;
+#&gt;   border-right-style: none;
+#&gt;   border-right-width: 2px;
+#&gt;   border-right-color: #D3D3D3;
+#&gt;   border-bottom-style: solid;
+#&gt;   border-bottom-width: 2px;
+#&gt;   border-bottom-color: #A8A8A8;
+#&gt;   border-left-style: none;
+#&gt;   border-left-width: 2px;
+#&gt;   border-left-color: #D3D3D3;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_heading {
+#&gt;   background-color: #FFFFFF;
+#&gt;   text-align: center;
+#&gt;   border-bottom-color: #FFFFFF;
+#&gt;   border-left-style: none;
+#&gt;   border-left-width: 1px;
+#&gt;   border-left-color: #D3D3D3;
+#&gt;   border-right-style: none;
+#&gt;   border-right-width: 1px;
+#&gt;   border-right-color: #D3D3D3;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_title {
+#&gt;   color: #333333;
+#&gt;   font-size: 125%;
+#&gt;   font-weight: initial;
+#&gt;   padding-top: 4px;
+#&gt;   padding-bottom: 4px;
+#&gt;   border-bottom-color: #FFFFFF;
+#&gt;   border-bottom-width: 0;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_subtitle {
+#&gt;   color: #333333;
+#&gt;   font-size: 85%;
+#&gt;   font-weight: initial;
+#&gt;   padding-top: 0;
+#&gt;   padding-bottom: 6px;
+#&gt;   border-top-color: #FFFFFF;
+#&gt;   border-top-width: 0;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_bottom_border {
+#&gt;   border-bottom-style: solid;
+#&gt;   border-bottom-width: 2px;
+#&gt;   border-bottom-color: #D3D3D3;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_col_headings {
+#&gt;   border-top-style: solid;
+#&gt;   border-top-width: 2px;
+#&gt;   border-top-color: #D3D3D3;
+#&gt;   border-bottom-style: solid;
+#&gt;   border-bottom-width: 2px;
+#&gt;   border-bottom-color: #D3D3D3;
+#&gt;   border-left-style: none;
+#&gt;   border-left-width: 1px;
+#&gt;   border-left-color: #D3D3D3;
+#&gt;   border-right-style: none;
+#&gt;   border-right-width: 1px;
+#&gt;   border-right-color: #D3D3D3;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_col_heading {
+#&gt;   color: #333333;
+#&gt;   background-color: #FFFFFF;
+#&gt;   font-size: 100%;
+#&gt;   font-weight: normal;
+#&gt;   text-transform: inherit;
+#&gt;   border-left-style: none;
+#&gt;   border-left-width: 1px;
+#&gt;   border-left-color: #D3D3D3;
+#&gt;   border-right-style: none;
+#&gt;   border-right-width: 1px;
+#&gt;   border-right-color: #D3D3D3;
+#&gt;   vertical-align: bottom;
+#&gt;   padding-top: 5px;
+#&gt;   padding-bottom: 6px;
+#&gt;   padding-left: 5px;
+#&gt;   padding-right: 5px;
+#&gt;   overflow-x: hidden;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_column_spanner_outer {
+#&gt;   color: #333333;
+#&gt;   background-color: #FFFFFF;
+#&gt;   font-size: 100%;
+#&gt;   font-weight: normal;
+#&gt;   text-transform: inherit;
+#&gt;   padding-top: 0;
+#&gt;   padding-bottom: 0;
+#&gt;   padding-left: 4px;
+#&gt;   padding-right: 4px;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_column_spanner_outer:first-child {
+#&gt;   padding-left: 0;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_column_spanner_outer:last-child {
+#&gt;   padding-right: 0;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_column_spanner {
+#&gt;   border-bottom-style: solid;
+#&gt;   border-bottom-width: 2px;
+#&gt;   border-bottom-color: #D3D3D3;
+#&gt;   vertical-align: bottom;
+#&gt;   padding-top: 5px;
+#&gt;   padding-bottom: 5px;
+#&gt;   overflow-x: hidden;
+#&gt;   display: inline-block;
+#&gt;   width: 100%;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_group_heading {
+#&gt;   padding: 8px;
+#&gt;   color: #333333;
+#&gt;   background-color: #FFFFFF;
+#&gt;   font-size: 100%;
+#&gt;   font-weight: initial;
+#&gt;   text-transform: inherit;
+#&gt;   border-top-style: solid;
+#&gt;   border-top-width: 2px;
+#&gt;   border-top-color: #D3D3D3;
+#&gt;   border-bottom-style: solid;
+#&gt;   border-bottom-width: 2px;
+#&gt;   border-bottom-color: #D3D3D3;
+#&gt;   border-left-style: none;
+#&gt;   border-left-width: 1px;
+#&gt;   border-left-color: #D3D3D3;
+#&gt;   border-right-style: none;
+#&gt;   border-right-width: 1px;
+#&gt;   border-right-color: #D3D3D3;
+#&gt;   vertical-align: middle;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_empty_group_heading {
+#&gt;   padding: 0.5px;
+#&gt;   color: #333333;
+#&gt;   background-color: #FFFFFF;
+#&gt;   font-size: 100%;
+#&gt;   font-weight: initial;
+#&gt;   border-top-style: solid;
+#&gt;   border-top-width: 2px;
+#&gt;   border-top-color: #D3D3D3;
+#&gt;   border-bottom-style: solid;
+#&gt;   border-bottom-width: 2px;
+#&gt;   border-bottom-color: #D3D3D3;
+#&gt;   vertical-align: middle;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_from_md &gt; :first-child {
+#&gt;   margin-top: 0;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_from_md &gt; :last-child {
+#&gt;   margin-bottom: 0;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_row {
+#&gt;   padding-top: 8px;
+#&gt;   padding-bottom: 8px;
+#&gt;   padding-left: 5px;
+#&gt;   padding-right: 5px;
+#&gt;   margin: 10px;
+#&gt;   border-top-style: solid;
+#&gt;   border-top-width: 1px;
+#&gt;   border-top-color: #D3D3D3;
+#&gt;   border-left-style: none;
+#&gt;   border-left-width: 1px;
+#&gt;   border-left-color: #D3D3D3;
+#&gt;   border-right-style: none;
+#&gt;   border-right-width: 1px;
+#&gt;   border-right-color: #D3D3D3;
+#&gt;   vertical-align: middle;
+#&gt;   overflow-x: hidden;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_stub {
+#&gt;   color: #333333;
+#&gt;   background-color: #FFFFFF;
+#&gt;   font-size: 100%;
+#&gt;   font-weight: initial;
+#&gt;   text-transform: inherit;
+#&gt;   border-right-style: solid;
+#&gt;   border-right-width: 2px;
+#&gt;   border-right-color: #D3D3D3;
+#&gt;   padding-left: 12px;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_summary_row {
+#&gt;   color: #333333;
+#&gt;   background-color: #FFFFFF;
+#&gt;   text-transform: inherit;
+#&gt;   padding-top: 8px;
+#&gt;   padding-bottom: 8px;
+#&gt;   padding-left: 5px;
+#&gt;   padding-right: 5px;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_first_summary_row {
+#&gt;   padding-top: 8px;
+#&gt;   padding-bottom: 8px;
+#&gt;   padding-left: 5px;
+#&gt;   padding-right: 5px;
+#&gt;   border-top-style: solid;
+#&gt;   border-top-width: 2px;
+#&gt;   border-top-color: #D3D3D3;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_grand_summary_row {
+#&gt;   color: #333333;
+#&gt;   background-color: #FFFFFF;
+#&gt;   text-transform: inherit;
+#&gt;   padding-top: 8px;
+#&gt;   padding-bottom: 8px;
+#&gt;   padding-left: 5px;
+#&gt;   padding-right: 5px;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_first_grand_summary_row {
+#&gt;   padding-top: 8px;
+#&gt;   padding-bottom: 8px;
+#&gt;   padding-left: 5px;
+#&gt;   padding-right: 5px;
+#&gt;   border-top-style: double;
+#&gt;   border-top-width: 6px;
+#&gt;   border-top-color: #D3D3D3;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_striped {
+#&gt;   background-color: rgba(128, 128, 128, 0.05);
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_table_body {
+#&gt;   border-top-style: solid;
+#&gt;   border-top-width: 2px;
+#&gt;   border-top-color: #D3D3D3;
+#&gt;   border-bottom-style: solid;
+#&gt;   border-bottom-width: 2px;
+#&gt;   border-bottom-color: #D3D3D3;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_footnotes {
+#&gt;   color: #333333;
+#&gt;   background-color: #FFFFFF;
+#&gt;   border-bottom-style: none;
+#&gt;   border-bottom-width: 2px;
+#&gt;   border-bottom-color: #D3D3D3;
+#&gt;   border-left-style: none;
+#&gt;   border-left-width: 2px;
+#&gt;   border-left-color: #D3D3D3;
+#&gt;   border-right-style: none;
+#&gt;   border-right-width: 2px;
+#&gt;   border-right-color: #D3D3D3;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_footnote {
+#&gt;   margin: 0px;
+#&gt;   font-size: 90%;
+#&gt;   padding: 4px;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_sourcenotes {
+#&gt;   color: #333333;
+#&gt;   background-color: #FFFFFF;
+#&gt;   border-bottom-style: none;
+#&gt;   border-bottom-width: 2px;
+#&gt;   border-bottom-color: #D3D3D3;
+#&gt;   border-left-style: none;
+#&gt;   border-left-width: 2px;
+#&gt;   border-left-color: #D3D3D3;
+#&gt;   border-right-style: none;
+#&gt;   border-right-width: 2px;
+#&gt;   border-right-color: #D3D3D3;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_sourcenote {
+#&gt;   font-size: 90%;
+#&gt;   padding: 4px;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_left {
+#&gt;   text-align: left;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_center {
+#&gt;   text-align: center;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_right {
+#&gt;   text-align: right;
+#&gt;   font-variant-numeric: tabular-nums;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_font_normal {
+#&gt;   font-weight: normal;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_font_bold {
+#&gt;   font-weight: bold;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_font_italic {
+#&gt;   font-style: italic;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_super {
+#&gt;   font-size: 65%;
+#&gt; }
+#&gt; 
+#&gt; #mwlefoodfi .gt_footnote_marks {
+#&gt;   font-style: italic;
+#&gt;   font-weight: normal;
+#&gt;   font-size: 65%;
+#&gt; }
+#&gt; &lt;/style&gt;
+#&gt;   &lt;table class="gt_table"&gt;
+#&gt;   
+#&gt;   &lt;thead class="gt_col_headings"&gt;
+#&gt;     &lt;tr&gt;
+#&gt;       &lt;th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"&gt;team&lt;/th&gt;
+#&gt;       &lt;th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1"&gt;logo&lt;/th&gt;
+#&gt;     &lt;/tr&gt;
+#&gt;   &lt;/thead&gt;
+#&gt;   &lt;tbody class="gt_table_body"&gt;
+#&gt;     &lt;tr&gt;&lt;td class="gt_row gt_left"&gt;Air Force&lt;/td&gt;
+#&gt; &lt;td class="gt_row gt_left"&gt;&lt;img src="http://a.espncdn.com/i/teamlogos/ncaa/500/2005.png" style="height:30px;"&gt;&lt;/td&gt;&lt;/tr&gt;
+#&gt;     &lt;tr&gt;&lt;td class="gt_row gt_left"&gt;Akron&lt;/td&gt;
+#&gt; &lt;td class="gt_row gt_left"&gt;&lt;img src="http://a.espncdn.com/i/teamlogos/ncaa/500/2006.png" style="height:30px;"&gt;&lt;/td&gt;&lt;/tr&gt;
+#&gt;     &lt;tr&gt;&lt;td class="gt_row gt_left"&gt;Alabama&lt;/td&gt;
+#&gt; &lt;td class="gt_row gt_left"&gt;&lt;img src="http://a.espncdn.com/i/teamlogos/ncaa/500/333.png" style="height:30px;"&gt;&lt;/td&gt;&lt;/tr&gt;
+#&gt;     &lt;tr&gt;&lt;td class="gt_row gt_left"&gt;Appalachian State&lt;/td&gt;
+#&gt; &lt;td class="gt_row gt_left"&gt;&lt;img src="http://a.espncdn.com/i/teamlogos/ncaa/500/2026.png" style="height:30px;"&gt;&lt;/td&gt;&lt;/tr&gt;
+#&gt;     &lt;tr&gt;&lt;td class="gt_row gt_left"&gt;Arizona&lt;/td&gt;
+#&gt; &lt;td class="gt_row gt_left"&gt;&lt;img src="http://a.espncdn.com/i/teamlogos/ncaa/500/12.png" style="height:30px;"&gt;&lt;/td&gt;&lt;/tr&gt;
+#&gt;     &lt;tr&gt;&lt;td class="gt_row gt_left"&gt;Arizona State&lt;/td&gt;
+#&gt; &lt;td class="gt_row gt_left"&gt;&lt;img src="http://a.espncdn.com/i/teamlogos/ncaa/500/9.png" style="height:30px;"&gt;&lt;/td&gt;&lt;/tr&gt;
+#&gt;     &lt;tr&gt;&lt;td class="gt_row gt_left"&gt;Arkansas&lt;/td&gt;
+#&gt; &lt;td class="gt_row gt_left"&gt;&lt;img src="http://a.espncdn.com/i/teamlogos/ncaa/500/8.png" style="height:30px;"&gt;&lt;/td&gt;&lt;/tr&gt;
+#&gt;     &lt;tr&gt;&lt;td class="gt_row gt_left"&gt;Arkansas State&lt;/td&gt;
+#&gt; &lt;td class="gt_row gt_left"&gt;&lt;img src="http://a.espncdn.com/i/teamlogos/ncaa/500/2032.png" style="height:30px;"&gt;&lt;/td&gt;&lt;/tr&gt;
+#&gt;   &lt;/tbody&gt;
+#&gt;   
+#&gt;   
+#&gt; &lt;/table&gt;
+#&gt; &lt;/div&gt;</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
