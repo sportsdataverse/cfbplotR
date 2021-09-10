@@ -2,10 +2,13 @@
 % Please edit documentation in R/scale_color_cfb.R
 \name{scale_color_cfb}
 \alias{scale_color_cfb}
+\alias{scale_colour_cfb}
 \alias{scale_fill_cfb}
 \title{Scale for college football team colors}
 \usage{
 scale_color_cfb(alt_colors = NULL, ...)
+
+scale_colour_cfb(alt_colors = NULL, ...)
 
 scale_fill_cfb(alt_colors = NULL, ...)
 }

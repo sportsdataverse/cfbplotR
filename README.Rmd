@@ -74,3 +74,21 @@ df$color <- ifelse(matches, "grey",NA)
    scale_color_identity() +
    theme_void() 
 ```
+
+## Getting help
+
+The best places to get help on this package are:
+
+-   messaging [Jared Lee on twitter](https://twitter.com/JaredDLee)
+-   opening [an issue](https://github.com/Kaink36/cfbplotR/issues/new/choose)
+
+## Contributing
+
+Many hands make light work! Here are some ways you can contribute to
+this project:
+
+-   You can [open an issue](https://github.com/Kazink36/cfbplotR/issues/new/choose) if you’d like to request specific data or report a bug/error.
+
+## Terms of Use
+
+The R code for this package is released as open source under the [MIT License](https://Kazink36.github.io/cfbplotR/docs/LICENSE.html). CFB data accessed by this package belong to their respective owners, and are governed by their terms of use.

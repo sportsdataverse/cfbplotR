@@ -96,3 +96,21 @@ team_plot_data %>%
   theme_bw() +
   theme(axis.text.x = element_text(angle = 30,vjust = 0.5))
 ```
+
+
+## Tables with cfbplotR
+
+The `gt` package offers an easy way to create nice tables of data and the `gtExtras` package from Tom Mock provides a number of convenient functions for styling those tables. The `gt_fmt_cfb()` function is a slightly modified version of `gtExtras::gt_image_rows()` to easily add team and conference logos based on names from `valid_team_names()`. We can quickly make a table showing the top teams from week 1 by EPA per pass.
+
+```{r fmt_cfb}
+library(gt)
+
+team_plot_data %>% 
+  transmute(conference, team,logo = team, 
+            pass_epa = round(pass_epa,2),n_pass, 
+            rush_epa = round(rush_epa,2),n_rush) %>% 
+  arrange(desc(pass_epa)) %>% 
+  head(8) %>% 
+  gt() %>% 
+  gt_fmt_cfb(columns = c(conference,logo)) 
+```

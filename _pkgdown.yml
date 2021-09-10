@@ -52,12 +52,19 @@ navbar:
       - text: "Function Index"
         href: reference/index.html
       - text: --------------------------------
+      - text: "Plots"
       - text: "Plot Logos"
         href: reference/geom_cfb_logos.html
       - text: "Add Median Lines"
         href: reference/geom_median_lines.html
       - text: "Team Colors"
         href: reference/scale_color_cfb.html
+      - text: --------------------------------
+      - text: "Tables"
+      - text: "Add Logos"
+        href: reference/gt_fmt_cfb.R
+      - text: --------------------------------
+      - text: "Utilties"
       - text: "Valid Names"
         href: reference/valid_team_names.html
     articles:
