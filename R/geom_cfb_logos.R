@@ -120,8 +120,10 @@ GeomCFB <- ggplot2::ggproto(
 
     grobs <- lapply(seq_along(data$team), function(i, urls, alpha, colour, data) {
       team <- data$team[i]
-
-      if (!is.null(colour)) {
+      if (!team %in% valid_team_names()) {
+        cli::cli_warn("{team} is not a valid team name")
+        grid <- grid::nullGrob()
+      } else if (!is.null(colour)) {
         if (!is.na(colour[i])) {
           img <- magick::image_read(logo_list[[team]])
           new <- color_image(img,color = colour[i],alpha = alpha[i])
