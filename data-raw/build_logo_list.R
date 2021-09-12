@@ -42,7 +42,8 @@ teams_csv <- read_csv("https://raw.githubusercontent.com/CFBNumbers/logos/main/c
 temp_logos <- teams_csv %>%
   select(school, abbreviation, logo) %>%
   filter(logo != "NA,NA") %>%
-  mutate(fbs = if_else(school %in% fbs_teams$school,1,2)) %>%
+  mutate(school = if_else(str_detect(school,"^San Jos"),"San José State",school),
+         fbs = if_else(school %in% fbs_teams$school,1,2)) %>%
   pivot_longer(school:abbreviation,values_to = "school") %>%
   group_by(school) %>%
   slice(1) %>%
