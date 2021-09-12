@@ -1,6 +1,6 @@
 Package: cfbplotR
 Title: CFB Logo Plots in 'ggplot2'
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Authors@R: 
     c(
     person(given = "Sebastian",
@@ -21,10 +21,14 @@ Imports:
     cli (>= 3.0.0),
     ggplot2 (>= 3.3.0),
     grid,
+    gridtext (> 0.1.4),
     magick (>= 2.7.3),
     magrittr (>= 2.0.0),
-    rlang (>= 0.4.11)
+    nflreadr (>= 1.1.0.03),
+    rlang (>= 0.4.11),
+    scales (>= 1.1.0)
 Suggests: 
+    ggtext (>= 0.1.1),
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8

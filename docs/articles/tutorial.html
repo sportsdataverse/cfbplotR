@@ -6,6 +6,12 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Using cfbplotR • cfbplotR</title>
+<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -13,6 +19,7 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Using cfbplotR">
 <meta property="og:description" content="cfbplotR">
+<meta property="og:image" content="https://Kazink36.github.io/cfbplotR/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -31,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cfbplotR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9004</span>
       </span>
     </div>
 
@@ -66,6 +73,9 @@
     <li>
       <a href="../reference/scale_color_cfb.html">Team Colors</a>
     </li>
+    <li>
+      <a href="../reference/scale_axes_cfb.html">Axis Logos</a>
+    </li>
     <li class="divider">
     <li class="dropdown-header">Tables</li>
     <li>
@@ -99,7 +109,7 @@
   <a href="../news/index.html">
     <span class="fas fa-newspaper"></span>
      
-     News
+     Changelog
   </a>
 </li>
 <li>
@@ -245,7 +255,7 @@
 <p>This first chunk of code will pull the play-by-play data from the first week of the 2021 season using <code>cfbfastR</code> and create the advanced metrics like EPA that we will be plotting (this will take a second). We’ll also pull in the general team info so we can filter down to just teams in a power 5 conference.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">pbp</span> <span class="op">&lt;-</span> <span class="fu">cfbfastR</span><span class="fu">::</span><span class="fu"><a href="http://saiemgilani.github.io/cfbfastR/reference/cfbd_pbp_data.html">cfbd_pbp_data</a></span><span class="op">(</span><span class="fl">2021</span>, week <span class="op">=</span> <span class="fl">1</span>, epa_wpa <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<pre><code>## • 14:17:53 | Start processing of {game_count} games...</code></pre>
+<pre><code>## • 14:52:10 | Start processing of {game_count} games...</code></pre>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">team_info</span> <span class="op">&lt;-</span> <span class="fu">cfbfastR</span><span class="fu">::</span><span class="fu"><a href="http://saiemgilani.github.io/cfbfastR/reference/cfbd_team_info.html">cfbd_team_info</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">team_info</span> <span class="op">&lt;-</span> <span class="va">team_info</span> <span class="op">%&gt;%</span> 
@@ -296,7 +306,7 @@
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"EPA per Pass"</span>,y <span class="op">=</span> <span class="st">"EPA per Rush"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="tutorial_files/figure-html/gray-1.png" width="700"></p>
-<p>Finally let’s make a bar chart showing the Pac-12 EPA per pass for each team. Because <code>cfbplotR</code> creates a custom geom for ggplot, we can use <code><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate()</a></code> to place a log anywhere we’d like. <code><a href="../reference/scale_color_cfb.html">scale_color_cfb()</a></code> and <code><a href="../reference/scale_color_cfb.html">scale_fill_cfb()</a></code> let us automatically use a teams primary color on a plot. The <code>alt_colors</code> argument lets us pass through a vector of team names that we want to use an alternate color for.</p>
+<p>Finally let’s make a bar chart showing the Pac-12 EPA per pass for each team. Because <code>cfbplotR</code> creates a custom geom for ggplot, we can use <code><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate()</a></code> to place a log anywhere we’d like. <code><a href="../reference/scale_color_cfb.html">scale_color_cfb()</a></code> and <code><a href="../reference/scale_color_cfb.html">scale_fill_cfb()</a></code> let us automatically use a teams primary color on a plot. The <code>alt_colors</code> argument lets us pass through a vector of team names that we want to use an alternate color for. <code>sacle_x_cfb()</code> and <code><a href="../reference/scale_axes_cfb.html">scale_y_cfb()</a></code> change the axis labels that are team names into logos. Due to the way ggplot works, you have to add the corresponding theme function <code><a href="../reference/theme_cfb.html">theme_x_cfb()</a></code> or <code><a href="../reference/theme_cfb.html">theme_y_cfb()</a></code>.</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">team_plot_data</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
@@ -305,18 +315,21 @@
   <span class="co"># </span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">team</span>, color <span class="op">=</span> <span class="va">team</span><span class="op">)</span>,size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="fu">cfbplotR</span><span class="fu">:::</span><span class="va">GeomCFB</span>,x <span class="op">=</span> <span class="st">"California"</span>,y <span class="op">=</span> <span class="fl">0.2</span>,team <span class="op">=</span> <span class="st">"Pac-12"</span>,height <span class="op">=</span> <span class="fl">.35</span>,alpha <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/scale_color_cfb.html">scale_fill_cfb</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/scale_color_cfb.html">scale_fill_cfb</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.8</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/scale_color_cfb.html">scale_color_cfb</a></span><span class="op">(</span>alt_colors <span class="op">=</span> <span class="va">team_plot_data</span><span class="op">$</span><span class="va">team</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/scale_axes_cfb.html">scale_x_cfb</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="st">"EPA per Pass"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">30</span>,vjust <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="../reference/theme_cfb.html">theme_x_cfb</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning in png::readPNG(get_file(path), native = TRUE): libpng warning: iCCP:
+## known incorrect sRGB profile</code></pre>
 <p><img src="tutorial_files/figure-html/bar_chart-1.png" width="700"></p>
 </div>
 <div id="tables-with-cfbplotr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tables-with-cfbplotr" class="anchor"></a>Tables with cfbplotR</h2>
 <p>The <code>gt</code> package offers an easy way to create nice tables of data and the <code>gtExtras</code> package from Tom Mock provides a number of convenient functions for styling those tables. The <code><a href="../reference/gt_fmt_cfb.html">gt_fmt_cfb()</a></code> function is a slightly modified version of <code>gtExtras::gt_image_rows()</code> to easily add team and conference logos based on names from <code><a href="../reference/valid_team_names.html">valid_team_names()</a></code>. We can quickly make a table showing the top teams from week 1 by EPA per pass.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/">gt</a></span><span class="op">)</span>
 
 <span class="va">team_plot_data</span> <span class="op">%&gt;%</span> 
@@ -327,12 +340,12 @@
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/gt_fmt_cfb.html">gt_fmt_cfb</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">conference</span>,<span class="va">logo</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
-<div id="drscwpapdy" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="jyccwjegwa" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#drscwpapdy .gt_table {
+#jyccwjegwa .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -357,7 +370,7 @@
   border-left-color: #D3D3D3;
 }
 
-#drscwpapdy .gt_heading {
+#jyccwjegwa .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -369,7 +382,7 @@
   border-right-color: #D3D3D3;
 }
 
-#drscwpapdy .gt_title {
+#jyccwjegwa .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -379,7 +392,7 @@
   border-bottom-width: 0;
 }
 
-#drscwpapdy .gt_subtitle {
+#jyccwjegwa .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -389,13 +402,13 @@
   border-top-width: 0;
 }
 
-#drscwpapdy .gt_bottom_border {
+#jyccwjegwa .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#drscwpapdy .gt_col_headings {
+#jyccwjegwa .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -410,7 +423,7 @@
   border-right-color: #D3D3D3;
 }
 
-#drscwpapdy .gt_col_heading {
+#jyccwjegwa .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -430,7 +443,7 @@
   overflow-x: hidden;
 }
 
-#drscwpapdy .gt_column_spanner_outer {
+#jyccwjegwa .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -442,15 +455,15 @@
   padding-right: 4px;
 }
 
-#drscwpapdy .gt_column_spanner_outer:first-child {
+#jyccwjegwa .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#drscwpapdy .gt_column_spanner_outer:last-child {
+#jyccwjegwa .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#drscwpapdy .gt_column_spanner {
+#jyccwjegwa .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -462,7 +475,7 @@
   width: 100%;
 }
 
-#drscwpapdy .gt_group_heading {
+#jyccwjegwa .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -484,7 +497,7 @@
   vertical-align: middle;
 }
 
-#drscwpapdy .gt_empty_group_heading {
+#jyccwjegwa .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -499,15 +512,15 @@
   vertical-align: middle;
 }
 
-#drscwpapdy .gt_from_md > :first-child {
+#jyccwjegwa .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#drscwpapdy .gt_from_md > :last-child {
+#jyccwjegwa .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#drscwpapdy .gt_row {
+#jyccwjegwa .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -526,7 +539,7 @@
   overflow-x: hidden;
 }
 
-#drscwpapdy .gt_stub {
+#jyccwjegwa .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -538,7 +551,7 @@
   padding-left: 12px;
 }
 
-#drscwpapdy .gt_summary_row {
+#jyccwjegwa .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -548,7 +561,7 @@
   padding-right: 5px;
 }
 
-#drscwpapdy .gt_first_summary_row {
+#jyccwjegwa .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -558,7 +571,7 @@
   border-top-color: #D3D3D3;
 }
 
-#drscwpapdy .gt_grand_summary_row {
+#jyccwjegwa .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -568,7 +581,7 @@
   padding-right: 5px;
 }
 
-#drscwpapdy .gt_first_grand_summary_row {
+#jyccwjegwa .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -578,11 +591,11 @@
   border-top-color: #D3D3D3;
 }
 
-#drscwpapdy .gt_striped {
+#jyccwjegwa .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#drscwpapdy .gt_table_body {
+#jyccwjegwa .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -591,7 +604,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#drscwpapdy .gt_footnotes {
+#jyccwjegwa .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -605,13 +618,13 @@
   border-right-color: #D3D3D3;
 }
 
-#drscwpapdy .gt_footnote {
+#jyccwjegwa .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#drscwpapdy .gt_sourcenotes {
+#jyccwjegwa .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -625,41 +638,41 @@
   border-right-color: #D3D3D3;
 }
 
-#drscwpapdy .gt_sourcenote {
+#jyccwjegwa .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#drscwpapdy .gt_left {
+#jyccwjegwa .gt_left {
   text-align: left;
 }
 
-#drscwpapdy .gt_center {
+#jyccwjegwa .gt_center {
   text-align: center;
 }
 
-#drscwpapdy .gt_right {
+#jyccwjegwa .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#drscwpapdy .gt_font_normal {
+#jyccwjegwa .gt_font_normal {
   font-weight: normal;
 }
 
-#drscwpapdy .gt_font_bold {
+#jyccwjegwa .gt_font_bold {
   font-weight: bold;
 }
 
-#drscwpapdy .gt_font_italic {
+#jyccwjegwa .gt_font_italic {
   font-style: italic;
 }
 
-#drscwpapdy .gt_super {
+#jyccwjegwa .gt_super {
   font-size: 65%;
 }
 
-#drscwpapdy .gt_footnote_marks {
+#jyccwjegwa .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;

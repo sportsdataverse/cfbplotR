@@ -80,7 +80,7 @@ team_plot_data %>%
   theme_bw()
 ```
 
-Finally let's make a bar chart showing the Pac-12 EPA per pass for each team. Because `cfbplotR` creates a custom geom for ggplot, we can use `annotate()` to place a log anywhere we'd like. `scale_color_cfb()` and `scale_fill_cfb()` let us automatically use a teams primary color on a plot. The `alt_colors` argument lets us pass through a vector of team names that we want to use an alternate color for.
+Finally let's make a bar chart showing the Pac-12 EPA per pass for each team. Because `cfbplotR` creates a custom geom for ggplot, we can use `annotate()` to place a log anywhere we'd like. `scale_color_cfb()` and `scale_fill_cfb()` let us automatically use a teams primary color on a plot. The `alt_colors` argument lets us pass through a vector of team names that we want to use an alternate color for. `sacle_x_cfb()` and `scale_y_cfb()` change the axis labels that are team names into logos. Due to the way ggplot works, you have to add the corresponding theme function `theme_x_cfb()` or `theme_y_cfb()`.
 
 ```{r bar_chart}
 team_plot_data %>% 
@@ -90,11 +90,12 @@ team_plot_data %>%
   # 
   geom_col(aes(fill = team, color = team),size = 1.5) +
   annotate(cfbplotR:::GeomCFB,x = "California",y = 0.2,team = "Pac-12",height = .35,alpha = .3) +
-  scale_fill_cfb() +
+  scale_fill_cfb(alpha = .8) +
   scale_color_cfb(alt_colors = team_plot_data$team) +
+  scale_x_cfb() +
   labs(x = "", y = "EPA per Pass") +
   theme_bw() +
-  theme(axis.text.x = element_text(angle = 30,vjust = 0.5))
+  theme_x_cfb()
 ```
 
 
