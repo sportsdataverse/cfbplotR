@@ -25,12 +25,18 @@ library(cfbplotR)
 library(tidyverse)
 ```
 
-This first chunk of code will pull the play-by-play data from the first week of the 2021 season using `cfbfastR` and create the advanced metrics like EPA that we will be plotting (this will take a second). We'll also pull in the general team info so we can filter down to just teams in a power 5 conference.
+This first chunk of code will pull the play-by-play data from the first week of the 2021 season using the `cfbfastR` data repo and create the advanced metrics like EPA that we will be plotting (this will take a second). We'll also pull in the general team info so we can filter down to just teams in a power 5 conference.
 
 ```{r pulldata}
 
 
-pbp <- cfbfastR::cfbd_pbp_data(2021, week = 1, epa_wpa = TRUE)
+#pbp <- cfbfastR::cfbd_pbp_data(2021, week = 1, epa_wpa = TRUE)
+pbp <- readRDS(
+  url(
+    "https://raw.githubusercontent.com/saiemgilani/cfbfastR-data/master/data/rds/pbp_players_pos_2021.rds"
+  )
+) %>% 
+  filter(week == 1)
 
 team_info <- cfbfastR::cfbd_team_info()
 team_info <- team_info %>% 

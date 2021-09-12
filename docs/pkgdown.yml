@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   tutorial: tutorial.html
-last_built: 2021-09-12T21:51Z
+last_built: 2021-09-12T22:32Z
 urls:
   reference: https://Kazink36.github.io/cfbplotR//reference
   article: https://Kazink36.github.io/cfbplotR//articles

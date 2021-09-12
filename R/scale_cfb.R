@@ -4,9 +4,20 @@
 #' Scale for college football team colors
 #'
 #' @description These functions allows you to map college football team names as levels to the color and fill aesthetics
-#'
+#' @inheritParams ggplot2::scale_fill_manual
 #' @param alt_colors Vector of team names to use the alternate color of.
 #' @param ... Arguments passed on to scale_color_manual
+#' @param values If `NULL` (the default) use the internal team color vectors. Otherwise
+#'   a set of aesthetic values to map data values to. The values
+#'   will be matched in order (usually alphabetical) with the limits of the
+#'   scale, or with `breaks` if provided. If this is a named vector, then the
+#'   values will be matched based on the names instead. Data values that don't
+#'   match will be given `na.value`.
+#' @param guide A function used to create a guide or its name. If `NULL` (the default)
+#'   no guide will be plotted for this scale. See [ggplot2::guides()] for more information.
+#' @param alpha Factor to modify color transparency via a call to [`scales::alpha()`].
+#'   If `NA` (the default) no transparency will be applied. Can also be a vector of
+#'   alphas. All alpha levels must be in range `[0,1]`.
 #' @export
 #'
 #' @examples
@@ -33,7 +44,8 @@ scale_color_cfb <- function(alt_colors = NULL,
                             guide = NULL,
                             alpha = NA) {
   if(is.null(values)){
-    values <-  dplyr::mutate(team_colors, value = ifelse(school %in% alt_colors,alt_color,color))
+    values <-  dplyr::mutate(team_colors,
+                             value = ifelse(school %in% alt_colors,alt_color,color))
     values <- dplyr::pull(values, value)
     names(values) <- team_colors$school
   }

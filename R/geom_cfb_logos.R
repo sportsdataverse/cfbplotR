@@ -190,7 +190,7 @@ GeomCFB <- ggplot2::ggproto(
   draw_key = function(...) grid::nullGrob()
 )
 
-
+#' @importFrom grDevices col2rgb
 
 color_image <- function(img, color, alpha = NULL) {
   if (is.null(color))
@@ -201,7 +201,7 @@ color_image <- function(img, color, alpha = NULL) {
   }
 
   bitmap <- img[[1]]
-  col <- col2rgb(color)
+  col <- grDevices::col2rgb(color)
   bitmap[1,,] <- as.raw(col[1])
   bitmap[2,,] <- as.raw(col[2])
   bitmap[3,,] <- as.raw(col[3])

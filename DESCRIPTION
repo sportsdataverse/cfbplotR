@@ -21,10 +21,9 @@ Imports:
     cli (>= 3.0.0),
     ggplot2 (>= 3.3.0),
     grid,
-    gridtext (> 0.1.4),
+    gt (>= 0.3.1),
     magick (>= 2.7.3),
     magrittr (>= 2.0.0),
-    nflreadr (>= 1.1.0.03),
     rlang (>= 0.4.11),
     scales (>= 1.1.0)
 Suggests: 
