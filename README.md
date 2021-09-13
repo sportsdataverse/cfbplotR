@@ -9,7 +9,7 @@
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html)
 <!-- [![R build status](https://img.shields.io/github/workflow/status/Kazink36/cfbplotR/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/Kazink36/cfbplotR/actions) -->
-[![R-CMD-check](https://github.com/Kazink36/cfbplotR/workflows/R-CMD-check/badge.svg)](https://github.com/Kazink36/cfbplotR/actions)
+<!-- [![R-CMD-check](https://github.com/Kazink36/cfbplotR/workflows/R-CMD-check/badge.svg)](https://github.com/Kazink36/cfbplotR/actions)-->
 <!-- badges: end -->
 
 The code for this package was copied heavily from

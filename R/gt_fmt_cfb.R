@@ -12,7 +12,7 @@
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @export
-#' @import gt
+
 #' @examples
 #' library(gt)
 #' library(cfbplotR)
@@ -44,19 +44,19 @@ gt_fmt_cfb <- function(gt_object, columns, height = 30){
 
   # need to correct for rownames
   gt_object %>%
-    text_transform(
+    gt::text_transform(
       locations = if(isTRUE(grp_var %in% column_names)){
-        cells_row_groups()
+        gt::cells_row_groups()
       } else if(isTRUE(stub_var %in% column_names)){
-        cells_stub(rows = gt::everything())
+        gt::cells_stub(rows = gt::everything())
       } else {
-        cells_body({{ columns }})
+        gt::cells_body({{ columns }})
       },
       fn = function(x){
         if(img_source == "web"){
-          web_image(url = logo_list[x], height = height)
+          gt::web_image(url = logo_list[x], height = height)
         } else {
-          local_image(filename = x, height = height)
+          gt::local_image(filename = x, height = height)
         }
       }
     )

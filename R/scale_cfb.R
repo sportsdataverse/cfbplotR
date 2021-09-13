@@ -18,6 +18,7 @@
 #' @param alpha Factor to modify color transparency via a call to [`scales::alpha()`].
 #'   If `NA` (the default) no transparency will be applied. Can also be a vector of
 #'   alphas. All alpha levels must be in range `[0,1]`.
+#' @importFrom rlang .data
 #' @export
 #'
 #' @examples
@@ -44,10 +45,12 @@ scale_color_cfb <- function(alt_colors = NULL,
                             guide = NULL,
                             alpha = NA) {
   if(is.null(values)){
-    values <-  dplyr::mutate(team_colors,
-                             value = ifelse(school %in% alt_colors,alt_color,color))
-    values <- dplyr::pull(values, value)
-    names(values) <- team_colors$school
+    values <-  dplyr::mutate(cfbplotR::team_colors,
+                             value = ifelse(.data$school %in% alt_colors,
+                                            .data$alt_color,
+                                            .data$color))
+    values <- dplyr::pull(values, .data$value)
+    names(values) <- cfbplotR::team_colors$school
   }
 
 
@@ -79,9 +82,12 @@ scale_fill_cfb <- function(alt_colors = NULL,
                            guide = NULL,
                            alpha = NA) {
   if(is.null(values)){
-    values <-  dplyr::mutate(team_colors, value = ifelse(school %in% alt_colors,alt_color,color))
-    values <- dplyr::pull(values, value)
-    names(values) <- team_colors$school
+    values <-  dplyr::mutate(cfbplotR::team_colors,
+                             value = ifelse(.data$school %in% alt_colors,
+                                            .data$alt_color,
+                                            .data$color))
+    values <- dplyr::pull(values, .data$value)
+    names(values) <- cfbplotR::team_colors$school
   }
 
   if(!is.na(alpha)) values <- scales::alpha(values, alpha = alpha)
