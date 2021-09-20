@@ -54,6 +54,8 @@ gt_fmt_cfb <- function(gt_object, columns, height = 30){
       },
       fn = function(x){
         if(img_source == "web"){
+          #Fix Texas A&M
+          x <- str_replace(x,"&amp;","&")
           gt::web_image(url = logo_list[x], height = height)
         } else {
           gt::local_image(filename = x, height = height)

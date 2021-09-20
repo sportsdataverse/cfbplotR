@@ -92,4 +92,4 @@ ind <- ind[-1]
 
 logo_list <- logo_list[-ind]
 
-usethis::use_data(logo_list, internal = TRUE, overwrite = TRUE)
+usethis::use_data(logo_list, overwrite = TRUE)
