@@ -64,7 +64,7 @@ temp_conf <- conferences %>%
   slice(1) %>%
   ungroup()
 
-combined <- bind_rows(temp_logos,temp_conf)
+combined <- bind_rows(temp_logos,temp_conf,tibble(school = "NCAA",logo = "https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/NCAA_football_icon_logo.svg/2560px-NCAA_football_icon_logo.svg.png"))
 
 logo_list <- combined$logo
 names(logo_list) <- combined$school
@@ -92,4 +92,5 @@ ind <- ind[-1]
 
 logo_list <- logo_list[-ind]
 
-usethis::use_data(logo_list, overwrite = TRUE)
+
+usethis::use_data(logo_list,internal = TRUE, overwrite = TRUE)

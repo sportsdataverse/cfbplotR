@@ -119,11 +119,15 @@ GeomCFB <- ggplot2::ggproto(
     data <- coord$transform(data, panel_params)
 
     grobs <- lapply(seq_along(data$team), function(i, urls, alpha, colour, data) {
-      team <- data$team[i]
-      if (!team %in% valid_team_names()) {
-        cli::cli_warn("{team} is not a valid team name (row {i})")
+
+      if (!data$team[i] %in% valid_team_names()) {
+        cli::cli_warn("{data$team[i]} is not a valid team name (row {i})")
+        team <- "NCAA"
         grid <- grid::nullGrob()
-      } else if (!is.null(colour)) {
+      } else {
+        team <- data$team[i]
+      }
+      if (!is.null(colour)) {
         if (!is.na(colour[i])) {
           img <- magick::image_read(logo_list[[team]])
           new <- color_image(img,color = colour[i],alpha = alpha[i])

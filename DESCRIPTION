@@ -1,6 +1,6 @@
 Package: cfbplotR
 Title: CFB Logo Plots in 'ggplot2'
-Version: 0.0.0.9005
+Version: 0.0.0.9006
 Authors@R: 
     c(
     person(given = "Sebastian",
