@@ -169,7 +169,7 @@ scale_x_cfb <- function(...,
 scale_y_cfb <- function(...,
                         expand = ggplot2::waiver(),
                         guide = ggplot2::waiver(),
-                        position = "bottom",
+                        position = "left",
                         size = 12) {
   ggplot2::scale_y_discrete(
     ...,

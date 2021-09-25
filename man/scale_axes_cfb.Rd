@@ -17,7 +17,7 @@ scale_y_cfb(
   ...,
   expand = ggplot2::waiver(),
   guide = ggplot2::waiver(),
-  position = "bottom",
+  position = "left",
   size = 12
 )
 }
