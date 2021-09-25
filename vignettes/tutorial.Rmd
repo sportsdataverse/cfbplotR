@@ -2,6 +2,10 @@
 title: "Using cfbplotR"
 output: rmarkdown::html_vignette
 author: "Jared Lee <br><a href='https://twitter.com/JaredDLee' target='blank'><img src='https://img.shields.io/twitter/follow/JaredDLee?color=blue&label=%40JaredDLee&logo=twitter&style=for-the-badge' alt='@JaredDLee' /></a> <a href='https://github.com/Kazink36' target='blank'><img src='https://img.shields.io/github/followers/Kazink36?color=eee&logo=Github&style=for-the-badge' alt='@Kazink36' /></a>"
+vignette: >
+ %\VignetteIndexEntry{Using cfbplotR}
+ %\VignetteEngine{knitr::rmarkdown} 
+
 ---
 
 ```{r setup, include=FALSE}
