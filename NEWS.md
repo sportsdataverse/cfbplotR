@@ -10,3 +10,5 @@
 * Added NCAA logo as default for inputs not in `valid_team_names()`(v0.0.0.9006)
 * Fixed defaults for `scale_y_cfb()` to fix error.
 * Added FCS colors (v0.0.0.9007)
+* Added DIII Logos
+* Added input to `valid_team_names()` to allow filtering by division (FBS, FCS, DIII, or Conference logos) (v0.0.0.9008)

@@ -3,11 +3,16 @@
 #' @export
 #' @examples
 #' # List valid team abbreviations excluding duplicates
-#' valid_team_names()
+#' valid_team_names("FBS")
+#' valid_team_names("FCS")
+#' valid_team_names("DIII")
+#' valid_team_names("Conference")
 
-valid_team_names <- function(){
-  n <- names(logo_list)
-  n
+valid_team_names <- function(division = c("FBS","FCS","DIII","Conference")){
+
+  cfbplotR::logo_ref %>%
+    dplyr::filter(type %in% division) %>%
+    dplyr::pull(school)
 }
 
 

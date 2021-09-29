@@ -45,12 +45,12 @@ scale_color_cfb <- function(alt_colors = NULL,
                             guide = NULL,
                             alpha = NA) {
   if(is.null(values)){
-    values <-  dplyr::mutate(cfbplotR::team_colors,
+    values <-  dplyr::mutate(cfbplotR::logo_ref,
                              value = ifelse(.data$school %in% alt_colors,
                                             .data$alt_color,
                                             .data$color))
     values <- dplyr::pull(values, .data$value)
-    names(values) <- cfbplotR::team_colors$school
+    names(values) <- cfbplotR::logo_ref$school
   }
 
 
@@ -82,12 +82,12 @@ scale_fill_cfb <- function(alt_colors = NULL,
                            guide = NULL,
                            alpha = NA) {
   if(is.null(values)){
-    values <-  dplyr::mutate(cfbplotR::team_colors,
+    values <-  dplyr::mutate(cfbplotR::logo_ref,
                              value = ifelse(.data$school %in% alt_colors,
                                             .data$alt_color,
                                             .data$color))
     values <- dplyr::pull(values, .data$value)
-    names(values) <- cfbplotR::team_colors$school
+    names(values) <- cfbplotR::logo_ref$school
   }
 
   if(!is.na(alpha)) values <- scales::alpha(values, alpha = alpha)
