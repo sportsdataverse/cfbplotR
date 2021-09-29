@@ -45,6 +45,44 @@ fbs_logos <- fbs_teams %>%
   unnest_wider(logos,names_sep = "_") %>%
   transmute(school,logo = logos_1,type = "FBS")
 
+library(rvest)
+
+url <- "https://www.ncaa.com/scoreboard/football/d2/2021/05/all-conf"
+
+html <- rvest::read_html(url)
+
+xpath_logo <- '//*[contains(concat( " ", @class, " " ), concat( " ", "gamePod-game-team-logo", " " ))]'
+xpath_school <- '//*[contains(concat( " ", @class, " " ), concat( " ", "gamePod-game-team-name", " " ))]'
+
+nodeset_logo <- html %>% rvest::html_elements(xpath = xpath_logo)
+nodeset_school <- html %>% rvest::html_elements(xpath = xpath_school)
+d2_week5 <- tibble(school = nodeset_school %>% str_remove("<span class=\"gamePod-game-team-name\">") %>%
+                     str_remove("</span>"),
+                   logo = nodeset_logo %>% str_remove("<img class=\"gamePod-game-team-logo\" src=\"") %>%
+                     str_remove("\">"),
+                   type = "DII")
+
+url <- "https://www.ncaa.com/scoreboard/football/d2/2021/04/all-conf"
+
+html <- rvest::read_html(url)
+nodeset_logo <- html %>% rvest::html_elements(xpath = xpath_logo)
+nodeset_school <- html %>% rvest::html_elements(xpath = xpath_school)
+d2_week6 <- tibble(school = nodeset_school %>% str_remove("<span class=\"gamePod-game-team-name\">") %>%
+                     str_remove("</span>"),
+                   logo = nodeset_logo %>% str_remove("<img class=\"gamePod-game-team-logo\" src=\"") %>%
+                     str_remove("\">"),
+                   type = "DII")
+
+
+d2_logos <- d2_week5 %>%
+  bind_rows(d2_week6) %>%
+  group_by(school) %>%
+  slice(1) %>%
+  mutate(school = str_replace(school,"&amp;","&"))
+
+
+
+
 d3_logos <- tibble(school = d3_teams,
        logo = glue::glue("https://raw.githubusercontent.com/Kazink36/cfbplotR/master/data-raw/dIII/{school}.jpg"),
        type = "DIII")
@@ -89,7 +127,7 @@ fcs_logos <- temp_logos %>%
   filter(!row_number() %in% ind) %>%
   filter(!str_detect(school,"San Jos"))
 
-team_ref <- bind_rows(fbs_logos,fcs_logos,d3_logos,conf_logos)
+team_ref <- bind_rows(fbs_logos,fcs_logos,d2_logos,d3_logos,conf_logos)
 
 colors <- teams_csv %>%
   select(school, color, alt_color) %>%
