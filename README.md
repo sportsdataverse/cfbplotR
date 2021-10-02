@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cfbplotR <a href='https://Kazink36.github.io/cfbplotR'><img src='man/figures/logo.png' align="right" height="120" /></a>
+# cfbplotR <a href='https://Kazink36.github.io/cfbplotR'><img src='man/figures/logo.svg' align="right" height="120" /></a>
 
 <!-- badges: start -->
 <!-- [![CRAN status](https://img.shields.io/cran/v/cfbplotR?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=cfbplotR) -->
