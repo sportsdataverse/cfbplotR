@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cfbplotR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9008</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9009</span>
       </span>
     </div>
 
@@ -109,6 +109,9 @@
       <a href="../reference/geom_cfb_logos.html">Plot Logos</a>
     </li>
     <li>
+      <a href="../reference/geom_cfb_headshots.html">Plot Headshots</a>
+    </li>
+    <li>
       <a href="../reference/geom_median_lines.html">Add Median Lines</a>
     </li>
     <li>
@@ -116,6 +119,11 @@
     </li>
     <li>
       <a href="../reference/scale_axes_cfb.html">Axis Logos</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Premade Plots</li>
+    <li>
+      <a href="../reference/cfb_team_tiers.html">Team Tiers</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Tables</li>
@@ -129,22 +137,8 @@
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-book-reader"></span>
-     
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/index.html">Vignettes</a>
-    </li>
-    <li>
-      <a href="../articles/tutorial.html">Using cfbplotR</a>
-    </li>
-  </ul>
+<li>
+  <a href="../articles/tutorial.html">Intro</a>
 </li>
 <li>
   <a href="../news/index.html">
@@ -192,6 +186,18 @@
     <li>
       <a href="https://jacklich10.github.io/gamezoneR/">gamezoneR</a>
     </li>
+    <li>
+      <a href="https://kazink36.github.io/cfb4th/">cfb4th</a>
+    </li>
+    <li>
+      <a href="https://jaseziv.github.io/worldfootballR/">worldfootballR</a>
+    </li>
+    <li>
+      <a href="https://hockeyr.netlify.app/">hockeyR</a>
+    </li>
+    <li>
+      <a href="https://saiemgilani.github.io/baseballr/">baseballr</a>
+    </li>
     <li class="divider"></li>
     <li class="dropdown-header">Python Packages</li>
     <li>
@@ -207,6 +213,9 @@
     <li class="dropdown-header">Node.js Packages</li>
     <li>
       <a href="https://saiemgilani.github.io/sportsdataverse/">sportsdataverse.js</a>
+    </li>
+    <li>
+      <a href="https://github.com/nntrn/nfl-nerd/">nfl-nerd</a>
     </li>
   </ul>
 </li>
@@ -269,7 +278,7 @@
 <a href="#cfbplotr-development-version" class="anchor"></a>cfbplotR (development version)</h1>
 <ul>
 <li>Added the <code><a href="../reference/geom_cfb_logos.html">geom_cfb_logos()</a></code> geom.</li>
-<li>Added the <code><a href="../reference/geom_mean_lines.html">geom_mean_lines()</a></code> and <code><a href="../reference/geom_mean_lines.html">geom_median_lines()</a></code> geoms.</li>
+<li>Added the <code><a href="../reference/geom_lines.html">geom_mean_lines()</a></code> and <code><a href="../reference/geom_lines.html">geom_median_lines()</a></code> geoms.</li>
 <li>Added the <code><a href="../reference/scale_color_cfb.html">scale_color_cfb()</a></code> and <code><a href="../reference/scale_color_cfb.html">scale_fill_cfb()</a></code> functions.</li>
 <li>Added FCS team logos. (v0.0.0.9002)</li>
 <li>Added the <code><a href="../reference/gt_fmt_cfb.html">gt_fmt_cfb()</a></code> function. (v0.0.0.9003)</li>
@@ -280,6 +289,9 @@
 <li>Added FCS colors (v0.0.0.9007)</li>
 <li>Added DII &amp; DIII Logos</li>
 <li>Added input to <code><a href="../reference/valid_team_names.html">valid_team_names()</a></code> to allow filtering by division (FBS, FCS, DII, DIII, or Conference logos) (v0.0.0.9008)</li>
+<li>Added the function <code><a href="../reference/cfb_team_tiers.html">cfb_team_tiers()</a></code> that build an NFL team tiers ggplot, thanks to <a href="https://twitter.com/PFF_Moo">Timo Riske</a> for the suggestion.</li>
+<li>Fixed a bug in <code><a href="../reference/geom_lines.html">geom_median_lines()</a></code> and <code><a href="../reference/geom_lines.html">geom_mean_lines()</a></code> that caused <code>alpha</code> to not work properly.</li>
+<li>Added the <code><a href="../reference/geom_cfb_headshots.html">geom_cfb_headshots()</a></code> geom that plots headshots for valid ESPN player IDs. (v0.0.9009)</li>
 </ul>
 </div>
   </div>

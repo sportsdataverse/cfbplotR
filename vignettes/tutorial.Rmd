@@ -34,12 +34,7 @@ This first chunk of code will pull the play-by-play data from the first week of 
 ```{r pulldata}
 
 
-#pbp <- cfbfastR::cfbd_pbp_data(2021, week = 1, epa_wpa = TRUE)
-pbp <- readRDS(
-  url(
-    "https://raw.githubusercontent.com/saiemgilani/cfbfastR-data/master/data/rds/pbp_players_pos_2021.rds"
-  )
-) %>% 
+pbp <- cfbfastR::load_cfb_pbp(2021) %>% 
   filter(week == 1)
 
 team_info <- cfbfastR::cfbd_team_info()
@@ -76,15 +71,16 @@ ggplot(team_plot_data, aes(x = pass_epa, y = rush_epa)) +
   theme_bw()
 ```
 
-This is still pretty messy because of the large number of teams. Let's try to focus in on the Pac-12 teams with a couple of handy tools. We're going to add two columns to our data: one for the color and one for the alpha. Then we just add those two columns as aesthetics to `geom_cfb_logos` to turn the logos of non-Pac-12 teams grey and lower the alpha.
+This is still pretty messy because of the large number of teams. Let's try to focus in on the Pac-12 teams with a couple of handy tools. We're going to add two columns to our data: one for the color and one for the alpha. Then we just add those two columns as aesthetics to `geom_cfb_logos` to turn the logos of non-Pac-12 teams black and white and lower the alpha.
 
 ```{r gray}
 team_plot_data %>% 
-  mutate(color = if_else(conference == "Pac-12",NA_character_,"gray30"),
-         alpha = if_else(conference == "Pac-12",1,.8)) %>% 
+  mutate(color = if_else(conference == "Pac-12",NA_character_,"b/w"),
+         alpha = if_else(conference == "Pac-12",1,.6)) %>% 
   ggplot(aes(x = pass_epa, y = rush_epa)) +
   geom_median_lines(aes(v_var = pass_epa, h_var = rush_epa)) +
   geom_cfb_logos(aes(team = team, alpha = alpha, color = color), width = 0.075) +
+  scale_alpha_identity() +
   scale_color_identity() +
   labs(x = "EPA per Pass",y = "EPA per Rush") +
   theme_bw()
@@ -99,15 +95,44 @@ team_plot_data %>%
   ggplot(aes(x = team, y = pass_epa)) +
   # 
   geom_col(aes(fill = team, color = team),size = 1.5) +
-  annotate(cfbplotR:::GeomCFB,x = "California",y = 0.2,team = "Pac-12",height = .35,alpha = .3) +
+  annotate(cfbplotR::GeomCFBlogo,x = "California",y = 0.2,team = "Pac-12",height = .35,alpha = .3) +
   scale_fill_cfb(alpha = .8) +
   scale_color_cfb(alt_colors = team_plot_data$team) +
-  scale_x_cfb() +
+  scale_x_cfb(size = 18) +
   labs(x = "", y = "EPA per Pass") +
   theme_bw() +
   theme_x_cfb()
 ```
 
+`cfbplotR` also allows you to plot player headshots. Let's look at the top 10 rushing EPA players with more than 10 rushes for week 1.
+
+```{r headshots}
+player_plot_data <- pbp %>% 
+  filter(!is.na(rush_player_id)) %>% 
+  group_by(rush_player_id) %>% 
+  summarize(epa = mean(EPA, na.rm = TRUE),
+            player_name = first(rusher_player_name),
+            team = first(pos_team),
+            n = n()) %>% 
+  filter(n >= 10) %>% 
+  arrange(desc(epa)) %>% 
+  slice(1:10)
+
+player_plot_data %>% 
+  mutate(team_ordered = fct_reorder(team,epa)) %>% 
+  ggplot(aes(y = team_ordered, x = epa)) +
+  geom_col(aes(color = team, fill = team)) +
+  geom_label(aes(label = player_name, x = epa / 2), alpha = .6) +
+  geom_cfb_headshots(aes(player_id = rush_player_id, x = epa + .1), height = .1) +
+  scale_color_cfb(alt_colors = valid_team_names()) +
+  scale_fill_cfb() +
+  labs(y = "", x = "EPA per Rush") +
+  scale_y_cfb(size = 18) +
+  theme_minimal() +
+  theme(legend.position = "none",
+        panel.grid.major.y = element_blank()) +
+  theme_y_cfb()
+```
 
 ## Tables with cfbplotR
 

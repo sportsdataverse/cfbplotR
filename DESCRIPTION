@@ -1,6 +1,6 @@
 Package: cfbplotR
 Title: CFB Logo Plots in 'ggplot2'
-Version: 0.0.0.9008
+Version: 0.0.0.9009
 Authors@R: 
     c(
     person(given = "Sebastian",
@@ -16,19 +16,29 @@ Description: A set of functions to visualize College Football analysis in 'ggplo
 URL: https://kazink36.github.io/cfbplotR, https://github.com/Kazink36/cfbplotR
 BugReports: https://github.com/Kazink36/cfbplotR/issues
 Depends: 
-    R (>= 3.2)
+    R (>= 3.5.0)
 Imports: 
     cli (>= 3.0.0),
     ggplot2 (>= 3.3.0),
     grid,
-    gt (>= 0.3.1),
+    gridtext (> 0.1.4),
     magick (>= 2.7.3),
     magrittr (>= 2.0.0),
+    RCurl,
     rlang (>= 0.4.11),
     scales (>= 1.1.0)
 Suggests: 
+    dplyr (>= 1.0.0),
     ggtext (>= 0.1.1),
+    knitr,
+    rmarkdown,
+    rstudioapi (>= 0.13),
+    sjmisc (>= 2.8.7),
     testthat (>= 3.0.0)
+VignetteBuilder: 
+    knitr
+Remotes:
+    wilkelab/gridtext
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true

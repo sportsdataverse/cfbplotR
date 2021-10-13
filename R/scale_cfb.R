@@ -144,6 +144,8 @@ scale_fill_cfb <- function(alt_colors = NULL,
 #'   scale_x_cfb() +
 #'   theme_minimal() +
 #'   theme_x_cfb()
+#'
+#'
 NULL
 
 #' @rdname scale_axes_cfb

@@ -82,7 +82,7 @@ team name or abbreviation. The latter can be checked with valid_team_names()." /
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cfbplotR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9008</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9009</span>
       </span>
     </div>
 
@@ -112,6 +112,9 @@ team name or abbreviation. The latter can be checked with valid_team_names()." /
       <a href="../reference/geom_cfb_logos.html">Plot Logos</a>
     </li>
     <li>
+      <a href="../reference/geom_cfb_headshots.html">Plot Headshots</a>
+    </li>
+    <li>
       <a href="../reference/geom_median_lines.html">Add Median Lines</a>
     </li>
     <li>
@@ -119,6 +122,11 @@ team name or abbreviation. The latter can be checked with valid_team_names()." /
     </li>
     <li>
       <a href="../reference/scale_axes_cfb.html">Axis Logos</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Premade Plots</li>
+    <li>
+      <a href="../reference/cfb_team_tiers.html">Team Tiers</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Tables</li>
@@ -132,22 +140,8 @@ team name or abbreviation. The latter can be checked with valid_team_names()." /
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-book-reader"></span>
-     
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/index.html">Vignettes</a>
-    </li>
-    <li>
-      <a href="../articles/tutorial.html">Using cfbplotR</a>
-    </li>
-  </ul>
+<li>
+  <a href="../articles/tutorial.html">Intro</a>
 </li>
 <li>
   <a href="../news/index.html">
@@ -195,6 +189,18 @@ team name or abbreviation. The latter can be checked with valid_team_names()." /
     <li>
       <a href="https://jacklich10.github.io/gamezoneR/">gamezoneR</a>
     </li>
+    <li>
+      <a href="https://kazink36.github.io/cfb4th/">cfb4th</a>
+    </li>
+    <li>
+      <a href="https://jaseziv.github.io/worldfootballR/">worldfootballR</a>
+    </li>
+    <li>
+      <a href="https://hockeyr.netlify.app/">hockeyR</a>
+    </li>
+    <li>
+      <a href="https://saiemgilani.github.io/baseballr/">baseballr</a>
+    </li>
     <li class="divider"></li>
     <li class="dropdown-header">Python Packages</li>
     <li>
@@ -210,6 +216,9 @@ team name or abbreviation. The latter can be checked with valid_team_names()." /
     <li class="dropdown-header">Node.js Packages</li>
     <li>
       <a href="https://saiemgilani.github.io/sportsdataverse/">sportsdataverse.js</a>
+    </li>
+    <li>
+      <a href="https://github.com/nntrn/nfl-nerd/">nfl-nerd</a>
     </li>
   </ul>
 </li>
@@ -399,6 +408,7 @@ A typical size is <code>height = 0.1</code> (see below examples).</p></li>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>a</span>, y <span class='op'>=</span> <span class='va'>b</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_cfb_logos</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>team <span class='op'>=</span> <span class='va'>teams</span>, alpha <span class='op'>=</span> <span class='va'>alpha</span><span class='op'>)</span>, width <span class='op'>=</span> <span class='fl'>0.075</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_label</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>label <span class='op'>=</span> <span class='va'>teams</span><span class='op'>)</span>, nudge_y <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.35</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_identity.html'>scale_alpha_identity</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span><span class='op'>(</span><span class='op'>)</span>
 </div><div class='img'><img src='geom_cfb_logos-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># apply alpha as constant for all logos</span>

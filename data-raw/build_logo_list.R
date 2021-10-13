@@ -102,7 +102,7 @@ conf_logos <- conferences %>%
 teams_csv <- read_csv("https://raw.githubusercontent.com/CFBNumbers/logos/main/cfblogos.csv",skip = 1,col_names = c("row","team_id","school","mascot","abbreviation","alt_name1","alt_name2","alt_name3","conference","division","color","alt_color","logo","logo_dark"))
 
 temp_logos <- teams_csv %>%
-  filter(!school %in% fbs_logos$school, !school %in% d3_logos$school) %>%
+  filter(!school %in% fbs_logos$school, !school %in% d3_logos$school, !school %in% d2_logos$school) %>%
   filter(logo != "NA,NA") %>%
   transmute(school, logo, type = "FCS")
 # Check for missing logos
@@ -141,6 +141,8 @@ usethis::use_data(logo_ref, overwrite = TRUE)
 logo_list <- logo_ref$logo
 names(logo_list) <- logo_ref$school
 usethis::use_data(logo_list, internal = TRUE, overwrite = TRUE)
+
+write_csv(logo_ref,"data-raw/logo_ref.csv")
 
 #
 # temp_logos <- teams_csv %>%
@@ -202,4 +204,15 @@ usethis::use_data(logo_list, internal = TRUE, overwrite = TRUE)
 # usethis::use_data(logo_list,internal = TRUE, overwrite = TRUE)
 
 
-team_info
+library(rvest)
+library(tidyverse)
+
+
+url <- "https://teamcolorcodes.com/ncaa-color-codes/"
+xpath <- "//h4~//h4+//p//a"
+html <- read_html(url)
+html %>% html_elements(css = "h4~ h4+ p a") %>%
+  str_replace(.,"&amp;","&") %>%
+  tibble("text" = .) %>%
+  mutate(team = str_extract(text,"([a-zA-Z]+( [a-zA-Z]+)+)<"))
+  separate(text,c("Hello","World"))

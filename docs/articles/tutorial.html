@@ -38,7 +38,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cfbplotR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9008</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9009</span>
       </span>
     </div>
 
@@ -68,6 +68,9 @@
       <a href="../reference/geom_cfb_logos.html">Plot Logos</a>
     </li>
     <li>
+      <a href="../reference/geom_cfb_headshots.html">Plot Headshots</a>
+    </li>
+    <li>
       <a href="../reference/geom_median_lines.html">Add Median Lines</a>
     </li>
     <li>
@@ -75,6 +78,11 @@
     </li>
     <li>
       <a href="../reference/scale_axes_cfb.html">Axis Logos</a>
+    </li>
+    <li class="divider">
+    <li class="dropdown-header">Premade Plots</li>
+    <li>
+      <a href="../reference/cfb_team_tiers.html">Team Tiers</a>
     </li>
     <li class="divider">
     <li class="dropdown-header">Tables</li>
@@ -88,22 +96,8 @@
     </li>
   </ul>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-book-reader"></span>
-     
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/index.html">Vignettes</a>
-    </li>
-    <li>
-      <a href="../articles/tutorial.html">Using cfbplotR</a>
-    </li>
-  </ul>
+  <a href="../articles/tutorial.html">Intro</a>
 </li>
 <li>
   <a href="../news/index.html">
@@ -151,6 +145,18 @@
     <li>
       <a href="https://jacklich10.github.io/gamezoneR/">gamezoneR</a>
     </li>
+    <li>
+      <a href="https://kazink36.github.io/cfb4th/">cfb4th</a>
+    </li>
+    <li>
+      <a href="https://jaseziv.github.io/worldfootballR/">worldfootballR</a>
+    </li>
+    <li>
+      <a href="https://hockeyr.netlify.app/">hockeyR</a>
+    </li>
+    <li>
+      <a href="https://saiemgilani.github.io/baseballr/">baseballr</a>
+    </li>
     <li class="divider">
     <li class="dropdown-header">Python Packages</li>
     <li>
@@ -166,6 +172,9 @@
     <li class="dropdown-header">Node.js Packages</li>
     <li>
       <a href="https://saiemgilani.github.io/sportsdataverse/">sportsdataverse.js</a>
+    </li>
+    <li>
+      <a href="https://github.com/nntrn/nfl-nerd/">nfl-nerd</a>
     </li>
   </ul>
 </li>
@@ -246,36 +255,31 @@
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></code></pre></div>
 <pre><code>## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──</code></pre>
 <pre><code>## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.4     ✓ dplyr   1.0.7
-## ✓ tidyr   1.1.3     ✓ stringr 1.4.0
+## ✓ tibble  3.1.5     ✓ dplyr   1.0.7
+## ✓ tidyr   1.1.4     ✓ stringr 1.4.0
 ## ✓ readr   2.0.1     ✓ forcats 0.5.1</code></pre>
 <pre><code>## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## x dplyr::filter() masks stats::filter()
 ## x dplyr::lag()    masks stats::lag()</code></pre>
 <p>This first chunk of code will pull the play-by-play data from the first week of the 2021 season using the <code>cfbfastR</code> data repo and create the advanced metrics like EPA that we will be plotting (this will take a second). We’ll also pull in the general team info so we can filter down to just teams in a power 5 conference.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#pbp &lt;- cfbfastR::cfbd_pbp_data(2021, week = 1, epa_wpa = TRUE)</span>
-<span class="va">pbp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html">readRDS</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/connections.html">url</a></span><span class="op">(</span>
-    <span class="st">"https://raw.githubusercontent.com/saiemgilani/cfbfastR-data/master/data/rds/pbp_players_pos_2021.rds"</span>
-  <span class="op">)</span>
-<span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">week</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
+<code class="sourceCode R"><span class="va">pbp</span> <span class="op">&lt;-</span> <span class="fu">cfbfastR</span><span class="fu">::</span><span class="fu"><a href="http://saiemgilani.github.io/cfbfastR/reference/load_cfb_pbp.html">load_cfb_pbp</a></span><span class="op">(</span><span class="fl">2021</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">week</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
 
 <span class="va">team_info</span> <span class="op">&lt;-</span> <span class="fu">cfbfastR</span><span class="fu">::</span><span class="fu"><a href="http://saiemgilani.github.io/cfbfastR/reference/cfbd_team_info.html">cfbd_team_info</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">team_info</span> <span class="op">&lt;-</span> <span class="va">team_info</span> <span class="op">%&gt;%</span> 
-  <span class="fu">select</span><span class="op">(</span>team <span class="op">=</span> <span class="va">school</span>,<span class="va">conference</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">conference</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Pac-12"</span>,<span class="st">"ACC"</span>,<span class="st">"SEC"</span>,<span class="st">"Big Ten"</span>,<span class="st">"Big 12"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">school</span>,<span class="va">conference</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">conference</span> <span class="op">%in%</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Pac-12"</span>,<span class="st">"ACC"</span>,<span class="st">"SEC"</span>,<span class="st">"Big Ten"</span>,<span class="st">"Big 12"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Now we quickly roll up the EPA data and find the EPA per rush and EPA per pass for every team in week 1 and take a look at our plotting data.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">team_plot_data</span> <span class="op">&lt;-</span> <span class="va">pbp</span> <span class="op">%&gt;%</span> 
-  <span class="fu">group_by</span><span class="op">(</span>team <span class="op">=</span> <span class="va">offense_play</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">summarize</span><span class="op">(</span>rush_epa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu">if_else</span><span class="op">(</span><span class="va">rush</span> <span class="op">==</span> <span class="fl">1</span>,<span class="va">EPA</span>,<span class="cn">NA_real_</span><span class="op">)</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">offense_play</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>rush_epa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">rush</span> <span class="op">==</span> <span class="fl">1</span>,<span class="va">EPA</span>,<span class="cn">NA_real_</span><span class="op">)</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
             n_rush <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">rush</span><span class="op">)</span>,
-            pass_epa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu">if_else</span><span class="op">(</span><span class="va">pass</span> <span class="op">==</span> <span class="fl">1</span>,<span class="va">EPA</span>,<span class="cn">NA_real_</span><span class="op">)</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+            pass_epa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">pass</span> <span class="op">==</span> <span class="fl">1</span>,<span class="va">EPA</span>,<span class="cn">NA_real_</span><span class="op">)</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
             n_pass <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">pass</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">team</span> <span class="op">%in%</span> <span class="va">team_info</span><span class="op">$</span><span class="va">team</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">left_join</span><span class="op">(</span><span class="va">team_info</span>,by <span class="op">=</span> <span class="st">"team"</span><span class="op">)</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">team</span> <span class="op">%in%</span> <span class="va">team_info</span><span class="op">$</span><span class="va">team</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span><span class="op">(</span><span class="va">team_info</span>,by <span class="op">=</span> <span class="st">"team"</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">team_plot_data</span><span class="op">)</span></code></pre></div>
 <pre><code>## # A tibble: 6 × 6
@@ -294,19 +298,20 @@
 <p>Now that the data is prepped, we can being to use <code>cfbplotR</code>. First we’ll plot all the teams with Passing EPA on the x-axis and Rushing EPA on the y-axis with lines showing the median value for each. It’s important to set width or height in <code>geom_cfb_logos</code> to small values. The default of 1 will create extremely large logos.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">team_plot_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pass_epa</span>, y <span class="op">=</span> <span class="va">rush_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/geom_mean_lines.html">geom_median_lines</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>v_var <span class="op">=</span> <span class="va">pass_epa</span>, h_var <span class="op">=</span> <span class="va">rush_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/geom_lines.html">geom_median_lines</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>v_var <span class="op">=</span> <span class="va">pass_epa</span>, h_var <span class="op">=</span> <span class="va">rush_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/geom_cfb_logos.html">geom_cfb_logos</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">team</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">0.075</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"EPA per Pass"</span>,y <span class="op">=</span> <span class="st">"EPA per Rush"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p><img src="tutorial_files/figure-html/epa_plot-1.png" width="700"></p>
-<p>This is still pretty messy because of the large number of teams. Let’s try to focus in on the Pac-12 teams with a couple of handy tools. We’re going to add two columns to our data: one for the color and one for the alpha. Then we just add those two columns as aesthetics to <code>geom_cfb_logos</code> to turn the logos of non-Pac-12 teams grey and lower the alpha.</p>
+<p>This is still pretty messy because of the large number of teams. Let’s try to focus in on the Pac-12 teams with a couple of handy tools. We’re going to add two columns to our data: one for the color and one for the alpha. Then we just add those two columns as aesthetics to <code>geom_cfb_logos</code> to turn the logos of non-Pac-12 teams black and white and lower the alpha.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">team_plot_data</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>color <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span>,<span class="cn">NA_character_</span>,<span class="st">"gray30"</span><span class="op">)</span>,
-         alpha <span class="op">=</span> <span class="fu">if_else</span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span>,<span class="fl">1</span>,<span class="fl">.8</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span>,<span class="cn">NA_character_</span>,<span class="st">"b/w"</span><span class="op">)</span>,
+         alpha <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html">if_else</a></span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span>,<span class="fl">1</span>,<span class="fl">.6</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pass_epa</span>, y <span class="op">=</span> <span class="va">rush_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/geom_mean_lines.html">geom_median_lines</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>v_var <span class="op">=</span> <span class="va">pass_epa</span>, h_var <span class="op">=</span> <span class="va">rush_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/geom_lines.html">geom_median_lines</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>v_var <span class="op">=</span> <span class="va">pass_epa</span>, h_var <span class="op">=</span> <span class="va">rush_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/geom_cfb_logos.html">geom_cfb_logos</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">team</span>, alpha <span class="op">=</span> <span class="va">alpha</span>, color <span class="op">=</span> <span class="va">color</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">0.075</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_identity.html">scale_alpha_identity</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_identity.html">scale_color_identity</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"EPA per Pass"</span>,y <span class="op">=</span> <span class="st">"EPA per Rush"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
@@ -314,43 +319,73 @@
 <p>Finally let’s make a bar chart showing the Pac-12 EPA per pass for each team. Because <code>cfbplotR</code> creates a custom geom for ggplot, we can use <code><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate()</a></code> to place a log anywhere we’d like. <code><a href="../reference/scale_color_cfb.html">scale_color_cfb()</a></code> and <code><a href="../reference/scale_color_cfb.html">scale_fill_cfb()</a></code> let us automatically use a teams primary color on a plot. The <code>alt_colors</code> argument lets us pass through a vector of team names that we want to use an alternate color for. <code>sacle_x_cfb()</code> and <code><a href="../reference/scale_axes_cfb.html">scale_y_cfb()</a></code> change the axis labels that are team names into logos. Due to the way ggplot works, you have to add the corresponding theme function <code><a href="../reference/theme_cfb.html">theme_x_cfb()</a></code> or <code><a href="../reference/theme_cfb.html">theme_y_cfb()</a></code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">team_plot_data</span> <span class="op">%&gt;%</span> 
-  <span class="fu"><a href="https://rdrr.io/r/stats/filter.html">filter</a></span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">mutate</span><span class="op">(</span>team <span class="op">=</span> <span class="fu">fct_reorder</span><span class="op">(</span><span class="va">team</span>,<span class="va">pass_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>team <span class="op">=</span> <span class="fu">fct_reorder</span><span class="op">(</span><span class="va">team</span>,<span class="va">pass_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">team</span>, y <span class="op">=</span> <span class="va">pass_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="co"># </span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">team</span>, color <span class="op">=</span> <span class="va">team</span><span class="op">)</span>,size <span class="op">=</span> <span class="fl">1.5</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="fu">cfbplotR</span><span class="fu">:::</span><span class="va">GeomCFB</span>,x <span class="op">=</span> <span class="st">"California"</span>,y <span class="op">=</span> <span class="fl">0.2</span>,team <span class="op">=</span> <span class="st">"Pac-12"</span>,height <span class="op">=</span> <span class="fl">.35</span>,alpha <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/annotate.html">annotate</a></span><span class="op">(</span><span class="fu">cfbplotR</span><span class="fu">::</span><span class="va">GeomCFBlogo</span>,x <span class="op">=</span> <span class="st">"California"</span>,y <span class="op">=</span> <span class="fl">0.2</span>,team <span class="op">=</span> <span class="st">"Pac-12"</span>,height <span class="op">=</span> <span class="fl">.35</span>,alpha <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/scale_color_cfb.html">scale_fill_cfb</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.8</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/scale_color_cfb.html">scale_color_cfb</a></span><span class="op">(</span>alt_colors <span class="op">=</span> <span class="va">team_plot_data</span><span class="op">$</span><span class="va">team</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/scale_axes_cfb.html">scale_x_cfb</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/scale_axes_cfb.html">scale_x_cfb</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">18</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">""</span>, y <span class="op">=</span> <span class="st">"EPA per Pass"</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/theme_cfb.html">theme_x_cfb</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <pre><code>## Warning in png::readPNG(get_file(path), native = TRUE): libpng warning: iCCP:
 ## known incorrect sRGB profile</code></pre>
 <p><img src="tutorial_files/figure-html/bar_chart-1.png" width="700"></p>
+<p><code>cfbplotR</code> also allows you to plot player headshots. Let’s look at the top 10 rushing EPA players with more than 10 rushes for week 1.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">player_plot_data</span> <span class="op">&lt;-</span> <span class="va">pbp</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">rush_player_id</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">rush_player_id</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span><span class="op">(</span>epa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">EPA</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+            player_name <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html">first</a></span><span class="op">(</span><span class="va">rusher_player_name</span><span class="op">)</span>,
+            team <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/nth.html">first</a></span><span class="op">(</span><span class="va">pos_team</span><span class="op">)</span>,
+            n <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">n</span> <span class="op">&gt;=</span> <span class="fl">10</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">epa</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span>
+
+<span class="va">player_plot_data</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>team_ordered <span class="op">=</span> <span class="fu">fct_reorder</span><span class="op">(</span><span class="va">team</span>,<span class="va">epa</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>y <span class="op">=</span> <span class="va">team_ordered</span>, x <span class="op">=</span> <span class="va">epa</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">team</span>, fill <span class="op">=</span> <span class="va">team</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_label</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">player_name</span>, x <span class="op">=</span> <span class="va">epa</span> <span class="op">/</span> <span class="fl">2</span><span class="op">)</span>, alpha <span class="op">=</span> <span class="fl">.6</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/geom_cfb_headshots.html">geom_cfb_headshots</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>player_id <span class="op">=</span> <span class="va">rush_player_id</span>, x <span class="op">=</span> <span class="va">epa</span> <span class="op">+</span> <span class="fl">.1</span><span class="op">)</span>, height <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/scale_color_cfb.html">scale_color_cfb</a></span><span class="op">(</span>alt_colors <span class="op">=</span> <span class="fu"><a href="../reference/valid_team_names.html">valid_team_names</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/scale_color_cfb.html">scale_fill_cfb</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">""</span>, x <span class="op">=</span> <span class="st">"EPA per Rush"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/scale_axes_cfb.html">scale_y_cfb</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">18</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span>,
+        panel.grid.major.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="../reference/theme_cfb.html">theme_y_cfb</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<pre><code>## Warning in png::readPNG(get_file(path), native = TRUE): libpng warning: iCCP:
+## known incorrect sRGB profile</code></pre>
+<p><img src="tutorial_files/figure-html/headshots-1.png" width="700"></p>
 </div>
 <div id="tables-with-cfbplotr" class="section level2">
 <h2 class="hasAnchor">
 <a href="#tables-with-cfbplotr" class="anchor"></a>Tables with cfbplotR</h2>
 <p>The <code>gt</code> package offers an easy way to create nice tables of data and the <code>gtExtras</code> package from Tom Mock provides a number of convenient functions for styling those tables. The <code><a href="../reference/gt_fmt_cfb.html">gt_fmt_cfb()</a></code> function is a slightly modified version of <code>gtExtras::gt_image_rows()</code> to easily add team and conference logos based on names from <code><a href="../reference/valid_team_names.html">valid_team_names()</a></code>. We can quickly make a table showing the top teams from week 1 by EPA per pass.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/">gt</a></span><span class="op">)</span>
 
 <span class="va">team_plot_data</span> <span class="op">%&gt;%</span> 
-  <span class="fu">transmute</span><span class="op">(</span><span class="va">conference</span>, <span class="va">team</span>,logo <span class="op">=</span> <span class="va">team</span>, 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span><span class="va">conference</span>, <span class="va">team</span>,logo <span class="op">=</span> <span class="va">team</span>, 
             pass_epa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">pass_epa</span>,<span class="fl">2</span><span class="op">)</span>,<span class="va">n_pass</span>, 
             rush_epa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="va">rush_epa</span>,<span class="fl">2</span><span class="op">)</span>,<span class="va">n_rush</span><span class="op">)</span> <span class="op">%&gt;%</span> 
-  <span class="fu">arrange</span><span class="op">(</span><span class="fu">desc</span><span class="op">(</span><span class="va">pass_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">pass_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="fl">8</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/gt_fmt_cfb.html">gt_fmt_cfb</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">conference</span>,<span class="va">logo</span><span class="op">)</span><span class="op">)</span> </code></pre></div>
-<div id="pcqrdhipki" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="vrtwacrkac" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#pcqrdhipki .gt_table {
+#vrtwacrkac .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -375,7 +410,7 @@
   border-left-color: #D3D3D3;
 }
 
-#pcqrdhipki .gt_heading {
+#vrtwacrkac .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -387,7 +422,7 @@
   border-right-color: #D3D3D3;
 }
 
-#pcqrdhipki .gt_title {
+#vrtwacrkac .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -397,7 +432,7 @@
   border-bottom-width: 0;
 }
 
-#pcqrdhipki .gt_subtitle {
+#vrtwacrkac .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -407,13 +442,13 @@
   border-top-width: 0;
 }
 
-#pcqrdhipki .gt_bottom_border {
+#vrtwacrkac .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pcqrdhipki .gt_col_headings {
+#vrtwacrkac .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -428,7 +463,7 @@
   border-right-color: #D3D3D3;
 }
 
-#pcqrdhipki .gt_col_heading {
+#vrtwacrkac .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -448,7 +483,7 @@
   overflow-x: hidden;
 }
 
-#pcqrdhipki .gt_column_spanner_outer {
+#vrtwacrkac .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -460,15 +495,15 @@
   padding-right: 4px;
 }
 
-#pcqrdhipki .gt_column_spanner_outer:first-child {
+#vrtwacrkac .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pcqrdhipki .gt_column_spanner_outer:last-child {
+#vrtwacrkac .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pcqrdhipki .gt_column_spanner {
+#vrtwacrkac .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -480,7 +515,7 @@
   width: 100%;
 }
 
-#pcqrdhipki .gt_group_heading {
+#vrtwacrkac .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -502,7 +537,7 @@
   vertical-align: middle;
 }
 
-#pcqrdhipki .gt_empty_group_heading {
+#vrtwacrkac .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -517,15 +552,15 @@
   vertical-align: middle;
 }
 
-#pcqrdhipki .gt_from_md > :first-child {
+#vrtwacrkac .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pcqrdhipki .gt_from_md > :last-child {
+#vrtwacrkac .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pcqrdhipki .gt_row {
+#vrtwacrkac .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -544,7 +579,7 @@
   overflow-x: hidden;
 }
 
-#pcqrdhipki .gt_stub {
+#vrtwacrkac .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -556,7 +591,7 @@
   padding-left: 12px;
 }
 
-#pcqrdhipki .gt_summary_row {
+#vrtwacrkac .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -566,7 +601,7 @@
   padding-right: 5px;
 }
 
-#pcqrdhipki .gt_first_summary_row {
+#vrtwacrkac .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -576,7 +611,7 @@
   border-top-color: #D3D3D3;
 }
 
-#pcqrdhipki .gt_grand_summary_row {
+#vrtwacrkac .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -586,7 +621,7 @@
   padding-right: 5px;
 }
 
-#pcqrdhipki .gt_first_grand_summary_row {
+#vrtwacrkac .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -596,11 +631,11 @@
   border-top-color: #D3D3D3;
 }
 
-#pcqrdhipki .gt_striped {
+#vrtwacrkac .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pcqrdhipki .gt_table_body {
+#vrtwacrkac .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -609,7 +644,7 @@
   border-bottom-color: #D3D3D3;
 }
 
-#pcqrdhipki .gt_footnotes {
+#vrtwacrkac .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -623,13 +658,13 @@
   border-right-color: #D3D3D3;
 }
 
-#pcqrdhipki .gt_footnote {
+#vrtwacrkac .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#pcqrdhipki .gt_sourcenotes {
+#vrtwacrkac .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -643,41 +678,41 @@
   border-right-color: #D3D3D3;
 }
 
-#pcqrdhipki .gt_sourcenote {
+#vrtwacrkac .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#pcqrdhipki .gt_left {
+#vrtwacrkac .gt_left {
   text-align: left;
 }
 
-#pcqrdhipki .gt_center {
+#vrtwacrkac .gt_center {
   text-align: center;
 }
 
-#pcqrdhipki .gt_right {
+#vrtwacrkac .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pcqrdhipki .gt_font_normal {
+#vrtwacrkac .gt_font_normal {
   font-weight: normal;
 }
 
-#pcqrdhipki .gt_font_bold {
+#vrtwacrkac .gt_font_bold {
   font-weight: bold;
 }
 
-#pcqrdhipki .gt_font_italic {
+#vrtwacrkac .gt_font_italic {
   font-style: italic;
 }
 
-#pcqrdhipki .gt_super {
+#vrtwacrkac .gt_super {
   font-size: 65%;
 }
 
-#pcqrdhipki .gt_footnote_marks {
+#vrtwacrkac .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 65%;

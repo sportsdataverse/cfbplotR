@@ -123,6 +123,8 @@ ggplot(df, aes(x = teams, y = random_value)) +
   scale_x_cfb() +
   theme_minimal() +
   theme_x_cfb()
+
+
 }
 \seealso{
 \code{\link[=theme_x_cfb]{theme_x_cfb()}}, \code{\link[=theme_y_cfb]{theme_y_cfb()}}

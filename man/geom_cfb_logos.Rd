@@ -116,6 +116,7 @@ ggplot(df, aes(x = a, y = b)) +
 ggplot(df, aes(x = a, y = b)) +
   geom_cfb_logos(aes(team = teams, alpha = alpha), width = 0.075) +
   geom_label(aes(label = teams), nudge_y = -0.35, alpha = 0.5) +
+  scale_alpha_identity() +
   theme_void()
 
 # apply alpha as constant for all logos

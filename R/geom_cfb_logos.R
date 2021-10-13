@@ -57,6 +57,7 @@
 #' ggplot(df, aes(x = a, y = b)) +
 #'   geom_cfb_logos(aes(team = teams, alpha = alpha), width = 0.075) +
 #'   geom_label(aes(label = teams), nudge_y = -0.35, alpha = 0.5) +
+#'   scale_alpha_identity() +
 #'   theme_void()
 #'
 #' # apply alpha as constant for all logos
@@ -95,7 +96,7 @@ geom_cfb_logos <- function(mapping = NULL, data = NULL,
     data = data,
     mapping = mapping,
     stat = stat,
-    geom = GeomCFB,
+    geom = GeomCFBlogo,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
@@ -106,86 +107,19 @@ geom_cfb_logos <- function(mapping = NULL, data = NULL,
   )
 }
 
-GeomCFB <- ggplot2::ggproto(
-  "GeomCFB", ggplot2::Geom,
+#' @export
+GeomCFBlogo <- ggplot2::ggproto(
+  "GeomCFBlogo", ggplot2::Geom,
   required_aes = c("x", "y", "team"),
   # non_missing_aes = c(""),
   default_aes = ggplot2::aes(
-    alpha = NULL, angle = 0, hjust = 0.5,
-    vjust = 0.5, width = 1.0, height = 1.0,
-    colour = NULL
+    alpha = NULL, colour = NULL, angle = 0, hjust = 0.5,
+    vjust = 0.5, width = 1.0, height = 1.0
   ),
   draw_panel = function(data, panel_params, coord, na.rm = FALSE) {
     data <- coord$transform(data, panel_params)
 
-    grobs <- lapply(seq_along(data$team), function(i, urls, alpha, colour, data) {
-
-      if (!data$team[i] %in% valid_team_names()) {
-        cli::cli_warn("{data$team[i]} is not a valid team name (row {i})")
-        team <- "NCAA"
-        grid <- grid::nullGrob()
-      } else {
-        team <- data$team[i]
-      }
-      if (!is.null(colour)) {
-        if (!is.na(colour[i])) {
-          img <- magick::image_read(logo_list[[team]])
-          new <- color_image(img,color = colour[i],alpha = alpha[i])
-
-          grid <- grid::rasterGrob(new)
-        } else if (is.null(alpha)) {
-          grid <- grid::rasterGrob(magick::image_read(logo_list[[team]]))
-        } else if (length(alpha) == 1L) {
-          if (as.numeric(alpha) <= 0 || as.numeric(alpha) >= 1) {
-            cli::cli_abort("aesthetic {.var alpha} requires a value between {.val 0} and {.val 1}")
-          }
-          img <- magick::image_read(logo_list[[team]])
-          new <- magick::image_fx(img, expression = paste0(alpha, "*a"), channel = "alpha")
-          grid <- grid::rasterGrob(new)
-        } else {
-          if (any(as.numeric(alpha) < 0) || any(as.numeric(alpha) > 1)) {
-            cli::cli_abort("aesthetics {.var alpha} require values between {.val 0} and {.val 1}")
-          }
-          img <- magick::image_read(logo_list[[team]])
-          new <- magick::image_fx(img, expression = paste0(alpha[i], "*a"), channel = "alpha")
-          grid <- grid::rasterGrob(new)
-        }
-      } else if (is.null(alpha)) {
-        grid <- grid::rasterGrob(magick::image_read(logo_list[[team]]))
-      } else if (length(alpha) == 1L) {
-        if (as.numeric(alpha) <= 0 || as.numeric(alpha) >= 1) {
-          cli::cli_abort("aesthetic {.var alpha} requires a value between {.val 0} and {.val 1}")
-        }
-        img <- magick::image_read(logo_list[[team]])
-        new <- magick::image_fx(img, expression = paste0(alpha, "*a"), channel = "alpha")
-        grid <- grid::rasterGrob(new)
-      } else {
-        if (any(as.numeric(alpha) < 0) || any(as.numeric(alpha) > 1)) {
-          cli::cli_abort("aesthetics {.var alpha} require values between {.val 0} and {.val 1}")
-        }
-        img <- magick::image_read(logo_list[[team]])
-        new <- magick::image_fx(img, expression = paste0(alpha[i], "*a"), channel = "alpha")
-        grid <- grid::rasterGrob(new)
-      }
-
-
-      grid$vp <- grid::viewport(
-        x = grid::unit(data$x[i], "native"),
-        y = grid::unit(data$y[i], "native"),
-        width = grid::unit(data$width[i], "npc"),
-        height = grid::unit(data$height[i], "npc"),
-        just = c(data$hjust[i], data$vjust[i]),
-        angle = data$angle[i],
-        name = paste("geom_cfb.panel", data$PANEL[i],
-                     "row", i,
-                     sep = "."
-        )
-      )
-
-      grid$name <- paste("cfb.grob", i, sep = ".")
-
-      grid
-    }, urls = urls, alpha = data$alpha,colour = data$colour, data = data)
+    grobs <- lapply(seq_along(data$team), build_grobs, alpha = data$alpha, colour = data$colour, data = data, teams = TRUE)
 
     class(grobs) <- "gList"
 
@@ -194,27 +128,7 @@ GeomCFB <- ggplot2::ggproto(
   draw_key = function(...) grid::nullGrob()
 )
 
-#' @importFrom grDevices col2rgb
 
-color_image <- function(img, color, alpha = NULL) {
-  if (is.null(color))
-    return(img)
-
-  if (length(color) > 1) {
-    stop("color should be a vector of length 1")
-  }
-
-  bitmap <- img[[1]]
-  col <- grDevices::col2rgb(color)
-  bitmap[1,,] <- as.raw(col[1])
-  bitmap[2,,] <- as.raw(col[2])
-  bitmap[3,,] <- as.raw(col[3])
-
-  if (!is.null(alpha) && alpha != 1)
-    bitmap[4,,] <- as.raw(as.integer(bitmap[4,,]) * alpha)
-
-  magick::image_read(bitmap)
-}
 
 
 

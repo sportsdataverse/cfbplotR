@@ -4,10 +4,19 @@
     <loc>https://Kazink36.github.io/cfbplotR//index.html</loc>
   </url>
   <url>
+    <loc>https://Kazink36.github.io/cfbplotR//reference/cfb_team_tiers.html</loc>
+  </url>
+  <url>
+    <loc>https://Kazink36.github.io/cfbplotR//reference/geom_cfb_headshots.html</loc>
+  </url>
+  <url>
     <loc>https://Kazink36.github.io/cfbplotR//reference/geom_cfb_logos.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR//reference/geom_median_lines.html</loc>
+    <loc>https://Kazink36.github.io/cfbplotR//reference/geom_lines.html</loc>
+  </url>
+  <url>
+    <loc>https://Kazink36.github.io/cfbplotR//reference/ggpreview.html</loc>
   </url>
   <url>
     <loc>https://Kazink36.github.io/cfbplotR//reference/gt_fmt_cfb.html</loc>

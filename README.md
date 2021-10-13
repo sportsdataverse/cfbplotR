@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cfbplotR <a href='https://Kazink36.github.io/cfbplotR'><img src='man/figures/logo.svg' align="right" height="120" /></a>
+# cfbplotR <a href='https://Kazink36.github.io/cfbplotR'><img src='man/figures/logo.png' align="right" width="25%" min-width="120px" /></a>
 
 <!-- badges: start -->
 <!-- [![CRAN status](https://img.shields.io/cran/v/cfbplotR?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=cfbplotR) -->
@@ -33,7 +33,8 @@ correct aspect ratio and possible transparency.
 <!-- devtools::install_github("Kazink36/cfbplotR") -->
 <!-- ``` -->
 
-You can install `cfbplotR` with
+You can install the development version from
+[GitHub](https://github.com/) with:
 
 ``` r
 if (!require("remotes")) install.packages("remotes")
@@ -69,6 +70,7 @@ df$color <- ifelse(matches, "grey",NA)
    geom_cfb_logos(aes(team = teams, color = color, alpha = alpha), width = 0.075) +
    geom_label(aes(label = teams), nudge_y = -0.35, alpha = 0.5) +
    scale_color_identity() +
+   scale_alpha_identity() +
    theme_void() 
 ```
 
