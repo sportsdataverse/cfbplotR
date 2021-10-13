@@ -63,7 +63,7 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 \description{
 This geom is used to plot CFB player headshots instead
 of points in a ggplot. It requires x, y aesthetics as well as a valid ESPN
-player id from \link{cfbfastR}{https://saiemgilani.github.io/cfbfastR/}.
+player id from \code{cfbfastR}
 }
 \section{Aesthetics}{
 

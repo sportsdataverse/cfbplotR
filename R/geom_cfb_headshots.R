@@ -2,7 +2,7 @@
 #'
 #' @description This geom is used to plot CFB player headshots instead
 #'   of points in a ggplot. It requires x, y aesthetics as well as a valid ESPN
-#'   player id from \link{cfbfastR}{https://saiemgilani.github.io/cfbfastR/}.
+#'   player id from `cfbfastR`
 #'
 #' @inheritParams ggplot2::geom_point
 #' @section Aesthetics:
