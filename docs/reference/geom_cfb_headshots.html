@@ -82,7 +82,7 @@ player id from cfbfastR" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cfbplotR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9009</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9010</span>
       </span>
     </div>
 
@@ -131,12 +131,18 @@ player id from cfbfastR" />
     <li class="divider"></li>
     <li class="dropdown-header">Tables</li>
     <li>
-      <a href="../reference/gt_fmt_cfb.html">Add Logos</a>
+      <a href="../reference/gt_cfb.html">Add Logos/Headshots</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Utilties</li>
     <li>
       <a href="../reference/valid_team_names.html">Valid Names</a>
+    </li>
+    <li>
+      <a href="../reference/clean_school_names.html">Clean Names</a>
+    </li>
+    <li>
+      <a href="../reference/add_athlete_id_col.html">Athlete IDs</a>
     </li>
   </ul>
 </li>
@@ -417,14 +423,14 @@ A typical size is <code>height = 0.1</code> (see below examples).</p></li>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_label</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>label <span class='op'>=</span> <span class='va'>player_name</span><span class='op'>)</span>, nudge_y <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.35</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_cartesian.html'>coord_cartesian</a></span><span class='op'>(</span>xlim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.75</span>, <span class='fl'>3.25</span><span class='op'>)</span>, ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.7</span>, <span class='fl'>3.25</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: <span style='font-weight: bold;'>1 is not a valid player id (row 8)</span></span></div><div class='img'><img src='geom_cfb_headshots-1.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: 1 is not a valid player id (row 8)</span></div><div class='img'><img src='geom_cfb_headshots-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># apply alpha as constant</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>a</span>, y <span class='op'>=</span> <span class='va'>b</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_cfb_headshots</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>player_id <span class='op'>=</span> <span class='va'>player_id</span><span class='op'>)</span>, height <span class='op'>=</span> <span class='fl'>0.2</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_text.html'>geom_label</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>label <span class='op'>=</span> <span class='va'>player_name</span><span class='op'>)</span>, nudge_y <span class='op'>=</span> <span class='op'>-</span><span class='fl'>0.35</span>, alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_cartesian.html'>coord_cartesian</a></span><span class='op'>(</span>xlim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.75</span>, <span class='fl'>3.25</span><span class='op'>)</span>, ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.7</span>, <span class='fl'>3.25</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: <span style='font-weight: bold;'>1 is not a valid player id (row 8)</span></span></div><div class='img'><img src='geom_cfb_headshots-2.png' alt='' width='700' height='433' /></div><div class='input'>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: 1 is not a valid player id (row 8)</span></div><div class='img'><img src='geom_cfb_headshots-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># apply colour as an aesthetic</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>a</span>, y <span class='op'>=</span> <span class='va'>b</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'>geom_cfb_headshots</span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>player_id <span class='op'>=</span> <span class='va'>player_id</span>, colour <span class='op'>=</span> <span class='va'>colour</span><span class='op'>)</span>, height <span class='op'>=</span> <span class='fl'>0.2</span><span class='op'>)</span> <span class='op'>+</span>
@@ -432,7 +438,7 @@ A typical size is <code>height = 0.1</code> (see below examples).</p></li>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_cartesian.html'>coord_cartesian</a></span><span class='op'>(</span>xlim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.75</span>, <span class='fl'>3.25</span><span class='op'>)</span>, ylim <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>0.7</span>, <span class='fl'>3.25</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_identity.html'>scale_colour_identity</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggtheme.html'>theme_void</a></span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: <span style='font-weight: bold;'>1 is not a valid player id (row 8)</span></span></div><div class='img'><img src='geom_cfb_headshots-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: 1 is not a valid player id (row 8)</span></div><div class='img'><img src='geom_cfb_headshots-3.png' alt='' width='700' height='433' /></div><div class='input'><span class='co'># }</span>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

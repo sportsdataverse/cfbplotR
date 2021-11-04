@@ -4,7 +4,13 @@
     <loc>https://Kazink36.github.io/cfbplotR//index.html</loc>
   </url>
   <url>
+    <loc>https://Kazink36.github.io/cfbplotR//reference/add_athlete_id_col.html</loc>
+  </url>
+  <url>
     <loc>https://Kazink36.github.io/cfbplotR//reference/cfb_team_tiers.html</loc>
+  </url>
+  <url>
+    <loc>https://Kazink36.github.io/cfbplotR//reference/clean_school_names.html</loc>
   </url>
   <url>
     <loc>https://Kazink36.github.io/cfbplotR//reference/geom_cfb_headshots.html</loc>
@@ -19,7 +25,7 @@
     <loc>https://Kazink36.github.io/cfbplotR//reference/ggpreview.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR//reference/gt_fmt_cfb.html</loc>
+    <loc>https://Kazink36.github.io/cfbplotR//reference/gt_cfb.html</loc>
   </url>
   <url>
     <loc>https://Kazink36.github.io/cfbplotR//reference/scale_axes_cfb.html</loc>

@@ -3,6 +3,8 @@
 \name{scale_axes_cfb}
 \alias{scale_x_cfb}
 \alias{scale_y_cfb}
+\alias{scale_x_cfb_headshots}
+\alias{scale_y_cfb_headshots}
 \title{Axis Scales for CFB Team Logos}
 \usage{
 scale_x_cfb(
@@ -19,6 +21,22 @@ scale_y_cfb(
   guide = ggplot2::waiver(),
   position = "left",
   size = 12
+)
+
+scale_x_cfb_headshots(
+  ...,
+  expand = ggplot2::waiver(),
+  guide = ggplot2::waiver(),
+  position = "bottom",
+  size = 20
+)
+
+scale_y_cfb_headshots(
+  ...,
+  expand = ggplot2::waiver(),
+  guide = ggplot2::waiver(),
+  position = "left",
+  size = 30
 )
 }
 \arguments{
@@ -123,6 +141,41 @@ ggplot(df, aes(x = teams, y = random_value)) +
   scale_x_cfb() +
   theme_minimal() +
   theme_x_cfb()
+
+#############################################################################
+# Headshot Examples
+#############################################################################
+library(cfbplotR)
+library(ggplot2)
+
+
+dfh <- data.frame(
+  random_value = runif(9, 0, 1),
+  player_gsis = c("4361182",
+                  "4426385",
+                  "4567048",
+                  "4372519",
+                  "4429013",
+                  "4240069",
+                  "4360932",
+                  "4362874",
+                  "4429299")
+)
+
+# use headshots for x-axis
+ggplot(dfh, aes(x = player_gsis, y = random_value)) +
+  geom_col(width = 0.5) +
+  scale_x_cfb_headshots() +
+  theme_minimal() +
+  theme_x_cfb()
+
+# use headshots for y-axis
+ggplot(dfh, aes(y = player_gsis, x = random_value)) +
+  geom_col(width = 0.5) +
+  scale_y_cfb_headshots() +
+  theme_minimal() +
+  theme_y_cfb()
+
 
 
 }

@@ -69,12 +69,17 @@ navbar:
         href: reference/cfb_team_tiers.html
       - text: --------------------------------
       - text: "Tables"
-      - text: "Add Logos"
-        href: reference/gt_fmt_cfb.html
+      - text: "Add Logos/Headshots"
+        href: reference/gt_cfb.html
       - text: --------------------------------
       - text: "Utilties"
       - text: "Valid Names"
         href: reference/valid_team_names.html
+      - text: "Clean Names"
+        href: reference/clean_school_names.html
+      - text: "Athlete IDs"
+        href: reference/add_athlete_id_col.html
+
     articles:
       text: "Intro"
       href: articles/tutorial.html

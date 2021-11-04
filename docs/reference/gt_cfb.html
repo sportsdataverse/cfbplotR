@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Articles • cfbplotR</title>
+<title>Add logos into rows of a gt table — gt_cfb • cfbplotR</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,7 +46,14 @@
 
 
 
-<meta property="og:title" content="Articles" />
+<meta property="og:title" content="Add logos into rows of a gt table — gt_cfb" />
+<meta property="og:description" content="The gt_fmt_cfb_logo and gt_fmt_cfb_headshot functions take an existing gt_tbl object and
+converts college football team names from valid_team_names() into inline team logos or ESPN
+player ID's (or headshot_url from cfbfastR::cfbd_team_rosters() function) into inline
+player headshots. This is a wrapper around
+gtExtras::gt_image_rows()
+written by Tom Mock, which is a wrapper around gt::text_transform() + gt::web_image()/
+gt::local_image() with the necessary boilerplate already applied." />
 <meta property="og:image" content="https://Kazink36.github.io/cfbplotR/logo.svg" />
 
 
@@ -66,7 +73,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-article-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -275,18 +282,76 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Articles</h1>
+    <h1>Add logos into rows of a <code>gt</code> table</h1>
+    <small class="dont-index">Source: <a href='https://github.com/Kazink36/cfbplotR/blob/master/R/gt_fmt_cfb.R'><code>R/gt_fmt_cfb.R</code></a></small>
+    <div class="hidden name"><code>gt_cfb.Rd</code></div>
     </div>
 
-    <div class="section ">
-      <h3>All vignettes</h3>
-      <p class="section-desc"></p>
-
-      <dl>
-        <dt><a href="tutorial.html">Using cfbplotR</a></dt>
-        <dd></dt>
-      </dl>
+    <div class="ref-description">
+    <p>The <code>gt_fmt_cfb_logo</code> and <code>gt_fmt_cfb_headshot</code> functions take an existing <code>gt_tbl</code> object and
+converts college football team names from <code><a href='valid_team_names.html'>valid_team_names()</a></code> into inline team logos or ESPN
+player ID's (or <code>headshot_url</code> from <code>cfbfastR::cfbd_team_rosters()</code> function) into inline
+player headshots. This is a wrapper around
+<a href='https://jthomasmock.github.io/gtExtras/reference/gt_img_rows.html'><code>gtExtras::gt_image_rows()</code></a>
+written by Tom Mock, which is a wrapper around <code><a href='https://gt.rstudio.com/reference/text_transform.html'>gt::text_transform()</a></code> + <code><a href='https://gt.rstudio.com/reference/web_image.html'>gt::web_image()</a></code>/
+<code><a href='https://gt.rstudio.com/reference/local_image.html'>gt::local_image()</a></code> with the necessary boilerplate already applied.</p>
     </div>
+
+    <pre class="usage"><span class='fu'>gt_fmt_cfb_logo</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>columns</span>, height <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span>
+
+<span class='fu'>gt_fmt_cfb_headshot</span><span class='op'>(</span><span class='va'>gt_object</span>, <span class='va'>columns</span>, height <span class='op'>=</span> <span class='fl'>30</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>gt_object</th>
+      <td><p>An existing gt table object of class <code>gt_tbl</code></p></td>
+    </tr>
+    <tr>
+      <th>columns</th>
+      <td><p>The columns wherein changes to cell data colors should occur.</p></td>
+    </tr>
+    <tr>
+      <th>height</th>
+      <td><p>The absolute height (px) of the image in the table cell.</p></td>
+    </tr>
+    </table>
+
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>An object of class <code>gt_tbl</code>.</p>
+    <h2 class="hasAnchor" id="figures"><a class="anchor" href="#figures"></a>Figures</h2>
+
+    
+
+<p><img src='figures/fmt_cfb.png' width=30% />
+<img src='figures/fmt_cfb_2.png' width=30% /></p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://gt.rstudio.com/'>gt</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://kazink36.github.io/cfbplotR'>cfbplotR</a></span><span class='op'>)</span>
+
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>team <span class='op'>=</span> <span class='fu'><a href='valid_team_names.html'>valid_team_names</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>8</span><span class='op'>]</span>,logo <span class='op'>=</span> <span class='fu'><a href='valid_team_names.html'>valid_team_names</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>8</span><span class='op'>]</span><span class='op'>)</span>
+
+<span class='va'>table</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>%&gt;%</span>
+ <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+ <span class='fu'>gt_fmt_cfb_logo</span><span class='op'>(</span>columns <span class='op'>=</span> <span class='st'>"logo"</span><span class='op'>)</span>
+
+<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>
+ player <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Britain Covey"</span>, <span class='st'>"Cameron Rising"</span>,<span class='st'>"Non.Match"</span><span class='op'>)</span>,
+ team <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Utah"</span>,<span class='st'>"Utah"</span>,<span class='st'>"BYU"</span><span class='op'>)</span>
+<span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='fu'>cfbplotR</span><span class='fu'>::</span><span class='fu'><a href='add_athlete_id_col.html'>add_athlete_id_col</a></span><span class='op'>(</span><span class='va'>player</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BBBB;'>ℹ</span> No season column, using 2021 rosters</span></div><div class='input'><span class='va'>table_2</span> <span class='op'>&lt;-</span> <span class='va'>df</span> <span class='op'>%&gt;%</span>
+ <span class='fu'><a href='https://gt.rstudio.com/reference/gt.html'>gt</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+ <span class='fu'>gt_fmt_cfb_headshot</span><span class='op'>(</span><span class='va'>athlete_id</span><span class='op'>)</span>
+
+</div></pre>
+  </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 

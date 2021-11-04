@@ -216,3 +216,19 @@ html %>% html_elements(css = "h4~ h4+ p a") %>%
   tibble("text" = .) %>%
   mutate(team = str_extract(text,"([a-zA-Z]+( [a-zA-Z]+)+)<"))
   separate(text,c("Hello","World"))
+
+
+
+
+
+  team_info <- read_csv(url("https://github.com/Kazink36/cfbplotR/blob/master/data-raw/logo_ref.csv?raw=true"))
+
+  team_name_mapping <- team_info$school
+  names(team_name_mapping) <- team_info$school
+  team_name_mapping <- append(team_name_mapping,c("UL Monroe" = "Louisiana Monroe",
+                                    "San Jose State" = "San José State",
+                                    "Hawaii" = "Hawai'i",
+                                    "Massachusetts" = "UMass",
+                                    "UTSA" = "UT San Antonio"))
+
+  usethis::use_data(team_name_mapping, overwrite = TRUE)

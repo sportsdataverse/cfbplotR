@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cfbplotR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9009</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9010</span>
       </span>
     </div>
 
@@ -128,12 +128,18 @@
     <li class="divider"></li>
     <li class="dropdown-header">Tables</li>
     <li>
-      <a href="../reference/gt_fmt_cfb.html">Add Logos</a>
+      <a href="../reference/gt_cfb.html">Add Logos/Headshots</a>
     </li>
     <li class="divider"></li>
     <li class="dropdown-header">Utilties</li>
     <li>
       <a href="../reference/valid_team_names.html">Valid Names</a>
+    </li>
+    <li>
+      <a href="../reference/clean_school_names.html">Clean Names</a>
+    </li>
+    <li>
+      <a href="../reference/add_athlete_id_col.html">Athlete IDs</a>
     </li>
   </ul>
 </li>
@@ -281,9 +287,9 @@
 <li>Added the <code><a href="../reference/geom_lines.html">geom_mean_lines()</a></code> and <code><a href="../reference/geom_lines.html">geom_median_lines()</a></code> geoms.</li>
 <li>Added the <code><a href="../reference/scale_color_cfb.html">scale_color_cfb()</a></code> and <code><a href="../reference/scale_color_cfb.html">scale_fill_cfb()</a></code> functions.</li>
 <li>Added FCS team logos. (v0.0.0.9002)</li>
-<li>Added the <code><a href="../reference/gt_fmt_cfb.html">gt_fmt_cfb()</a></code> function. (v0.0.0.9003)</li>
+<li>Added the <code>gt_fmt_cfb()</code> function. (this function is now <code><a href="../reference/gt_cfb.html">gt_fmt_cfb_logo()</a></code>) (v0.0.0.9003)</li>
 <li>Added the axis scales <code><a href="../reference/scale_axes_cfb.html">scale_x_cfb()</a></code> and <code><a href="../reference/scale_axes_cfb.html">scale_y_cfb()</a></code> in combination with the theme update functions <code><a href="../reference/theme_cfb.html">theme_x_cfb()</a></code> and <code><a href="../reference/theme_cfb.html">theme_y_cfb()</a></code>. (v0.0.0.9004)</li>
-<li>Fixed bug where <code><a href="../reference/gt_fmt_cfb.html">gt_fmt_cfb()</a></code> wouldn’t work with Texas A&amp;M (v0.0.0.9005)</li>
+<li>Fixed bug where <code>gt_fmt_cfb()</code> wouldn’t work with Texas A&amp;M (this function is now <code><a href="../reference/gt_cfb.html">gt_fmt_cfb_logo()</a></code>) (v0.0.0.9005)</li>
 <li>Added NCAA logo as default for inputs not in <code><a href="../reference/valid_team_names.html">valid_team_names()</a></code>(v0.0.0.9006)</li>
 <li>Fixed defaults for <code><a href="../reference/scale_axes_cfb.html">scale_y_cfb()</a></code> to fix error.</li>
 <li>Added FCS colors (v0.0.0.9007)</li>
@@ -292,6 +298,10 @@
 <li>Added the function <code><a href="../reference/cfb_team_tiers.html">cfb_team_tiers()</a></code> that build an NFL team tiers ggplot, thanks to <a href="https://twitter.com/PFF_Moo">Timo Riske</a> for the suggestion.</li>
 <li>Fixed a bug in <code><a href="../reference/geom_lines.html">geom_median_lines()</a></code> and <code><a href="../reference/geom_lines.html">geom_mean_lines()</a></code> that caused <code>alpha</code> to not work properly.</li>
 <li>Added the <code><a href="../reference/geom_cfb_headshots.html">geom_cfb_headshots()</a></code> geom that plots headshots for valid ESPN player IDs. (v0.0.9009)</li>
+<li>Added cleaning function <code><a href="../reference/clean_school_names.html">clean_school_names()</a></code> which attempts to correct common name issues to names in <code><a href="../reference/valid_team_names.html">valid_team_names()</a></code>. The plotting functions call this internally to automatically attempt to fix errors.</li>
+<li>Added experimental function <code><a href="../reference/add_athlete_id_col.html">add_athlete_id_col()</a></code> that adds a column to a data frame called <code>athlete_id</code> from the rosters data from the cfbfastR-data repo based on a player name. This ID can be used with headshot plotting functions</li>
+<li>Added the axis scales <code><a href="../reference/scale_axes_cfb.html">scale_x_cfb_headshots()</a></code> and <code><a href="../reference/scale_axes_cfb.html">scale_y_cfb_headshots()</a></code>.</li>
+<li>Added the <code><a href="../reference/gt_cfb.html">gt_fmt_cfb_headshot()</a></code> function. (v0.0.0.9010)</li>
 </ul>
 </div>
   </div>

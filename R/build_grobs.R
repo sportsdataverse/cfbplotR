@@ -3,17 +3,18 @@
 build_grobs <- function(i, alpha, colour, data, teams = TRUE) {
   make_null <- FALSE
   if(isTRUE(teams)){
-    if (!data$team[i] %in% valid_team_names()) {
-      cli::cli_warn("{data$team[i]} is not a valid team name (row {i})")
-      team <- "NCAA"
-    } else {
-      team <- data$team[i]
+    team <- data$team[i]
+    team <- cfbplotR::clean_school_names(team)
+    if (!team %in% valid_team_names()) {
+        cli::cli_warn("{data$team[i]} is not a valid team name (row {i})")
+        team <- "NCAA"
     }
-    image_to_read <- logo_list[[team]]
-    if (is.na(team)) make_null <- TRUE
+    if (is.na(team)){ make_null <- TRUE}
+    else{image_to_read <- logo_list[[team]]}
   } else{
     player_id <- data$player_id[i]
-    headshot_map <- paste0("http://a.espncdn.com/i/headshots/college-football/players/full/",player_id,".png")
+    headshot_map <- headshot_id_to_url(player_id)
+    #headshot_map <- paste0("http://a.espncdn.com/i/headshots/college-football/players/full/",player_id,".png")
     if(!RCurl::url.exists(headshot_map)) {
       cli::cli_warn("{data$player_id[i]} is not a valid player id (row {i})")
       headshot_map <- "http://a.espncdn.com/i/headshots/nophoto.png"

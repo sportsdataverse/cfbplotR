@@ -136,7 +136,7 @@ player_plot_data %>%
 
 ## Tables with cfbplotR
 
-The `gt` package offers an easy way to create nice tables of data and the `gtExtras` package from Tom Mock provides a number of convenient functions for styling those tables. The `gt_fmt_cfb()` function is a slightly modified version of `gtExtras::gt_image_rows()` to easily add team and conference logos based on names from `valid_team_names()`. We can quickly make a table showing the top teams from week 1 by EPA per pass.
+The `gt` package offers an easy way to create nice tables of data and the `gtExtras` package from Tom Mock provides a number of convenient functions for styling those tables. The `gt_fmt_cfb_logo()` function is a slightly modified version of `gtExtras::gt_image_rows()` to easily add team and conference logos based on names from `valid_team_names()`. We can quickly make a table showing the top teams from week 1 by EPA per pass.
 
 ```{r fmt_cfb}
 library(gt)
@@ -148,5 +148,16 @@ team_plot_data %>%
   arrange(desc(pass_epa)) %>% 
   head(8) %>% 
   gt() %>% 
-  gt_fmt_cfb(columns = c(conference,logo)) 
+  gt_fmt_cfb_logo(columns = c(conference,logo)) 
+```
+
+We can also use the `gt_fmt_cfb_headshot()` function to add headshots to a gt using the player_id or headshot_url available through `cfbfastR`.
+
+```{r fmt_cfb_headshot}
+
+player_plot_data %>% 
+  select(team,rush_player_id,player_name,n,epa) %>% 
+  gt() %>% 
+  gt_fmt_cfb_logo(team) %>% 
+  gt_fmt_cfb_headshot(rush_player_id)
 ```

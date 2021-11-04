@@ -145,6 +145,41 @@ scale_fill_cfb <- function(alt_colors = NULL,
 #'   theme_minimal() +
 #'   theme_x_cfb()
 #'
+#' #############################################################################
+#' # Headshot Examples
+#' #############################################################################
+#' library(cfbplotR)
+#' library(ggplot2)
+#'
+#'
+#' dfh <- data.frame(
+#'   random_value = runif(9, 0, 1),
+#'   player_id = c("4361182",
+#'                   "4426385",
+#'                   "4567048",
+#'                   "4372519",
+#'                   "4429013",
+#'                   "4240069",
+#'                   "4360932",
+#'                   "4362874",
+#'                   "4429299")
+#' )
+#'
+#' # use headshots for x-axis
+#' ggplot(dfh, aes(x = player_id, y = random_value)) +
+#'   geom_col(width = 0.5) +
+#'   scale_x_cfb_headshots() +
+#'   theme_minimal() +
+#'   theme_x_cfb()
+#'
+#' # use headshots for y-axis
+#' ggplot(dfh, aes(y = player_id, x = random_value)) +
+#'   geom_col(width = 0.5) +
+#'   scale_y_cfb_headshots() +
+#'   theme_minimal() +
+#'   theme_y_cfb()
+#'
+#'
 #'
 NULL
 
@@ -177,6 +212,48 @@ scale_y_cfb <- function(...,
     ...,
     labels = function(x) {
       logo_html(x, type = "width", size = size)
+    },
+    expand = expand,
+    guide = guide,
+    position = position
+  )
+}
+
+#' @rdname scale_axes_cfb
+#' @export
+scale_x_cfb_headshots <- function(...,
+                                  expand = ggplot2::waiver(),
+                                  guide = ggplot2::waiver(),
+                                  position = "bottom",
+                                  size = 20) {
+
+  position <- rlang::arg_match0(position, c("top", "bottom"))
+
+  ggplot2::scale_x_discrete(
+    ...,
+    labels = function(x) {
+      headshot_html(x, type = "height", size = size)
+    },
+    expand = expand,
+    guide = guide,
+    position = position
+  )
+}
+
+#' @rdname scale_axes_cfb
+#' @export
+scale_y_cfb_headshots <- function(...,
+                                  expand = ggplot2::waiver(),
+                                  guide = ggplot2::waiver(),
+                                  position = "left",
+                                  size = 30) {
+
+  position <- rlang::arg_match0(position, c("left", "right"))
+
+  ggplot2::scale_y_discrete(
+    ...,
+    labels = function(x) {
+      headshot_html(x, type = "width", size = size)
     },
     expand = expand,
     guide = guide,
