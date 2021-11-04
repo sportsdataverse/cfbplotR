@@ -151,7 +151,7 @@ library(ggplot2)
 
 dfh <- data.frame(
   random_value = runif(9, 0, 1),
-  player_gsis = c("4361182",
+  player_id = c("4361182",
                   "4426385",
                   "4567048",
                   "4372519",
@@ -163,14 +163,14 @@ dfh <- data.frame(
 )
 
 # use headshots for x-axis
-ggplot(dfh, aes(x = player_gsis, y = random_value)) +
+ggplot(dfh, aes(x = player_id, y = random_value)) +
   geom_col(width = 0.5) +
   scale_x_cfb_headshots() +
   theme_minimal() +
   theme_x_cfb()
 
 # use headshots for y-axis
-ggplot(dfh, aes(y = player_gsis, x = random_value)) +
+ggplot(dfh, aes(y = player_id, x = random_value)) +
   geom_col(width = 0.5) +
   scale_y_cfb_headshots() +
   theme_minimal() +
