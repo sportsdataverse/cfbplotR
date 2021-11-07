@@ -92,9 +92,6 @@ gt_fmt_cfb_headshot <- function(gt_object, columns, height = 30) {
   stub_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]]=="stub")]
   grp_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]]=="row_group")]
 
-  # stopifnot("img_source must be 'web' or 'local'" = img_source %in% c("web", "local"))
-  img_source <- "web"
-
   # need to correct for rownames
   gt_object %>%
     gt::text_transform(
@@ -106,24 +103,21 @@ gt_fmt_cfb_headshot <- function(gt_object, columns, height = 30) {
         gt::cells_body({{ columns }})
       },
       fn = function(x){
-        if(img_source == "web"){
-          for (i in 1:length(x)) {
-            url_or_id <- headshot_id_or_url(x[i])
-            if(url_or_id == "ID") {
-              x[i] <- headshot_id_to_url(x[i])
-            } else if(url_or_id == "NA"){
-              x[i] <- "http://a.espncdn.com/i/headshots/nophoto.png"
-            }
-            if(!RCurl::url.exists(x[i])) {
-              #cli::cli_warn("{data$player_id[i]} is not a valid player id (row {i})")
-              x[i] <- "http://a.espncdn.com/i/headshots/nophoto.png"
-            }
+        for (i in 1:length(x)) {
+          url_or_id <- headshot_id_or_url(x[i])
+          if(url_or_id == "ID") {
+            x[i] <- headshot_id_to_url(x[i])
+          } else if(url_or_id == "NA"){
+            x[i] <- "http://a.espncdn.com/i/headshots/nophoto.png"
           }
-
-          gt::web_image(url = x, height = height)
-        } else {
-          gt::local_image(filename = x, height = height)
         }
+
+        if (is.numeric(height)) {
+          height <- paste0(height, "px")
+        }
+
+        x <- paste0("<img src=\"", x, "\" style=\"height:", height,
+                    ";\" onerror=\"this.onerror=null;this.src='http://a.espncdn.com/i/headshots/nophoto.png';\" />")
       }
     )
 
