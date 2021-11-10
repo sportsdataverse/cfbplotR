@@ -19,3 +19,4 @@
 * Added experimental function `add_athlete_id_col()` that adds a column to a data frame called `athlete_id` from the rosters data from the cfbfastR-data repo based on a player name. This ID can be used with headshot plotting functions
 * Added the axis scales `scale_x_cfb_headshots()` and `scale_y_cfb_headshots()`.
 * Added the `gt_fmt_cfb_headshot()` function. (v0.0.0.9010)
+* Added colleges from `hoopR` package (v0.0.0.9011)

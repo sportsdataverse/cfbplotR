@@ -81,7 +81,7 @@ This helps for joins and plotting." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cfbplotR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9010</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9011</span>
       </span>
     </div>
 
@@ -311,16 +311,20 @@ if they are included in <code>team_name_mapping</code>. Non matches may be repla
 with <code>NA</code> (depending on the value of <code>keep_non_matches</code>).</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"utah"</span>, <span class='st'>"San Jose State"</span>, <span class='st'>"Hawaii"</span>, <span class='st'>"UTSA"</span>, <span class='st'>"SLC"</span>, <span class='st'>"USC"</span><span class='op'>)</span>
-<span class='co'># use current location and keep non matches</span>
-<span class='fu'>clean_school_names</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Abbreviations not found in `cfbplotR::team_name_mapping`: SLC</span></div><div class='output co'>#&gt; [1] "Utah"           "San José State" "Hawai'i"        "UT San Antonio"
-#&gt; [5] "SLC"            "USC"           </div><div class='input'>
-<span class='co'># replace non matches</span>
-<span class='fu'>clean_school_names</span><span class='op'>(</span><span class='va'>x</span>, keep_non_matches <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='warning'>Warning: Abbreviations not found in `cfbplotR::team_name_mapping`: SLC</span></div><div class='output co'>#&gt; [1] "Utah"           "San José State" "Hawai'i"        "UT San Antonio"
-#&gt; [5] NA               "USC"           </div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"utah"</span>, <span class='st'>"San Jose State"</span>, <span class='st'>"Hawaii"</span>, <span class='st'>"UTSA"</span>, <span class='st'>"SLC"</span>, <span class='st'>"USC"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'># use current location and keep non matches</span></span>
+<span class='r-in'><span class='fu'>clean_school_names</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Abbreviations not found in `cfbplotR::team_name_mapping`: SLC</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Utah"           "San José State" "Hawai'i"        "UTSA"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [5] "SLC"            "USC"           </span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'># replace non matches</span></span>
+<span class='r-in'><span class='fu'>clean_school_names</span><span class='op'>(</span><span class='va'>x</span>, keep_non_matches <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></span>
+<span class='r-wrn co'><span class='r-pr'>#&gt;</span> <span class='warning'>Warning: </span>Abbreviations not found in `cfbplotR::team_name_mapping`: SLC</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [1] "Utah"           "San José State" "Hawai'i"        "UTSA"          </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> [5] NA               "USC"           </span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

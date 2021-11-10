@@ -9,7 +9,7 @@
 #' valid_team_names("DIII")
 #' valid_team_names("Conference")
 
-valid_team_names <- function(division = c("FBS","FCS","DII","DIII","Conference")){
+valid_team_names <- function(division = c("FBS","FCS","DII","DIII","Conference","hoopR")){
 
   cfbplotR::logo_ref %>%
     dplyr::filter(type %in% division) %>%

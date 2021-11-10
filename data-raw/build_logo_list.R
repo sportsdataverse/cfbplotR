@@ -204,18 +204,18 @@ write_csv(logo_ref,"data-raw/logo_ref.csv")
 # usethis::use_data(logo_list,internal = TRUE, overwrite = TRUE)
 
 
-library(rvest)
-library(tidyverse)
-
-
-url <- "https://teamcolorcodes.com/ncaa-color-codes/"
-xpath <- "//h4~//h4+//p//a"
-html <- read_html(url)
-html %>% html_elements(css = "h4~ h4+ p a") %>%
-  str_replace(.,"&amp;","&") %>%
-  tibble("text" = .) %>%
-  mutate(team = str_extract(text,"([a-zA-Z]+( [a-zA-Z]+)+)<"))
-  separate(text,c("Hello","World"))
+# library(rvest)
+# library(tidyverse)
+#
+#
+# url <- "https://teamcolorcodes.com/ncaa-color-codes/"
+# xpath <- "//h4~//h4+//p//a"
+# html <- read_html(url)
+# html %>% html_elements(css = "h4~ h4+ p a") %>%
+#   str_replace(.,"&amp;","&") %>%
+#   tibble("text" = .) %>%
+#   mutate(team = str_extract(text,"([a-zA-Z]+( [a-zA-Z]+)+)<"))
+#   separate(text,c("Hello","World"))
 
 
 
@@ -229,6 +229,37 @@ html %>% html_elements(css = "h4~ h4+ p a") %>%
                                     "San Jose State" = "San José State",
                                     "Hawaii" = "Hawai'i",
                                     "Massachusetts" = "UMass",
-                                    "UTSA" = "UT San Antonio"))
+                                    "UTSA" = "UT San Antonio" ))
 
   usethis::use_data(team_name_mapping, overwrite = TRUE)
+
+
+
+#Add for hoopR
+  logo_ref <- team_info
+
+  logo_ref <- logo_ref %>% dplyr::bind_rows(tribble(
+    ~school, ~logo, ~type, ~color, ~alt_color,
+    "American University", "https://a.espncdn.com/i/teamlogos/ncaa/500/44.png","hoopR","#c41130","#c8102e",
+    "Bellarmine","https://a.espncdn.com/i/teamlogos/ncaa/500/91.png","hoopR", "#000000","#ffffff",
+    "Belmont","https://a.espncdn.com/i/teamlogos/ncaa/500/2057.png","hoopR", "#182142", "#c9262d",
+    "Binghamton","https://a.espncdn.com/i/teamlogos/ncaa/500/2066.png","hoopR","#00614A","#f0f0f0",
+    "Boston University","https://a.espncdn.com/i/teamlogos/ncaa/500/104.png","hoopR","#cc0000", "#ffffff",
+    "Bradley","https://a.espncdn.com/i/teamlogos/ncaa/500/71.png","hoopR","#b70002","#c0c0c0",
+    "CSU Bakersfield","https://a.espncdn.com/i/teamlogos/ncaa/500/2934.png","hoopR","#003BAB","#ffffff",
+    "CSU Fullerton" ,"https://a.espncdn.com/i/teamlogos/ncaa/500/2239.png", "hoopR","#003767","#ff8300",
+    "CSU Northridge" ,"https://a.espncdn.com/i/teamlogos/ncaa/500/2463.png", "hoopR", "#b50000","#ffffff",
+    "California Baptist", "https://a.espncdn.com/i/teamlogos/ncaa/500/2856.png", "hoopR","#000000","#ffffff"
+  ))
+
+
+  hoopR_teams <- hoopR::espn_mbb_teams()
+new_teams <- hoopR_teams %>%
+  filter(!team %in% cfbplotR::logo_ref$school)  %>%
+  transmute(school = team, logo = logo, type = "hoopR", color = color,alt_color = alternate_color) %>%
+  replace_na(replace = list(color = "ffffff",alt_color = "ffffff")) %>%
+  mutate(color = paste0("#",color),
+         alt_color = paste0("#",alt_color))
+logo_ref <- cfbplotR::logo_ref %>%
+  bind_rows(new_teams)
+usethis::use_data(logo_ref, overwrite = TRUE)

@@ -4,7 +4,9 @@
 \alias{valid_team_names}
 \title{Output Valid CFB Team Names and Abbreviations}
 \usage{
-valid_team_names(division = c("FBS", "FCS", "DII", "DIII", "Conference"))
+valid_team_names(
+  division = c("FBS", "FCS", "DII", "DIII", "Conference", "hoopR")
+)
 }
 \description{
 Output Valid CFB Team Names and Abbreviations
