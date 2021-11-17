@@ -223,13 +223,23 @@ write_csv(logo_ref,"data-raw/logo_ref.csv")
 
   team_info <- read_csv(url("https://github.com/Kazink36/cfbplotR/blob/master/data-raw/logo_ref.csv?raw=true"))
 
+  state_names <- team_info %>%
+    filter(str_detect(school,"State")) %>%
+    transmute(school = school,
+              state = str_replace(school, "State","St\\."))
+
+  state_list <- state_names$school
+  names(state_list) <- state_names$state
+
   team_name_mapping <- team_info$school
   names(team_name_mapping) <- team_info$school
   team_name_mapping <- append(team_name_mapping,c("UL Monroe" = "Louisiana Monroe",
                                     "San Jose State" = "San José State",
                                     "Hawaii" = "Hawai'i",
                                     "Massachusetts" = "UMass",
-                                    "UTSA" = "UT San Antonio" ))
+                                    "UTSA" = "UT San Antonio",
+                                    "ASU" = "Arizona State"))
+  team_name_mapping <- append(team_name_mapping, state_list)
 
   usethis::use_data(team_name_mapping, overwrite = TRUE)
 
@@ -263,3 +273,7 @@ new_teams <- hoopR_teams %>%
 logo_ref <- cfbplotR::logo_ref %>%
   bind_rows(new_teams)
 usethis::use_data(logo_ref, overwrite = TRUE)
+
+
+
+
