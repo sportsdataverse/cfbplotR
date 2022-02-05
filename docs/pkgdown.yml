@@ -1,10 +1,10 @@
-pandoc: 2.11.2
-pkgdown: 1.6.1
+pandoc: 2.17.0.1
+pkgdown: 2.0.0
 pkgdown_sha: ~
 articles:
   tutorial: tutorial.html
-last_built: 2021-11-10T02:16Z
+last_built: 2022-02-05T04:05Z
 urls:
-  reference: https://Kazink36.github.io/cfbplotR//reference
-  article: https://Kazink36.github.io/cfbplotR//articles
+  reference: https://Kazink36.github.io/cfbplotR/reference
+  article: https://Kazink36.github.io/cfbplotR/articles
 

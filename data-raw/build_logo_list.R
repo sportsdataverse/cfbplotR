@@ -89,7 +89,7 @@ d3_logos <- tibble(school = d3_teams,
 
 conferences <- cfbfastR::cfbd_conferences()
 conf_logos <- conferences %>%
-  filter(conference_id<100) %>%
+  filter(conference_id<100 | conference_id == 151) %>%
   transmute(school = case_when(name == "Southern" ~ "Southern Conference",
                                TRUE ~ name),
             logo = glue::glue("https://a.espncdn.com/i/teamlogos/ncaa_conf/500/{conference_id}.png"),
@@ -144,6 +144,61 @@ usethis::use_data(logo_list, internal = TRUE, overwrite = TRUE)
 
 write_csv(logo_ref,"data-raw/logo_ref.csv")
 
+# ATTEMPT TO FIX FCS AND ADD P5 AND G5
+team_info <- read_csv(url("https://github.com/Kazink36/cfbplotR/blob/master/data-raw/logo_ref.csv?raw=true"))
+cfbd_team_info <- cfbfastR::cfbd_team_info()
+p5_teams <- cfbd_team_info %>%
+  as_tibble() %>%
+  filter((conference %in% c("Pac-12","SEC","ACC","Big Ten","Big 12"))|(school %in% c("BYU","Notre Dame"))) %>%
+  pull(school)
+g5_teams <- cfbd_team_info %>%
+  filter(!(school %in% p5_teams)) %>%
+  pull(school)
+library(rvest)
+url <- "https://www.espn.com/college-football/standings/_/view/fcs-i-aa"
+xpath <- '//*[contains(concat( " ", @class, " " ), concat( " ", "hide-mobile", " " ))]//*[contains(concat( " ", @class, " " ), concat( " ", "AnchorLink", " " ))] | //*[contains(concat( " ", @class, " " ), concat( " ", "Table__Title", " " ))]'
+
+
+html <- rvest::read_html(url)
+
+nodes <- html %>% html_nodes(xpath = xpath)
+fcs <- bind_rows(lapply(html_attrs(nodes), function(x) data.frame(as.list(x), stringsAsFactors=FALSE)))
+fcs <- fcs %>% mutate(orig = str_remove(nodes," "))
+fcs_test<-fcs %>%
+  mutate(conf = cumsum(class == "Table__Title")) %>%
+  group_by(conf) %>%
+  mutate(conf_name = first(orig),
+         conf_name = str_remove(conf_name,'<divclass="Table__Title">'),
+         conf_name = str_remove(conf_name,"</div>\\n"),
+         id = str_extract(href,"[[:digit:]]{1,4}"),
+         id = as.numeric(id)) %>%
+  filter(class != "Table__Title")
+team_info_all <- cfbfastR::cfbd_team_info(only_fbs = FALSE)
+conferences <- cfbfastR::cfbd_conferences()
+fcs_teams <- fcs_test %>%
+  ungroup() %>%
+  select(conf_name,id) %>%
+  left_join(team_info_all,by = c("id" = "team_id")) %>%
+  select(conf_name,id,school) %>%
+  left_join(conferences %>% filter(classification == "fcs"), by = c("conf_name" = "long_name")) %>%
+  select(team_id = id, school, conference_id, conference = name, long_name = conf_name) %>%
+  mutate(division = case_when(conference == "SWAC" & row_number()<n()-5 ~ "East",
+                              conference == "SWAC" ~ "West",
+                              TRUE ~ NA_character_))
+
+
+
+
+
+logo_ref<-team_info %>%
+  mutate(type = case_when(school %in% p5_teams ~ "P5",
+                          school %in% g5_teams ~ "G5",
+                          (type == "FCS") & (school %in% fcs_teams$school) ~ "FCS",
+                          (type == "FCS") & !(school %in% fcs_teams$school) ~ "Other",
+                          TRUE ~ type))
+
+write_csv(logo_ref, "data-raw/logo_ref.csv")
+usethis::use_data(logo_ref, overwrite = TRUE)
 #
 # temp_logos <- teams_csv %>%
 #   select(school, abbreviation, logo) %>%

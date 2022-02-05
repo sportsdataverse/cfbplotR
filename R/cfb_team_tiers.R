@@ -124,6 +124,7 @@ cfb_team_tiers <- function(data,
       dplyr::ungroup()
   }
 
+  data$team <- cfbplotR::clean_school_names(as.character(data$team))
 
   p <- ggplot2::ggplot(data, ggplot2::aes(y = .data$tier_no, x = .data$tier_rank)) +
     ggplot2::geom_hline(yintercept = tierlines, color = lines)

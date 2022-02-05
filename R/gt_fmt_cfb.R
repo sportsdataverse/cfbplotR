@@ -1,3 +1,5 @@
+#' @name gt_cfb
+#' @title
 #' Add logos into rows of a `gt` table
 #' @description
 #' The `gt_fmt_cfb_logo` and `gt_fmt_cfb_headshot` functions take an existing `gt_tbl` object and
@@ -15,7 +17,6 @@
 #' @return An object of class `gt_tbl`.
 #' @importFrom gt %>%
 #' @export
-#' @name gt_cfb
 #' @examples
 #' library(gt)
 #' library(cfbplotR)
@@ -68,7 +69,7 @@ gt_fmt_cfb_logo <- function(gt_object, columns, height = 30){
         if(img_source == "web"){
           #Fix Texas A&M
           x <- sub("&amp;","&",x)
-          x <- cfbplotR::clean_school_names(x)
+          x <- cfbplotR::clean_school_names(as.character(x))
           x[which(!x%in%valid_team_names())] <- "NCAA"
           gt::web_image(url = logo_list[x], height = height)
         } else {

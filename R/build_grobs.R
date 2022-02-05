@@ -1,17 +1,20 @@
 # INTERNAL HELPER THAT BUILD THE GROBS FOR
 # GEOM LOGOS AND HEADSHOTS
-build_grobs <- function(i, alpha, colour, data, teams = TRUE) {
+build_grobs <- function(i, alpha, colour, data, type = c("teams", "headshots", "path")) {
   make_null <- FALSE
-  if(isTRUE(teams)){
+  type <- rlang::arg_match(type)
+  if(type == "teams"){
     team <- data$team[i]
-    team <- cfbplotR::clean_school_names(team)
+    team <- cfbplotR::clean_school_names(as.character(team))
     if (!team %in% valid_team_names()) {
         cli::cli_warn("{data$team[i]} is not a valid team name (row {i})")
         team <- "NCAA"
     }
     if (is.na(team)){ make_null <- TRUE}
     else{image_to_read <- logo_list[[team]]}
-  } else{
+  } else if (type == "path"){
+    image_to_read <- data$path[i]
+  } else {
     player_id <- data$player_id[i]
     headshot_map <- headshot_id_to_url(player_id)
     #headshot_map <- paste0("http://a.espncdn.com/i/headshots/college-football/players/full/",player_id,".png")
@@ -28,7 +31,7 @@ build_grobs <- function(i, alpha, colour, data, teams = TRUE) {
   if (is.na(make_null)){
     grid <- grid::nullGrob()
   } else if (is.null(alpha)) {
-    img <- magick::image_read(image_to_read)
+    img <- reader_function(image_to_read)
     col <- colour[i]
     if (!is.null(col) && col %in% "b/w"){
       new <- magick::image_quantize(img, colorspace = 'gray')
@@ -42,7 +45,7 @@ build_grobs <- function(i, alpha, colour, data, teams = TRUE) {
     if (as.numeric(alpha) <= 0 || as.numeric(alpha) >= 1) {
       cli::cli_abort("aesthetic {.var alpha} requires a value between {.val 0} and {.val 1}")
     }
-    img <- magick::image_read(image_to_read)
+    img <- reader_function(image_to_read)
     new <- magick::image_fx(img, expression = paste0(alpha, "*a"), channel = "alpha")
     col <- colour[i]
     if (!is.null(col) && col %in% "b/w"){
@@ -57,7 +60,7 @@ build_grobs <- function(i, alpha, colour, data, teams = TRUE) {
     if (any(as.numeric(alpha) < 0) || any(as.numeric(alpha) > 1)) {
       cli::cli_abort("aesthetics {.var alpha} require values between {.val 0} and {.val 1}")
     }
-    img <- magick::image_read(image_to_read)
+    img <- reader_function(image_to_read)
     new <- magick::image_fx(img, expression = paste0(alpha[i], "*a"), channel = "alpha")
     col <- colour[i]
     if (!is.null(col) && col %in% "b/w"){
@@ -86,4 +89,13 @@ build_grobs <- function(i, alpha, colour, data, teams = TRUE) {
   grid$name <- paste("cfb.grob", i, sep = ".")
 
   grid
+}
+
+reader_function <- function(img){
+  if(is.factor(img)) img <- as.character(img)
+  if(is.raw(img) || tools::file_ext(img) != "svg"){
+    magick::image_read(img)
+  } else if(tools::file_ext(img) == "svg"){
+    magick::image_read_svg(img)
+  }
 }

@@ -119,7 +119,7 @@ GeomCFBlogo <- ggplot2::ggproto(
   draw_panel = function(data, panel_params, coord, na.rm = FALSE) {
     data <- coord$transform(data, panel_params)
 
-    grobs <- lapply(seq_along(data$team), build_grobs, alpha = data$alpha, colour = data$colour, data = data, teams = TRUE)
+    grobs <- lapply(seq_along(data$team), build_grobs, alpha = data$alpha, colour = data$colour, data = data, type = "teams")
 
     class(grobs) <- "gList"
 

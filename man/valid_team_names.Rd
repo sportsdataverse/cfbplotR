@@ -5,7 +5,7 @@
 \title{Output Valid CFB Team Names and Abbreviations}
 \usage{
 valid_team_names(
-  division = c("FBS", "FCS", "DII", "DIII", "Conference", "hoopR")
+  division = c("FBS", "P5", "G5", "FCS", "DII", "DIII", "Conference", "hoopR", "Other")
 )
 }
 \description{
@@ -13,9 +13,9 @@ Output Valid CFB Team Names and Abbreviations
 }
 \examples{
 # List valid team abbreviations excluding duplicates
-valid_team_names("FBS")
-valid_team_names("FCS")
-valid_team_names("DII")
-valid_team_names("DIII")
-valid_team_names("Conference")
+cfbplotR::valid_team_names("FBS")
+cfbplotR::valid_team_names("FCS")
+cfbplotR::valid_team_names("DII")
+cfbplotR::valid_team_names("DIII")
+cfbplotR::valid_team_names("Conference")
 }

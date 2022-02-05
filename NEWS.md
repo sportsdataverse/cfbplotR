@@ -20,3 +20,9 @@
 * Added the axis scales `scale_x_cfb_headshots()` and `scale_y_cfb_headshots()`.
 * Added the `gt_fmt_cfb_headshot()` function. (v0.0.0.9010)
 * Added colleges from `hoopR` package (v0.0.0.9011)
+* Brought package up to date with nflplotR v1.0.0
+* Added the `geom_from_path()` geom that plots images from urls, local paths and more.
+* Added the ggplot2 theme-elements `element_cfb_logo()`, `element_cfb_headshot()`, 
+and `element_path()` which translate college team names or player IDs into team logos and player headshots. These elements feature a major speed improvement over the axis scales `scale_x_cfb_headshots()` and `scale_y_cfb_headshots()` and make the package less dependent on an underlying package.
+* added `P5` and `G5` catagories to `valid_team_names()`
+* added the `gt_merge_stack_team_color()` function (v0.0.0.9012)

@@ -66,7 +66,7 @@ scale_color_cfb <- function(alt_colors = NULL,
   )
 }
 
-#' @rdname  scale_color_cfb
+#' @rdname scale_color_cfb
 #' @export
 scale_colour_cfb <- scale_color_cfb
 
@@ -128,7 +128,7 @@ scale_fill_cfb <- function(alt_colors = NULL,
 #' library(cfbplotR)
 #' library(ggplot2)
 #'
-#' team_abbr <- valid_team_names()
+#' team_abbr <- cfbplotR::valid_team_names()
 #' # remove conference logos from this example
 #' team_abbr <- team_abbr[1:8]
 #'
@@ -136,14 +136,17 @@ scale_fill_cfb <- function(alt_colors = NULL,
 #'   random_value = runif(length(team_abbr), 0, 1),
 #'   teams = team_abbr
 #' )
-#'
-#' ggplot(df, aes(x = teams, y = random_value)) +
-#'   geom_col(aes(color = teams, fill = teams), width = 0.5) +
-#'   scale_color_cfb(alt_colors = team_abbr) +
-#'   scale_fill_cfb(alpha = 0.4) +
-#'   scale_x_cfb() +
-#'   theme_minimal() +
-#'   theme_x_cfb()
+#' if (utils::packageVersion("gridtext") > "0.1.4"){
+#' # use logos for x-axis
+#'   ggplot(df, aes(x = teams, y = random_value)) +
+#'     geom_col(aes(color = teams, fill = teams), width = 0.5) +
+#'     scale_color_cfb(alt_colors = team_abbr) +
+#'     scale_fill_cfb(alpha = 0.4) +
+#'     scale_x_cfb() +
+#'     theme_minimal() +
+#'     # theme_*_cfb requires gridtext version > 0.1.4
+#'     theme_x_cfb()
+#' }
 #'
 #' #############################################################################
 #' # Headshot Examples
@@ -164,21 +167,23 @@ scale_fill_cfb <- function(alt_colors = NULL,
 #'                   "4362874",
 #'                   "4429299")
 #' )
+#' if (utils::packageVersion("gridtext") > "0.1.4"){
+#'   # use headshots for x-axis
+#'   ggplot(dfh, aes(x = player_id, y = random_value)) +
+#'     geom_col(width = 0.5) +
+#'     scale_x_cfb_headshots() +
+#'     theme_minimal() +
+#'     # theme_*_cfb requires gridtext version > 0.1.4
+#'     theme_x_cfb()
 #'
-#' # use headshots for x-axis
-#' ggplot(dfh, aes(x = player_id, y = random_value)) +
-#'   geom_col(width = 0.5) +
-#'   scale_x_cfb_headshots() +
-#'   theme_minimal() +
-#'   theme_x_cfb()
-#'
-#' # use headshots for y-axis
-#' ggplot(dfh, aes(y = player_id, x = random_value)) +
-#'   geom_col(width = 0.5) +
-#'   scale_y_cfb_headshots() +
-#'   theme_minimal() +
-#'   theme_y_cfb()
-#'
+#'   # use headshots for y-axis
+#'   ggplot(dfh, aes(y = player_id, x = random_value)) +
+#'     geom_col(width = 0.5) +
+#'     scale_y_cfb_headshots() +
+#'     theme_minimal() +
+#'     # theme_*_cfb requires gridtext version > 0.1.4
+#'     theme_y_cfb()
+#' }
 #'
 #'
 NULL
@@ -190,6 +195,9 @@ scale_x_cfb <- function(...,
                         guide = ggplot2::waiver(),
                         position = "bottom",
                         size = 12) {
+
+  position <- rlang::arg_match0(position, c("top", "bottom"))
+
   ggplot2::scale_x_discrete(
     ...,
     labels = function(x) {
@@ -208,6 +216,9 @@ scale_y_cfb <- function(...,
                         guide = ggplot2::waiver(),
                         position = "left",
                         size = 12) {
+
+  position <- rlang::arg_match0(position, c("left", "right"))
+
   ggplot2::scale_y_discrete(
     ...,
     labels = function(x) {

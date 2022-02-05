@@ -25,7 +25,7 @@ They are made to be used in conjunction with \code{\link[=scale_x_cfb]{scale_x_c
 library(cfbplotR)
 library(ggplot2)
 
-team_abbr <- valid_team_names()
+team_abbr <- cfbplotR::valid_team_names()
 # remove conference logos from this example
 team_abbr <- team_abbr[1:16]
 
@@ -34,13 +34,16 @@ df <- data.frame(
   teams = team_abbr
 )
 
-ggplot(df, aes(x = teams, y = random_value)) +
-  geom_col(aes(color = teams, fill = teams), width = 0.5) +
-  scale_color_cfb(alt_colors = team_abbr) +
-  scale_fill_cfb(alpha = 0.4) +
-  scale_x_cfb() +
-  theme_minimal() +
-  theme_x_cfb()
+if (utils::packageVersion("gridtext") > "0.1.4"){
+  ggplot(df, aes(x = teams, y = random_value)) +
+    geom_col(aes(color = teams, fill = teams), width = 0.5) +
+    scale_color_cfb(alt_colors = team_abbr) +
+    scale_fill_cfb(alpha = 0.4) +
+    scale_x_cfb() +
+    theme_minimal() +
+    # theme_*_nfl requires gridtext version > 0.1.4
+    theme_x_cfb()
+}
 }
 \seealso{
 \code{\link[=theme_x_cfb]{theme_x_cfb()}}, \code{\link[=theme_y_cfb]{theme_y_cfb()}}

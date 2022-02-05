@@ -57,13 +57,17 @@ display.}
 
 \item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics,
 rather than combining with them. This is most useful for helper functions
-that define both data and aesthetics and shouldn't inherit behaviour from
+that define both data and aesthetics and shouldn't inherit behavior from
 the default plot specification.}
+}
+\value{
+A ggplot2 layer (\code{\link[ggplot2:layer]{ggplot2::layer()}}) that can be added to a plot
+created with \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}}.
 }
 \description{
 These geoms can be used to draw horizontal or vertical reference
 lines in a ggplot. They use the data in the aesthetics \code{v_var} and \code{h_var}
-to compute their \code{median} or \code{mean} and draw the as a line.
+to compute their \code{median} or \code{mean} and draw the as a line. This is copied directly from \code{nflplotR}.
 }
 \section{Aesthetics}{
 
@@ -71,7 +75,7 @@ to compute their \code{median} or \code{mean} and draw the as a line.
 aesthetics (at least one of the bold aesthetics is required):
 \itemize{
 \item{\strong{v_var}}{ - The variable for which to compute the median/mean that is drawn as vertical line.}
-\item{\strong{h_var}}{ - TThe variable for which to compute the median/mean that is drawn as horizontal line.}
+\item{\strong{h_var}}{ - The variable for which to compute the median/mean that is drawn as horizontal line.}
 \item{\code{alpha = NA}}{ - The alpha channel, i.e. transparency level, as a numerical value between 0 and 1.}
 \item{\code{color = "red"}}{ - The color of the drawn lines.}
 \item{\code{linetype = 2}}{ - The linetype of the drawn lines.}
@@ -80,7 +84,7 @@ aesthetics (at least one of the bold aesthetics is required):
 }
 
 \examples{
-library(cfbplotR)
+library(nflplotR)
 library(ggplot2)
 
 # inherit top level aesthetics

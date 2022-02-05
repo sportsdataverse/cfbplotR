@@ -118,7 +118,7 @@ GeomCFBheads <- ggplot2::ggproto(
   draw_panel = function(data, panel_params, coord, na.rm = FALSE) {
     data <- coord$transform(data, panel_params)
 
-    grobs <- lapply(seq_along(data$player_id), build_grobs, alpha = data$alpha, colour = data$colour, data = data, teams = FALSE)
+    grobs <- lapply(seq_along(data$player_id), build_grobs, alpha = data$alpha, colour = data$colour, data = data, type = "headshots")
 
     class(grobs) <- "gList"
 

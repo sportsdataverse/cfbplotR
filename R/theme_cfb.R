@@ -15,7 +15,7 @@
 #' library(cfbplotR)
 #' library(ggplot2)
 #'
-#' team_abbr <- valid_team_names()
+#' team_abbr <- cfbplotR::valid_team_names()
 #' # remove conference logos from this example
 #' team_abbr <- team_abbr[1:16]
 #'
@@ -24,13 +24,16 @@
 #'   teams = team_abbr
 #' )
 #'
-#' ggplot(df, aes(x = teams, y = random_value)) +
-#'   geom_col(aes(color = teams, fill = teams), width = 0.5) +
-#'   scale_color_cfb(alt_colors = team_abbr) +
-#'   scale_fill_cfb(alpha = 0.4) +
-#'   scale_x_cfb() +
-#'   theme_minimal() +
-#'   theme_x_cfb()
+#' if (utils::packageVersion("gridtext") > "0.1.4"){
+#'   ggplot(df, aes(x = teams, y = random_value)) +
+#'     geom_col(aes(color = teams, fill = teams), width = 0.5) +
+#'     scale_color_cfb(alt_colors = team_abbr) +
+#'     scale_fill_cfb(alpha = 0.4) +
+#'     scale_x_cfb() +
+#'     theme_minimal() +
+#'     # theme_*_nfl requires gridtext version > 0.1.4
+#'     theme_x_cfb()
+#' }
 NULL
 
 #' @rdname theme_cfb
@@ -39,10 +42,10 @@ theme_x_cfb <- function(){
   if (!is_installed("ggtext")) {
     cli::cli_abort(c(
       "Package {.val ggtext} required to create this scale.",
-      'Please install it with {.var install.packages("gridtext")}'
+      'Please install it with {.var install.packages("ggtext")}'
     ))
   }
-  loadNamespace("gridtext", versionCheck = list(op = ">=", version = "0.1.4"))
+  loadNamespace("gridtext", versionCheck = list(op = ">", version = "0.1.4"))
   ggplot2::theme(axis.text.x = ggtext::element_markdown())
 }
 
@@ -52,9 +55,9 @@ theme_y_cfb <- function(){
   if (!is_installed("ggtext")) {
     cli::cli_abort(c(
       "Package {.val ggtext} required to create this scale.",
-      'Please install it with {.var install.packages("gridtext")}'
+      'Please install it with {.var install.packages("ggtext")}'
     ))
   }
-  loadNamespace("gridtext", versionCheck = list(op = ">=", version = "0.1.4"))
+  loadNamespace("gridtext", versionCheck = list(op = ">", version = "0.1.4"))
   ggplot2::theme(axis.text.y = ggtext::element_markdown())
 }

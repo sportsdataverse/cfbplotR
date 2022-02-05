@@ -3,14 +3,16 @@
 #' @export
 #' @examples
 #' # List valid team abbreviations excluding duplicates
-#' valid_team_names("FBS")
-#' valid_team_names("FCS")
-#' valid_team_names("DII")
-#' valid_team_names("DIII")
-#' valid_team_names("Conference")
+#' cfbplotR::valid_team_names("FBS")
+#' cfbplotR::valid_team_names("FCS")
+#' cfbplotR::valid_team_names("DII")
+#' cfbplotR::valid_team_names("DIII")
+#' cfbplotR::valid_team_names("Conference")
 
-valid_team_names <- function(division = c("FBS","FCS","DII","DIII","Conference","hoopR")){
-
+valid_team_names <- function(division = c("FBS","P5","G5","FCS","DII","DIII","Conference","hoopR","Other")){
+  if(length(division) == 1){
+    if(division == "FBS"){division <- c("P5","G5")}
+  }
   cfbplotR::logo_ref %>%
     dplyr::filter(type %in% division) %>%
     dplyr::pull(school)

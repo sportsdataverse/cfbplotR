@@ -19,7 +19,7 @@ This is a quick tutorial on how to use cfbplotR to quickly and easily include co
 
 First we need to load the necessary libraries. [`cfbfastR`](https://saiemgilani.github.io/cfbfastR/index.html) will get us the data we want to use for analysis. [`cfbplotR`](https://Kazink36.github.io/cfbplotR/index.html) will help us easily plot the results. `tidyverse` will help us do the necessary data manipulation and of course includes `ggplot2` that we will use for plotting. You can use the commented out code to install these packages if you don't already have them.
 
-```{r libraries}
+```{r libraries, message=FALSE}
 #remotes::install_github(repo = "saiemgilani/cfbfastR")
 #remotes::install_github(repo = "Kazink36/cfbplotR")
 #install.packages(tidyverse)
@@ -39,7 +39,7 @@ pbp <- cfbfastR::load_cfb_pbp(2021) %>%
 
 team_info <- cfbfastR::cfbd_team_info()
 team_info <- team_info %>% 
-  select(team = school,conference) %>% 
+  select(team = school,conference,mascot) %>% 
   filter(conference %in% c("Pac-12","ACC","SEC","Big Ten","Big 12"))
 
 ```
@@ -86,7 +86,7 @@ team_plot_data %>%
   theme_bw()
 ```
 
-Finally let's make a bar chart showing the Pac-12 EPA per pass for each team. Because `cfbplotR` creates a custom geom for ggplot, we can use `annotate()` to place a log anywhere we'd like. `scale_color_cfb()` and `scale_fill_cfb()` let us automatically use a teams primary color on a plot. The `alt_colors` argument lets us pass through a vector of team names that we want to use an alternate color for. `sacle_x_cfb()` and `scale_y_cfb()` change the axis labels that are team names into logos. Due to the way ggplot works, you have to add the corresponding theme function `theme_x_cfb()` or `theme_y_cfb()`.
+Finally let's make a bar chart showing the Pac-12 EPA per pass for each team. Because `cfbplotR` creates a custom geom for ggplot, we can use `annotate()` to place a log anywhere we'd like. `scale_color_cfb()` and `scale_fill_cfb()` let us automatically use a teams primary color on a plot. The `alt_colors` argument lets us pass through a vector of team names that we want to use an alternate color for. ~~`sacle_x_cfb()` and `scale_y_cfb()` change the axis labels that are team names into logos. Due to the way ggplot works, you have to add the corresponding theme function `theme_x_cfb()` or `theme_y_cfb()`.~~ `element_cfb_logo()` and `element_cfb_headshot()` can be used for the axis.text argument in the theme function for improved performance in using logos and headshots as axis labels.
 
 ```{r bar_chart}
 team_plot_data %>% 
@@ -98,10 +98,12 @@ team_plot_data %>%
   annotate(cfbplotR::GeomCFBlogo,x = "California",y = 0.2,team = "Pac-12",height = .35,alpha = .3) +
   scale_fill_cfb(alpha = .8) +
   scale_color_cfb(alt_colors = team_plot_data$team) +
-  scale_x_cfb(size = 18) +
+  #scale_x_cfb(size = 18) +
   labs(x = "", y = "EPA per Pass") +
   theme_bw() +
-  theme_x_cfb()
+  #theme_x_cfb()
+  theme(axis.text.x = element_cfb_logo())
+
 ```
 
 `cfbplotR` also allows you to plot player headshots. Let's look at the top 10 rushing EPA players with more than 10 rushes for week 1.
@@ -127,28 +129,31 @@ player_plot_data %>%
   scale_color_cfb(alt_colors = valid_team_names()) +
   scale_fill_cfb() +
   labs(y = "", x = "EPA per Rush") +
-  scale_y_cfb(size = 18) +
+  #scale_y_cfb(size = 18) +
   theme_minimal() +
   theme(legend.position = "none",
         panel.grid.major.y = element_blank()) +
-  theme_y_cfb()
+  #theme_y_cfb()
+  theme(axis.text.y = element_cfb_logo())
+
 ```
 
 ## Tables with cfbplotR
 
-The `gt` package offers an easy way to create nice tables of data and the `gtExtras` package from Tom Mock provides a number of convenient functions for styling those tables. The `gt_fmt_cfb_logo()` function is a slightly modified version of `gtExtras::gt_image_rows()` to easily add team and conference logos based on names from `valid_team_names()`. We can quickly make a table showing the top teams from week 1 by EPA per pass.
+The `gt` package offers an easy way to create nice tables of data and the `gtExtras` package from Tom Mock provides a number of convenient functions for styling those tables. The `gt_fmt_cfb_logo()` function is a slightly modified version of `gtExtras::gt_image_rows()` to easily add team and conference logos based on names from `valid_team_names()`. The `gt_merge_stack_team_color()` function is a slightly modified version of `gtExtras::gt_merge_stack()` that merges two columns together and colors the text of the bottom row with the color of the team referenced in a third column. We can quickly make a table showing the top teams from week 1 by EPA per pass.
 
 ```{r fmt_cfb}
 library(gt)
 
 team_plot_data %>% 
-  transmute(conference, team,logo = team, 
+  transmute(conference, team,logo = team, mascot,
             pass_epa = round(pass_epa,2),n_pass, 
             rush_epa = round(rush_epa,2),n_rush) %>% 
   arrange(desc(pass_epa)) %>% 
   head(8) %>% 
   gt() %>% 
-  gt_fmt_cfb_logo(columns = c(conference,logo)) 
+  gt_fmt_cfb_logo(columns = c(conference,logo)) %>% 
+  gt_merge_stack_team_color(team,mascot,team)
 ```
 
 We can also use the `gt_fmt_cfb_headshot()` function to add headshots to a gt using the player_id or headshot_url available through `cfbfastR`.
@@ -156,8 +161,10 @@ We can also use the `gt_fmt_cfb_headshot()` function to add headshots to a gt us
 ```{r fmt_cfb_headshot}
 
 player_plot_data %>% 
-  select(team,rush_player_id,player_name,n,epa) %>% 
+  separate(player_name, into = c("first","last"), extra = "merge") %>% 
+  select(team,rush_player_id,first,last,n,epa) %>% 
   gt() %>% 
   gt_fmt_cfb_logo(team) %>% 
-  gt_fmt_cfb_headshot(rush_player_id)
+  gt_fmt_cfb_headshot(rush_player_id) %>% 
+  gt_merge_stack_team_color(first,last,team)
 ```

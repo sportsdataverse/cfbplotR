@@ -56,7 +56,7 @@ as specified by \code{device}.}
 \description{
 This function previews a ggplot in its actual dimensions in order to see how
 it will look when saved. It is also significantly faster than the default
-preview in RStudio for ggplots created using cfbplotR.
+preview in RStudio for ggplots created using cfbplotR. This is copied directly from \code{nflplotR}
 }
 \examples{
 library(cfbplotR)
