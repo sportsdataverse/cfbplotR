@@ -26,7 +26,7 @@
 #'   created with [ggplot2::ggplot()].
 #' @aliases NULL
 #' @examples
-#' library(nflplotR)
+#' library(cfbplotR)
 #' library(ggplot2)
 #'
 #' # inherit top level aesthetics

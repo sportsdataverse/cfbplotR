@@ -26,3 +26,4 @@
 and `element_path()` which translate college team names or player IDs into team logos and player headshots. These elements feature a major speed improvement over the axis scales `scale_x_cfb_headshots()` and `scale_y_cfb_headshots()` and make the package less dependent on an underlying package.
 * added `P5` and `G5` catagories to `valid_team_names()`
 * added the `gt_merge_stack_team_color()` function (v0.0.0.9012)
+* added the `ggtitle_image()` and `theme_title_image()` functions (v0.0.0.9013)
