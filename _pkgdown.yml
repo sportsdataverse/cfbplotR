@@ -63,6 +63,8 @@ navbar:
         href: reference/geom_median_lines.html
       - text: "Team Colors"
         href: reference/scale_color_cfb.html
+      - text: "Title Image"
+        href: reference/ggtitle_image.html
       - text: "Axis Logos"
         href: reference/scale_axes_cfb.html
       - text: "Axis Image Elements"
