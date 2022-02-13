@@ -41,7 +41,7 @@ if (utils::packageVersion("gridtext") > "0.1.4"){
     scale_fill_cfb(alpha = 0.4) +
     scale_x_cfb() +
     theme_minimal() +
-    # theme_*_nfl requires gridtext version > 0.1.4
+    # theme_*_cfb requires gridtext version > 0.1.4
     theme_x_cfb()
 }
 }
