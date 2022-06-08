@@ -17,13 +17,13 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cfbplotR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9013</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9014</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav"><li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fas fa-code"></span>
      
     Funcs
@@ -102,7 +102,7 @@
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fas fa-project-diagram"></span>
      
      SDV
@@ -165,7 +165,7 @@
     </li>
   </ul></li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fas fa-database"></span>
      
      Data
@@ -215,7 +215,8 @@
     <p>This function sets up a ggplot to visualize CFB team tiers.</p>
     </div>
 
-    <div id="ref-usage">Usage,<div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">cfb_team_tiers</span><span class="op">(</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">cfb_team_tiers</span><span class="op">(</span>
   <span class="va">data</span>,
   title <span class="op">=</span> <span class="st">"CFB Team Tiers, 2021 as of Week 6"</span>,
   subtitle <span class="op">=</span> <span class="st">"created with the #cfbplotR Tiermaker"</span>,
@@ -227,7 +228,8 @@
   width <span class="op">=</span> <span class="fl">0.075</span>,
   no_line_below_tier <span class="op">=</span> <span class="cn">NULL</span>,
   devel <span class="op">=</span> <span class="cn">FALSE</span>
-<span class="op">)</span></code></pre></div></div>
+<span class="op">)</span></code></pre></div>
+    </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
@@ -270,7 +272,9 @@ development.</p></dd>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="co"># \donttest{</span></span>
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>package ‘ggplot2’ was built under R version 4.1.2</span>
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span>, warn.conflicts <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>package ‘dplyr’ was built under R version 4.1.2</span>
 <span class="r-in"><span class="va">team_names</span> <span class="op">&lt;-</span> <span class="fu"><a href="valid_team_names.html">valid_team_names</a></span><span class="op">(</span><span class="st">"FBS"</span><span class="op">)</span></span>
 <span class="r-in"><span class="co"># remove conference logos from this example</span></span>
 <span class="r-in"><span class="va">team_names</span> <span class="op">&lt;-</span> <span class="va">team_names</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">30</span><span class="op">]</span></span>
@@ -327,13 +331,11 @@ development.</p></dd>
 
 
       <footer><div class="copyright">
-  <p></p><p>Developed by <a href="https://twitter.com/mrcaseb" class="external-link">Sebastian
-Carl</a>, <a href="https://twitter.com/JaredDLee" class="external-link">Jared Lee</a>.</p>
+  <p></p><p>Developed by <a href="https://twitter.com/mrcaseb" class="external-link">Sebastian Carl</a>, <a href="https://twitter.com/JaredDLee" class="external-link">Jared Lee</a>.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.0.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>

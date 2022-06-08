@@ -1,6 +1,6 @@
 Package: cfbplotR
 Title: CFB Logo Plots in 'ggplot2'
-Version: 0.0.0.9013
+Version: 0.0.0.9014
 Authors@R: 
     c(
     person(given = "Sebastian",
@@ -44,5 +44,5 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 License: MIT + file LICENSE

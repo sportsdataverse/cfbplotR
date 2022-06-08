@@ -40,14 +40,14 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">cfbplotR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9013</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.0.0.9014</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fas fa-code"></span>
      
     Funcs
@@ -132,7 +132,7 @@
   </a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fas fa-project-diagram"></span>
      
      SDV
@@ -200,7 +200,7 @@
   </ul>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     <span class="fas fa-database"></span>
      
      Data
@@ -283,23 +283,28 @@ them.</p>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://saiemgilani.github.io/cfbfastR/" class="external-link">cfbfastR</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kazink36.github.io/cfbplotR" class="external-link">cfbplotR</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Warning: package 'ggplot2' was built under R version 4.1.2</span></code></pre>
+<pre><code><span class="co">## Warning: package 'tibble' was built under R version 4.1.2</span></code></pre>
+<pre><code><span class="co">## Warning: package 'tidyr' was built under R version 4.1.2</span></code></pre>
+<pre><code><span class="co">## Warning: package 'readr' was built under R version 4.1.2</span></code></pre>
+<pre><code><span class="co">## Warning: package 'dplyr' was built under R version 4.1.2</span></code></pre>
 <p>This first chunk of code will pull the play-by-play data from the
 first week of the 2021 season using the <code>cfbfastR</code> data repo
 and create the advanced metrics like EPA that we will be plotting (this
 will take a second). We’ll also pull in the general team info so we can
 filter down to just teams in a power 5 conference.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">pbp</span> <span class="op">&lt;-</span> <span class="fu">cfbfastR</span><span class="fu">::</span><span class="fu"><a href="http://saiemgilani.github.io/cfbfastR/reference/load_cfb_pbp.html" class="external-link">load_cfb_pbp</a></span><span class="op">(</span><span class="fl">2021</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">pbp</span> <span class="op">&lt;-</span> <span class="fu">cfbfastR</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/cfbfastR/man/load_cfb_pbp.html" class="external-link">load_cfb_pbp</a></span><span class="op">(</span><span class="fl">2021</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">week</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span>
 
-<span class="va">team_info</span> <span class="op">&lt;-</span> <span class="fu">cfbfastR</span><span class="fu">::</span><span class="fu"><a href="http://saiemgilani.github.io/cfbfastR/reference/cfbd_team_info.html" class="external-link">cfbd_team_info</a></span><span class="op">(</span><span class="op">)</span>
+<span class="va">team_info</span> <span class="op">&lt;-</span> <span class="fu">cfbfastR</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/cfbfastR/man/cfbd_team_info.html" class="external-link">cfbd_team_info</a></span><span class="op">(</span><span class="op">)</span>
 <span class="va">team_info</span> <span class="op">&lt;-</span> <span class="va">team_info</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">school</span>,<span class="va">conference</span>,<span class="va">mascot</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">conference</span> <span class="op"><a href="https://rdrr.io/r/base/match.html" class="external-link">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Pac-12"</span>,<span class="st">"ACC"</span>,<span class="st">"SEC"</span>,<span class="st">"Big Ten"</span>,<span class="st">"Big 12"</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Now we quickly roll up the EPA data and find the EPA per rush and EPA
 per pass for every team in week 1 and take a look at our plotting
 data.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">team_plot_data</span> <span class="op">&lt;-</span> <span class="va">pbp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">offense_play</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>rush_epa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="va">rush</span> <span class="op">==</span> <span class="fl">1</span>,<span class="va">EPA</span>,<span class="cn">NA_real_</span><span class="op">)</span>,na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
@@ -329,7 +334,7 @@ on the x-axis and Rushing EPA on the y-axis with lines showing the
 median value for each. It’s important to set width or height in
 <code>geom_cfb_logos</code> to small values. The default of 1 will
 create extremely large logos.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">team_plot_data</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">pass_epa</span>, y <span class="op">=</span> <span class="va">rush_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/geom_lines.html">geom_median_lines</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>v_var <span class="op">=</span> <span class="va">pass_epa</span>, h_var <span class="op">=</span> <span class="va">rush_epa</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="../reference/geom_cfb_logos.html">geom_cfb_logos</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">team</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">0.075</span><span class="op">)</span> <span class="op">+</span>
@@ -347,7 +352,7 @@ or one of <code><a href="../reference/valid_team_names.html">valid_team_names()<
 <code><a href="../reference/ggtitle_image.html">theme_title_image()</a></code> or setting the <code>plot.title</code>
 attribute of <code><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">ggplot2::theme()</a></code> to
 <code><a href="https://wilkelab.org/ggtext/reference/element_markdown.html" class="external-link">ggtext::element_markdown()</a></code>.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">team_plot_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>color <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span>,<span class="cn">NA_character_</span>,<span class="st">"b/w"</span><span class="op">)</span>,
          alpha <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/if_else.html" class="external-link">if_else</a></span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span>,<span class="fl">1</span>,<span class="fl">.6</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -376,7 +381,7 @@ works, you have to add the corresponding theme function
 <code><a href="../reference/element.html">element_cfb_logo()</a></code> and <code><a href="../reference/element.html">element_cfb_headshot()</a></code>
 can be used for the axis.text argument in the theme function for
 improved performance in using logos and headshots as axis labels.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">team_plot_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">conference</span> <span class="op">==</span> <span class="st">"Pac-12"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>team <span class="op">=</span> <span class="fu"><a href="https://forcats.tidyverse.org/reference/fct_reorder.html" class="external-link">fct_reorder</a></span><span class="op">(</span><span class="va">team</span>,<span class="va">pass_epa</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -395,7 +400,7 @@ improved performance in using logos and headshots as axis labels.</p>
 <p><code>cfbplotR</code> also allows you to plot player headshots. Let’s
 look at the top 10 rushing EPA players with more than 10 rushes for week
 1.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">player_plot_data</span> <span class="op">&lt;-</span> <span class="va">pbp</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">rush_player_id</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">rush_player_id</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -438,10 +443,11 @@ modified version of <code><a href="https://rdrr.io/pkg/gtExtras/man/gt_merge_sta
 two columns together and colors the text of the bottom row with the
 color of the team referenced in a third column. We can quickly make a
 table showing the top teams from week 1 by EPA per pass.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/" class="external-link">gt</a></span><span class="op">)</span>
-
-<span class="va">team_plot_data</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/" class="external-link">gt</a></span><span class="op">)</span></code></pre></div>
+<pre><code><span class="co">## Warning: package 'gt' was built under R version 4.1.2</span></code></pre>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">team_plot_data</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">transmute</a></span><span class="op">(</span><span class="va">conference</span>, <span class="va">team</span>,logo <span class="op">=</span> <span class="va">team</span>, <span class="va">mascot</span>,
             pass_epa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">pass_epa</span>,<span class="fl">2</span><span class="op">)</span>,<span class="va">n_pass</span>, 
             rush_epa <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">rush_epa</span>,<span class="fl">2</span><span class="op">)</span>,<span class="va">n_rush</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -450,12 +456,12 @@ table showing the top teams from week 1 by EPA per pass.</p>
   <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/gt_cfb.html">gt_fmt_cfb_logo</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="va">conference</span>,<span class="va">logo</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/gt_stack_team.html">gt_merge_stack_team_color</a></span><span class="op">(</span><span class="va">team</span>,<span class="va">mascot</span>,<span class="va">team</span><span class="op">)</span></code></pre></div>
-<div id="jbzmlmrxwr" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="ytcirbbxvu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#jbzmlmrxwr .gt_table {
+#ytcirbbxvu .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -480,7 +486,7 @@ table showing the top teams from week 1 by EPA per pass.</p>
   border-left-color: #D3D3D3;
 }
 
-#jbzmlmrxwr .gt_heading {
+#ytcirbbxvu .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -492,33 +498,37 @@ table showing the top teams from week 1 by EPA per pass.</p>
   border-right-color: #D3D3D3;
 }
 
-#jbzmlmrxwr .gt_title {
+#ytcirbbxvu .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
 
-#jbzmlmrxwr .gt_subtitle {
+#ytcirbbxvu .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
   padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#jbzmlmrxwr .gt_bottom_border {
+#ytcirbbxvu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jbzmlmrxwr .gt_col_headings {
+#ytcirbbxvu .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -533,7 +543,7 @@ table showing the top teams from week 1 by EPA per pass.</p>
   border-right-color: #D3D3D3;
 }
 
-#jbzmlmrxwr .gt_col_heading {
+#ytcirbbxvu .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -553,7 +563,7 @@ table showing the top teams from week 1 by EPA per pass.</p>
   overflow-x: hidden;
 }
 
-#jbzmlmrxwr .gt_column_spanner_outer {
+#ytcirbbxvu .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -565,15 +575,15 @@ table showing the top teams from week 1 by EPA per pass.</p>
   padding-right: 4px;
 }
 
-#jbzmlmrxwr .gt_column_spanner_outer:first-child {
+#ytcirbbxvu .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jbzmlmrxwr .gt_column_spanner_outer:last-child {
+#ytcirbbxvu .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jbzmlmrxwr .gt_column_spanner {
+#ytcirbbxvu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -585,8 +595,11 @@ table showing the top teams from week 1 by EPA per pass.</p>
   width: 100%;
 }
 
-#jbzmlmrxwr .gt_group_heading {
-  padding: 8px;
+#ytcirbbxvu .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -607,7 +620,7 @@ table showing the top teams from week 1 by EPA per pass.</p>
   vertical-align: middle;
 }
 
-#jbzmlmrxwr .gt_empty_group_heading {
+#ytcirbbxvu .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -622,15 +635,15 @@ table showing the top teams from week 1 by EPA per pass.</p>
   vertical-align: middle;
 }
 
-#jbzmlmrxwr .gt_from_md > :first-child {
+#ytcirbbxvu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jbzmlmrxwr .gt_from_md > :last-child {
+#ytcirbbxvu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jbzmlmrxwr .gt_row {
+#ytcirbbxvu .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -649,7 +662,7 @@ table showing the top teams from week 1 by EPA per pass.</p>
   overflow-x: hidden;
 }
 
-#jbzmlmrxwr .gt_stub {
+#ytcirbbxvu .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -658,10 +671,29 @@ table showing the top teams from week 1 by EPA per pass.</p>
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#jbzmlmrxwr .gt_summary_row {
+#ytcirbbxvu .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ytcirbbxvu .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ytcirbbxvu .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -671,17 +703,26 @@ table showing the top teams from week 1 by EPA per pass.</p>
   padding-right: 5px;
 }
 
-#jbzmlmrxwr .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
+#ytcirbbxvu .gt_first_summary_row {
   border-top-style: solid;
-  border-top-width: 2px;
   border-top-color: #D3D3D3;
 }
 
-#jbzmlmrxwr .gt_grand_summary_row {
+#ytcirbbxvu .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ytcirbbxvu .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ytcirbbxvu .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -691,7 +732,7 @@ table showing the top teams from week 1 by EPA per pass.</p>
   padding-right: 5px;
 }
 
-#jbzmlmrxwr .gt_first_grand_summary_row {
+#ytcirbbxvu .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -701,11 +742,11 @@ table showing the top teams from week 1 by EPA per pass.</p>
   border-top-color: #D3D3D3;
 }
 
-#jbzmlmrxwr .gt_striped {
+#ytcirbbxvu .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jbzmlmrxwr .gt_table_body {
+#ytcirbbxvu .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -714,7 +755,7 @@ table showing the top teams from week 1 by EPA per pass.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#jbzmlmrxwr .gt_footnotes {
+#ytcirbbxvu .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -728,13 +769,16 @@ table showing the top teams from week 1 by EPA per pass.</p>
   border-right-color: #D3D3D3;
 }
 
-#jbzmlmrxwr .gt_footnote {
+#ytcirbbxvu .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#jbzmlmrxwr .gt_sourcenotes {
+#ytcirbbxvu .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -748,44 +792,80 @@ table showing the top teams from week 1 by EPA per pass.</p>
   border-right-color: #D3D3D3;
 }
 
-#jbzmlmrxwr .gt_sourcenote {
+#ytcirbbxvu .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#jbzmlmrxwr .gt_left {
+#ytcirbbxvu .gt_left {
   text-align: left;
 }
 
-#jbzmlmrxwr .gt_center {
+#ytcirbbxvu .gt_center {
   text-align: center;
 }
 
-#jbzmlmrxwr .gt_right {
+#ytcirbbxvu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jbzmlmrxwr .gt_font_normal {
+#ytcirbbxvu .gt_font_normal {
   font-weight: normal;
 }
 
-#jbzmlmrxwr .gt_font_bold {
+#ytcirbbxvu .gt_font_bold {
   font-weight: bold;
 }
 
-#jbzmlmrxwr .gt_font_italic {
+#ytcirbbxvu .gt_font_italic {
   font-style: italic;
 }
 
-#jbzmlmrxwr .gt_super {
+#ytcirbbxvu .gt_super {
   font-size: 65%;
 }
 
-#jbzmlmrxwr .gt_footnote_marks {
+#ytcirbbxvu .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#ytcirbbxvu .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#ytcirbbxvu .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ytcirbbxvu .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#ytcirbbxvu .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#ytcirbbxvu .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <table class="table gt_table">
@@ -901,7 +981,7 @@ table showing the top teams from week 1 by EPA per pass.</p>
 <p>We can also use the <code><a href="../reference/gt_cfb.html">gt_fmt_cfb_headshot()</a></code> function to
 add headshots to a gt using the player_id or headshot_url available
 through <code>cfbfastR</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">player_plot_data</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate</a></span><span class="op">(</span><span class="va">player_name</span>, into <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"first"</span>,<span class="st">"last"</span><span class="op">)</span>, extra <span class="op">=</span> <span class="st">"merge"</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">team</span>,<span class="va">rush_player_id</span>,<span class="va">first</span>,<span class="va">last</span>,<span class="va">n</span>,<span class="va">epa</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
@@ -909,12 +989,12 @@ through <code>cfbfastR</code>.</p>
   <span class="fu"><a href="../reference/gt_cfb.html">gt_fmt_cfb_logo</a></span><span class="op">(</span><span class="va">team</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/gt_cfb.html">gt_fmt_cfb_headshot</a></span><span class="op">(</span><span class="va">rush_player_id</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span> 
   <span class="fu"><a href="../reference/gt_stack_team.html">gt_merge_stack_team_color</a></span><span class="op">(</span><span class="va">first</span>,<span class="va">last</span>,<span class="va">team</span><span class="op">)</span></code></pre></div>
-<div id="pchafqisnz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="poanpwmiwo" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#pchafqisnz .gt_table {
+#poanpwmiwo .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -939,7 +1019,7 @@ through <code>cfbfastR</code>.</p>
   border-left-color: #D3D3D3;
 }
 
-#pchafqisnz .gt_heading {
+#poanpwmiwo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -951,33 +1031,37 @@ through <code>cfbfastR</code>.</p>
   border-right-color: #D3D3D3;
 }
 
-#pchafqisnz .gt_title {
+#poanpwmiwo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
   padding-top: 4px;
   padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
 
-#pchafqisnz .gt_subtitle {
+#poanpwmiwo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
   padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#pchafqisnz .gt_bottom_border {
+#poanpwmiwo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#pchafqisnz .gt_col_headings {
+#poanpwmiwo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -992,7 +1076,7 @@ through <code>cfbfastR</code>.</p>
   border-right-color: #D3D3D3;
 }
 
-#pchafqisnz .gt_col_heading {
+#poanpwmiwo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1012,7 +1096,7 @@ through <code>cfbfastR</code>.</p>
   overflow-x: hidden;
 }
 
-#pchafqisnz .gt_column_spanner_outer {
+#poanpwmiwo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1024,15 +1108,15 @@ through <code>cfbfastR</code>.</p>
   padding-right: 4px;
 }
 
-#pchafqisnz .gt_column_spanner_outer:first-child {
+#poanpwmiwo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#pchafqisnz .gt_column_spanner_outer:last-child {
+#poanpwmiwo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#pchafqisnz .gt_column_spanner {
+#poanpwmiwo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1044,8 +1128,11 @@ through <code>cfbfastR</code>.</p>
   width: 100%;
 }
 
-#pchafqisnz .gt_group_heading {
-  padding: 8px;
+#poanpwmiwo .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1066,7 +1153,7 @@ through <code>cfbfastR</code>.</p>
   vertical-align: middle;
 }
 
-#pchafqisnz .gt_empty_group_heading {
+#poanpwmiwo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1081,15 +1168,15 @@ through <code>cfbfastR</code>.</p>
   vertical-align: middle;
 }
 
-#pchafqisnz .gt_from_md > :first-child {
+#poanpwmiwo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#pchafqisnz .gt_from_md > :last-child {
+#poanpwmiwo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#pchafqisnz .gt_row {
+#poanpwmiwo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1108,7 +1195,7 @@ through <code>cfbfastR</code>.</p>
   overflow-x: hidden;
 }
 
-#pchafqisnz .gt_stub {
+#poanpwmiwo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1117,10 +1204,29 @@ through <code>cfbfastR</code>.</p>
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #D3D3D3;
-  padding-left: 12px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#pchafqisnz .gt_summary_row {
+#poanpwmiwo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#poanpwmiwo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#poanpwmiwo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1130,17 +1236,26 @@ through <code>cfbfastR</code>.</p>
   padding-right: 5px;
 }
 
-#pchafqisnz .gt_first_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
+#poanpwmiwo .gt_first_summary_row {
   border-top-style: solid;
-  border-top-width: 2px;
   border-top-color: #D3D3D3;
 }
 
-#pchafqisnz .gt_grand_summary_row {
+#poanpwmiwo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#poanpwmiwo .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#poanpwmiwo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1150,7 +1265,7 @@ through <code>cfbfastR</code>.</p>
   padding-right: 5px;
 }
 
-#pchafqisnz .gt_first_grand_summary_row {
+#poanpwmiwo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1160,11 +1275,11 @@ through <code>cfbfastR</code>.</p>
   border-top-color: #D3D3D3;
 }
 
-#pchafqisnz .gt_striped {
+#poanpwmiwo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#pchafqisnz .gt_table_body {
+#poanpwmiwo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1173,7 +1288,7 @@ through <code>cfbfastR</code>.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#pchafqisnz .gt_footnotes {
+#poanpwmiwo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1187,13 +1302,16 @@ through <code>cfbfastR</code>.</p>
   border-right-color: #D3D3D3;
 }
 
-#pchafqisnz .gt_footnote {
+#poanpwmiwo .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#pchafqisnz .gt_sourcenotes {
+#poanpwmiwo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1207,44 +1325,80 @@ through <code>cfbfastR</code>.</p>
   border-right-color: #D3D3D3;
 }
 
-#pchafqisnz .gt_sourcenote {
+#poanpwmiwo .gt_sourcenote {
   font-size: 90%;
-  padding: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#pchafqisnz .gt_left {
+#poanpwmiwo .gt_left {
   text-align: left;
 }
 
-#pchafqisnz .gt_center {
+#poanpwmiwo .gt_center {
   text-align: center;
 }
 
-#pchafqisnz .gt_right {
+#poanpwmiwo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#pchafqisnz .gt_font_normal {
+#poanpwmiwo .gt_font_normal {
   font-weight: normal;
 }
 
-#pchafqisnz .gt_font_bold {
+#poanpwmiwo .gt_font_bold {
   font-weight: bold;
 }
 
-#pchafqisnz .gt_font_italic {
+#poanpwmiwo .gt_font_italic {
   font-style: italic;
 }
 
-#pchafqisnz .gt_super {
+#poanpwmiwo .gt_super {
   font-size: 65%;
 }
 
-#pchafqisnz .gt_footnote_marks {
+#poanpwmiwo .gt_two_val_uncert {
+  display: inline-block;
+  line-height: 1em;
+  text-align: right;
+  font-size: 60%;
+  vertical-align: -0.25em;
+  margin-left: 0.1em;
+}
+
+#poanpwmiwo .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
-  font-size: 65%;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#poanpwmiwo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#poanpwmiwo .gt_slash_mark {
+  font-size: 0.7em;
+  line-height: 0.7em;
+  vertical-align: 0.15em;
+}
+
+#poanpwmiwo .gt_fraction_numerator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: 0.45em;
+}
+
+#poanpwmiwo .gt_fraction_denominator {
+  font-size: 0.6em;
+  line-height: 0.6em;
+  vertical-align: -0.05em;
 }
 </style>
 <table class="table gt_table">
@@ -1374,14 +1528,12 @@ through <code>cfbfastR</code>.</p>
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by <a href="https://twitter.com/mrcaseb" class="external-link">Sebastian
-Carl</a>, <a href="https://twitter.com/JaredDLee" class="external-link">Jared Lee</a>.</p>
+<p>Developed by <a href="https://twitter.com/mrcaseb" class="external-link">Sebastian Carl</a>, <a href="https://twitter.com/JaredDLee" class="external-link">Jared Lee</a>.</p>
 </div>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a>
-2.0.0.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
