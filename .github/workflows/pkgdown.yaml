@@ -26,7 +26,10 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
-          extra-packages: pkgdown
+          extra-packages: |
+            pkgdown
+            sportsdataverse/cfbfastr
+            
           needs: website
 
       - name: Deploy package
