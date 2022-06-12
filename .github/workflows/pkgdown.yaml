@@ -28,7 +28,7 @@ jobs:
         with:
           extra-packages: |
             pkgdown
-            sportsdataverse/cfbfastr
+            sportsdataverse/cfbfastR
             
           needs: website
 
