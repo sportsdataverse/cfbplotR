@@ -27,4 +27,5 @@ and `element_path()` which translate college team names or player IDs into team 
 * added `P5` and `G5` catagories to `valid_team_names()`
 * added the `gt_merge_stack_team_color()` function (v0.0.0.9012)
 * added the `ggtitle_image()` and `theme_title_image()` functions (v0.0.0.9013)
-* fixed but with American Athletic conference logo not working properly (v0.0.0.9014)
+* added >350 wordmarks for all FBS teams and many other schools and conferences from sportslogos.net
+* added `geom_cfb_wordmarks()` geom, `element_cfb_wordmark()` element, and `gt_fmt_cfb_wordmark()` function to implement new wordmarks. (v0.0.0.9014)

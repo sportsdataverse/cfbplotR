@@ -91,7 +91,9 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
       seasons <- 2021
     }
     rosters <- purrr::map_df(seasons, function(x){
-      readRDS(url(glue::glue("https://github.com/saiemgilani/cfbfastR-data/blob/master/rosters/rds/cfb_rosters_{x}.rds?raw=true"))) %>%
+      readRDS(
+        url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))
+      ) %>%
         dplyr::transmute(
           season = x,
           athlete_id,
@@ -106,7 +108,9 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
     season_col_present <- FALSE
     cli::cli_alert_info("No season column, using 2021 rosters")
     rosters <- purrr::map_df(2021, function(x){
-      readRDS(url(glue::glue("https://github.com/saiemgilani/cfbfastR-data/blob/master/rosters/rds/cfb_rosters_{x}.rds?raw=true"))) %>%
+      readRDS(
+        url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))
+      ) %>%
         dplyr::transmute(
           season = x,
           athlete_id,
