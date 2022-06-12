@@ -3,8 +3,8 @@ pkgdown: 2.0.3
 pkgdown_sha: ~
 articles:
   tutorial: tutorial.html
-last_built: 2022-06-08T04:55Z
+last_built: 2022-06-12T20:34Z
 urls:
-  reference: https://Kazink36.github.io/cfbplotR/reference
-  article: https://Kazink36.github.io/cfbplotR/articles
+  reference: https://cfbplotR.sportsdataverse.org/reference
+  article: https://cfbplotR.sportsdataverse.org/articles
 

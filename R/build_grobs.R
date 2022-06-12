@@ -1,6 +1,6 @@
 # INTERNAL HELPER THAT BUILD THE GROBS FOR
 # GEOM LOGOS AND HEADSHOTS
-build_grobs <- function(i, alpha, colour, data, type = c("teams", "headshots", "path")) {
+build_grobs <- function(i, alpha, colour, data, type = c("teams", "headshots", "wordmarks", "path")) {
   make_null <- FALSE
   type <- rlang::arg_match(type)
   if(type == "teams"){
@@ -12,6 +12,17 @@ build_grobs <- function(i, alpha, colour, data, type = c("teams", "headshots", "
     }
     if (is.na(team)){ make_null <- TRUE}
     else{image_to_read <- logo_list[[team]]}
+
+  } else if(type == "wordmarks") {
+    team <- data$team[i]
+    team <- cfbplotR::clean_school_names(as.character(team))
+    if (!team %in% names(wordmark_list)) {
+      cli::cli_warn("{data$team[i]} does not have a wordmark (row {i})")
+      team <- "NCAA"
+    }
+    image_to_read <- wordmark_list[[team]]
+    if (is.na(team)) make_null <- TRUE
+
   } else if (type == "path"){
     image_to_read <- data$path[i]
   } else {

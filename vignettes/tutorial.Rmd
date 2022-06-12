@@ -71,7 +71,7 @@ ggplot(team_plot_data, aes(x = pass_epa, y = rush_epa)) +
   theme_bw()
 ```
 
-This is still pretty messy because of the large number of teams. Let's try to focus in on the Pac-12 teams with a couple of handy tools. We're going to add two columns to our data: one for the color and one for the alpha. Then we just add those two columns as aesthetics to `geom_cfb_logos` to turn the logos of non-Pac-12 teams black and white and lower the alpha. The `ggtitle_image()` function allows us to add an image to the title with either the url of the image or one of `valid_team_names()`. It must be combined with `theme_title_image()` or setting the `plot.title` attribute of `ggplot2::theme()` to `ggtext::element_markdown()`.
+This is still pretty messy because of the large number of teams. Let's try to focus in on the Pac-12 teams with a couple of handy tools. We're going to add two columns to our data: one for the color and one for the alpha. Then we just add those two columns as aesthetics to `geom_cfb_logos` to turn the logos of non-Pac-12 teams black and white and lower the alpha.
 
 ```{r gray}
 team_plot_data %>% 
@@ -82,11 +82,8 @@ team_plot_data %>%
   geom_cfb_logos(aes(team = team, alpha = alpha, color = color), width = 0.075) +
   scale_alpha_identity() +
   scale_color_identity() +
-  ggtitle_image(title_image = "Pac-12", title = " Pac-12 Offenses",
-                image_height = 40, image_side = "right") +
   labs(x = "EPA per Pass",y = "EPA per Rush") +
-  theme_bw() +
-  theme_title_image(size = 20,hjust = 0.5)
+  theme_bw()
 ```
 
 Finally let's make a bar chart showing the Pac-12 EPA per pass for each team. Because `cfbplotR` creates a custom geom for ggplot, we can use `annotate()` to place a log anywhere we'd like. `scale_color_cfb()` and `scale_fill_cfb()` let us automatically use a teams primary color on a plot. The `alt_colors` argument lets us pass through a vector of team names that we want to use an alternate color for. ~~`sacle_x_cfb()` and `scale_y_cfb()` change the axis labels that are team names into logos. Due to the way ggplot works, you have to add the corresponding theme function `theme_x_cfb()` or `theme_y_cfb()`.~~ `element_cfb_logo()` and `element_cfb_headshot()` can be used for the axis.text argument in the theme function for improved performance in using logos and headshots as axis labels.
@@ -143,19 +140,20 @@ player_plot_data %>%
 
 ## Tables with cfbplotR
 
-The `gt` package offers an easy way to create nice tables of data and the `gtExtras` package from Tom Mock provides a number of convenient functions for styling those tables. The `gt_fmt_cfb_logo()` function is a slightly modified version of `gtExtras::gt_image_rows()` to easily add team and conference logos based on names from `valid_team_names()`. The `gt_merge_stack_team_color()` function is a slightly modified version of `gtExtras::gt_merge_stack()` that merges two columns together and colors the text of the bottom row with the color of the team referenced in a third column. We can quickly make a table showing the top teams from week 1 by EPA per pass.
+The `gt` package offers an easy way to create nice tables of data and the `gtExtras` package from Tom Mock provides a number of convenient functions for styling those tables. The `gt_fmt_cfb_logo()` and `gt_fmt_cfb_wordmark()` functions are slightly modified versions of `gtExtras::gt_image_rows()` to easily add team and conference logos or wordmarks based on names from `valid_team_names()`. The `gt_merge_stack_team_color()` function is a slightly modified version of `gtExtras::gt_merge_stack()` that merges two columns together and colors the text of the bottom row with the color of the team referenced in a third column. We can quickly make a table showing the top teams from week 1 by EPA per pass.
 
 ```{r fmt_cfb}
 library(gt)
 
 team_plot_data %>% 
-  transmute(conference, team,logo = team, mascot,
+  transmute(conference, team,logo = team, mascot, wordmark = team,
             pass_epa = round(pass_epa,2),n_pass, 
             rush_epa = round(rush_epa,2),n_rush) %>% 
   arrange(desc(pass_epa)) %>% 
   head(8) %>% 
   gt() %>% 
   gt_fmt_cfb_logo(columns = c(conference,logo)) %>% 
+  gt_fmt_cfb_wordmark(columns = wordmark) %>% 
   gt_merge_stack_team_color(team,mascot,team)
 ```
 

@@ -21,16 +21,20 @@
 #' library(gt)
 #' library(cfbplotR)
 #'
-#'df <- data.frame(team = valid_team_names()[1:8],logo = valid_team_names()[1:8])
+#' df <- data.frame(team = valid_team_names()[1:8],
+#'                  logo = valid_team_names()[1:8],
+#'                  wordmark = valid_team_names()[1:8])
 #'
-#'table <- df %>%
+#' table <- df %>%
 #'  gt() %>%
-#'  gt_fmt_cfb_logo(columns = "logo")
+#'  gt_fmt_cfb_logo(columns = "logo") %>%
+#'  gt_fmt_cfb_wordmark(columns = "wordmark")
 #'
 #'df <- data.frame(
 #'  player = c("Britain Covey", "Cameron Rising","Non.Match"),
 #'  team = c("Utah","Utah","BYU")
-#') %>% cfbplotR::add_athlete_id_col(player)
+#') %>%
+#'  cfbplotR::add_athlete_id_col(player)
 #'table_2 <- df %>%
 #'  gt() %>%
 #'  gt_fmt_cfb_headshot(athlete_id)
@@ -79,6 +83,42 @@ gt_fmt_cfb_logo <- function(gt_object, columns, height = 30){
     )
 
 }
+
+
+#' @rdname gt_cfb
+#' @export
+
+gt_fmt_cfb_wordmark <- function(gt_object, columns, height = 30) {
+
+  column_names <- gt:::resolve_cols_c(
+    expr = {{ columns }},
+    data = gt_object
+  )
+
+  stub_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]]=="stub")]
+  grp_var <- gt_object[["_boxhead"]][["var"]][which(gt_object[["_boxhead"]][["type"]]=="row_group")]
+
+  # need to correct for rownames
+  gt_object %>%
+    gt::text_transform(
+      locations = if(isTRUE(grp_var %in% column_names)){
+        gt::cells_row_groups()
+      } else if(isTRUE(stub_var %in% column_names)){
+        gt::cells_stub(rows = gt::everything())
+      } else {
+        gt::cells_body({{ columns }})
+      },
+      fn = function(x){
+        #Fix Texas A&M
+        x <- sub("&amp;","&",x)
+        x <- cfbplotR::clean_school_names(as.character(x))
+        x[which(!x%in%names(wordmark_list))] <- "NCAA"
+        gt::web_image(url = wordmark_list[x], height = height)
+      }
+    )
+
+}
+
 
 #' @rdname gt_cfb
 #' @export
