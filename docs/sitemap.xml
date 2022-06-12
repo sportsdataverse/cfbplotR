@@ -1,93 +1,99 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/404.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/404.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/LICENSE-text.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/LICENSE.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/articles/index.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/articles/tutorial.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/articles/tutorial.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/authors.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/authors.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/index.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/index.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/news/index.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/news/index.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/add_athlete_id_col.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/add_athlete_id_col.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/cfb_team_tiers.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/cfb_team_tiers.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/cfbplotR-package.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/cfbplotR-package.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/clean_school_names.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/clean_school_names.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/element.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/element.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/geom_cfb_headshots.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/geom_cfb_headshots.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/geom_cfb_logos.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/geom_cfb_logos.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/geom_from_path.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/geom_cfb_wordmarks.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/geom_lines.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/geom_from_path.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/geom_median_lines.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/geom_lines.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/ggpreview.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/geom_median_lines.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/gt_cfb.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/ggpreview.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/gt_fmt_cfb.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/ggtitle_image.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/gt_fmt_cfb_logo.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/gt_cfb.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/gt_stack_team.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/gt_fmt_cfb.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/index.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/gt_fmt_cfb_logo.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/middle_geoms.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/gt_stack_team.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/nfl_team_tiers.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/scale_axes_cfb.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/middle_geoms.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/scale_color_cfb.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/nfl_team_tiers.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/theme_cfb.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/scale_axes_cfb.html</loc>
   </url>
   <url>
-    <loc>https://Kazink36.github.io/cfbplotR/reference/valid_team_names.html</loc>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/scale_color_cfb.html</loc>
+  </url>
+  <url>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/theme_cfb.html</loc>
+  </url>
+  <url>
+    <loc>https://cfbplotR.sportsdataverse.org/reference/valid_team_names.html</loc>
   </url>
 </urlset>

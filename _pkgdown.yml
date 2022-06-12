@@ -1,4 +1,4 @@
-url: https://Kazink36.github.io/cfbplotR/
+url: https://cfbplotR.sportsdataverse.org
 
 template:
   params:
@@ -55,6 +55,8 @@ navbar:
       - text: "Plots"
       - text: "Plot Logos"
         href: reference/geom_cfb_logos.html
+      - text: "Plot Wordmarks"
+        href: reference/geom_cfb_wordmarks.html
       - text: "Plot Headshots"
         href: reference/geom_cfb_headshots.html
       - text: "Plot from Path"
@@ -73,7 +75,7 @@ navbar:
         href: reference/cfb_team_tiers.html
       - text: --------------------------------
       - text: "Tables"
-      - text: "Add Logos/Headshots"
+      - text: "Add Logos/Wordmarks/Headshots"
         href: reference/gt_cfb.html
       - text: "Merge Columns with Team Color"
         href: reference/gt_stack_team.html
@@ -85,7 +87,6 @@ navbar:
         href: reference/clean_school_names.html
       - text: "Athlete IDs"
         href: reference/add_athlete_id_col.html
-
     articles:
       text: "Intro"
       href: articles/tutorial.html
@@ -98,25 +99,31 @@ navbar:
       - text: --------------------------------
       - text: R Packages
       - text: sportsdataverse-R
-        href: https://saiemgilani.github.io/sportsdataverse-R/
+        href: https://r.sportsdataverse.org/
       - text: cfbfastR
-        href: https://saiemgilani.github.io/cfbfastR/
+        href: https://cfbfastR.sportsdataverse.org/
       - text: hoopR
         href: https://hoopR.sportsdataverse.org/
       - text: wehoop
         href: https://wehoop.sportsdataverse.org/
+      - text: toRvik
+        href: https://torvik.dev/
       - text: fastRhockey
-        href: https://BenHowell71.github.io/fastRhockey/
-      - text: worldfootballR
-        href: https://jaseziv.github.io/worldfootballR/
+        href: https://fastRhockey.sportsdataverse.org/
       - text: baseballr
         href: https://BillPetti.github.io/baseballr/
+      - text: worldfootballR
+        href: https://jaseziv.github.io/worldfootballR/
+      - text: chessR
+        href: https://jaseziv.github.io/chessR/
+      - text: sportyR
+        href: https://rossdrucker.github.io/sportyR/
       - text: cfbplotR
-        href: https://kazink36.github.io/cfbplotR/
+        href: https://cfbplotR.sportsdataverse.org/
       - text: cfb4th
-        href: https://kazink36.github.io/cfb4th/
+        href: https://cfb4th.sportsdataverse.org/
       - text: recruitR
-        href: https://saiemgilani.github.io/recruitR/
+        href: https://recruitr.sportsdataverse.org/
       - text: gamezoneR
         href: https://jacklich10.github.io/gamezoneR/
       - text: puntr
@@ -128,7 +135,7 @@ navbar:
       - text: --------------------------------
       - text: Node.js Packages
       - text: sportsdataverse.js
-        href: https://saiemgilani.github.io/sportsdataverse/
+        href: https://js.sportsdataverse.org/
       - text: nfl-nerd
         href: https://github.com/nntrn/nfl-nerd/
     github:
@@ -136,7 +143,7 @@ navbar:
       href: https://github.com/Kazink36/cfbplotR/
     repo:
       url:
-      home: https://github.com/Kazink36/cfbplotR/
-      source: https://github.com/Kazink36/cfbplotR/blob/master/
-      issue: https://github.com/Kazink36/cfbplotR/issues/issues/
+      home: https://github.com/sportsdataverse/cfbplotR/
+      source: https://github.com/sportsdataverse/cfbplotR/blob/main/
+      issue: https://github.com/sportsdataverse/cfbplotR/issues/issues/
       user: https://github.com/Kazink36/

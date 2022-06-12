@@ -3,10 +3,13 @@
 \name{gt_cfb}
 \alias{gt_cfb}
 \alias{gt_fmt_cfb_logo}
+\alias{gt_fmt_cfb_wordmark}
 \alias{gt_fmt_cfb_headshot}
 \title{Add logos into rows of a \code{gt} table}
 \usage{
 gt_fmt_cfb_logo(gt_object, columns, height = 30)
+
+gt_fmt_cfb_wordmark(gt_object, columns, height = 30)
 
 gt_fmt_cfb_headshot(gt_object, columns, height = 30)
 }
@@ -39,16 +42,20 @@ written by Tom Mock, which is a wrapper around \code{gt::text_transform()} + \co
 library(gt)
 library(cfbplotR)
 
-df <- data.frame(team = valid_team_names()[1:8],logo = valid_team_names()[1:8])
+df <- data.frame(team = valid_team_names()[1:8],
+                 logo = valid_team_names()[1:8],
+                 wordmark = valid_team_names()[1:8])
 
 table <- df \%>\%
  gt() \%>\%
- gt_fmt_cfb_logo(columns = "logo")
+ gt_fmt_cfb_logo(columns = "logo") \%>\%
+ gt_fmt_cfb_wordmark(columns = "wordmark")
 
 df <- data.frame(
  player = c("Britain Covey", "Cameron Rising","Non.Match"),
  team = c("Utah","Utah","BYU")
-) \%>\% cfbplotR::add_athlete_id_col(player)
+) \%>\%
+ cfbplotR::add_athlete_id_col(player)
 table_2 <- df \%>\%
  gt() \%>\%
  gt_fmt_cfb_headshot(athlete_id)

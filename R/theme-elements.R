@@ -5,6 +5,7 @@
 #' functions enable images in non-data components of the plot, e.g. axis text.
 #'
 #'   - `element_cfb_logo()`: draws college team logos instead of their names.
+#'   - `element_cfb_wordmark()`: draws college team wordmarks instead of their names.
 #'   - `element_cfb_headshot()`: draws player headshots instead of their ESPN player IDs.
 #'   - `element_path()`: draws images from valid image URLs instead of the URL.
 #'
@@ -19,8 +20,8 @@
 #' @param hjust,vjust The horizontal and vertical adjustment respectively.
 #'   Must be a numerical value between 0 and 1.
 #' @param size The output grob size in `cm` (!).
-#' @seealso [geom_cfb_logos()], [geom_cfb_headshots()],
-#'   and [geom_from_path()] for more information on valid team abbreviations,
+#' @seealso [geom_cfb_logos()], [geom_cfb_wordmarks()], [geom_cfb_headshots()],
+#'   and [geom_from_path()] for more information on valid team names,
 #'   player IDs, and other parameters.
 #' @return An S3 object of class `element`.
 #' @examples
@@ -86,6 +87,39 @@
 #'   geom_col(width = 0.5) +
 #'   theme_minimal() +
 #'   theme(axis.text.y = element_cfb_headshot())
+#' #############################################################################
+#' # Wordmarks and other Images
+#' #############################################################################
+#'
+#' library(ggplot2)
+#'
+#' df <- dplyr::mutate(mtcars,
+#'   team = sample(c("Utah", "Arizona State", "Oregon", "UCLA"), nrow(mtcars), TRUE),
+#'   player = sample(
+#'   c("4361182", "4426385", "4567048", "4429013"),
+#'   nrow(mtcars),
+#'   TRUE
+#'   )
+#' )
+#'
+#' ggplot(df, aes(x = mpg, y = disp)) +
+#'   geom_point() +
+#'   facet_wrap(vars(team)) +
+#'   labs(
+#'     title = tools::toTitleCase("These are random teams and data"),
+#'     subtitle = "I just want to show how the cfbplotR theme elements work",
+#'     caption = "https://raw.githubusercontent.com/sportsdataverse/sportsdataverse-web/master/public/images/logo.png"
+#'   ) +
+#'   theme_minimal() +
+#'   theme(
+#'     plot.title.position = "plot",
+#'     plot.title = element_text(face = "bold"),
+#'     axis.title = element_blank(),
+#'     # make wordmarks of team abbreviations
+#'     strip.text = element_cfb_wordmark(size = 1),
+#'     # load image from url in caption
+#'     plot.caption = element_path(hjust = 1, size = 0.4)
+#'   )
 #' }
 #' @name element
 #' @aliases NULL
@@ -99,6 +133,17 @@ element_cfb_logo <- function(alpha = NULL, colour = NA, hjust = NULL, vjust = NU
   structure(
     list(alpha = alpha, colour = colour, hjust = hjust, vjust = vjust, size = size),
     class = c("element_cfb_logo", "element_text", "element")
+  )
+}
+
+#' @export
+#' @rdname element
+element_cfb_wordmark <- function(alpha = NULL, colour = NA, hjust = NULL, vjust = NULL,
+                                 color = NULL, size = 0.5) {
+  if (!is.null(color))  colour <- color
+  structure(
+    list(alpha = alpha, colour = colour, hjust = hjust, vjust = vjust, size = size),
+    class = c("element_cfb_wordmark", "element_text", "element")
   )
 }
 
@@ -152,6 +197,46 @@ element_grob.element_cfb_logo <- function(element, label = "", x = NULL, y = NUL
     hjust = hj,
     vjust = vj,
     type = "teams"
+  )
+
+  class(grobs) <- "gList"
+
+  grid::gTree(
+    gp = grid::gpar(),
+    children = grobs,
+    size = size,
+    cl = "axisImageGrob"
+  )
+}
+
+#' @export
+element_grob.element_cfb_wordmark <- function(element, label = "", x = NULL, y = NULL,
+                                              alpha = NULL, colour = NULL,
+                                              hjust = 0.5, vjust = 0.5,
+                                              size = NULL, ...) {
+
+  if (is.null(label)) return(ggplot2::zeroGrob())
+
+  n <- max(length(x), length(y), 1)
+  vj <- element$vjust %||% vjust
+  hj <- element$hjust %||% hjust
+  x <- x %||% unit(rep(hj, n), "npc")
+  y <- y %||% unit(rep(vj, n), "npc")
+  alpha <- alpha %||% element$alpha
+  colour <- colour %||% rep(element$colour, n)
+  size <- size %||% element$size
+
+  grobs <- lapply(
+    seq_along(label),
+    axisImageGrob,
+    alpha = alpha,
+    colour = colour,
+    label = label,
+    x = x,
+    y = y,
+    hjust = hj,
+    vjust = vj,
+    type = "wordmarks"
   )
 
   class(grobs) <- "gList"
@@ -258,6 +343,15 @@ axisImageGrob <- function(i, label, alpha, colour, data, x, y, hjust, vjust,
     }
     if (is.na(team)) {make_null <- TRUE}
     else{image_to_read <- logo_list[[team]]}
+  } else if(type == "wordmarks") {
+    team <- label[i]
+    team <- cfbplotR::clean_school_names(as.character(team))
+    if (!team %in% names(wordmark_list)) {
+      cli::cli_warn("{label[i]} does not have a wordmark")
+      team <- "NCAA"
+    }
+    image_to_read <- wordmark_list[[team]]
+    if (is.na(team)) make_null <- TRUE
   } else if (type == "path"){
     image_to_read <- label[i]
   } else {

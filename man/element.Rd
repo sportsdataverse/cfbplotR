@@ -2,11 +2,21 @@
 % Please edit documentation in R/theme-elements.R
 \name{element}
 \alias{element_cfb_logo}
+\alias{element_cfb_wordmark}
 \alias{element_cfb_headshot}
 \alias{element_path}
 \title{Theme Elements for Image Grobs}
 \usage{
 element_cfb_logo(
+  alpha = NULL,
+  colour = NA,
+  hjust = NULL,
+  vjust = NULL,
+  color = NULL,
+  size = 0.5
+)
+
+element_cfb_wordmark(
   alpha = NULL,
   colour = NA,
   hjust = NULL,
@@ -55,6 +65,7 @@ In conjunction with the \link[ggplot2:theme]{ggplot2::theme} system, the followi
 functions enable images in non-data components of the plot, e.g. axis text.
 \itemize{
 \item \code{element_cfb_logo()}: draws college team logos instead of their names.
+\item \code{element_cfb_wordmark()}: draws college team wordmarks instead of their names.
 \item \code{element_cfb_headshot()}: draws player headshots instead of their ESPN player IDs.
 \item \code{element_path()}: draws images from valid image URLs instead of the URL.
 }
@@ -126,10 +137,43 @@ ggplot(dfh, aes(y = player_id, x = random_value)) +
   geom_col(width = 0.5) +
   theme_minimal() +
   theme(axis.text.y = element_cfb_headshot())
+#############################################################################
+# Wordmarks and other Images
+#############################################################################
+
+library(ggplot2)
+
+df <- dplyr::mutate(mtcars,
+  team = sample(c("Utah", "Arizona State", "Oregon", "UCLA"), nrow(mtcars), TRUE),
+  player = sample(
+  c("4361182", "4426385", "4567048", "4429013"),
+  nrow(mtcars),
+  TRUE
+  )
+)
+
+ggplot(df, aes(x = mpg, y = disp)) +
+  geom_point() +
+  facet_wrap(vars(team)) +
+  labs(
+    title = tools::toTitleCase("These are random teams and data"),
+    subtitle = "I just want to show how the cfbplotR theme elements work",
+    caption = "https://raw.githubusercontent.com/sportsdataverse/sportsdataverse-web/master/public/images/logo.png"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title.position = "plot",
+    plot.title = element_text(face = "bold"),
+    axis.title = element_blank(),
+    # make wordmarks of team abbreviations
+    strip.text = element_cfb_wordmark(size = 1),
+    # load image from url in caption
+    plot.caption = element_path(hjust = 1, size = 0.4)
+  )
 }
 }
 \seealso{
-\code{\link[=geom_cfb_logos]{geom_cfb_logos()}}, \code{\link[=geom_cfb_headshots]{geom_cfb_headshots()}},
-and \code{\link[=geom_from_path]{geom_from_path()}} for more information on valid team abbreviations,
+\code{\link[=geom_cfb_logos]{geom_cfb_logos()}}, \code{\link[=geom_cfb_wordmarks]{geom_cfb_wordmarks()}}, \code{\link[=geom_cfb_headshots]{geom_cfb_headshots()}},
+and \code{\link[=geom_from_path]{geom_from_path()}} for more information on valid team names,
 player IDs, and other parameters.
 }

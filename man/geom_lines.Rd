@@ -84,7 +84,7 @@ aesthetics (at least one of the bold aesthetics is required):
 }
 
 \examples{
-library(nflplotR)
+library(cfbplotR)
 library(ggplot2)
 
 # inherit top level aesthetics
