@@ -1,5 +1,15 @@
 #' Output Valid CFB Team Names and Abbreviations
 #'
+#' @param division Division to filter for. Options include:
+#'  - FBS
+#'  - P5
+#'  - G5
+#'  - FCS
+#'  - DII
+#'  - DIII
+#'  - Conference
+#'  - hoopR
+#'  - Other
 #' @export
 #' @examples
 #' # List valid team abbreviations excluding duplicates
@@ -14,8 +24,8 @@ valid_team_names <- function(division = c("FBS","P5","G5","FCS","DII","DIII","Co
     if(division == "FBS"){division <- c("P5","G5")}
   }
   cfbplotR::logo_ref %>%
-    dplyr::filter(type %in% division) %>%
-    dplyr::pull(school)
+    dplyr::filter(.data$type %in% division) %>%
+    dplyr::pull(.data$school)
 }
 
 

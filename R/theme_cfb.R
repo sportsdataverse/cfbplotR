@@ -45,7 +45,7 @@ theme_x_cfb <- function(){
       'Please install it with {.var install.packages("ggtext")}'
     ))
   }
-  loadNamespace("gridtext", versionCheck = list(op = ">", version = "0.1.4"))
+  loadNamespace("gridtext", versionCheck = list(op = ">=", version = "0.1.4"))
   ggplot2::theme(axis.text.x = ggtext::element_markdown())
 }
 
@@ -58,6 +58,6 @@ theme_y_cfb <- function(){
       'Please install it with {.var install.packages("ggtext")}'
     ))
   }
-  loadNamespace("gridtext", versionCheck = list(op = ">", version = "0.1.4"))
+  loadNamespace("gridtext", versionCheck = list(op = ">=", version = "0.1.4"))
   ggplot2::theme(axis.text.y = ggtext::element_markdown())
 }

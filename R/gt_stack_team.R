@@ -24,7 +24,8 @@
 #' @import gt
 #' @examples
 #' library(gt)
-#' teams <- "https://github.com/saiemgilani/cfbfastR-data/raw/master/team_info/rds/cfb_team_info_2020.rds"
+#' teams <-
+#' "https://github.com/sportsdataverse/cfbfastR-data/raw/main/team_info/rds/cfb_team_info_2020.rds"
 #' team_df <- readRDS(url(teams))
 #'
 #' stacked_tab <- team_df %>%
@@ -52,7 +53,7 @@ gt_merge_stack_team_color <- function (gt_object, col1, col2, team_col, font_siz
   team_color <- dplyr::left_join(
     data.frame(team = team_bare),
     cfbplotR::logo_ref %>%
-      dplyr::select(team = school,color),
+      dplyr::select(team = .data$school,color),
     by = "team") %>%
     dplyr::mutate(color = ifelse(is.na(color),"grey",color)) %>%
     dplyr::pull(color)

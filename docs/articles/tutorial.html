@@ -221,10 +221,10 @@
       <a href="https://collegefootballdata.com" class="external-link">CFBData.com</a>
     </li>
     <li>
-      <a href="https://github.com/saiemgilani/cfbfastR-data" class="external-link">Data Repository</a>
+      <a href="https://github.com/sportsdataverse/cfbfastR-data" class="external-link">Data Repository</a>
     </li>
     <li>
-      <a href="https://github.com/saiemgilani/cfbfastR-raw" class="external-link">Raw Data Repository</a>
+      <a href="https://github.com/sportsdataverse/cfbfastR-raw" class="external-link">Raw Data Repository</a>
     </li>
   </ul>
 </li>
@@ -277,7 +277,7 @@ include college football team logos in your ggplot.</p>
 <div class="section level2">
 <h2 id="load-and-process-data">Load and Process Data<a class="anchor" aria-label="anchor" href="#load-and-process-data"></a>
 </h2>
-<p>First we need to load the necessary libraries. <a href="https://saiemgilani.github.io/cfbfastR/index.html" class="external-link"><code>cfbfastR</code></a>
+<p>First we need to load the necessary libraries. <a href="https://sportsdataverse.github.io/cfbfastR/index.html" class="external-link"><code>cfbfastR</code></a>
 will get us the data we want to use for analysis. <a href="https://Kazink36.github.io/cfbplotR/index.html" class="external-link"><code>cfbplotR</code></a>
 will help us easily plot the results. <code>tidyverse</code> will help
 us do the necessary data manipulation and of course includes
@@ -285,11 +285,11 @@ us do the necessary data manipulation and of course includes
 commented out code to install these packages if you don’t already have
 them.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#remotes::install_github(repo = "saiemgilani/cfbfastR")</span>
+<code class="sourceCode R"><span class="co">#remotes::install_github(repo = "sportsdataverse/cfbfastR")</span>
 <span class="co">#remotes::install_github(repo = "Kazink36/cfbplotR")</span>
 <span class="co">#install.packages(tidyverse)</span>
 
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://saiemgilani.github.io/cfbfastR/" class="external-link">cfbfastR</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sportsdataverse.github.io/cfbfastR/" class="external-link">cfbfastR</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://kazink36.github.io/cfbplotR" class="external-link">cfbplotR</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org" class="external-link">tidyverse</a></span><span class="op">)</span></code></pre></div>
 <pre><code><span class="co">## Warning: package 'ggplot2' was built under R version 4.1.2</span></code></pre>

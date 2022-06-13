@@ -189,10 +189,10 @@ This is a slightly modified version of gtExtras::gt_merge_stack()  written by To
       <a href="https://collegefootballdata.com" class="external-link">CFBData.com</a>
     </li>
     <li>
-      <a href="https://github.com/saiemgilani/cfbfastR-data" class="external-link">Data Repository</a>
+      <a href="https://github.com/sportsdataverse/cfbfastR-data" class="external-link">Data Repository</a>
     </li>
     <li>
-      <a href="https://github.com/saiemgilani/cfbfastR-raw" class="external-link">Raw Data Repository</a>
+      <a href="https://github.com/sportsdataverse/cfbfastR-raw" class="external-link">Raw Data Repository</a>
     </li>
   </ul></li>
 <li>
@@ -275,10 +275,10 @@ This is a slightly modified version of <a href="https://jthomasmock.github.io/gt
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com/" class="external-link">gt</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="va">teams</span> <span class="op">&lt;-</span> <span class="st">"https://github.com/saiemgilani/cfbfastR-data/raw/master/team_info/rds/cfb_team_info_2020.rds"</span></span>
+<span class="r-in"><span class="va">teams</span> <span class="op">&lt;-</span> <span class="st">"https://github.com/sportsdataverse/cfbfastR-data/raw/master/team_info/rds/cfb_team_info_2020.rds"</span></span>
 <span class="r-in"><span class="va">team_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/readRDS.html" class="external-link">readRDS</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/connections.html" class="external-link">url</a></span><span class="op">(</span><span class="va">teams</span><span class="op">)</span><span class="op">)</span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>cannot open URL 'https://github.com/sportsdataverse/cfbfastR-data/raw/master/team_info/rds/cfb_team_info_2020.rds': HTTP status was '404 Not Found'</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in readRDS(url(teams)):</span> cannot open the connection to 'https://github.com/saiemgilani/cfbfastR-data/raw/master/team_info/rds/cfb_team_info_2020.rds'</span>
+<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in readRDS(url(teams)):</span> cannot open the connection to 'https://github.com/sportsdataverse/cfbfastR-data/raw/master/team_info/rds/cfb_team_info_2020.rds'</span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">stacked_tab</span> <span class="op">&lt;-</span> <span class="va">team_df</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span class="r-in">  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">transmute</a></span><span class="op">(</span>logo <span class="op">=</span> <span class="va">school</span>,<span class="va">school</span>,<span class="va">mascot</span>,<span class="va">conference</span>,<span class="va">city</span>,<span class="va">state</span><span class="op">)</span> <span class="op"><a href="https://gt.rstudio.com/reference/pipe.html" class="external-link">%&gt;%</a></span></span>

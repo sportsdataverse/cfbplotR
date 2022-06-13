@@ -15,7 +15,7 @@ it will be replaced with \code{NA}.}
 }
 \value{
 A character vector with the length of \code{school} and cleaned team abbreviations
-if they are included in \code{\link{team_name_mapping}}. Non matches may be replaced
+if they are included in \code{team_name_mapping}. Non matches may be replaced
 with \code{NA} (depending on the value of \code{keep_non_matches}).
 }
 \description{

@@ -47,7 +47,8 @@ This is a slightly modified version of \href{https://jthomasmock.github.io/gtExt
 
 \examples{
 library(gt)
-teams <- "https://github.com/saiemgilani/cfbfastR-data/raw/master/team_info/rds/cfb_team_info_2020.rds"
+teams <-
+"https://github.com/sportsdataverse/cfbfastR-data/raw/main/team_info/rds/cfb_team_info_2020.rds"
 team_df <- readRDS(url(teams))
 
 stacked_tab <- team_df \%>\%

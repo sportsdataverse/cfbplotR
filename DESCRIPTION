@@ -19,23 +19,28 @@ Depends:
     R (>= 3.5.0)
 Imports: 
     cli (>= 3.0.0),
+    dplyr,
     ggplot2 (>= 3.3.0),
+    glue,
     grid,
     gridtext (>= 0.1.4),
     gt,
     magick (>= 2.7.3),
     magrittr (>= 2.0.0),
+    purrr (>= 0.3.0),
     RCurl,
     rlang (>= 0.4.11),
     scales (>= 1.1.0)
 Suggests: 
-    dplyr (>= 1.0.0),
+    cfbfastR,
+    forcats,
     ggtext (>= 0.1.1),
     knitr,
     rmarkdown,
     rstudioapi (>= 0.13),
     sjmisc (>= 2.8.7),
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    tidyr (>= 1.0.0)
 VignetteBuilder: 
     knitr
 Remotes:

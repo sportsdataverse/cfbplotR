@@ -44,16 +44,16 @@ NULL
 
 #' @rdname ggtitle_image
 #' @export
-ggtitle_image <- function (title_image = waiver(), title = waiver(),
+ggtitle_image <- function (title_image = ggplot2::waiver(), title = ggplot2::waiver(),
                            image_height = 15, image_side = c("left","right"),
-                           subtitle = waiver())
+                           subtitle = ggplot2::waiver())
 {
   match.arg(image_side, c("left","right"))
   image_side <- image_side[1]
   school_check <- cfbplotR::clean_school_names(title_image,keep_non_matches = FALSE) %>%
     suppressWarnings()
   if (!is.na(school_check)){#title_image %in% valid_team_names()) {
-    title_image <- cfbplotR:::logo_list[[school_check]]
+    title_image <- logo_list[[school_check]]
   }
 
 
@@ -65,9 +65,9 @@ ggtitle_image <- function (title_image = waiver(), title = waiver(),
   # For potentially aligining image with title text, I don't believe this is currently possible with this image implementation
   # title <- paste0("<span style='vertical-align:top' valign ='center'>",title,"</span>")
 
-  title <- case_when(image_side == "right" ~ paste(title,title_image_tag),
+  title <- dplyr::case_when(image_side == "right" ~ paste(title,title_image_tag),
                      TRUE ~ paste(title_image_tag,title))
-  labs(title = title, subtitle = subtitle)
+  ggplot2::labs(title = title, subtitle = subtitle)
 }
 
 #' @rdname ggtitle_image
@@ -79,7 +79,7 @@ theme_title_image <- function(...) {
       'Please install it with {.var install.packages("ggtext")}'
     ))
   }
-  loadNamespace("gridtext", versionCheck = list(op = ">", version = "0.1.4"))
+  loadNamespace("gridtext", versionCheck = list(op = ">=", version = "0.1.4"))
   ggplot2::theme(
     plot.title = ggtext::element_markdown(...),
   )

@@ -8,6 +8,20 @@ valid_team_names(
   division = c("FBS", "P5", "G5", "FCS", "DII", "DIII", "Conference", "hoopR", "Other")
 )
 }
+\arguments{
+\item{division}{Division to filter for. Options include:
+\itemize{
+\item FBS
+\item P5
+\item G5
+\item FCS
+\item DII
+\item DIII
+\item Conference
+\item hoopR
+\item Other
+}}
+}
 \description{
 Output Valid CFB Team Names and Abbreviations
 }

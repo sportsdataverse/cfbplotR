@@ -136,9 +136,9 @@ navbar:
       - text: sportyR
         href: https://sportyR.sportsdataverse.org/
       - text: cfbplotR
-        href: https://kazink36.github.io/cfbplotR/
+        href: https://cfbplotR.sportsdataverse.org/
       - text: cfb4th
-        href: https://kazink36.github.io/cfb4th/
+        href: https://cfb4th.sportsdataverse.org/
       - text: mlbplotR
         href: https://github.com/camdenk/mlbplotR
       - text: recruitR
@@ -164,12 +164,12 @@ navbar:
       - text: "CFBData.com"
         href: https://collegefootballdata.com
       - text: "Data Repository"
-        href: https://github.com/saiemgilani/cfbfastR-data
+        href: https://github.com/sportsdataverse/cfbfastR-data
       - text: "Raw Data Repository"
-        href: https://github.com/saiemgilani/cfbfastR-raw
+        href: https://github.com/sportsdataverse/cfbfastR-raw
     twitter:
       icon: "fab fa-twitter fa-lg"
       href: http://twitter.com/cfbfastR
     github:
       icon: "fab fa-github fa-lg"
-      href: https://github.com/Kazink36/cfbplotR/
+      href: https://github.com/sportsdataverse/cfbplotR/

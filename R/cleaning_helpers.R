@@ -1,5 +1,5 @@
-#' Standardize NCAA School Names
-#'
+#' @title Standardize NCAA School Names
+#' @description
 #' This function standardizes college names to cfbplotR defaults.
 #' This helps for joins and plotting.
 #'
@@ -9,7 +9,7 @@
 #'   it will be replaced with `NA`.
 #'
 #' @return A character vector with the length of `school` and cleaned team abbreviations
-#'   if they are included in [`team_name_mapping`]. Non matches may be replaced
+#'   if they are included in ```team_name_mapping```. Non matches may be replaced
 #'   with `NA` (depending on the value of `keep_non_matches`).
 #' @export
 #' @examples
@@ -20,8 +20,6 @@
 #'
 #' # replace non matches
 #' clean_school_names(x, keep_non_matches = FALSE)
-
-
 clean_school_names <- function(school, keep_non_matches = TRUE) {
   stopifnot(is.character(school))
   m <- cfbplotR::team_name_mapping
@@ -37,8 +35,8 @@ clean_school_names <- function(school, keep_non_matches = TRUE) {
 }
 
 
-#' Add Athlete ID's to data frame
-#'
+#' @title Add Athlete ID's to data frame
+#' @description
 #' This function attempts to add ESPN athlete ID's to a data frame using the roster data
 #' in the cfbfastR-data repo. The function is experimental and not guaranteed to be accurate.
 #'
@@ -53,9 +51,10 @@ clean_school_names <- function(school, keep_non_matches = TRUE) {
 #' column called "headshot_url" with links for player headshots.
 #'
 #' @return the original `df` with extra columns:
-#' \item{`athlete_id`}{athlete ESPN ID.}
-#' \item{`headshot_url`}{url of athlete's headshot.}
-#'
+#' \describe{
+#'   \item{`athlete_id`}{athlete ESPN ID.}
+#'   \item{`headshot_url`}{url of athlete's headshot.}
+#' }
 #' @export
 #' @examples
 #' \donttest{
@@ -74,7 +73,6 @@ clean_school_names <- function(school, keep_non_matches = TRUE) {
 #' cfbplotR::add_athlete_id_col(x, player_name, team, headshot_urls = TRUE)
 #'}
 
-
 add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FALSE) {
   name_col <- dplyr::enquo(name_col)
   team_col <- dplyr::enquo(team_col)
@@ -82,10 +80,10 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
   if ("season" %in% names(df)) {
     season_col_present <- TRUE
     seasons <- df %>%
-      dplyr::filter(season >= 2009, season <= 2021) %>%
-      dplyr::distinct(season) %>%
-      dplyr::arrange(desc(season)) %>%
-      dplyr::pull(season)
+      dplyr::filter(.data$season >= 2009, .data$season <= 2021) %>%
+      dplyr::distinct(.data$season) %>%
+      dplyr::arrange(desc(.data$season)) %>%
+      dplyr::pull(.data$season)
     if(length(seasons) == 0){
       cli::cli_alert_info("No valid seasons (2009-2021) in season column, using 2021 rosters")
       seasons <- 2021
@@ -96,10 +94,10 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
       ) %>%
         dplyr::transmute(
           season = x,
-          athlete_id,
-          name = paste(first_name, last_name),
-          team,
-          headshot_url
+          .data$athlete_id,
+          name = paste(.data$first_name, .data$last_name),
+          .data$team,
+          .data$headshot_url
         ) %>%
         return()
       }
@@ -113,10 +111,10 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
       ) %>%
         dplyr::transmute(
           season = x,
-          athlete_id,
-          name = paste(first_name, last_name),
-          team,
-          headshot_url
+          .data$athlete_id,
+          name = paste(.data$first_name, .data$last_name),
+          .data$team,
+          .data$headshot_url
         ) %>%
         return()
     }
@@ -124,12 +122,12 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
   }
   if(isFALSE(headshot_urls)){
     rosters <- rosters %>%
-      dplyr::select(-headshot_url)
+      dplyr::select(-.data$headshot_url)
   }
 
   if(rlang::quo_is_null(team_col) & !"team" %in% names(df) & !"school" %in% names(df)) {
     rosters <- rosters %>%
-      dplyr::select(-team)
+      dplyr::select(-.data$team)
     team_col_present <- FALSE
   } else {
     team_col_present <- TRUE

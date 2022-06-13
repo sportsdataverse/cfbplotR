@@ -22,8 +22,10 @@ column called "headshot_url" with links for player headshots.}
 }
 \value{
 the original \code{df} with extra columns:
+\describe{
 \item{\code{athlete_id}}{athlete ESPN ID.}
 \item{\code{headshot_url}}{url of athlete's headshot.}
+}
 }
 \description{
 This function attempts to add ESPN athlete ID's to a data frame using the roster data

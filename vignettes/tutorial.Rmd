@@ -17,16 +17,19 @@ This is a quick tutorial on how to use cfbplotR to quickly and easily include co
 
 ## Load and Process Data
 
-First we need to load the necessary libraries. [`cfbfastR`](https://saiemgilani.github.io/cfbfastR/index.html) will get us the data we want to use for analysis. [`cfbplotR`](https://Kazink36.github.io/cfbplotR/index.html) will help us easily plot the results. `tidyverse` will help us do the necessary data manipulation and of course includes `ggplot2` that we will use for plotting. You can use the commented out code to install these packages if you don't already have them.
+First we need to load the necessary libraries. [`cfbfastR`](https://sportsdataverse.github.io/cfbfastR/index.html) will get us the data we want to use for analysis. [`cfbplotR`](https://Kazink36.github.io/cfbplotR/index.html) will help us easily plot the results. `tidyverse` will help us do the necessary data manipulation and of course includes `ggplot2` that we will use for plotting. You can use the commented out code to install these packages if you don't already have them.
 
 ```{r libraries, message=FALSE}
-#remotes::install_github(repo = "saiemgilani/cfbfastR")
+#remotes::install_github(repo = "sportsdataverse/cfbfastR")
 #remotes::install_github(repo = "Kazink36/cfbplotR")
 #install.packages(tidyverse)
 
 library(cfbfastR)
 library(cfbplotR)
-library(tidyverse)
+library(dplyr, warn.conflicts = FALSE)
+library(ggplot2)
+library(tidyr)
+library(forcats)
 ```
 
 This first chunk of code will pull the play-by-play data from the first week of the 2021 season using the `cfbfastR` data repo and create the advanced metrics like EPA that we will be plotting (this will take a second). We'll also pull in the general team info so we can filter down to just teams in a power 5 conference.

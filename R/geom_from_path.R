@@ -40,12 +40,12 @@
 #'   a = c(sin(2 * pi * (0:4) / 5), 0),
 #'   b = c(cos(2 * pi * (0:4) / 5), 0),
 #'   url = c(
-#'     "https://github.com/saiemgilani/cfbfastR/raw/master/man/figures/logo.png",
-#'     "https://github.com/saiemgilani/hoopR/raw/master/man/figures/logo.png",
+#'     "https://github.com/sportsdataverse/cfbfastR/raw/master/man/figures/logo.png",
+#'     "https://github.com/sportsdataverse/hoopR/raw/master/man/figures/logo.png",
 #'     "https://github.com/Kazink36/cfb4th/raw/master/man/figures/logo.png",
-#'     "https://github.com/saiemgilani/wehoop/raw/master/man/figures/logo.png",
+#'     "https://github.com/sportsdataverse/wehoop/raw/master/man/figures/logo.png",
 #'     "https://github.com/Kazink36/cfbplotR/raw/master/man/figures/logo.png",
-#'     "https://raw.githubusercontent.com/saiemgilani/sportsdataverse-R/main/logo.png"
+#'     "https://raw.githubusercontent.com/sportsdataverse/sportsdataverse-R/main/logo.png"
 #'   )
 #' )
 #'

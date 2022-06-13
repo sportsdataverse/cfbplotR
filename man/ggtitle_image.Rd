@@ -6,11 +6,11 @@
 \title{Functions for adding an image to the title of a ggplot}
 \usage{
 ggtitle_image(
-  title_image = waiver(),
-  title = waiver(),
+  title_image = ggplot2::waiver(),
+  title = ggplot2::waiver(),
   image_height = 15,
   image_side = c("left", "right"),
-  subtitle = waiver()
+  subtitle = ggplot2::waiver()
 )
 
 theme_title_image(...)

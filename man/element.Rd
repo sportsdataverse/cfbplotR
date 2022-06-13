@@ -158,7 +158,9 @@ ggplot(df, aes(x = mpg, y = disp)) +
   labs(
     title = tools::toTitleCase("These are random teams and data"),
     subtitle = "I just want to show how the cfbplotR theme elements work",
-    caption = "https://raw.githubusercontent.com/sportsdataverse/sportsdataverse-web/master/public/images/logo.png"
+    caption =
+    paste0("https://raw.githubusercontent.com/sportsdataverse/sportsdataverse-web/",
+    "master/public/images/logo.png")
   ) +
   theme_minimal() +
   theme(
