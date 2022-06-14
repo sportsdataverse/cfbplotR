@@ -28,9 +28,12 @@ jobs:
         with:
           extra-packages: |
             pkgdown
-            sportsdataverse/cfbfastR
-            
           needs: website
+          
+      - name: Install system dependencies
+        run: |
+          pak::pkg_install("sportsdataverse/cfbfastR")
+        shell: Rscript {0}
 
       - name: Deploy package
         run: |
