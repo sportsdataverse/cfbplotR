@@ -34,6 +34,7 @@ jobs:
             ggimage
             hoopR
             knitr
+            oddsapiR
             pacman
             ragg
             remotes
