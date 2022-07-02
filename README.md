@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# cfbplotR <a href='https://Kazink36.github.io/cfbplotR'><img src='man/figures/logo.png' align="right" width="25%" min-width="120px" /></a>
+# cfbplotR <a href='https://cfbplotR.sportsdataverse.org/'><img src='https://raw.githubusercontent.com/sportsdataverse/cfbplotR/main/man/figures/logo.png' align="right" width="25%" min-width="120px" /></a>
 
 <!-- badges: start -->
 <!-- [![CRAN status](https://img.shields.io/cran/v/cfbplotR?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=cfbplotR) -->
@@ -13,8 +13,8 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg?sty
 <!-- badges: end -->
 
 The code for this package was copied heavily from
-[nflplotR](https://nflverse.github.io/nflplotR/index.html) with minor
-changes to support college football team logos.
+[nflplotR](https://nflplotr.nflverse.com/index.html) with minor changes
+to support college football team logos.
 
 The goal of cfbplotR is to provide functions and geoms that help
 visualization of CFB related analysis. It provides a ggplot2 geom that
@@ -38,13 +38,13 @@ You can install the development version from
 
 ``` r
 if (!require("remotes")) install.packages("remotes")
-remotes::install_github("Kazink36/cfbplotR")
+remotes::install_github("sportsdataverse/cfbplotR")
 ```
 
 ## Using cfbplotR
 
 [You can follow this tutorial to see several different uses for
-`cfbplotR`.](https://kazink36.github.io/cfbplotR/articles/tutorial.html)
+`cfbplotR`.](https://cfbplotR.sportsdataverse.org/articles/tutorial.html)
 The key function in the package is `geom_cfb_logo()` which will add
 college football team logos to a ggplot.
 
@@ -82,7 +82,7 @@ The best places to get help on this package are:
 
 -   messaging [Jared Lee on twitter](https://twitter.com/JaredDLee)
 -   opening [an
-    issue](https://github.com/Kaink36/cfbplotR/issues/new/choose)
+    issue](https://github.com/sportsdataverse/cfbplotR/issues/new/choose)
 
 ## Contributing
 
@@ -90,12 +90,12 @@ Many hands make light work! Here are some ways you can contribute to
 this project:
 
 -   You can [open an
-    issue](https://github.com/Kazink36/cfbplotR/issues/new/choose) if
-    you’d like to request specific data or report a bug/error.
+    issue](https://github.com/sportsdataverse/cfbplotR/issues/new/choose)
+    if you’d like to request specific data or report a bug/error.
 
 ## Terms of Use
 
 The R code for this package is released as open source under the [MIT
-License](https://Kazink36.github.io/cfbplotR/docs/LICENSE.html). CFB
-data accessed by this package belong to their respective owners, and are
+License](https://cfbplotR.sportsdataverse.org/LICENSE.html). CFB data
+accessed by this package belong to their respective owners, and are
 governed by their terms of use.

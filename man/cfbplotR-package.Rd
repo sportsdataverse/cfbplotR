@@ -31,9 +31,9 @@ A set of functions to visualize College Football analysis in 'ggplot2'.
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://kazink36.github.io/cfbplotR}
-  \item \url{https://github.com/Kazink36/cfbplotR}
-  \item Report bugs at \url{https://github.com/Kazink36/cfbplotR/issues}
+  \item \url{https://cfbplotR.sportsdataverse.org}
+  \item \url{https://github.com/sportsdataverse/cfbplotR}
+  \item Report bugs at \url{https://github.com/sportsdataverse/cfbplotR/issues}
 }
 
 }

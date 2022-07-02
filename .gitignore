@@ -1,5 +1,9 @@
 .Rproj.user
-.DS_Store$
-.DS_Store
+.Renviron
 .Rhistory
-^docs$
+.RData
+.Ruserdata
+..Rcheck/00check.log
+inst/doc*
+^docs*
+docs
