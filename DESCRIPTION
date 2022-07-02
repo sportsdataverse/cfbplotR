@@ -36,6 +36,7 @@ Suggests:
     forcats,
     ggtext (>= 0.1.1),
     knitr,
+    remotes,
     rmarkdown,
     rstudioapi (>= 0.13),
     sjmisc (>= 2.8.7),
