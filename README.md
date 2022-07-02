@@ -6,8 +6,12 @@
 <!-- badges: start -->
 <!-- [![CRAN status](https://img.shields.io/cran/v/cfbplotR?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=cfbplotR) -->
 
+[![Version-Number](https://img.shields.io/github/r-package/v/sportsdataverse/cfbplotR?label=cfbplotR&logo=R&style=for-the-badge)](https://github.com/sportsdataverse/cfbplotR/)
+[![R-CMD-check](https://img.shields.io/github/workflow/status/sportsdataverse/cfbplotR/R-CMD-check?label=R-CMD-Check&logo=R&logoColor=white&style=for-the-badge)](https://github.com/sportsdataverse/cfbplotR/actions/workflows/R-CMD-check.yaml)
 [![Lifecycle:
-experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg?style=flat-square)](https://lifecycle.r-lib.org/articles/stages.html)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg?style=for-the-badge&logo=github)](https://lifecycle.r-lib.org/articles/stages.html#experimental)[![Contributors](https://img.shields.io/github/contributors/sportsdataverse/cfbplotR?style=for-the-badge)](https://github.com/sportsdataverse/cfbplotR/graphs/contributors)
+[![Twitter
+Follow](https://img.shields.io/twitter/follow/JaredDLee.svg?color=blue&label=%40JaredDLee&logo=twitter&style=for-the-badge)](https://twitter.com/JaredDLee)
 <!-- [![R build status](https://img.shields.io/github/workflow/status/Kazink36/cfbplotR/R-CMD-check?label=R%20check&style=flat-square&logo=github)](https://github.com/Kazink36/cfbplotR/actions) -->
 <!-- [![R-CMD-check](https://github.com/Kazink36/cfbplotR/workflows/R-CMD-check/badge.svg)](https://github.com/Kazink36/cfbplotR/actions)-->
 <!-- badges: end -->
