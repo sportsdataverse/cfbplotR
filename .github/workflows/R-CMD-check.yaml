@@ -5,6 +5,7 @@ on:
     branches: [main, master]
   pull_request:
     branches: [main, master]
+  workflow_dispatch:
 
 name: R-CMD-check
 
@@ -13,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      CFBD_API_KEY: ${{ secrets.CFBD_API_KEY }}
       R_KEEP_PKG_SOURCE: yes
     steps:
       - uses: actions/checkout@v2
