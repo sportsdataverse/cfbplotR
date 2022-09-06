@@ -53,9 +53,9 @@ gt_merge_stack_team_color <- function (gt_object, col1, col2, team_col, font_siz
   team_color <- dplyr::left_join(
     data.frame(team = team_bare),
     cfbplotR::logo_ref %>%
-      dplyr::select(team = .data$school,color),
+      dplyr::select(team = .data$school, .data$color),
     by = "team") %>%
-    dplyr::mutate(color = ifelse(is.na(color),"grey",color)) %>%
+    dplyr::mutate(color = ifelse(is.na(.data$color),"grey",.data$color)) %>%
     dplyr::pull(color)
 
 
