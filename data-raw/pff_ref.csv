@@ -1,0 +1,131 @@
+franchise_id,team,current_team,current_mascott,division,conference,FBS,color,alt_color,logo,class,team_name
+101,COAF,Air Force,Falcons,Mountain,MWC,1,#004a7b,#ffffff,http://a.espncdn.com/i/teamlogos/ncaa/500/2005.png,Group of 5,AIR FORCE
+102,OHAK,Akron,Zips,East,MAC,1,#00285e,#84754e,http://a.espncdn.com/i/teamlogos/ncaa/500/2006.png,Group of 5,AKRON
+103,ALUN,Alabama,Crimson Tide,West,SEC,1,#690014,#f1f2f3,http://a.espncdn.com/i/teamlogos/ncaa/500/333.png,Power 5,ALABAMA
+108,NCAP,Appalachian State,Mountaineers,East,Sun Belt,1,#000000,#ffcd00,http://a.espncdn.com/i/teamlogos/ncaa/500/2026.png,Group of 5,APP STATE
+109,AZUN,Arizona,Wildcats,South,PAC-12,1,#002449,#00205b,http://a.espncdn.com/i/teamlogos/ncaa/500/12.png,Power 5,ARIZONA
+110,AZST,Arizona State,Sun Devils,South,PAC-12,1,#942139,#f1f2f3,http://a.espncdn.com/i/teamlogos/ncaa/500/9.png,Power 5,ARIZONA ST
+111,ARUN,Arkansas,Razorbacks,West,SEC,1,#9c1831,#000000,http://a.espncdn.com/i/teamlogos/ncaa/500/8.png,Power 5,ARKANSAS
+113,ARST,Arkansas State,Red Wolves,West,Sun Belt,1,#e81018,#000000,http://a.espncdn.com/i/teamlogos/ncaa/500/2032.png,Group of 5,ARK STATE
+114,NYWP,Army,Black Knights,NA,IND,1,#ce9c00,#231f20,http://a.espncdn.com/i/teamlogos/ncaa/500/349.png,Group of 5,ARMY
+115,ALAU,Auburn,Tigers,West,SEC,1,#03244d,#f1f2f3,http://a.espncdn.com/i/teamlogos/ncaa/500/2.png,Power 5,AUBURN
+117,INBS,Ball State,Cardinals,West,MAC,1,#DA0000,#ffffff,http://a.espncdn.com/i/teamlogos/ncaa/500/2050.png,Group of 5,BALL ST
+118,TXBA,Baylor,Bears,NA,Big-12,1,#004834,#ffb81c,http://a.espncdn.com/i/teamlogos/ncaa/500/239.png,Power 5,BAYLOR
+120,IDBO,Boise State,Broncos,Mountain,MWC,1,#09347A,#d8d9da,http://a.espncdn.com/i/teamlogos/ncaa/500/68.png,Group of 5,BOISE ST
+121,MABC,Boston College,Eagles,Atlantic,ACC,1,#88001a,#a39161,http://a.espncdn.com/i/teamlogos/ncaa/500/103.png,Power 5,BOSTON COL
+122,OHBG,Bowling Green,Falcons,East,MAC,1,#2b1000,#492000,http://a.espncdn.com/i/teamlogos/ncaa/500/189.png,Group of 5,BOWL GREEN
+126,NYBU,Buffalo,Bulls,East,MAC,1,#041A9B,#ebebeb,http://a.espncdn.com/i/teamlogos/ncaa/500/2084.png,Group of 5,BUFFALO
+128,UTBY,BYU,Cougars,NA,IND,1,#001E4C,#ffffff,http://a.espncdn.com/i/teamlogos/ncaa/500/252.png,Group of 5,BYU
+130,CAUN,California,Golden Bears,North,PAC-12,1,#031522,#ffc423,http://a.espncdn.com/i/teamlogos/ncaa/500/25.png,Power 5,CAL
+134,MICE,Central Michigan,Chippewas,West,MAC,1,#6a0032,#ffffff,http://a.espncdn.com/i/teamlogos/ncaa/500/2117.png,Group of 5,C MICHIGAN
+136,NCCR,Charlotte,49ers,East,Conference USA,1,#0C562D,#cfab7a,http://a.espncdn.com/i/teamlogos/ncaa/500/2429.png,Group of 5,CHARLOTTE
+138,OHCI,Cincinnati,Bearcats,East,AAC,1,#000000,#717073,http://a.espncdn.com/i/teamlogos/ncaa/500/2132.png,Group of 5,CINCINNATI
+140,SCCL,Clemson,Tigers,Atlantic,ACC,1,#F66733,#522d80,http://a.espncdn.com/i/teamlogos/ncaa/500/228.png,Power 5,CLEMSON
+141,SCCC,Coastal Carolina,Chanticleers,East,Sun Belt,1,#007073,#876447,http://a.espncdn.com/i/teamlogos/ncaa/500/324.png,Group of 5,COAST CAR
+143,COUN,Colorado,Buffaloes,South,PAC-12,1,#d1c57e,#ffd200,http://a.espncdn.com/i/teamlogos/ncaa/500/38.png,Power 5,COLORADO
+144,COST,Colorado State,Rams,Mountain,MWC,1,#004537,#ffc425,http://a.espncdn.com/i/teamlogos/ncaa/500/36.png,Group of 5,COLO STATE
+146,CTUN,Connecticut,Huskies,East,AAC,1,#001d40,#f1f2f3,http://a.espncdn.com/i/teamlogos/ncaa/500/41.png,Group of 5,UCONN
+154,NCDU,Duke,Blue Devils,Coastal,ACC,1,#001A57,#f1f2f3,http://a.espncdn.com/i/teamlogos/ncaa/500/150.png,Power 5,DUKE
+156,NCEA,East Carolina,Pirates,East,AAC,1,#4b1869,#f0907b,http://a.espncdn.com/i/teamlogos/ncaa/500/151.png,Group of 5,E CAROLINA
+160,MIEA,Eastern Michigan,Eagles,West,MAC,1,#00331b,#f0f0f0,http://a.espncdn.com/i/teamlogos/ncaa/500/2199.png,Group of 5,E MICHIGAN
+163,FLUN,Florida,Gators,East,SEC,1,#0021A5,#FA4616,http://a.espncdn.com/i/teamlogos/ncaa/500/57.png,Power 5,FLORIDA
+165,FLAT,Florida Atlantic,Owls,East,Conference USA,1,#004B85,#bb2f4c,http://a.espncdn.com/i/teamlogos/ncaa/500/2226.png,Group of 5,FAU
+166,FLIN,Florida International,Golden Panthers,East,Conference USA,1,#001538,#c5960c,http://a.espncdn.com/i/teamlogos/ncaa/500/2229.png,Group of 5,FIU
+167,FLST,Florida State,Seminoles,Atlantic,ACC,1,#782F40,#ceb888,http://a.espncdn.com/i/teamlogos/ncaa/500/52.png,Power 5,FLORIDA ST
+169,CAFR,Fresno State,Bulldogs,West,MWC,1,#c41230,#231f20,http://a.espncdn.com/i/teamlogos/ncaa/500/278.png,Group of 5,FRESNO ST
+173,GAUN,Georgia,Bulldogs,East,SEC,1,#CC0000,#000000,http://a.espncdn.com/i/teamlogos/ncaa/500/61.png,Power 5,GEORGIA
+174,GASO,Georgia Southern,Eagles,East,Sun Belt,1,#003775,#f0f0f0,http://a.espncdn.com/i/teamlogos/ncaa/500/290.png,Group of 5,GA SOUTHRN
+175,GAST,Georgia State,Panthers,East,Sun Belt,1,#1e539a,#ebebeb,http://a.espncdn.com/i/teamlogos/ncaa/500/2247.png,Group of 5,GA STATE
+176,GATC,Georgia Tech,Yellow Jackets,Coastal,ACC,1,#00223e,#002c56,http://a.espncdn.com/i/teamlogos/ncaa/500/59.png,Power 5,GA TECH
+180,HIUN,Hawai'i,Warriors,West,MWC,1,#003420,#ffffff,http://a.espncdn.com/i/teamlogos/ncaa/500/62.png,Group of 5,HAWAII
+182,TXHO,Houston,Cougars,West,AAC,1,#C90822,#231f20,http://a.espncdn.com/i/teamlogos/ncaa/500/248.png,Group of 5,HOUSTON
+187,ILUN,Illinois,Fighting Illini,West,Big Ten,1,#f77329,#fa6300,http://a.espncdn.com/i/teamlogos/ncaa/500/356.png,Power 5,ILLINOIS
+190,INUN,Indiana,Hoosiers,East,Big Ten,1,#7D110C,#eeedeb,http://a.espncdn.com/i/teamlogos/ncaa/500/84.png,Power 5,INDIANA
+192,IAUN,Iowa,Hawkeyes,West,Big Ten,1,#000000,#ffe100,http://a.espncdn.com/i/teamlogos/ncaa/500/2294.png,Power 5,IOWA
+193,IAST,Iowa State,Cyclones,NA,Big-12,1,#660015,#830b2c,http://a.espncdn.com/i/teamlogos/ncaa/500/66.png,Power 5,IOWA STATE
+198,KSUN,Kansas,Jayhawks,NA,Big-12,1,#0022B4,#e8000d,http://a.espncdn.com/i/teamlogos/ncaa/500/2305.png,Power 5,KANSAS
+199,KSST,Kansas State,Wildcats,NA,Big-12,1,#633194,#e7d2ad,http://a.espncdn.com/i/teamlogos/ncaa/500/2306.png,Power 5,KANSAS ST
+201,OHKS,Kent State,Golden Flashes,East,MAC,1,#002445,#f0b510,http://a.espncdn.com/i/teamlogos/ncaa/500/2309.png,Group of 5,KENT STATE
+202,KYUN,Kentucky,Wildcats,East,SEC,1,#005DAA,#ffffff,http://a.espncdn.com/i/teamlogos/ncaa/500/96.png,Power 5,KENTUCKY
+206,VALB,Liberty,Flames,NA,IND,1,#071740,#a61f21,http://a.espncdn.com/i/teamlogos/ncaa/500/2335.png,Group of 5,LIBERTY
+207,LASW,Louisiana,Ragin' Cajuns,West,Sun Belt,1,#ce2842,NA,http://a.espncdn.com/i/teamlogos/ncaa/500/309.png,Group of 5,LA LAFAYET
+208,LATC,Louisiana Tech,Bulldogs,West,Conference USA,1,#002d65,#d3313a,http://a.espncdn.com/i/teamlogos/ncaa/500/2348.png,Group of 5,LA TECH
+209,LANE,Louisiana Monroe,Warhawks,West,Sun Belt,1,#231F20,#b18445,http://a.espncdn.com/i/teamlogos/ncaa/500/2433.png,Group of 5,LA MONROE
+210,KYLO,Louisville,Cardinals,Atlantic,ACC,1,#ad000a,#cccccc,http://a.espncdn.com/i/teamlogos/ncaa/500/97.png,Power 5,LOUISVILLE
+211,LAST,LSU,Tigers,West,SEC,1,#22005c,#fdd023,http://a.espncdn.com/i/teamlogos/ncaa/500/99.png,Power 5,LSU
+214,WVMA,Marshall,Thundering Herd,East,Conference USA,1,#186329,#be854c,http://a.espncdn.com/i/teamlogos/ncaa/500/276.png,Group of 5,MARSHALL
+215,MDUN,Maryland,Terrapins,East,Big Ten,1,#D5002B,#ffcd00,http://a.espncdn.com/i/teamlogos/ncaa/500/120.png,Power 5,MARYLAND
+216,MAUN,UMass,Minutemen,NA,IND,1,#880007,NA,http://a.espncdn.com/i/teamlogos/ncaa/500/113.png,Group of 5,UMASS
+218,TNMS,Memphis,Tigers,West,AAC,1,#002447,#231f20,http://a.espncdn.com/i/teamlogos/ncaa/500/235.png,Group of 5,MEMPHIS
+220,FLMI,Miami,Hurricanes,Coastal,ACC,1,#004325,#f0f0f0,http://a.espncdn.com/i/teamlogos/ncaa/500/2390.png,Power 5,MIAMI FL
+221,OHMI,Miami (OH),RedHawks,East,MAC,1,#a4000c,#f0f0f0,http://a.espncdn.com/i/teamlogos/ncaa/500/193.png,Group of 5,MIAMI OH
+222,MIUN,Michigan,Wolverines,East,Big Ten,1,#00274c,#ffcb05,http://a.espncdn.com/i/teamlogos/ncaa/500/130.png,Power 5,MICHIGAN
+223,MIST,Michigan State,Spartans,East,Big Ten,1,#18453B,#ffffff,http://a.espncdn.com/i/teamlogos/ncaa/500/127.png,Power 5,MICH STATE
+224,TNMI,Middle Tennessee,Blue Raiders,East,Conference USA,1,#0079C2,#c3c5c8,http://a.espncdn.com/i/teamlogos/ncaa/500/2393.png,Group of 5,MIDDLE TN
+225,MNUN,Minnesota,Golden Gophers,West,Big Ten,1,#7F011B,#7a0019,http://a.espncdn.com/i/teamlogos/ncaa/500/135.png,Power 5,MINNESOTA
+226,MSUN,Ole Miss,Rebels,West,SEC,1,#001148,#00205b,http://a.espncdn.com/i/teamlogos/ncaa/500/145.png,Power 5,OLE MISS
+227,MSST,Mississippi State,Bulldogs,West,SEC,1,#762123,#c8c8c8,http://a.espncdn.com/i/teamlogos/ncaa/500/344.png,Power 5,MISS STATE
+229,MOUN,Missouri,Tigers,East,SEC,1,#000000,#000000,http://a.espncdn.com/i/teamlogos/ncaa/500/142.png,Power 5,MISSOURI
+237,MDNA,Navy,Midshipmen,West,AAC,1,#131630,#b6a77c,http://a.espncdn.com/i/teamlogos/ncaa/500/2426.png,Group of 5,"NAVY"
+238,NEUN,Nebraska,Cornhuskers,West,Big Ten,1,#F20017,#f5f1e7,http://a.espncdn.com/i/teamlogos/ncaa/500/158.png,Power 5,NEBRASKA
+239,NVRE,Nevada,Wolf Pack,West,MWC,1,#153E5F,#8e9295,http://a.espncdn.com/i/teamlogos/ncaa/500/2440.png,Group of 5,NEVADA
+241,NMUN,New Mexico,Lobos,Mountain,MWC,1,#000000,#231f20,http://a.espncdn.com/i/teamlogos/ncaa/500/167.png,Group of 5,NEW MEXICO
+242,NMST,New Mexico State,Aggies,NA,IND,1,#891216,#000000,http://a.espncdn.com/i/teamlogos/ncaa/500/166.png,Group of 5,NEW MEX ST
+245,NCUN,North Carolina,Tar Heels,Coastal,ACC,1,#99bfe5,#13294b,http://a.espncdn.com/i/teamlogos/ncaa/500/153.png,Power 5,N CAROLINA
+248,NCST,NC State,Wolfpack,Atlantic,ACC,1,#EF1216,#231f20,http://a.espncdn.com/i/teamlogos/ncaa/500/152.png,Power 5,NC STATE
+251,TXNO,North Texas,Mean Green,West,Conference USA,1,#00853D,#000000,http://a.espncdn.com/i/teamlogos/ncaa/500/249.png,Group of 5,N TEXAS
+254,ILNO,Northern Illinois,Huskies,West,MAC,1,#F1122C,#cc0000,http://a.espncdn.com/i/teamlogos/ncaa/500/2459.png,Group of 5,N ILLINOIS
+256,ILNW,Northwestern,Wildcats,West,Big Ten,1,#372286,#d6cac1,http://a.espncdn.com/i/teamlogos/ncaa/500/77.png,Power 5,NWESTERN
+258,INND,Notre Dame,Fighting Irish,NA,IND,1,#00122b,#ae9142,http://a.espncdn.com/i/teamlogos/ncaa/500/87.png,Power 5,NOTRE DAME
+259,OHUN,Ohio,Bobcats,East,MAC,1,#295A29,#e4bb85,http://a.espncdn.com/i/teamlogos/ncaa/500/195.png,Group of 5,OHIO
+260,OHST,Ohio State,Buckeyes,East,Big Ten,1,#DE3121,#666666,http://a.espncdn.com/i/teamlogos/ncaa/500/194.png,Power 5,OHIO STATE
+261,OKUN,Oklahoma,Sooners,NA,Big-12,1,#7b0000,#cccccc,http://a.espncdn.com/i/teamlogos/ncaa/500/201.png,Power 5,OKLAHOMA
+262,OKST,Oklahoma State,Cowboys,NA,Big-12,1,#FF6500,#ff9900,http://a.espncdn.com/i/teamlogos/ncaa/500/197.png,Power 5,OKLA STATE
+263,VAOD,Old Dominion,Monarchs,East,Conference USA,1,#00507d,#a1d2f1,http://a.espncdn.com/i/teamlogos/ncaa/500/295.png,Group of 5,DOMINION
+264,ORUN,Oregon,Ducks,North,PAC-12,1,#044520,#fee123,http://a.espncdn.com/i/teamlogos/ncaa/500/2483.png,Power 5,OREGON
+265,ORST,Oregon State,Beavers,North,PAC-12,1,#c34500,#dea076,http://a.espncdn.com/i/teamlogos/ncaa/500/204.png,Power 5,OREGON ST
+266,PAST,Penn State,Nittany Lions,East,Big Ten,1,#00265D,#002e5c,http://a.espncdn.com/i/teamlogos/ncaa/500/213.png,Power 5,PENN STATE
+268,PAPT,Pittsburgh,Panthers,Coastal,ACC,1,#003263,#231f20,http://a.espncdn.com/i/teamlogos/ncaa/500/221.png,Power 5,PITTSBURGH
+273,INPU,Purdue,Boilermakers,West,Big Ten,1,#B89D29,#a4a9ad,http://a.espncdn.com/i/teamlogos/ncaa/500/2509.png,Power 5,PURDUE
+275,TXRI,Rice,Owls,West,Conference USA,1,#003D7D,#d1d5d8,http://a.espncdn.com/i/teamlogos/ncaa/500/242.png,Group of 5,RICE
+278,NJRU,Rutgers,Scarlet Knights,East,Big Ten,1,#d21034,#ffffff,http://a.espncdn.com/i/teamlogos/ncaa/500/164.png,Power 5,RUTGERS
+284,CASS,San Diego State,Aztecs,West,MWC,1,#BF2C37,#a8996e,http://a.espncdn.com/i/teamlogos/ncaa/500/21.png,Group of 5,S DIEGO ST
+285,CASJ,San José State,Spartans,West,MWC,1,#005893,#fdba31,http://a.espncdn.com/i/teamlogos/ncaa/500/23.png,Group of 5,S JOSE ST
+287,TXMU,SMU,Mustangs,West,AAC,1,#E32F38,#ecdcb9,http://a.espncdn.com/i/teamlogos/ncaa/500/2567.png,Group of 5,SMU
+288,ALSO,South Alabama,Jaguars,West,Sun Belt,1,#003E7E,NA,http://a.espncdn.com/i/teamlogos/ncaa/500/6.png,Group of 5,S ALABAMA
+289,SCUN,South Carolina,Gamecocks,East,SEC,1,#670010,#000000,http://a.espncdn.com/i/teamlogos/ncaa/500/2579.png,Power 5,S CAROLINA
+296,MSSO,Southern Miss,Golden Eagles,West,Conference USA,1,#FFAA3C,#ffc423,http://a.espncdn.com/i/teamlogos/ncaa/500/2572.png,Group of 5,SO MISS
+300,CAST,Stanford,Cardinal,North,PAC-12,1,#A80532,#ffffff,http://a.espncdn.com/i/teamlogos/ncaa/500/24.png,Power 5,STANFORD
+304,NYSY,Syracuse,Orange,Atlantic,ACC,1,#F37321,#0d1d37,http://a.espncdn.com/i/teamlogos/ncaa/500/183.png,Power 5,SYRACUSE
+305,TXCU,TCU,Horned Frogs,NA,Big-12,1,#3C377D,#f1f2f3,http://a.espncdn.com/i/teamlogos/ncaa/500/2628.png,Power 5,TCU
+306,PATE,Temple,Owls,East,AAC,1,#A80532,#a7a9ac,http://a.espncdn.com/i/teamlogos/ncaa/500/218.png,Group of 5,TEMPLE
+307,TNUN,Tennessee,Volunteers,East,SEC,1,#EE9627,#ffffff,http://a.espncdn.com/i/teamlogos/ncaa/500/2633.png,Power 5,TENNESSEE
+311,TXUN,Texas,Longhorns,NA,Big-12,1,#EE7524,#f0f0f0,http://a.espncdn.com/i/teamlogos/ncaa/500/251.png,Power 5,TEXAS
+312,TXAM,Texas A&M,Aggies,West,SEC,1,#5C0025,#ffffff,http://a.espncdn.com/i/teamlogos/ncaa/500/245.png,Power 5,TEXAS A&M
+314,TXSW,Texas State,Bobcats,West,Sun Belt,1,#4e1719,#b4975a,http://a.espncdn.com/i/teamlogos/ncaa/500/326.png,Group of 5,TEXAS ST
+315,TXTC,Texas Tech,Red Raiders,NA,Big-12,1,#C80025,#231f20,http://a.espncdn.com/i/teamlogos/ncaa/500/2641.png,Power 5,TEXAS TECH
+316,OHTO,Toledo,Rockets,West,MAC,1,#00488F,#ffd51d,http://a.espncdn.com/i/teamlogos/ncaa/500/2649.png,Group of 5,TOLEDO
+318,ALTR,Troy,Trojans,East,Sun Belt,1,#AE0210,#88898c,http://a.espncdn.com/i/teamlogos/ncaa/500/2653.png,Group of 5,TROY
+319,LATU,Tulane,Green Wave,West,AAC,1,#005837,#3baf29,http://a.espncdn.com/i/teamlogos/ncaa/500/2655.png,Group of 5,TULANE
+320,OKTU,Tulsa,Golden Hurricane,West,AAC,1,#004371,#ee3b33,http://a.espncdn.com/i/teamlogos/ncaa/500/202.png,Group of 5,TULSA
+321,ALBI,UAB,Blazers,West,Conference USA,1,#003b28,#ffc845,http://a.espncdn.com/i/teamlogos/ncaa/500/5.png,Group of 5,UAB
+323,FLCE,UCF,Knights,East,AAC,1,#000000,#231f20,http://a.espncdn.com/i/teamlogos/ncaa/500/2116.png,Group of 5,UCF
+324,CALA,UCLA,Bruins,South,PAC-12,1,#005C8E,#ffc72c,http://a.espncdn.com/i/teamlogos/ncaa/500/26.png,Power 5,UCLA
+325,NVLV,UNLV,Rebels,West,MWC,1,#000000,#c2c4c6,http://a.espncdn.com/i/teamlogos/ncaa/500/2439.png,Group of 5,UNLV
+326,CASC,USC,Trojans,South,PAC-12,1,#AE2531,#ffc72c,http://a.espncdn.com/i/teamlogos/ncaa/500/30.png,Power 5,USC
+327,FLSO,South Florida,Bulls,East,AAC,1,#004A36,#231f20,http://a.espncdn.com/i/teamlogos/ncaa/500/58.png,Group of 5,USF
+328,UTUN,Utah,Utes,South,PAC-12,1,#890012,#7e8083,http://a.espncdn.com/i/teamlogos/ncaa/500/254.png,Power 5,UTAH
+329,UTST,Utah State,Aggies,Mountain,MWC,1,#003263,#949ca1,http://a.espncdn.com/i/teamlogos/ncaa/500/328.png,Group of 5,UTAH ST
+330,TXEP,UTEP,Miners,West,Conference USA,1,#002843,#ff6f12,http://a.espncdn.com/i/teamlogos/ncaa/500/2638.png,Group of 5,UTEP
+331,TXSN,UTSA,Roadrunners,West,Conference USA,1,#002A5C,#f47321,http://a.espncdn.com/i/teamlogos/ncaa/500/2636.png,Group of 5,UTSA
+333,TNVA,Vanderbilt,Commodores,East,SEC,1,#000000,#231f20,http://a.espncdn.com/i/teamlogos/ncaa/500/238.png,Power 5,VANDERBILT
+335,VAUN,Virginia,Cavaliers,Coastal,ACC,1,#00204e,#002d62,http://a.espncdn.com/i/teamlogos/ncaa/500/258.png,Power 5,VIRGINIA
+337,VAPI,Virginia Tech,Hokies,Coastal,ACC,1,#74232D,#c2c1ba,http://a.espncdn.com/i/teamlogos/ncaa/500/259.png,Power 5,VA TECH
+339,NCWF,Wake Forest,Demon Deacons,Atlantic,ACC,1,#9E7E38,#000000,http://a.espncdn.com/i/teamlogos/ncaa/500/154.png,Power 5,WAKE
+340,WAUN,Washington,Huskies,North,PAC-12,1,#2B2F64,#e8e3d3,http://a.espncdn.com/i/teamlogos/ncaa/500/264.png,Power 5,WASHINGTON
+341,WAST,Washington State,Cougars,North,PAC-12,1,#94022a,#6a747c,http://a.espncdn.com/i/teamlogos/ncaa/500/265.png,Power 5,WASH STATE
+343,WVUN,West Virginia,Mountaineers,NA,Big-12,1,#FFC600,#eaaa00,http://a.espncdn.com/i/teamlogos/ncaa/500/277.png,Power 5,W VIRGINIA
+346,KYWE,Western Kentucky,Hilltoppers,East,Conference USA,1,#F32026,#b3b5b8,http://a.espncdn.com/i/teamlogos/ncaa/500/98.png,Group of 5,W KENTUCKY
+347,MIWE,Western Michigan,Broncos,West,MAC,1,#B59966,#bfa979,http://a.espncdn.com/i/teamlogos/ncaa/500/2711.png,Group of 5,W MICHIGAN
+349,WIUN,Wisconsin,Badgers,West,Big Ten,1,#A00001,#f7f7f7,http://a.espncdn.com/i/teamlogos/ncaa/500/275.png,Power 5,WISCONSIN
+351,WYUN,Wyoming,Cowboys,Mountain,MWC,1,#533B22,#ffffff,http://a.espncdn.com/i/teamlogos/ncaa/500/2751.png,Group of 5,WYOMING
