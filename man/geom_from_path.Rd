@@ -101,11 +101,11 @@ df <- data.frame(
   a = c(sin(2 * pi * (0:4) / 5), 0),
   b = c(cos(2 * pi * (0:4) / 5), 0),
   url = c(
-    "https://github.com/sportsdataverse/cfbfastR/raw/master/man/figures/logo.png",
-    "https://github.com/sportsdataverse/hoopR/raw/master/man/figures/logo.png",
-    "https://github.com/Kazink36/cfb4th/raw/master/man/figures/logo.png",
-    "https://github.com/sportsdataverse/wehoop/raw/master/man/figures/logo.png",
-    "https://github.com/Kazink36/cfbplotR/raw/master/man/figures/logo.png",
+    "https://raw.githubusercontent.com/sportsdataverse/cfbfastR/master/logo.png",
+    "https://raw.githubusercontent.com/sportsdataverse/hoopR/master/logo.png",
+    "https://raw.githubusercontent.com/sportsdataverse/cfb4th/master/man/figures/logo.png",
+    "https://raw.githubusercontent.com/sportsdataverse/wehoop/master/man/figures/logo.png",
+    "https://raw.githubusercontent.com/sportsdataverse/cfbplotR/master/man/figures/logo.png",
     "https://raw.githubusercontent.com/sportsdataverse/sportsdataverse-R/main/logo.png"
   )
 )

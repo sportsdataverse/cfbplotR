@@ -361,5 +361,30 @@ logo_ref <- cfbplotR::logo_ref %>%
 usethis::use_data(logo_ref, overwrite = TRUE)
 
 
+pff_ref <- read_csv("data-raw/pff_ref.csv") # curtisey fo Tej
 
+cfbplotR::logo_ref |> filter(school == "San José State")
 
+pff_ref <- pff_ref |>
+  select(-1,-2) |>
+  mutate(current_team = case_when(current_team == "Louisiana-Monroe" ~ "Louisiana Monroe",
+                                  current_team == "Miami (FL)" ~ "Miami",
+                                  current_team == "North Carolina State" ~ "NC State",
+                                  current_team == "USF" ~ "South Florida",
+                                  TRUE ~ current_team),
+         current_team = cfbplotR::clean_school_names(current_team),
+
+         color = ifelse(current_team == "San José State","#005893",color),
+         alt_color = ifelse(current_team == "San José State","#fdba31",alt_color),
+         logo = ifelse(current_team == "San José State","http://a.espncdn.com/i/teamlogos/ncaa/500/23.png",logo))
+write_csv(pff_ref,"data-raw/pff_ref.csv")
+
+cfbplotR:::clean_school_names
+cfbplotR::team_name_mapping
+team_name_temp <- cfbplotR::team_name_mapping
+pff_temp <- pff_ref$current_team
+names(pff_temp) <- pff_ref$team_name
+pff_temp <- append(pff_temp,c("Louisiana-Monroe"="Louisiana Monroe","Miami (FL)" = "Miami","North Carolina State" = "NC State"))
+team_name_mapping <- append(team_name_temp,pff_temp)
+
+usethis::use_data(team_name_mapping, overwrite = TRUE)
