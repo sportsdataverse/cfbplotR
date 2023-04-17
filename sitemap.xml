@@ -37,6 +37,9 @@
     <loc>https://cfbplotr.sportsdataverse.org/reference/clean_school_names.html</loc>
   </url>
   <url>
+    <loc>https://cfbplotr.sportsdataverse.org/reference/data.html</loc>
+  </url>
+  <url>
     <loc>https://cfbplotr.sportsdataverse.org/reference/element.html</loc>
   </url>
   <url>
@@ -59,6 +62,12 @@
   </url>
   <url>
     <loc>https://cfbplotr.sportsdataverse.org/reference/ggtitle_image.html</loc>
+  </url>
+  <url>
+    <loc>https://cfbplotr.sportsdataverse.org/reference/grobHeight.axisImageGrob.html</loc>
+  </url>
+  <url>
+    <loc>https://cfbplotr.sportsdataverse.org/reference/grobWidth.axisImageGrob.html</loc>
   </url>
   <url>
     <loc>https://cfbplotr.sportsdataverse.org/reference/gt_cfb.html</loc>
