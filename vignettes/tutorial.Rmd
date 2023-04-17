@@ -43,8 +43,8 @@ pbp <- cfbfastR::load_cfb_pbp(2021) %>%
 
 team_info <- cfbfastR::cfbd_team_info(year = 2021)
 team_info <- team_info %>% 
-  select("team" = "school", "conference", "mascot") %>% 
-  filter(conference %in% c("Pac-12","ACC","SEC","Big Ten","Big 12"))
+  dplyr::select("team" = "school", "conference", "mascot") %>% 
+  dplyr::filter(conference %in% c("Pac-12","ACC","SEC","Big Ten","Big 12"))
 
 ```
 
@@ -52,13 +52,13 @@ Now we quickly roll up the EPA data and find the EPA per rush and EPA per pass f
 
 ```{r rollup}
 team_plot_data <- pbp %>% 
-  group_by(team = offense_play) %>% 
-  summarize(rush_epa = mean(if_else(rush == 1,EPA,NA_real_),na.rm = TRUE),
+  dplyr::group_by(team = offense_play) %>% 
+  dplyr::summarize(rush_epa = mean(if_else(rush == 1,EPA,NA_real_),na.rm = TRUE),
             n_rush = sum(rush),
             pass_epa = mean(if_else(pass == 1,EPA,NA_real_),na.rm = TRUE),
             n_pass = sum(pass)) %>% 
-  filter(team %in% team_info$team) %>% 
-  left_join(team_info,by = "team")
+  dplyr::filter(team %in% team_info$team) %>% 
+  dplyr::left_join(team_info,by = "team")
 
 head(team_plot_data)
 ```
@@ -79,7 +79,7 @@ This is still pretty messy because of the large number of teams. Let's try to fo
 
 ```{r gray}
 team_plot_data %>% 
-  mutate(color = if_else(conference == "Pac-12",NA_character_,"b/w"),
+  dplyr::mutate(color = if_else(conference == "Pac-12",NA_character_,"b/w"),
          alpha = if_else(conference == "Pac-12",1,.6)) %>% 
   ggplot(aes(x = pass_epa, y = rush_epa)) +
   geom_median_lines(aes(v_var = pass_epa, h_var = rush_epa)) +
@@ -94,8 +94,8 @@ Finally let's make a bar chart showing the Pac-12 EPA per pass for each team. Be
 
 ```{r bar_chart}
 team_plot_data %>% 
-  filter(conference == "Pac-12") %>% 
-  mutate(team = fct_reorder(team,pass_epa)) %>% 
+  dplyr::filter(conference == "Pac-12") %>% 
+  dplyr::mutate(team = fct_reorder(team,pass_epa)) %>% 
   ggplot(aes(x = team, y = pass_epa)) +
   # 
   geom_col(aes(fill = team, color = team),size = 1.5) +
@@ -114,18 +114,18 @@ team_plot_data %>%
 
 ```{r headshots}
 player_plot_data <- pbp %>% 
-  filter(!is.na(rush_player_id)) %>% 
-  group_by(rush_player_id) %>% 
-  summarize(epa = mean(EPA, na.rm = TRUE),
+  dplyr::filter(!is.na(rush_player_id)) %>% 
+  dplyr::group_by(rush_player_id) %>% 
+  dplyr::summarize(epa = mean(EPA, na.rm = TRUE),
             player_name = first(rusher_player_name),
             team = first(pos_team),
             n = n()) %>% 
-  filter(n >= 10) %>% 
-  arrange(desc(epa)) %>% 
-  slice(1:10)
+  dplyr::filter(n >= 10) %>% 
+  dplyr::arrange(dplyr::desc(epa)) %>% 
+  dplyr::slice(1:10)
 
 player_plot_data %>% 
-  mutate(team_ordered = fct_reorder(team,epa)) %>% 
+  dplyr::mutate(team_ordered = fct_reorder(team,epa)) %>% 
   ggplot(aes(y = team_ordered, x = epa)) +
   geom_col(aes(color = team, fill = team)) +
   geom_label(aes(label = player_name, x = epa / 2), alpha = .6) +
@@ -150,7 +150,7 @@ The `gt` package offers an easy way to create nice tables of data and the `gtExt
 library(gt)
 
 team_plot_data %>% 
-  transmute(.data$conference, 
+  dplyr::transmute(.data$conference, 
             .data$team, 
             logo = team, 
             .data$mascot, 
@@ -159,7 +159,7 @@ team_plot_data %>%
             .data$n_pass, 
             rush_epa = round(rush_epa, 2),
             .data$n_rush) %>% 
-  arrange(desc(pass_epa)) %>% 
+  dplyr::arrange(desc(pass_epa)) %>% 
   head(8) %>% 
   gt() %>% 
   gt_fmt_cfb_logo(columns = c("conference","logo")) %>% 
@@ -172,8 +172,8 @@ We can also use the `gt_fmt_cfb_headshot()` function to add headshots to a gt us
 ```{r fmt_cfb_headshot}
 
 player_plot_data %>% 
-  separate("player_name", into = c("first", "last"), extra = "merge") %>% 
-  select("team", "rush_player_id", "first", "last", "n", "epa") %>% 
+  tidyr::separate("player_name", into = c("first", "last"), extra = "merge") %>% 
+  dplyr::select("team", "rush_player_id", "first", "last", "n", "epa") %>% 
   gt() %>% 
   gt_fmt_cfb_logo("team") %>% 
   gt_fmt_cfb_headshot("rush_player_id") %>% 
