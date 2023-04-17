@@ -86,6 +86,7 @@ omitted.}
 \item \code{waiver()} for the default labels computed by the
 transformation object
 \item A character vector giving labels (must be same length as \code{breaks})
+\item An expression vector (must be the same length as breaks). See ?plotmath for details.
 \item A function that takes the breaks as input and returns labels
 as output. Also accepts rlang \link[rlang:as_function]{lambda} function
 notation.
@@ -122,34 +123,12 @@ or alternatively by manually changing the relevant \code{axis.text} to
 \code{\link[ggtext:element_markdown]{ggtext::element_markdown()}}.
 }
 \examples{
-library(cfbplotR)
 library(ggplot2)
 
-team_abbr <- cfbplotR::valid_team_names()
-# remove conference logos from this example
-team_abbr <- team_abbr[1:8]
-
-df <- data.frame(
-  random_value = runif(length(team_abbr), 0, 1),
-  teams = team_abbr
-)
-if (utils::packageVersion("gridtext") > "0.1.4"){
-# use logos for x-axis
-  ggplot(df, aes(x = teams, y = random_value)) +
-    geom_col(aes(color = teams, fill = teams), width = 0.5) +
-    scale_color_cfb(alt_colors = team_abbr) +
-    scale_fill_cfb(alpha = 0.4) +
-    scale_x_cfb() +
-    theme_minimal() +
-    # theme_*_cfb requires gridtext version > 0.1.4
-    theme_x_cfb()
-}
 
 #############################################################################
-# Headshot Examples
+# Headshot Example
 #############################################################################
-library(cfbplotR)
-library(ggplot2)
 
 
 dfh <- data.frame(
@@ -164,24 +143,13 @@ dfh <- data.frame(
                   "4362874",
                   "4429299")
 )
-if (utils::packageVersion("gridtext") > "0.1.4"){
-  # use headshots for x-axis
-  ggplot(dfh, aes(x = player_id, y = random_value)) +
-    geom_col(width = 0.5) +
-    scale_x_cfb_headshots() +
-    theme_minimal() +
-    # theme_*_cfb requires gridtext version > 0.1.4
-    theme_x_cfb()
 
   # use headshots for y-axis
   ggplot(dfh, aes(y = player_id, x = random_value)) +
     geom_col(width = 0.5) +
     scale_y_cfb_headshots() +
     theme_minimal() +
-    # theme_*_cfb requires gridtext version > 0.1.4
     theme_y_cfb()
-}
-
 
 }
 \seealso{

@@ -44,17 +44,19 @@ scale_color_cfb <- function(alt_colors = NULL,
                             na.value = "grey50",
                             guide = NULL,
                             alpha = NA) {
-  if(is.null(values)){
-    values <-  dplyr::mutate(cfbplotR::logo_ref,
-                             value = ifelse(.data$school %in% alt_colors,
-                                            .data$alt_color,
-                                            .data$color))
-    values <- dplyr::pull(values, .data$value)
+  if (is.null(values)) {
+    values <-  cfbplotR::logo_ref %>%
+      dplyr::mutate(
+        value = ifelse(.data$school %in% alt_colors, .data$alt_color, .data$color))
+
+    values <- values %>%
+      dplyr::pull("value")
+
     names(values) <- cfbplotR::logo_ref$school
   }
 
 
-  if(!is.na(alpha)) values <- scales::alpha(values, alpha = alpha)
+  if (!is.na(alpha)) values <- scales::alpha(values, alpha = alpha)
 
   ggplot2::scale_color_manual(
     ...,
@@ -81,16 +83,18 @@ scale_fill_cfb <- function(alt_colors = NULL,
                            na.value = "grey50",
                            guide = NULL,
                            alpha = NA) {
-  if(is.null(values)){
-    values <-  dplyr::mutate(cfbplotR::logo_ref,
-                             value = ifelse(.data$school %in% alt_colors,
-                                            .data$alt_color,
-                                            .data$color))
-    values <- dplyr::pull(values, .data$value)
+  if (is.null(values)) {
+    values <-  cfbplotR::logo_ref %>%
+      dplyr::mutate(
+        value = ifelse(.data$school %in% alt_colors, .data$alt_color, .data$color))
+
+    values <- values %>%
+      dplyr::pull("value")
+
     names(values) <- cfbplotR::logo_ref$school
   }
 
-  if(!is.na(alpha)) values <- scales::alpha(values, alpha = alpha)
+  if (!is.na(alpha)) values <- scales::alpha(values, alpha = alpha)
 
   ggplot2::scale_fill_manual(
     ...,
@@ -125,34 +129,12 @@ scale_fill_cfb <- function(alt_colors = NULL,
 #' @aliases NULL
 #' @seealso [`theme_x_cfb()`], [`theme_y_cfb()`]
 #' @examples
-#' library(cfbplotR)
 #' library(ggplot2)
 #'
-#' team_abbr <- cfbplotR::valid_team_names()
-#' # remove conference logos from this example
-#' team_abbr <- team_abbr[1:8]
-#'
-#' df <- data.frame(
-#'   random_value = runif(length(team_abbr), 0, 1),
-#'   teams = team_abbr
-#' )
-#' if (utils::packageVersion("gridtext") > "0.1.4"){
-#' # use logos for x-axis
-#'   ggplot(df, aes(x = teams, y = random_value)) +
-#'     geom_col(aes(color = teams, fill = teams), width = 0.5) +
-#'     scale_color_cfb(alt_colors = team_abbr) +
-#'     scale_fill_cfb(alpha = 0.4) +
-#'     scale_x_cfb() +
-#'     theme_minimal() +
-#'     # theme_*_cfb requires gridtext version > 0.1.4
-#'     theme_x_cfb()
-#' }
 #'
 #' #############################################################################
-#' # Headshot Examples
+#' # Headshot Example
 #' #############################################################################
-#' library(cfbplotR)
-#' library(ggplot2)
 #'
 #'
 #' dfh <- data.frame(
@@ -167,24 +149,13 @@ scale_fill_cfb <- function(alt_colors = NULL,
 #'                   "4362874",
 #'                   "4429299")
 #' )
-#' if (utils::packageVersion("gridtext") > "0.1.4"){
-#'   # use headshots for x-axis
-#'   ggplot(dfh, aes(x = player_id, y = random_value)) +
-#'     geom_col(width = 0.5) +
-#'     scale_x_cfb_headshots() +
-#'     theme_minimal() +
-#'     # theme_*_cfb requires gridtext version > 0.1.4
-#'     theme_x_cfb()
 #'
 #'   # use headshots for y-axis
 #'   ggplot(dfh, aes(y = player_id, x = random_value)) +
 #'     geom_col(width = 0.5) +
 #'     scale_y_cfb_headshots() +
 #'     theme_minimal() +
-#'     # theme_*_cfb requires gridtext version > 0.1.4
 #'     theme_y_cfb()
-#' }
-#'
 #'
 NULL
 
