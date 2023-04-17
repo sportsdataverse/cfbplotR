@@ -1,6 +1,6 @@
 Package: cfbplotR
 Title: CFB Logo Plots in 'ggplot2'
-Version: 0.0.0.9015
+Version: 0.0.1.9000
 Authors@R: 
     c(
     person(given = "Sebastian",
@@ -10,7 +10,11 @@ Authors@R:
     person(given = "Jared",
            family = "Lee",
            role = c("aut", "cre"),
-           email = "13jaredlee@gmail.com")
+           email = "13jaredlee@gmail.com"),
+    person(given = "Saiem",
+           family = "Gilani",
+           role = c("ctb"),
+           email = "saiem.gilani@gmail.com")
      )
 Description: A set of functions to visualize College Football analysis in 'ggplot2'.
 License: MIT + file LICENSE
@@ -19,12 +23,11 @@ BugReports: https://github.com/sportsdataverse/cfbplotR/issues
 Depends: 
     R (>= 3.5.0)
 Imports: 
+    base64enc,
     cli (>= 3.0.0),
     dplyr,
     ggplot2 (>= 3.3.0),
     glue,
-    grid,
-    gridtext (>= 0.1.4),
     gt,
     magick (>= 2.7.3),
     magrittr (>= 2.0.0),
@@ -36,6 +39,8 @@ Suggests:
     cfbfastR,
     forcats,
     ggtext (>= 0.1.1),
+    grid,
+    gridtext (>= 0.1.4),
     knitr,
     remotes,
     rmarkdown,
@@ -43,10 +48,8 @@ Suggests:
     sjmisc (>= 2.8.7),
     testthat (>= 3.0.0),
     tidyr (>= 1.0.0)
-Remotes:
-    wilkelab/gridtext
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Config/testthat/edition: 3
 LazyData: true
