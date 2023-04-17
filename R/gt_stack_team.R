@@ -29,34 +29,32 @@
 #' team_df <- readRDS(url(teams))
 #'
 #' stacked_tab <- team_df %>%
-#'   transmute(logo = school,school,mascot,conference,city,state) %>%
+#'   dplyr::transmute(logo = school,school,mascot,conference,city,state) %>%
 #'   head(8) %>%
 #'   gt::gt() %>%
 #'   gt_merge_stack_team_color(school,mascot,school) %>%
-#'   cfbplotR::gt_fmt_cfb_logo(columns = c("logo","conference"))
+#'   gt_fmt_cfb_logo(columns = c("logo","conference"))
 #'
 #' @section Figures:
 #' \if{html}{\figure{merge-stack.png}{options: width=50\%}}
 #'
 
-gt_merge_stack_team_color <- function (gt_object, col1, col2, team_col, font_size_top = 14, font_size_bottom = 12, color = "black")
-{
-  stopifnot(`'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?` = "gt_tbl" %in%
-              class(gt_object))
+gt_merge_stack_team_color <- function(gt_object, col1, col2, team_col, font_size_top = 14, font_size_bottom = 12, color = "black") {
 
+   stopifnot("'gt_object' must be a 'gt_tbl', have you accidentally passed raw data?" = "gt_tbl" %in% class(gt_object))
 
   team <- rlang::enexpr(team_col) %>% rlang::as_string()
   team_bare <- gt_object[["_data"]][[team]]
-  if(is.null(team_bare)) {
+  if (is.null(team_bare)) {
     cli::cli_abort("Must include a column of team names, `team_col` is NULL")
   }
   team_color <- dplyr::left_join(
     data.frame(team = team_bare),
     cfbplotR::logo_ref %>%
-      dplyr::select(team = .data$school, .data$color),
+      dplyr::select("team" = "school", "color"),
     by = "team") %>%
     dplyr::mutate(color = ifelse(is.na(.data$color),"grey",.data$color)) %>%
-    dplyr::pull(color)
+    dplyr::pull("color")
 
 
   col1_bare <- rlang::enexpr(col1) %>% rlang::as_string()
@@ -64,7 +62,7 @@ gt_merge_stack_team_color <- function (gt_object, col1, col2, team_col, font_siz
                                                            "stub")]
   col2_bare <- rlang::enexpr(col2) %>% rlang::as_string()
   data_in <- gt_object[["_data"]][[col2_bare]]
-  gt_object %>% text_transform(locations = if (isTRUE(row_name_var ==
+  gt_object %>% gt::text_transform(locations = if (isTRUE(row_name_var ==
                                                       col1_bare)) {
     cells_stub(rows = gt::everything())
   }

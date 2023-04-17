@@ -52,10 +52,10 @@ teams <-
 team_df <- readRDS(url(teams))
 
 stacked_tab <- team_df \%>\%
-  transmute(logo = school,school,mascot,conference,city,state) \%>\%
+  dplyr::transmute(logo = school,school,mascot,conference,city,state) \%>\%
   head(8) \%>\%
   gt::gt() \%>\%
   gt_merge_stack_team_color(school,mascot,school) \%>\%
-  cfbplotR::gt_fmt_cfb_logo(columns = c("logo","conference"))
+  gt_fmt_cfb_logo(columns = c("logo","conference"))
 
 }
