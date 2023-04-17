@@ -1,10 +1,8 @@
-# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
-# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-    branches: [main, master]
-  release:
-    types: [published]
+    branches:
+      - main
+      - master
   workflow_dispatch:
 
 name: pkgdown
@@ -12,39 +10,44 @@ name: pkgdown
 jobs:
   pkgdown:
     runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
     env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       CFBD_API_KEY: ${{ secrets.CFBD_API_KEY }}
+      RSPM: "https://packagemanager.rstudio.com/cran/__linux__/jammy/latest"
+
     steps:
       - uses: actions/checkout@v2
 
-      - uses: r-lib/actions/setup-pandoc@v1
+      - uses: r-lib/actions/setup-r@v2
 
-      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          use-public-rspm: true
-          r-version: 4.1.3
-      - uses: r-lib/actions/setup-r-dependencies@v1
-        with:
+          cache-version: 1
           extra-packages: |
-            pkgdown
-            animation
-            baseballr
-            cfbfastR
-            chessR
-            ggimage
-            hoopR
-            knitr
-            oddsapiR
-            pacman
-            ragg
-            remotes
-            rsconnect
-            sportyR
-            tictoc
-            toRvik
-            wehoop
-            zoo
+            any::pkgdown
+            any::animation
+            any::baseballr
+            any::hoopR
+            any::fastRhockey
+            any::ggimage
+            any::knitr
+            any::oddsapiR
+            any::pacman
+            any::pak
+            any::ragg
+            any::remotes
+            any::rsconnect
+            any::sportyR
+            any::tictoc
+            any::wehoop
+            any::zoo
+            local::.
           needs: website
 
       - name: Install system dependencies
