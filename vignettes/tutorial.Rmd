@@ -21,7 +21,7 @@ First we need to load the necessary libraries. [`cfbfastR`](https://sportsdatave
 
 ```{r libraries, message=FALSE}
 #remotes::install_github(repo = "sportsdataverse/cfbfastR")
-#remotes::install_github(repo = "Kazink36/cfbplotR")
+#remotes::install_github(repo = "sportsdataverse/cfbplotR")
 #install.packages(tidyverse)
 
 library(cfbfastR)
@@ -42,7 +42,7 @@ pbp <- cfbfastR::load_cfb_pbp(2021) %>%
 
 team_info <- cfbfastR::cfbd_team_info()
 team_info <- team_info %>% 
-  select(team = school,conference,mascot) %>% 
+  select("team" = "school", "conference", "mascot") %>% 
   filter(conference %in% c("Pac-12","ACC","SEC","Big Ten","Big 12"))
 
 ```
@@ -98,7 +98,7 @@ team_plot_data %>%
   ggplot(aes(x = team, y = pass_epa)) +
   # 
   geom_col(aes(fill = team, color = team),size = 1.5) +
-  annotate(cfbplotR::GeomCFBlogo,x = "California",y = 0.2,team = "Pac-12",height = .35,alpha = .3) +
+  annotate(GeomCFBlogo,x = "California",y = 0.2,team = "Pac-12",height = .35,alpha = .3) +
   scale_fill_cfb(alpha = .8) +
   scale_color_cfb(alt_colors = team_plot_data$team) +
   #scale_x_cfb(size = 18) +
@@ -165,10 +165,10 @@ We can also use the `gt_fmt_cfb_headshot()` function to add headshots to a gt us
 ```{r fmt_cfb_headshot}
 
 player_plot_data %>% 
-  separate(player_name, into = c("first","last"), extra = "merge") %>% 
-  select(team,rush_player_id,first,last,n,epa) %>% 
+  separate(player_name, into = c("first", "last"), extra = "merge") %>% 
+  select("team", "rush_player_id", "first", "last", "n", "epa") %>% 
   gt() %>% 
   gt_fmt_cfb_logo(team) %>% 
   gt_fmt_cfb_headshot(rush_player_id) %>% 
-  gt_merge_stack_team_color(first,last,team)
+  gt_merge_stack_team_color(first, last, team)
 ```
