@@ -10,6 +10,13 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(cfbfastR)
+library(cfbplotR)
+library(dplyr, warn.conflicts = FALSE)
+library(ggplot2)
+library(tidyr)
+library(forcats)
 ```
 
 
@@ -17,7 +24,7 @@ This is a quick tutorial on how to use cfbplotR to quickly and easily include co
 
 ## Load and Process Data
 
-First we need to load the necessary libraries. [`cfbfastR`](https://sportsdataverse.github.io/cfbfastR/index.html) will get us the data we want to use for analysis. [`cfbplotR`](https://Kazink36.github.io/cfbplotR/index.html) will help us easily plot the results. `tidyverse` will help us do the necessary data manipulation and of course includes `ggplot2` that we will use for plotting. You can use the commented out code to install these packages if you don't already have them.
+First we need to load the necessary libraries. [`cfbfastR`](https://cfbfastR.sportsdataverse.org/) will get us the data we want to use for analysis. [`cfbplotR`](https://cfbplotR.sportsdataverse.org/) will help us easily plot the results. `tidyverse` will help us do the necessary data manipulation and of course includes `ggplot2` that we will use for plotting. You can use the commented out code to install these packages if you don't already have them.
 
 ```{r libraries, message=FALSE}
 #remotes::install_github(repo = "sportsdataverse/cfbfastR")
@@ -149,15 +156,21 @@ The `gt` package offers an easy way to create nice tables of data and the `gtExt
 library(gt)
 
 team_plot_data %>% 
-  transmute(conference, team,logo = team, mascot, wordmark = team,
-            pass_epa = round(pass_epa,2),n_pass, 
-            rush_epa = round(rush_epa,2),n_rush) %>% 
+  transmute(.data$conference, 
+            .data$team, 
+            logo = team, 
+            .data$mascot, 
+            wordmark = team,
+            pass_epa = round(pass_epa, 2),
+            .data$n_pass, 
+            rush_epa = round(rush_epa, 2),
+            .data$n_rush) %>% 
   arrange(desc(pass_epa)) %>% 
   head(8) %>% 
   gt() %>% 
-  gt_fmt_cfb_logo(columns = c(conference,logo)) %>% 
-  gt_fmt_cfb_wordmark(columns = wordmark) %>% 
-  gt_merge_stack_team_color(team,mascot,team)
+  gt_fmt_cfb_logo(columns = c("conference","logo")) %>% 
+  gt_fmt_cfb_wordmark(columns = "wordmark") %>% 
+  gt_merge_stack_team_color("team", "mascot", "team")
 ```
 
 We can also use the `gt_fmt_cfb_headshot()` function to add headshots to a gt using the player_id or headshot_url available through `cfbfastR`.
@@ -165,10 +178,10 @@ We can also use the `gt_fmt_cfb_headshot()` function to add headshots to a gt us
 ```{r fmt_cfb_headshot}
 
 player_plot_data %>% 
-  separate(player_name, into = c("first", "last"), extra = "merge") %>% 
+  separate("player_name", into = c("first", "last"), extra = "merge") %>% 
   select("team", "rush_player_id", "first", "last", "n", "epa") %>% 
   gt() %>% 
-  gt_fmt_cfb_logo(team) %>% 
-  gt_fmt_cfb_headshot(rush_player_id) %>% 
-  gt_merge_stack_team_color(first, last, team)
+  gt_fmt_cfb_logo("team") %>% 
+  gt_fmt_cfb_headshot("rush_player_id") %>% 
+  gt_merge_stack_team_color("first", "last", "team")
 ```
