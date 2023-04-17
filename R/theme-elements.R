@@ -11,6 +11,7 @@
 #'
 #' @details The elements translate CFB team names or players' ESPN IDs
 #'   into logo images or player headshots, respectively.
+#' @param element element type
 #' @param alpha The alpha channel, i.e. transparency level, as a numerical value
 #'   between 0 and 1.
 #' @param colour,color The image will be colorized with this color. Use the
@@ -20,6 +21,10 @@
 #' @param hjust,vjust The horizontal and vertical adjustment respectively.
 #'   Must be a numerical value between 0 and 1.
 #' @param size The output grob size in `cm` (!).
+#' @param x x grid units position
+#' @param y y grid units position
+#' @param label Label
+#' @param ... Other arguments to be passed to underlying ggplot function
 #' @seealso [geom_cfb_logos()], [geom_cfb_wordmarks()], [geom_cfb_headshots()],
 #'   and [geom_from_path()] for more information on valid team names,
 #'   player IDs, and other parameters.
@@ -172,6 +177,7 @@ element_path <- function(alpha = NULL, colour = NA, hjust = NULL, vjust = NULL,
 }
 
 #' @export
+#' @rdname element
 element_grob.element_cfb_logo <- function(element, label = "", x = NULL, y = NULL,
                                           alpha = NULL, colour = NULL,
                                           hjust = NULL, vjust = NULL,
@@ -182,8 +188,8 @@ element_grob.element_cfb_logo <- function(element, label = "", x = NULL, y = NUL
   n <- max(length(x), length(y), 1)
   vj <- vjust %||% element$vjust
   hj <- hjust %||% element$hjust
-  x <- x %||% unit(rep(hj, n), "npc")
-  y <- y %||% unit(rep(vj, n), "npc")
+  x <- x %||% grid::unit(rep(hj, n), "npc")
+  y <- y %||% grid::unit(rep(vj, n), "npc")
   alpha <- alpha %||% element$alpha
   colour <- colour %||% rep(element$colour, n)
   size <- size %||% element$size
@@ -212,6 +218,7 @@ element_grob.element_cfb_logo <- function(element, label = "", x = NULL, y = NUL
 }
 
 #' @export
+#' @rdname element
 element_grob.element_cfb_wordmark <- function(element, label = "", x = NULL, y = NULL,
                                               alpha = NULL, colour = NULL,
                                               hjust = 0.5, vjust = 0.5,
@@ -222,8 +229,8 @@ element_grob.element_cfb_wordmark <- function(element, label = "", x = NULL, y =
   n <- max(length(x), length(y), 1)
   vj <- element$vjust %||% vjust
   hj <- element$hjust %||% hjust
-  x <- x %||% unit(rep(hj, n), "npc")
-  y <- y %||% unit(rep(vj, n), "npc")
+  x <- x %||% grid::unit(rep(hj, n), "npc")
+  y <- y %||% grid::unit(rep(vj, n), "npc")
   alpha <- alpha %||% element$alpha
   colour <- colour %||% rep(element$colour, n)
   size <- size %||% element$size
@@ -252,6 +259,7 @@ element_grob.element_cfb_wordmark <- function(element, label = "", x = NULL, y =
 }
 
 #' @export
+#' @rdname element
 element_grob.element_cfb_headshot <- function(element, label = "", x = NULL, y = NULL,
                                               alpha = NULL, colour = NULL,
                                               hjust = NULL, vjust = NULL,
@@ -262,8 +270,8 @@ element_grob.element_cfb_headshot <- function(element, label = "", x = NULL, y =
   n <- max(length(x), length(y), 1)
   vj <- vjust %||% element$vjust
   hj <- hjust %||% element$hjust
-  x <- x %||% unit(rep(hj, n), "npc")
-  y <- y %||% unit(rep(vj, n), "npc")
+  x <- x %||% grid::unit(rep(hj, n), "npc")
+  y <- y %||% grid::unit(rep(vj, n), "npc")
   alpha <- alpha %||% element$alpha
   colour <- colour %||% rep(element$colour, n)
   size <- size %||% element$size
@@ -292,6 +300,7 @@ element_grob.element_cfb_headshot <- function(element, label = "", x = NULL, y =
 }
 
 #' @export
+#' @rdname element
 element_grob.element_path <- function(element, label = "", x = NULL, y = NULL,
                                       alpha = NULL, colour = NULL,
                                       hjust = NULL, vjust = NULL,
@@ -302,8 +311,8 @@ element_grob.element_path <- function(element, label = "", x = NULL, y = NULL,
   n <- max(length(x), length(y), 1)
   vj <- vjust %||% element$vjust
   hj <- hjust %||% element$hjust
-  x <- x %||% unit(rep(hj, n), "npc")
-  y <- y %||% unit(rep(vj, n), "npc")
+  x <- x %||% grid::unit(rep(hj, n), "npc")
+  y <- y %||% grid::unit(rep(vj, n), "npc")
   alpha <- alpha %||% element$alpha
   colour <- colour %||% rep(element$colour, n)
   size <- size %||% element$size
@@ -336,43 +345,43 @@ axisImageGrob <- function(i, label, alpha, colour, data, x, y, hjust, vjust,
                           type = c("teams", "headshots", "wordmarks", "path")) {
   make_null <- FALSE
   type <- rlang::arg_match(type)
-  if(type == "teams") {
+  if (type == "teams") {
     team <- label[i]
-    team <- cfbplotR::clean_school_names(as.character(team))
+    team <- clean_school_names(as.character(team))
     if (!team %in% valid_team_names()) {
       cli::cli_warn("{label[i]} is not a valid team name (row {i})")
       team <- "NCAA"
     }
     if (is.na(team)) {make_null <- TRUE}
     else{image_to_read <- logo_list[[team]]}
-  } else if(type == "wordmarks") {
+  } else if (type == "wordmarks") {
     team <- label[i]
-    team <- cfbplotR::clean_school_names(as.character(team))
+    team <- clean_school_names(as.character(team))
     if (!team %in% names(wordmark_list)) {
       cli::cli_warn("{label[i]} does not have a wordmark")
       team <- "NCAA"
     }
     image_to_read <- wordmark_list[[team]]
     if (is.na(team)) make_null <- TRUE
-  } else if (type == "path"){
+  } else if (type == "path") {
     image_to_read <- label[i]
   } else {
     player_id <- label[i]
     headshot_map <- headshot_id_to_url(player_id)
     #headshot_map <- paste0("http://a.espncdn.com/i/headshots/college-football/players/full/",player_id,".png")
-    if(!RCurl::url.exists(headshot_map)) {
+    if (!RCurl::url.exists(headshot_map)) {
       cli::cli_warn("{label[i]} is not a valid player id (row {i})")
       headshot_map <- "http://a.espncdn.com/i/headshots/nophoto.png"
     }
     image_to_read <- headshot_map
 
   }
-  if (is.na(make_null)){
+  if (is.na(make_null)) {
     return(grid::nullGrob())
   } else if (is.null(alpha[i])) {
     img <- magick::image_read(image_to_read)
     col <- colour[i]
-    if (!is.null(col) && col %in% "b/w"){
+    if (!is.null(col) && col %in% "b/w") {
       new <- magick::image_quantize(img, colorspace = 'gray')
     } else {
       opa <- ifelse(is.na(col) || is.null(col), 0, 100)
@@ -386,7 +395,7 @@ axisImageGrob <- function(i, label, alpha, colour, data, x, y, hjust, vjust,
     img <- magick::image_read(image_to_read)
     new <- magick::image_fx(img, expression = paste0(alpha, "*a"), channel = "alpha")
     col <- colour[i]
-    if (!is.null(col) && col %in% "b/w"){
+    if (!is.null(col) && col %in% "b/w") {
       new <- magick::image_quantize(new, colorspace = 'gray')
     } else {
       opa <- ifelse(is.na(col) || is.null(col), 0, 100)
@@ -400,7 +409,7 @@ axisImageGrob <- function(i, label, alpha, colour, data, x, y, hjust, vjust,
     img <- magick::image_read(image_to_read)
     new <- magick::image_fx(img, expression = paste0(alpha[i], "*a"), channel = "alpha")
     col <- colour[i]
-    if (!is.null(col) && col %in% "b/w"){
+    if (!is.null(col) && col %in% "b/w") {
       new <- magick::image_quantize(new, colorspace = 'gray')
     } else{
       opa <- ifelse(is.na(col) || is.null(col), 0, 100)
@@ -420,8 +429,13 @@ axisImageGrob <- function(i, label, alpha, colour, data, x, y, hjust, vjust,
   )
 }
 
-#' @export
-grobHeight.axisImageGrob <- function(x, ...) grid::unit(x$size, "cm")
 
+#' @title grobHeight
+#' @param x Size in cm for height
 #' @export
-grobWidth.axisImageGrob <- function(x, ...) grid::unit(x$size, "cm")
+grobHeight.axisImageGrob <- function(x) grid::unit(x$size, "cm")
+
+#' @title grobWidth
+#' @param x Size in cm for width
+#' @export
+grobWidth.axisImageGrob <- function(x) grid::unit(x$size, "cm")

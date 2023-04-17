@@ -1,5 +1,5 @@
 #' ggplot2 Layer for Visualizing CFB Team Logos
-#'
+#' @rdname geom_cfb_logos
 #' @description This geom is used to plot college football team and conference logos instead
 #'   of points in a ggplot. It requires x, y aesthetics as well as a valid CFB
 #'   team name or abbreviation. The latter can be checked with [`valid_team_names()`].
@@ -106,7 +106,7 @@ geom_cfb_logos <- function(mapping = NULL, data = NULL,
     )
   )
 }
-
+#' @rdname geom_cfb_logos
 #' @export
 GeomCFBlogo <- ggplot2::ggproto(
   "GeomCFBlogo", ggplot2::Geom,

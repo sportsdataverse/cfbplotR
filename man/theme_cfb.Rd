@@ -25,7 +25,7 @@ They are made to be used in conjunction with \code{\link[=scale_x_cfb]{scale_x_c
 library(cfbplotR)
 library(ggplot2)
 
-team_abbr <- cfbplotR::valid_team_names()
+team_abbr <- valid_team_names()
 # remove conference logos from this example
 team_abbr <- team_abbr[1:16]
 

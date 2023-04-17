@@ -45,6 +45,11 @@ Authors:
   \item Sebastian Carl \email{mrcaseb@gmail.com}
 }
 
+Other contributors:
+\itemize{
+  \item Saiem Gilani \email{saiem.gilani@gmail.com} [contributor]
+}
+
 }
 \keyword{datasets}
 \keyword{internal}

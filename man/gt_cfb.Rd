@@ -55,7 +55,7 @@ df <- data.frame(
  player = c("Britain Covey", "Cameron Rising","Non.Match"),
  team = c("Utah","Utah","BYU")
 ) \%>\%
- cfbplotR::add_athlete_id_col(player)
+ add_athlete_id_col(player)
 table_2 <- df \%>\%
  gt() \%>\%
  gt_fmt_cfb_headshot(athlete_id)

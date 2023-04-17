@@ -36,7 +36,7 @@ These functions work together to place an image to the left or right of the titl
 library(cfbplotR)
 library(ggplot2)
 
-logo_url <- "https://github.com/Kazink36/cfbplotR/raw/master/man/figures/logo.png"
+logo_url <- "https://raw.githubusercontent.com/sportsdataverse/cfbplotR/main/man/figures/logo.png"
 
   p <- ggplot(mtcars, aes(x = hp, y = mpg)) +
     geom_point() +

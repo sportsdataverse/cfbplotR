@@ -5,6 +5,10 @@
 \alias{element_cfb_wordmark}
 \alias{element_cfb_headshot}
 \alias{element_path}
+\alias{element_grob.element_cfb_logo}
+\alias{element_grob.element_cfb_wordmark}
+\alias{element_grob.element_cfb_headshot}
+\alias{element_grob.element_path}
 \title{Theme Elements for Image Grobs}
 \usage{
 element_cfb_logo(
@@ -42,6 +46,58 @@ element_path(
   color = NULL,
   size = 0.5
 )
+
+\method{element_grob}{element_cfb_logo}(
+  element,
+  label = "",
+  x = NULL,
+  y = NULL,
+  alpha = NULL,
+  colour = NULL,
+  hjust = NULL,
+  vjust = NULL,
+  size = NULL,
+  ...
+)
+
+\method{element_grob}{element_cfb_wordmark}(
+  element,
+  label = "",
+  x = NULL,
+  y = NULL,
+  alpha = NULL,
+  colour = NULL,
+  hjust = 0.5,
+  vjust = 0.5,
+  size = NULL,
+  ...
+)
+
+\method{element_grob}{element_cfb_headshot}(
+  element,
+  label = "",
+  x = NULL,
+  y = NULL,
+  alpha = NULL,
+  colour = NULL,
+  hjust = NULL,
+  vjust = NULL,
+  size = NULL,
+  ...
+)
+
+\method{element_grob}{element_path}(
+  element,
+  label = "",
+  x = NULL,
+  y = NULL,
+  alpha = NULL,
+  colour = NULL,
+  hjust = NULL,
+  vjust = NULL,
+  size = NULL,
+  ...
+)
 }
 \arguments{
 \item{alpha}{The alpha channel, i.e. transparency level, as a numerical value
@@ -56,6 +112,16 @@ on valid color names in ggplot2 see
 Must be a numerical value between 0 and 1.}
 
 \item{size}{The output grob size in \code{cm} (!).}
+
+\item{element}{element type}
+
+\item{label}{Label}
+
+\item{x}{x grid units position}
+
+\item{y}{y grid units position}
+
+\item{...}{Other arguments to be passed to underlying ggplot function}
 }
 \value{
 An S3 object of class \code{element}.

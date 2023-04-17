@@ -14,7 +14,7 @@
 #' library(cfbplotR)
 #' library(ggplot2)
 #'
-#' logo_url <- "https://github.com/Kazink36/cfbplotR/raw/master/man/figures/logo.png"
+#' logo_url <- "https://raw.githubusercontent.com/sportsdataverse/cfbplotR/main/man/figures/logo.png"
 #'
 #'   p <- ggplot(mtcars, aes(x = hp, y = mpg)) +
 #'     geom_point() +
@@ -44,15 +44,15 @@ NULL
 
 #' @rdname ggtitle_image
 #' @export
-ggtitle_image <- function (title_image = ggplot2::waiver(), title = ggplot2::waiver(),
+ggtitle_image <- function(title_image = ggplot2::waiver(), title = ggplot2::waiver(),
                            image_height = 15, image_side = c("left","right"),
                            subtitle = ggplot2::waiver())
 {
   match.arg(image_side, c("left","right"))
   image_side <- image_side[1]
-  school_check <- cfbplotR::clean_school_names(title_image,keep_non_matches = FALSE) %>%
+  school_check <- clean_school_names(title_image,keep_non_matches = FALSE) %>%
     suppressWarnings()
-  if (!is.na(school_check)){#title_image %in% valid_team_names()) {
+  if (!is.na(school_check)) {#title_image %in% valid_team_names()) {
     title_image <- logo_list[[school_check]]
   }
 

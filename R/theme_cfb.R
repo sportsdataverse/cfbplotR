@@ -15,7 +15,7 @@
 #' library(cfbplotR)
 #' library(ggplot2)
 #'
-#' team_abbr <- cfbplotR::valid_team_names()
+#' team_abbr <- valid_team_names()
 #' # remove conference logos from this example
 #' team_abbr <- team_abbr[1:16]
 #'

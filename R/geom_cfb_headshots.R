@@ -106,6 +106,7 @@ geom_cfb_headshots <- function(mapping = NULL, data = NULL,
 }
 
 
+#' @rdname geom_cfb_logos
 #' @export
 GeomCFBheads <- ggplot2::ggproto(
   "GeomCFBheads", ggplot2::Geom,

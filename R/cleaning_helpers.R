@@ -25,7 +25,7 @@ clean_school_names <- function(school, keep_non_matches = TRUE) {
   m <- cfbplotR::team_name_mapping
   a <- unname(m[tools::toTitleCase(school)])
   if (any(is.na(a))) {
-    warning("Abbreviations not found in `cfbplotR::team_name_mapping`: ",
+    warning("Abbreviations not found in `team_name_mapping`: ",
             paste(utils::head(school[is.na(a)], 10), collapse = " , "),
             call. = FALSE)
   }
@@ -62,15 +62,15 @@ clean_school_names <- function(school, keep_non_matches = TRUE) {
 #'   player_name = c("Britain Covey","JT Daniels")
 #' )
 #'
-#' cfbplotR::add_athlete_id_col(x, player_name)
+#' add_athlete_id_col(x, player_name)
 #'
 #'
 #' x$season <- c(2021,2021)
-#' cfbplotR::add_athlete_id_col(x, player_name)
+#' add_athlete_id_col(x, player_name)
 #'
 #'
 #' x$team = c("Utah","Georgia")
-#' cfbplotR::add_athlete_id_col(x, player_name, team, headshot_urls = TRUE)
+#' add_athlete_id_col(x, player_name, team, headshot_urls = TRUE)
 #'}
 
 add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FALSE) {
@@ -80,13 +80,13 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
   if ("season" %in% names(df)) {
     season_col_present <- TRUE
     seasons <- df %>%
-      dplyr::filter(.data$season >= 2009, .data$season <= 2021) %>%
+      dplyr::filter(.data$season >= 2009, .data$season <= most_recent_cfb_season()) %>%
       dplyr::distinct(.data$season) %>%
       dplyr::arrange(desc(.data$season)) %>%
-      dplyr::pull(.data$season)
-    if(length(seasons) == 0){
-      cli::cli_alert_info("No valid seasons (2009-2021) in season column, using 2021 rosters")
-      seasons <- 2021
+      dplyr::pull("season")
+    if (length(seasons) == 0) {
+      cli::cli_alert_info("No valid seasons (2009-{.val most_recent_cfb_season()}) in season column, using {.val most_recent_cfb_season()} rosters")
+      seasons <- most_recent_cfb_season()
     }
     rosters <- purrr::map_df(seasons, function(x){
       readRDS(
@@ -104,8 +104,8 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
     )
   } else {
     season_col_present <- FALSE
-    cli::cli_alert_info("No season column, using 2021 rosters")
-    rosters <- purrr::map_df(2021, function(x){
+    cli::cli_alert_info("No season column, using {.val most_recent_cfb_season()} rosters")
+    rosters <- purrr::map_df(most_recent_cfb_season(), function(x){
       readRDS(
         url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))
       ) %>%
@@ -120,14 +120,14 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
     }
     )
   }
-  if(isFALSE(headshot_urls)){
+  if (isFALSE(headshot_urls)) {
     rosters <- rosters %>%
-      dplyr::select(-.data$headshot_url)
+      dplyr::select(-"headshot_url")
   }
 
-  if(rlang::quo_is_null(team_col) & !"team" %in% names(df) & !"school" %in% names(df)) {
+  if (rlang::quo_is_null(team_col) & !"team" %in% names(df) & !"school" %in% names(df)) {
     rosters <- rosters %>%
-      dplyr::select(-.data$team)
+      dplyr::select(-"team")
     team_col_present <- FALSE
   } else {
     team_col_present <- TRUE
@@ -140,13 +140,13 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
   }
 
   # Generate list for joins based on available columns
-  if(team_col_present & season_col_present){
-    join_list <- c("name","team","season")
+  if (team_col_present & season_col_present) {
+    join_list <- c("name", "team", "season")
     names(join_list) <- c(dplyr::as_label(name_col),team_col_label,"season")
-  } else if(team_col_present & !season_col_present){
+  } else if (team_col_present & !season_col_present) {
     join_list <- c("name","team")
     names(join_list) <- c(dplyr::as_label(name_col),team_col_label)
-  } else if(!team_col_present & season_col_present){
+  } else if (!team_col_present & season_col_present) {
     join_list <- c("name","season")
     names(join_list) <- c(dplyr::as_label(name_col),"season")
   } else {

@@ -40,11 +40,11 @@
 #'   a = c(sin(2 * pi * (0:4) / 5), 0),
 #'   b = c(cos(2 * pi * (0:4) / 5), 0),
 #'   url = c(
-#'     "https://raw.githubusercontent.com/sportsdataverse/cfbfastR/master/logo.png",
-#'     "https://raw.githubusercontent.com/sportsdataverse/hoopR/master/logo.png",
-#'     "https://raw.githubusercontent.com/sportsdataverse/cfb4th/master/man/figures/logo.png",
-#'     "https://raw.githubusercontent.com/sportsdataverse/wehoop/master/man/figures/logo.png",
-#'     "https://raw.githubusercontent.com/sportsdataverse/cfbplotR/master/man/figures/logo.png",
+#'     "https://raw.githubusercontent.com/sportsdataverse/cfbfastR/main/man/figures/logo.png",
+#'     "https://raw.githubusercontent.com/sportsdataverse/hoopR/main/man/figures/logo.png",
+#'     "https://raw.githubusercontent.com/sportsdataverse/cfb4th/main/man/figures/logo.png",
+#'     "https://raw.githubusercontent.com/sportsdataverse/wehoop/main/man/figures/logo.png",
+#'     "https://raw.githubusercontent.com/sportsdataverse/cfbplotR/main/man/figures/logo.png",
 #'     "https://raw.githubusercontent.com/sportsdataverse/sportsdataverse-R/main/logo.png"
 #'   )
 #' )
@@ -65,10 +65,10 @@
 #' # ggplot2 annotation
 #' ggplot() +
 #'   annotate(
-#'     cfbplotR::GeomFromPath,
+#'     GeomFromPath,
 #'     x = 0,
 #'     y = 0,
-#'     path = "https://github.com/Kazink36/cfbplotR/raw/master/man/figures/logo.png",
+#'     path = "https://raw.githubusercontent.com/sportsdataverse/cfbplotR/main/man/figures/logo.png",
 #'     width = 0.4
 #'   ) +
 #'   theme_minimal()

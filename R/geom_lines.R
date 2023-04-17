@@ -132,13 +132,13 @@ GeomRefLines <- ggplot2::ggproto("GeomRefLines", ggplot2::Geom,
     # as the underlying Geoms will draw multiple lines if there are multiple
     # unique rows. This caused alpha to not work properly because the geom draws
     # many opaque lines which outputs as non-opaque lines.
-    if ("v_var" %in% args){
+    if ("v_var" %in% args) {
       data_v <- data
       data_v$xintercept <- ref_function(data_v$v_var, na.rm = na.rm)
       data_v <- data_v[,c("xintercept", relevant_columns)]
     }
 
-    if ("h_var" %in% args){
+    if ("h_var" %in% args) {
       data_h <- data
       data_h$yintercept <- ref_function(data_h$h_var, na.rm = na.rm)
       data_h <- data_h[,c("yintercept", relevant_columns)]

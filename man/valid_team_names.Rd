@@ -27,9 +27,9 @@ Output Valid CFB Team Names and Abbreviations
 }
 \examples{
 # List valid team abbreviations excluding duplicates
-cfbplotR::valid_team_names("FBS")
-cfbplotR::valid_team_names("FCS")
-cfbplotR::valid_team_names("DII")
-cfbplotR::valid_team_names("DIII")
-cfbplotR::valid_team_names("Conference")
+valid_team_names("FBS")
+valid_team_names("FCS")
+valid_team_names("DII")
+valid_team_names("DIII")
+valid_team_names("Conference")
 }

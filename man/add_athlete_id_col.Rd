@@ -37,14 +37,14 @@ x <- data.frame(
   player_name = c("Britain Covey","JT Daniels")
 )
 
-cfbplotR::add_athlete_id_col(x, player_name)
+add_athlete_id_col(x, player_name)
 
 
 x$season <- c(2021,2021)
-cfbplotR::add_athlete_id_col(x, player_name)
+add_athlete_id_col(x, player_name)
 
 
 x$team = c("Utah","Georgia")
-cfbplotR::add_athlete_id_col(x, player_name, team, headshot_urls = TRUE)
+add_athlete_id_col(x, player_name, team, headshot_urls = TRUE)
 }
 }

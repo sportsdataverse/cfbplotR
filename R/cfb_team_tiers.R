@@ -98,7 +98,7 @@ cfb_team_tiers <- function(data,
 
   required_vars <- c("tier_no", "team")
 
-  if (!all(required_vars %in% names(data))){
+  if (!all(required_vars %in% names(data))) {
     cli::cli_abort("The data frame {.var data} has to include the variables {.var {required_vars}}!")
   }
 
@@ -106,10 +106,10 @@ cfb_team_tiers <- function(data,
   lines <- "#e0e0e0"
 
   tiers <- sort(unique(data$tier_no))
-  tierlines <- tiers[!tiers %in% no_line_below_tier] + 0.5
+  tierlines <- tiers[!(tiers %in% no_line_below_tier)] + 0.5
   tierlines <- c(min(tiers) - 0.5, tierlines)
 
-  if (isTRUE(presort)){
+  if (isTRUE(presort)) {
     data <- data %>%
       dplyr::group_by(.data$tier_no) %>%
       dplyr::arrange(.data$team) %>%
@@ -117,20 +117,20 @@ cfb_team_tiers <- function(data,
       dplyr::ungroup()
   }
 
-  if (!"tier_rank" %in% names(data)){
+  if (!"tier_rank" %in% names(data)) {
     data <- data %>%
       dplyr::group_by(.data$tier_no) %>%
       dplyr::mutate(tier_rank = 1:dplyr::n()) %>%
       dplyr::ungroup()
   }
 
-  data$team <- cfbplotR::clean_school_names(as.character(data$team))
+  data$team <- clean_school_names(as.character(data$team))
 
   p <- ggplot2::ggplot(data, ggplot2::aes(y = .data$tier_no, x = .data$tier_rank)) +
     ggplot2::geom_hline(yintercept = tierlines, color = lines)
 
-  if(isFALSE(devel)) p <- p + cfbplotR::geom_cfb_logos(ggplot2::aes(team = .data$team), width = width, alpha = alpha)
-  if(isTRUE(devel))p <- p + ggplot2::geom_text(ggplot2::aes(label = .data$team), color = "white")
+  if (isFALSE(devel)) p <- p + geom_cfb_logos(ggplot2::aes(team = .data$team), width = width, alpha = alpha)
+  if (isTRUE(devel)) p <- p + ggplot2::geom_text(ggplot2::aes(label = .data$team), color = "white")
 
   p <- p +
     ggplot2::scale_y_continuous(
