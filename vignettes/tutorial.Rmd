@@ -11,12 +11,6 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
-library(cfbfastR)
-library(cfbplotR)
-library(dplyr, warn.conflicts = FALSE)
-library(ggplot2)
-library(tidyr)
-library(forcats)
 ```
 
 
@@ -47,7 +41,7 @@ This first chunk of code will pull the play-by-play data from the first week of 
 pbp <- cfbfastR::load_cfb_pbp(2021) %>% 
   filter(week == 1)
 
-team_info <- cfbfastR::cfbd_team_info()
+team_info <- cfbfastR::cfbd_team_info(year = 2021)
 team_info <- team_info %>% 
   select("team" = "school", "conference", "mascot") %>% 
   filter(conference %in% c("Pac-12","ACC","SEC","Big Ten","Big 12"))
