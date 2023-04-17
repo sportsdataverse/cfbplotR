@@ -13,15 +13,15 @@
 #' @export
 #' @examples
 #' # List valid team abbreviations excluding duplicates
-#' cfbplotR::valid_team_names("FBS")
-#' cfbplotR::valid_team_names("FCS")
-#' cfbplotR::valid_team_names("DII")
-#' cfbplotR::valid_team_names("DIII")
-#' cfbplotR::valid_team_names("Conference")
+#' valid_team_names("FBS")
+#' valid_team_names("FCS")
+#' valid_team_names("DII")
+#' valid_team_names("DIII")
+#' valid_team_names("Conference")
 
 valid_team_names <- function(division = c("FBS","P5","G5","FCS","DII","DIII","Conference","hoopR","Other")){
-  if(length(division) == 1){
-    if(division == "FBS"){division <- c("P5","G5")}
+  if (length(division) == 1) {
+    if (division == "FBS") {division <- c("P5","G5")}
   }
   cfbplotR::logo_ref %>%
     dplyr::filter(.data$type %in% division) %>%
@@ -70,3 +70,11 @@ headshot_html <- function(player_id, type = c("height", "width"), size = 25){
   sprintf("<img src='%s' %s = '%s'>", url, type, size)
 }
 
+most_recent_cfb_season <- function() {
+  date <- Sys.Date()
+  dplyr::case_when(
+    as.double(substr(date, 6, 7)) >= 8 & as.double(substr(date, 9, 10)) >= 15  ~ as.double(substr(date, 1, 4)),
+    as.double(substr(date, 6, 7)) >= 9 ~ as.double(substr(date, 1, 4)),
+    TRUE ~ as.double(substr(date, 1, 4)) - 1
+  )
+}
