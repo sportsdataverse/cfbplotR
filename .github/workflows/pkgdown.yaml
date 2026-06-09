@@ -9,7 +9,11 @@ name: pkgdown
 
 jobs:
   pkgdown:
-    runs-on: ubuntu-latest
+    # Pinned to 22.04 (jammy) to match the jammy RSPM binaries below: on
+    # ubuntu-latest (24.04/noble) the jammy magick binary links the older
+    # libtiff.so.5, which noble does not ship, breaking build_reference()
+    # with "libtiff.so.5: cannot open shared object file".
+    runs-on: ubuntu-22.04
 
     strategy:
       fail-fast: false
