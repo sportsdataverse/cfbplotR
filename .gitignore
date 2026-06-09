@@ -5,5 +5,5 @@
 .Ruserdata
 ..Rcheck/00check.log
 inst/doc*
-^docs*
-docs
+docs/*
+!docs/superpowers/
