@@ -1,19 +1,23 @@
-year <- sub("-.*", "", meta$Date)
+## DESCRIPTION carries no Date field, so fall back to the build year.
+year <- if (!is.null(meta$Date)) sub("-.*", "", meta$Date) else format(Sys.Date(), "%Y")
 note <- sprintf("R package version %s", meta$Version)
 
-citHeader("To cite the cfbplotR R package in publications, use:")
-
-citEntry(entry = "Misc",
-         author = personList(
-         as.person("Jared Lee"),
-         as.person("Sebastian Carl")
-         ),
-         title = "cfbplotR: The SportsDataverse's R Package for College Football Plotting.",
-         url = c("https://cfbplotR.sportsdataverse.org/"),
-         year = year,
-         note = note,
-         textVersion = paste(
-    "Jared Lee and Sebastian Carl. cfbplotR: The SportsDataverse's R Package for College Football Plotting.",
-    "Retrieved from https://cfbplotR.sportsdataverse.org/"
+bibentry(
+  bibtype  = "Misc",
+  header   = "To cite the cfbplotR R package in publications, use:",
+  key      = "lee_gilani_carl_cfbplotR",
+  author   = c(
+    person("Jared",     "Lee",    email = "13jaredlee@gmail.com"),
+    person("Saiem",     "Gilani", email = "saiem.gilani@gmail.com"),
+    person("Sebastian", "Carl",   email = "mrcaseb@gmail.com")
+  ),
+  title    = "cfbplotR: The SportsDataverse's R Package for College Football Plotting.",
+  url      = "https://cfbplotR.sportsdataverse.org",
+  year     = year,
+  note     = note,
+  textVersion = paste0(
+    "Jared Lee, Saiem Gilani, and Sebastian Carl (", year, "). ",
+    "cfbplotR: The SportsDataverse's R Package for College Football Plotting. ",
+    note, ". Retrieved from https://cfbplotR.sportsdataverse.org"
   )
 )
