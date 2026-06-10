@@ -30,7 +30,7 @@
 #'   section "Aesthetics" for a full list of possible arguments.
 #' @export
 #' @examples
-#' \donttest{
+#' \dontrun{
 #' library(cfbplotR)
 #' library(ggplot2)
 #'

@@ -111,7 +111,7 @@ A typical size is \code{height = 0.1} (see below examples).}
 }
 
 \examples{
-\donttest{
+\dontrun{
 library(cfbplotR)
 library(ggplot2)
 

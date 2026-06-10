@@ -1,6 +1,6 @@
 Package: cfbplotR
 Title: CFB Logo Plots in 'ggplot2'
-Version: 0.0.1.9000
+Version: 0.1.0
 Authors@R: c(
     person("Sebastian", "Carl", , "mrcaseb@gmail.com", role = "aut"),
     person("Jared", "Lee", , "13jaredlee@gmail.com", role = c("aut", "cre")),

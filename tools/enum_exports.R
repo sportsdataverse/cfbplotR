@@ -1,0 +1,6 @@
+setwd("C:/Users/saiem/Documents/GitHub-Data/sdv-dev/cfbplotR")
+devtools::load_all(".", quiet = TRUE)
+cat("=== EXPORTS ===\n")
+cat(paste(sort(getNamespaceExports("cfbplotR")), collapse = "\n"), "\n")
+cat("\n=== MAN FILES ===\n")
+cat(paste(sort(list.files("man", pattern = "[.]Rd$")), collapse = "\n"), "\n")

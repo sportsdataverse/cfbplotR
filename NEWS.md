@@ -1,4 +1,22 @@
-# cfbplotR (development version)
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
+
+- [cfbplotR 0.1.0](#cfbplotr-010)
+- [cfbplotR 0.0.1 (pre-release history)](#cfbplotr-001-pre-release-history)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+# cfbplotR 0.1.0
+
+* **Rebuilt on the [ggpath](https://mrcaseb.github.io/ggpath/) foundation** (the nflplotR/nbaplotR pattern). cfbplotR now resolves a CFB identifier to an image path and delegates all rendering — caching, aspect ratio, alpha, colorization — to ggpath.
+* Dropped the `magick`, `RCurl`, `base64enc`, and `purrr` dependencies; added `ggpath (>= 1.0.0)`. Raised the R requirement to `R (>= 4.1.0)`.
+* The public API is preserved: `geom_from_path()`, `element_path()`, `geom_mean_lines()`/`geom_median_lines()`, and related generics are now re-exported from ggpath.
+* gt image helpers (`gt_fmt_cfb_logo()`/`gt_fmt_cfb_headshot()`/`gt_fmt_cfb_wordmark()`) now embed via `gt::web_image()`.
+* New family-parity conveniences: `gt_cfb_cols_label()`, `cfb_team_factor()`, `clean_team_abbrs()`, and `.cfbplotR_clear_cache()`.
+* Added repository community-health files (CLAUDE.md, Copilot instructions, issue/PR templates, CONTRIBUTING, Code of Conduct), normalized badges, a standard SportsDataverse README, a `bibentry()` citation, and a richer pkgdown reference.
+
+# cfbplotR 0.0.1 (pre-release history)
 
 * Added the `geom_cfb_logos()` geom.
 * Added the `geom_mean_lines()` and `geom_median_lines()` geoms.
