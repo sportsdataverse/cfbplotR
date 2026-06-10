@@ -1,4 +1,4 @@
-url: https://cfbplotr.sportsdataverse.org/
+url: https://cfbplotR.sportsdataverse.org/
 
 template:
   bootstrap: 5
@@ -50,6 +50,8 @@ reference:
       ggplot2 geoms and ggproto objects for rendering CFB team logos,
       wordmarks, and player headshots on plots.
     contents:
+      - geom_cfb_logos
+      - GeomCFBlogo
       - geom_cfb_headshots
       - geom_cfb_wordmarks
       - GeomCFBheads
@@ -101,6 +103,10 @@ reference:
       Built-in reference datasets shipped with cfbplotR.
     contents:
       - data
+  - title: "Re-exported from ggpath"
+    desc: Generic image geoms and theme elements provided by the ggpath backend.
+    contents:
+      - reexports
 
 
 navbar:
@@ -128,10 +134,8 @@ navbar:
         href: reference/geom_cfb_logos.html
       - text: "Plot Headshots"
         href: reference/geom_cfb_headshots.html
-      - text: "Plot from Path"
-        href: reference/geom_from_path.html
-      - text: "Add Median Lines"
-        href: reference/geom_median_lines.html
+      - text: "ggpath Re-exports"
+        href: reference/reexports.html
       - text: "Team Colors"
         href: reference/scale_color_cfb.html
       - text: "Title Image"
