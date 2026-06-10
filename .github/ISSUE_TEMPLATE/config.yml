@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: SportsDataverse Community Discussions
+    url: https://github.com/sportsdataverse/cfbplotR/discussions
+    about: Ask usage questions, share plots, and discuss ideas with the community.
+  - name: SportsDataverse GitHub Organization
+    url: https://github.com/sportsdataverse
+    about: Browse all SportsDataverse R packages.
