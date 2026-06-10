@@ -7,7 +7,6 @@
 \alias{element_grob.element_cfb_logo}
 \alias{element_grob.element_cfb_wordmark}
 \alias{element_grob.element_cfb_headshot}
-\alias{element_grob.element_path}
 \title{Theme Elements for Image Grobs}
 \usage{
 element_cfb_logo(
@@ -57,26 +56,13 @@ element_cfb_headshot(
   y = NULL,
   alpha = NULL,
   colour = NULL,
-  hjust = 0.5,
-  vjust = 0.5,
-  size = NULL,
-  ...
-)
-
-\method{element_grob}{element_cfb_headshot}(
-  element,
-  label = "",
-  x = NULL,
-  y = NULL,
-  alpha = NULL,
-  colour = NULL,
   hjust = NULL,
   vjust = NULL,
   size = NULL,
   ...
 )
 
-\method{element_grob}{element_path}(
+\method{element_grob}{element_cfb_headshot}(
   element,
   label = "",
   x = NULL,

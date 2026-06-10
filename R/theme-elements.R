@@ -171,38 +171,12 @@ element_grob.element_cfb_logo <- function(element, label = "", x = NULL, y = NUL
                                           alpha = NULL, colour = NULL,
                                           hjust = NULL, vjust = NULL,
                                           size = NULL, ...) {
-
   if (is.null(label)) return(ggplot2::zeroGrob())
-
-  n <- max(length(x), length(y), 1)
-  vj <- vjust %||% element$vjust
-  hj <- hjust %||% element$hjust
-  x <- x %||% grid::unit(rep(hj, n), "npc")
-  y <- y %||% grid::unit(rep(vj, n), "npc")
-  alpha <- alpha %||% element$alpha
-  colour <- colour %||% rep(element$colour, n)
-  size <- size %||% element$size
-
-  grobs <- lapply(
-    seq_along(label),
-    axisImageGrob,
-    alpha = alpha,
-    colour = colour,
-    label = label,
-    x = x,
-    y = y,
-    hjust = hj,
-    vjust = vj,
-    type = "teams"
-  )
-
-  class(grobs) <- "gList"
-
-  grid::gTree(
-    gp = grid::gpar(),
-    children = grobs,
-    size = size,
-    cl = "axisImageGrob"
+  label <- logo_from_school(label)
+  class(element) <- c("element_path", "element_text", "element")
+  ggplot2::element_grob(
+    element, label = label, x = x, y = y, alpha = alpha, colour = colour,
+    hjust = hjust, vjust = vjust, size = size, ...
   )
 }
 
@@ -210,40 +184,14 @@ element_grob.element_cfb_logo <- function(element, label = "", x = NULL, y = NUL
 #' @rdname element
 element_grob.element_cfb_wordmark <- function(element, label = "", x = NULL, y = NULL,
                                               alpha = NULL, colour = NULL,
-                                              hjust = 0.5, vjust = 0.5,
+                                              hjust = NULL, vjust = NULL,
                                               size = NULL, ...) {
-
   if (is.null(label)) return(ggplot2::zeroGrob())
-
-  n <- max(length(x), length(y), 1)
-  vj <- element$vjust %||% vjust
-  hj <- element$hjust %||% hjust
-  x <- x %||% grid::unit(rep(hj, n), "npc")
-  y <- y %||% grid::unit(rep(vj, n), "npc")
-  alpha <- alpha %||% element$alpha
-  colour <- colour %||% rep(element$colour, n)
-  size <- size %||% element$size
-
-  grobs <- lapply(
-    seq_along(label),
-    axisImageGrob,
-    alpha = alpha,
-    colour = colour,
-    label = label,
-    x = x,
-    y = y,
-    hjust = hj,
-    vjust = vj,
-    type = "wordmarks"
-  )
-
-  class(grobs) <- "gList"
-
-  grid::gTree(
-    gp = grid::gpar(),
-    children = grobs,
-    size = size,
-    cl = "axisImageGrob"
+  label <- wordmark_from_school(label)
+  class(element) <- c("element_path", "element_text", "element")
+  ggplot2::element_grob(
+    element, label = label, x = x, y = y, alpha = alpha, colour = colour,
+    hjust = hjust, vjust = vjust, size = size, ...
   )
 }
 
@@ -253,178 +201,11 @@ element_grob.element_cfb_headshot <- function(element, label = "", x = NULL, y =
                                               alpha = NULL, colour = NULL,
                                               hjust = NULL, vjust = NULL,
                                               size = NULL, ...) {
-
   if (is.null(label)) return(ggplot2::zeroGrob())
-
-  n <- max(length(x), length(y), 1)
-  vj <- vjust %||% element$vjust
-  hj <- hjust %||% element$hjust
-  x <- x %||% grid::unit(rep(hj, n), "npc")
-  y <- y %||% grid::unit(rep(vj, n), "npc")
-  alpha <- alpha %||% element$alpha
-  colour <- colour %||% rep(element$colour, n)
-  size <- size %||% element$size
-
-  grobs <- lapply(
-    seq_along(label),
-    axisImageGrob,
-    alpha = alpha,
-    colour = colour,
-    label = label,
-    x = x,
-    y = y,
-    hjust = hj,
-    vjust = vj,
-    type = "headshots"
-  )
-
-  class(grobs) <- "gList"
-
-  grid::gTree(
-    gp = grid::gpar(),
-    children = grobs,
-    size = size,
-    cl = "axisImageGrob"
+  label <- headshot_from_id(label)
+  class(element) <- c("element_path", "element_text", "element")
+  ggplot2::element_grob(
+    element, label = label, x = x, y = y, alpha = alpha, colour = colour,
+    hjust = hjust, vjust = vjust, size = size, ...
   )
 }
-
-#' @export
-#' @rdname element
-element_grob.element_path <- function(element, label = "", x = NULL, y = NULL,
-                                      alpha = NULL, colour = NULL,
-                                      hjust = NULL, vjust = NULL,
-                                      size = NULL, ...) {
-
-  if (is.null(label)) return(ggplot2::zeroGrob())
-
-  n <- max(length(x), length(y), 1)
-  vj <- vjust %||% element$vjust
-  hj <- hjust %||% element$hjust
-  x <- x %||% grid::unit(rep(hj, n), "npc")
-  y <- y %||% grid::unit(rep(vj, n), "npc")
-  alpha <- alpha %||% element$alpha
-  colour <- colour %||% rep(element$colour, n)
-  size <- size %||% element$size
-
-  grobs <- lapply(
-    seq_along(label),
-    axisImageGrob,
-    alpha = alpha,
-    colour = colour,
-    label = label,
-    x = x,
-    y = y,
-    hjust = hj,
-    vjust = vj,
-    type = "path"
-  )
-
-  class(grobs) <- "gList"
-
-  grid::gTree(
-    gp = grid::gpar(),
-    children = grobs,
-    size = size,
-    cl = "axisImageGrob"
-  )
-}
-
-axisImageGrob <- function(i, label, alpha, colour, data, x, y, hjust, vjust,
-                          width = 1, height = 1,
-                          type = c("teams", "headshots", "wordmarks", "path")) {
-  make_null <- FALSE
-  type <- rlang::arg_match(type)
-  if (type == "teams") {
-    team <- label[i]
-    team <- clean_school_names(as.character(team))
-    if (!team %in% valid_team_names()) {
-      cli::cli_warn("{label[i]} is not a valid team name (row {i})")
-      team <- "NCAA"
-    }
-    if (is.na(team)) {make_null <- TRUE}
-    else{image_to_read <- logo_list[[team]]}
-  } else if (type == "wordmarks") {
-    team <- label[i]
-    team <- clean_school_names(as.character(team))
-    if (!team %in% names(wordmark_list)) {
-      cli::cli_warn("{label[i]} does not have a wordmark")
-      team <- "NCAA"
-    }
-    image_to_read <- wordmark_list[[team]]
-    if (is.na(team)) make_null <- TRUE
-  } else if (type == "path") {
-    image_to_read <- label[i]
-  } else {
-    player_id <- label[i]
-    headshot_map <- headshot_id_to_url(player_id)
-    #headshot_map <- paste0("http://a.espncdn.com/i/headshots/college-football/players/full/",player_id,".png")
-    if (!RCurl::url.exists(headshot_map)) {
-      cli::cli_warn("{label[i]} is not a valid player id (row {i})")
-      headshot_map <- "http://a.espncdn.com/i/headshots/nophoto.png"
-    }
-    image_to_read <- headshot_map
-
-  }
-  if (is.na(make_null)) {
-    return(grid::nullGrob())
-  } else if (is.null(alpha[i])) {
-    img <- magick::image_read(image_to_read)
-    col <- colour[i]
-    if (!is.null(col) && col %in% "b/w") {
-      new <- magick::image_quantize(img, colorspace = 'gray')
-    } else {
-      opa <- ifelse(is.na(col) || is.null(col), 0, 100)
-      col <- ifelse(is.na(col) || is.null(col), "none", col)
-      new <- magick::image_colorize(img, opa, col)
-    }
-  } else if (length(alpha) == 1L) {
-    if (as.numeric(alpha) <= 0 || as.numeric(alpha) >= 1) {
-      cli::cli_abort("aesthetic {.var alpha} requires a value between {.val 0} and {.val 1}")
-    }
-    img <- magick::image_read(image_to_read)
-    new <- magick::image_fx(img, expression = paste0(alpha, "*a"), channel = "alpha")
-    col <- colour[i]
-    if (!is.null(col) && col %in% "b/w") {
-      new <- magick::image_quantize(new, colorspace = 'gray')
-    } else {
-      opa <- ifelse(is.na(col) || is.null(col), 0, 100)
-      col <- ifelse(is.na(col) || is.null(col), "none", col)
-      new <- magick::image_colorize(new, opa, col)
-    }
-  } else {
-    if (any(as.numeric(alpha) < 0) || any(as.numeric(alpha) > 1)) {
-      cli::cli_abort("aesthetics {.var alpha} require values between {.val 0} and {.val 1}")
-    }
-    img <- magick::image_read(image_to_read)
-    new <- magick::image_fx(img, expression = paste0(alpha[i], "*a"), channel = "alpha")
-    col <- colour[i]
-    if (!is.null(col) && col %in% "b/w") {
-      new <- magick::image_quantize(new, colorspace = 'gray')
-    } else{
-      opa <- ifelse(is.na(col) || is.null(col), 0, 100)
-      col <- ifelse(is.na(col) || is.null(col), "none", col)
-      new <- magick::image_colorize(new, opa, col)
-    }
-  }
-
-  grid::rasterGrob(
-    new,
-    x = x[i],
-    y = y[i],
-    width = grid::unit(width, "snpc"),
-    height = grid::unit(height, "snpc"),
-    hjust = hjust,
-    vjust = vjust
-  )
-}
-
-
-#' @title grobHeight
-#' @param x Size in cm for height
-#' @export
-grobHeight.axisImageGrob <- function(x) grid::unit(x$size, "cm")
-
-#' @title grobWidth
-#' @param x Size in cm for width
-#' @export
-grobWidth.axisImageGrob <- function(x) grid::unit(x$size, "cm")
