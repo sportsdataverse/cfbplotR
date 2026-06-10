@@ -28,11 +28,8 @@ jobs:
          # - {os: macos-latest,   r: 'release'}
           - {os: windows-latest, r: 'release'}
          # - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
-          # Pinned to 22.04 (jammy) to match the jammy RSPM binaries below; on
-          # noble (ubuntu-latest/24.04) the jammy magick binary fails to load
-          # (libMagick++-6.Q16.so.8 / libtiff.so.5 not present).
-          - {os: ubuntu-22.04,    r: 'release'}
-          - {os: ubuntu-22.04,    r: 'oldrel-1'}
+          - {os: ubuntu-latest,  r: 'release'}
+          - {os: ubuntu-latest,  r: 'oldrel-1'}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true

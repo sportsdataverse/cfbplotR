@@ -45,6 +45,7 @@ cfb_team_factor <- function(teams) {
 #'   development.
 #' @examples
 #' \donttest{
+#' if (requireNamespace("sjmisc", quietly = TRUE)) {
 #' library(ggplot2)
 #' library(dplyr, warn.conflicts = FALSE)
 #' team_names <- valid_team_names("FBS")
@@ -89,6 +90,7 @@ cfb_team_factor <- function(teams) {
 #'                              "5" = ""),
 #'                no_line_below_tier = c(2, 4),
 #'                devel = TRUE)
+#' }
 #' }
 #' @export
 cfb_team_tiers <- function(data,

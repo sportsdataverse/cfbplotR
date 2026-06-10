@@ -165,6 +165,24 @@ element_cfb_headshot <- function(alpha = NULL, colour = NA, hjust = NULL, vjust 
   )
 }
 
+# Internal helper: build a proper ggpath::element_path S7 object from the
+# cfb element fields, then dispatch element_grob on that object.
+.cfb_element_to_path_grob <- function(element, label, x, y, alpha, colour,
+                                       hjust, vjust, size, ...) {
+  # ggpath::element_path() is an S7 object; we must construct it properly
+  # (not just set class()) so that @property access works.
+  ep <- ggpath::element_path(
+    alpha   = alpha   %||% element$alpha   %||% 1,
+    colour  = as.character(colour  %||% element$colour %||% "transparent"),
+    hjust   = hjust   %||% element$hjust   %||% 0.5,
+    vjust   = vjust   %||% element$vjust   %||% 0.5,
+    size    = size    %||% element$size    %||% 0.5
+  )
+  ggplot2::element_grob(
+    ep, label = label, x = x, y = y, ...
+  )
+}
+
 #' @export
 #' @rdname element
 element_grob.element_cfb_logo <- function(element, label = "", x = NULL, y = NULL,
@@ -173,11 +191,7 @@ element_grob.element_cfb_logo <- function(element, label = "", x = NULL, y = NUL
                                           size = NULL, ...) {
   if (is.null(label)) return(ggplot2::zeroGrob())
   label <- logo_from_school(label)
-  class(element) <- c("element_path", "element_text", "element")
-  ggplot2::element_grob(
-    element, label = label, x = x, y = y, alpha = alpha, colour = colour,
-    hjust = hjust, vjust = vjust, size = size, ...
-  )
+  .cfb_element_to_path_grob(element, label, x, y, alpha, colour, hjust, vjust, size, ...)
 }
 
 #' @export
@@ -188,11 +202,7 @@ element_grob.element_cfb_wordmark <- function(element, label = "", x = NULL, y =
                                               size = NULL, ...) {
   if (is.null(label)) return(ggplot2::zeroGrob())
   label <- wordmark_from_school(label)
-  class(element) <- c("element_path", "element_text", "element")
-  ggplot2::element_grob(
-    element, label = label, x = x, y = y, alpha = alpha, colour = colour,
-    hjust = hjust, vjust = vjust, size = size, ...
-  )
+  .cfb_element_to_path_grob(element, label, x, y, alpha, colour, hjust, vjust, size, ...)
 }
 
 #' @export
@@ -203,9 +213,5 @@ element_grob.element_cfb_headshot <- function(element, label = "", x = NULL, y =
                                               size = NULL, ...) {
   if (is.null(label)) return(ggplot2::zeroGrob())
   label <- headshot_from_id(label)
-  class(element) <- c("element_path", "element_text", "element")
-  ggplot2::element_grob(
-    element, label = label, x = x, y = y, alpha = alpha, colour = colour,
-    hjust = hjust, vjust = vjust, size = size, ...
-  )
+  .cfb_element_to_path_grob(element, label, x, y, alpha, colour, hjust, vjust, size, ...)
 }

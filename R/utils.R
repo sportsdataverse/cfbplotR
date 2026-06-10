@@ -84,7 +84,7 @@ most_recent_cfb_season <- function() {
 .cfbplotR_clear_cache <- function() {
   if (requireNamespace("ggpath", quietly = TRUE) &&
       "clear_cache" %in% getNamespaceExports("ggpath")) {
-    ggpath::clear_cache()
+    getExportedValue("ggpath", "clear_cache")()
   }
   invisible(NULL)
 }

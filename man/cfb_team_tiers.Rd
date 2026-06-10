@@ -57,6 +57,7 @@ This function sets up a ggplot to visualize CFB team tiers.
 }
 \examples{
 \donttest{
+if (requireNamespace("sjmisc", quietly = TRUE)) {
 library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 team_names <- valid_team_names("FBS")
@@ -101,5 +102,6 @@ cfb_team_tiers(df,
                              "5" = ""),
                no_line_below_tier = c(2, 4),
                devel = TRUE)
+}
 }
 }
