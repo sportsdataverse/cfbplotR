@@ -117,13 +117,10 @@ GeomCFBheads <- ggplot2::ggproto(
     vjust = 0.5, width = 1.0, height = 1.0
   ),
   draw_panel = function(data, panel_params, coord, na.rm = FALSE) {
-    data <- coord$transform(data, panel_params)
-
-    grobs <- lapply(seq_along(data$player_id), build_grobs, alpha = data$alpha, colour = data$colour, data = data, type = "headshots")
-
-    class(grobs) <- "gList"
-
-    grid::gTree(children = grobs)
+    data$path <- headshot_from_id(data$player_id)
+    ggpath::GeomFromPath$draw_panel(
+      data = data, panel_params = panel_params, coord = coord, na.rm = na.rm
+    )
   },
   draw_key = function(...) grid::nullGrob()
 )
