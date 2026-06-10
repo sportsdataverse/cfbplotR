@@ -78,3 +78,35 @@ most_recent_cfb_season <- function() {
     TRUE ~ as.double(substr(date, 1, 4)) - 1
   )
 }
+
+# Resolve CFB team names to logo image paths (vectorised). Invalid names warn
+# and fall back to the generic NCAA logo. ggpath renders the returned paths.
+logo_from_school <- function(team) {
+  team <- clean_school_names(as.character(team))
+  valid <- valid_team_names()
+  bad <- !is.na(team) & !(team %in% valid)
+  if (any(bad)) {
+    cli::cli_warn("{.val {unique(team[bad])}} is/are not valid team name(s); using the NCAA logo.")
+    team[bad] <- "NCAA"
+  }
+  unname(vapply(team, function(t) if (is.na(t)) NA_character_ else logo_list[[t]], character(1)))
+}
+
+# Resolve CFB team names to wordmark image paths (vectorised).
+wordmark_from_school <- function(team) {
+  team <- clean_school_names(as.character(team))
+  bad <- !is.na(team) & !(team %in% names(wordmark_list))
+  if (any(bad)) {
+    cli::cli_warn("{.val {unique(team[bad])}} do(es) not have a wordmark; using the NCAA wordmark.")
+    team[bad] <- "NCAA"
+  }
+  unname(vapply(team, function(t) if (is.na(t)) NA_character_ else wordmark_list[[t]], character(1)))
+}
+
+# Build ESPN headshot URLs from player ids (vectorised). ggpath fetches/caches.
+headshot_from_id <- function(player_id) {
+  player_id <- as.character(player_id)
+  url <- headshot_id_to_url(player_id)
+  url[is.na(player_id)] <- NA_character_
+  url
+}
