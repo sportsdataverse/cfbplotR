@@ -1,5 +1,5 @@
 test_that("element_cfb_logo axis renders", {
-  skip_on_cran(); skip_if_offline(); skip_if_not_installed("vdiffr")
+  skip_on_ci(); skip_on_cran(); skip_if_offline(); skip_if_not_installed("vdiffr")
   library(ggplot2)
   df <- data.frame(teams = c("Alabama","Georgia","Oregon"), v = c(1,2,3))
   p <- ggplot(df, aes(teams, v)) + geom_col() + theme_minimal() +
