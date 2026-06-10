@@ -2,7 +2,7 @@
 
 The `gt_fmt_cfb_logo` and `gt_fmt_cfb_headshot` functions take an
 existing `gt_tbl` object and converts college football team names from
-[`valid_team_names()`](https://cfbplotr.sportsdataverse.org/reference/valid_team_names.md)
+[`valid_team_names()`](https://cfbplotR.sportsdataverse.org/reference/valid_team_names.md)
 into inline team logos or ESPN player ID's (or `headshot_url` from
 `cfbfastR::cfbd_team_rosters()` function) into inline player headshots.
 This is a wrapper around
@@ -35,7 +35,12 @@ gt_fmt_cfb_headshot(gt_object, columns, height = 30)
 
 - height:
 
-  The absolute height (px) of the image in the table cell.
+  *Height of image*
+
+  `scalar<numeric|integer>` // *default:* `30`
+
+  The absolute height of the image in the table cell (in `"px"` units).
+  By default, this is set to `"30px"`.
 
 ## Value
 

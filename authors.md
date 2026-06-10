@@ -13,13 +13,14 @@
 Source:
 [`inst/CITATION`](https://github.com/sportsdataverse/cfbplotR/blob/main/inst/CITATION)
 
-Jared Lee and Sebastian Carl. cfbplotR: The SportsDataverse's R Package
-for College Football Plotting. Retrieved from
-https://cfbplotR.sportsdataverse.org/
+Jared Lee, Saiem Gilani, and Sebastian Carl (2026). cfbplotR: The
+SportsDataverse's R Package for College Football Plotting. R package
+version 0.1.0. Retrieved from https://cfbplotR.sportsdataverse.org
 
-    @Misc{,
-      author = {Jared Lee and Sebastian Carl},
+    @Misc{lee_gilani_carl_cfbplotR,
+      author = {Jared Lee and Saiem Gilani and Sebastian Carl},
       title = {cfbplotR: The SportsDataverse's R Package for College Football Plotting.},
-      url = {https://cfbplotR.sportsdataverse.org/},
-      note = {R package version 0.0.1.9000},
+      url = {https://cfbplotR.sportsdataverse.org},
+      year = {2026},
+      note = {R package version 0.1.0},
     }

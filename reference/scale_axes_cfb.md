@@ -46,13 +46,6 @@ scale_y_cfb_headshots(
   Arguments passed on to
   [`discrete_scale`](https://ggplot2.tidyverse.org/reference/discrete_scale.html)
 
-  `palette`
-
-  :   A palette function that when called with a single integer argument
-      (the number of levels in the scale) returns the values that they
-      should take (e.g.,
-      [`scales::hue_pal()`](https://scales.r-lib.org/reference/pal_hue.html)).
-
   `breaks`
 
   :   One of:
@@ -87,7 +80,9 @@ scale_y_cfb_headshots(
 
   :   Should unused factor levels be omitted from the scale? The
       default, `TRUE`, uses the levels that appear in the data; `FALSE`
-      uses all the levels in the factor.
+      includes the levels in the factor. Please note that to display
+      every level in a legend, the layer should use
+      `show.legend = TRUE`.
 
   `na.translate`
 
@@ -105,22 +100,29 @@ scale_y_cfb_headshots(
 
   :   The names of the aesthetics that this scale works with.
 
-  `scale_name`
+  `minor_breaks`
 
-  :   The name of the scale that should be used for error messages
-      associated with this scale.
+  :   One of:
 
-  `name`
+      - `NULL` for no minor breaks
 
-  :   The name of the scale. Used as the axis or legend title. If
-      [`waiver()`](https://ggplot2.tidyverse.org/reference/waiver.html),
-      the default, the name of the scale is taken from the first mapping
-      used for that aesthetic. If `NULL`, the legend title will be
-      omitted.
+      - [`waiver()`](https://ggplot2.tidyverse.org/reference/waiver.html)
+        for the default breaks (none for discrete, one minor break
+        between each major break for continuous)
+
+      - A numeric vector of positions
+
+      - A function that given the limits returns a vector of minor
+        breaks. Also accepts rlang
+        [lambda](https://rlang.r-lib.org/reference/as_function.html)
+        function notation. When the function has two arguments, it will
+        be given the limits and major break positions.
 
   `labels`
 
-  :   One of:
+  :   One of the options below. Please note that when `labels` is a
+      vector, it is highly recommended to also set the `breaks` argument
+      as a vector to protect against unintended mismatches.
 
       - `NULL` for no labels
 
@@ -137,6 +139,10 @@ scale_y_cfb_headshots(
         output. Also accepts rlang
         [lambda](https://rlang.r-lib.org/reference/as_function.html)
         function notation.
+
+  `call`
+
+  :   The `call` used to construct the scale for reporting messages.
 
   `super`
 
@@ -173,18 +179,18 @@ scale_y_cfb_headshots(
 The scale translates the CFB team names into raw image html and places
 the html as axis labels. Because of the way ggplots are constructed, it
 is necessary to adjust the
-[`theme()`](https://ggplot2.tidyverse.org/reference/theme.html) after
-calling this scale. This can be done by calling
-[`theme_x_cfb()`](https://cfbplotr.sportsdataverse.org/reference/theme_cfb.md)
+[`ggplot2::theme()`](https://ggplot2.tidyverse.org/reference/theme.html)
+after calling this scale. This can be done by calling
+[`theme_x_cfb()`](https://cfbplotR.sportsdataverse.org/reference/theme_cfb.md)
 or
-[`theme_y_cfb()`](https://cfbplotr.sportsdataverse.org/reference/theme_cfb.md)
+[`theme_y_cfb()`](https://cfbplotR.sportsdataverse.org/reference/theme_cfb.md)
 or alternatively by manually changing the relevant `axis.text` to
 [`ggtext::element_markdown()`](https://wilkelab.org/ggtext/reference/element_markdown.html).
 
 ## See also
 
-[`theme_x_cfb()`](https://cfbplotr.sportsdataverse.org/reference/theme_cfb.md),
-[`theme_y_cfb()`](https://cfbplotr.sportsdataverse.org/reference/theme_cfb.md)
+[`theme_x_cfb()`](https://cfbplotR.sportsdataverse.org/reference/theme_cfb.md),
+[`theme_y_cfb()`](https://cfbplotR.sportsdataverse.org/reference/theme_cfb.md)
 
 ## Examples
 

@@ -18,9 +18,9 @@ These functions are a wrapper around the function calls
 `ggplot2::theme(axis.text.x = ggtext::element_markdown())` as well as
 `ggplot2::theme(axis.text.y = ggtext::element_markdown())`. They are
 made to be used in conjunction with
-[`scale_x_cfb()`](https://cfbplotr.sportsdataverse.org/reference/scale_axes_cfb.md)
+[`scale_x_cfb()`](https://cfbplotR.sportsdataverse.org/reference/scale_axes_cfb.md)
 and
-[`scale_y_cfb()`](https://cfbplotr.sportsdataverse.org/reference/scale_axes_cfb.md)
+[`scale_y_cfb()`](https://cfbplotR.sportsdataverse.org/reference/scale_axes_cfb.md)
 respectively.
 
 ## See also

@@ -3,7 +3,7 @@
 This geom is used to plot college football team and conference logos
 instead of points in a ggplot. It requires x, y aesthetics as well as a
 valid CFB team name or abbreviation. The latter can be checked with
-[`valid_team_names()`](https://cfbplotr.sportsdataverse.org/reference/valid_team_names.md).
+[`valid_team_names()`](https://cfbplotR.sportsdataverse.org/reference/valid_team_names.md).
 
 ## Usage
 
@@ -62,17 +62,43 @@ of length 5.
 
 - stat:
 
-  The statistical transformation to use on the data for this layer,
-  either as a `ggproto` `Geom` subclass or as a string naming the stat
-  stripped of the `stat_` prefix (e.g. `"count"` rather than
-  `"stat_count"`)
+  The statistical transformation to use on the data for this layer. When
+  using a `geom_*()` function to construct a layer, the `stat` argument
+  can be used to override the default coupling between geoms and stats.
+  The `stat` argument accepts the following:
+
+  - A `Stat` ggproto subclass, for example `StatCount`.
+
+  - A string naming the stat. To give the stat as a string, strip the
+    function name of the `stat_` prefix. For example, to use
+    [`stat_count()`](https://ggplot2.tidyverse.org/reference/geom_bar.html),
+    give the stat as `"count"`.
+
+  - For more information and other ways to specify the stat, see the
+    [layer
+    stat](https://ggplot2.tidyverse.org/reference/layer_stats.html)
+    documentation.
 
 - position:
 
-  Position adjustment, either as a string naming the adjustment (e.g.
-  `"jitter"` to use `position_jitter`), or the result of a call to a
-  position adjustment function. Use the latter if you need to change the
-  settings of the adjustment.
+  A position adjustment to use on the data for this layer. This can be
+  used in various ways, including to prevent overplotting and improving
+  the display. The `position` argument accepts the following:
+
+  - The result of calling a position function, such as
+    [`position_jitter()`](https://ggplot2.tidyverse.org/reference/position_jitter.html).
+    This method allows for passing extra arguments to the position.
+
+  - A string naming the position adjustment. To give the position as a
+    string, strip the function name of the `position_` prefix. For
+    example, to use
+    [`position_jitter()`](https://ggplot2.tidyverse.org/reference/position_jitter.html),
+    give the position as `"jitter"`.
+
+  - For more information and other ways to specify the position, see the
+    [layer
+    position](https://ggplot2.tidyverse.org/reference/layer_positions.html)
+    documentation.
 
 - ...:
 
@@ -92,7 +118,9 @@ of length 5.
   logical. Should this layer be included in the legends? `NA`, the
   default, includes if any aesthetics are mapped. `FALSE` never
   includes, and `TRUE` always includes. It can also be a named logical
-  vector to finely select the aesthetics to display.
+  vector to finely select the aesthetics to display. To include legend
+  keys for all levels, even when no data exists, use `TRUE`. If `NA`,
+  all levels are shown in legend, but unobserved levels are omitted.
 
 - inherit.aes:
 
@@ -100,7 +128,7 @@ of length 5.
   with them. This is most useful for helper functions that define both
   data and aesthetics and shouldn't inherit behaviour from the default
   plot specification, e.g.
-  [`borders()`](https://ggplot2.tidyverse.org/reference/annotation_borders.html).
+  [`annotation_borders()`](https://ggplot2.tidyverse.org/reference/annotation_borders.html).
 
 ## Aesthetics
 
@@ -112,7 +140,7 @@ aesthetics are in bold):
 - **y** - The y-coordinate.
 
 - **team** - The team name or abbreviation. Must be one of
-  [`valid_team_names()`](https://cfbplotr.sportsdataverse.org/reference/valid_team_names.md).
+  [`valid_team_names()`](https://cfbplotR.sportsdataverse.org/reference/valid_team_names.md).
 
 - `alpha = NULL` - The alpha channel, i.e. transparency level, as a
   numerical value between 0 and 1.

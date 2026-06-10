@@ -13,8 +13,8 @@ components of the plot, e.g. axis text.
 - `element_cfb_headshot()`: draws player headshots instead of their ESPN
   player IDs.
 
-- `element_path()`: draws images from valid image URLs instead of the
-  URL.
+- [`element_path()`](https://mrcaseb.github.io/ggpath/reference/element_path.html):
+  draws images from valid image URLs instead of the URL.
 
 ## Usage
 
@@ -46,15 +46,6 @@ element_cfb_headshot(
   size = 0.5
 )
 
-element_path(
-  alpha = NULL,
-  colour = NA,
-  hjust = NULL,
-  vjust = NULL,
-  color = NULL,
-  size = 0.5
-)
-
 # S3 method for class 'element_cfb_logo'
 element_grob(
   element,
@@ -77,27 +68,13 @@ element_grob(
   y = NULL,
   alpha = NULL,
   colour = NULL,
-  hjust = 0.5,
-  vjust = 0.5,
-  size = NULL,
-  ...
-)
-
-# S3 method for class 'element_cfb_headshot'
-element_grob(
-  element,
-  label = "",
-  x = NULL,
-  y = NULL,
-  alpha = NULL,
-  colour = NULL,
   hjust = NULL,
   vjust = NULL,
   size = NULL,
   ...
 )
 
-# S3 method for class 'element_path'
+# S3 method for class 'element_cfb_headshot'
 element_grob(
   element,
   label = "",
@@ -166,11 +143,11 @@ images or player headshots, respectively.
 
 ## See also
 
-[`geom_cfb_logos()`](https://cfbplotr.sportsdataverse.org/reference/geom_cfb_logos.md),
-[`geom_cfb_wordmarks()`](https://cfbplotr.sportsdataverse.org/reference/geom_cfb_wordmarks.md),
-[`geom_cfb_headshots()`](https://cfbplotr.sportsdataverse.org/reference/geom_cfb_headshots.md),
+[`geom_cfb_logos()`](https://cfbplotR.sportsdataverse.org/reference/geom_cfb_logos.md),
+[`geom_cfb_wordmarks()`](https://cfbplotR.sportsdataverse.org/reference/geom_cfb_wordmarks.md),
+[`geom_cfb_headshots()`](https://cfbplotR.sportsdataverse.org/reference/geom_cfb_headshots.md),
 and
-[`geom_from_path()`](https://cfbplotr.sportsdataverse.org/reference/geom_from_path.md)
+[`geom_from_path()`](https://mrcaseb.github.io/ggpath/reference/geom_from_path.html)
 for more information on valid team names, player IDs, and other
 parameters.
 

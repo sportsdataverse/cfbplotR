@@ -27,7 +27,7 @@ cfb_team_tiers(
   A data frame that has to include the variables `tier_no` (the number
   of the tier starting from the top tier no. 1) and `team` (the team
   name). `team` should be one of
-  [`valid_team_names()`](https://cfbplotr.sportsdataverse.org/reference/valid_team_names.md).
+  [`valid_team_names()`](https://cfbplotR.sportsdataverse.org/reference/valid_team_names.md).
   If data includes the variable `tier_rank`, these ranks will be used
   within each tier. Otherwise, if `presort = FALSE`, the function will
   assume that data is already sorted and if `presort = TRUE`, teams will
@@ -82,6 +82,7 @@ cfb_team_tiers(
 
 ``` r
 # \donttest{
+if (requireNamespace("sjmisc", quietly = TRUE)) {
 library(ggplot2)
 library(dplyr, warn.conflicts = FALSE)
 team_names <- valid_team_names("FBS")
@@ -100,7 +101,6 @@ df <- data.frame(
 # Plot team tiers
 cfb_team_tiers(df)
 
-
 # Create a combined tier which is useful for tiers with lots of teams that
 # should be split up in two or more rows. This is done by setting an empty
 # string for the tier 5 description and removing the tier separation line
@@ -116,7 +116,6 @@ cfb_team_tiers(df,
                              "5" = ""),
                no_line_below_tier = 4)
 
-
 # For the development of the tiers, it can be useful to turn off logo image
 # rendering as this can take quite a long time. By setting `devel = TRUE`, the
 # logo images are replaced by team abbreviations which is much faster
@@ -128,6 +127,7 @@ cfb_team_tiers(df,
                              "5" = ""),
                no_line_below_tier = c(2, 4),
                devel = TRUE)
+}
 
 # }
 ```

@@ -6,21 +6,11 @@ A set of functions to visualize College Football analysis in 'ggplot2'.
 
 ``` r
 GeomCFBwordmark
-
-GeomFromPath
-
-GeomRefLines
 ```
 
 ## Format
 
 An object of class `GeomCFBwordmark` (inherits from `Geom`, `ggproto`,
-`gg`) of length 5.
-
-An object of class `GeomFromPath` (inherits from `Geom`, `ggproto`,
-`gg`) of length 5.
-
-An object of class `GeomRefLines` (inherits from `Geom`, `ggproto`,
 `gg`) of length 5.
 
 ## See also

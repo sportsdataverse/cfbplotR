@@ -27,7 +27,7 @@ theme_title_image(...)
 - title_image:
 
   The URL of the image to add to the title. If one of
-  [`valid_team_names()`](https://cfbplotr.sportsdataverse.org/reference/valid_team_names.md),
+  [`valid_team_names()`](https://cfbplotR.sportsdataverse.org/reference/valid_team_names.md),
   the school logo will be used automatically.
 
 - title:

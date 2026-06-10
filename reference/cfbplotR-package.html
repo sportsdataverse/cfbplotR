@@ -9,7 +9,7 @@ A set of functions to visualize College Football analysis in 'ggplot2'."><meta p
 
     <a class="navbar-brand me-2" href="../index.html">cfbplotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,8 +25,7 @@ A set of functions to visualize College Football analysis in 'ggplot2'."><meta p
     <li><h6 class="dropdown-header" data-toc-skip>Plots</h6></li>
     <li><a class="dropdown-item" href="../reference/geom_cfb_logos.html">Plot Logos</a></li>
     <li><a class="dropdown-item" href="../reference/geom_cfb_headshots.html">Plot Headshots</a></li>
-    <li><a class="dropdown-item" href="../reference/geom_from_path.html">Plot from Path</a></li>
-    <li><a class="dropdown-item" href="../reference/geom_median_lines.html">Add Median Lines</a></li>
+    <li><a class="dropdown-item" href="../reference/reexports.html">ggpath Re-exports</a></li>
     <li><a class="dropdown-item" href="../reference/scale_color_cfb.html">Team Colors</a></li>
     <li><a class="dropdown-item" href="../reference/ggtitle_image.html">Title Image</a></li>
     <li><a class="dropdown-item" href="../reference/scale_axes_cfb.html">Axis Logos</a></li>
@@ -64,7 +63,7 @@ A set of functions to visualize College Football analysis in 'ggplot2'."><meta p
     <li><a class="external-link dropdown-item" href="https://jaseziv.github.io/chessR/">chessR</a></li>
     <li><a class="external-link dropdown-item" href="https://oddsapiR.sportsdataverse.org/">oddsapiR</a></li>
     <li><a class="external-link dropdown-item" href="https://sportyR.sportsdataverse.org/">sportyR</a></li>
-    <li><a class="external-link dropdown-item" href="https://cfbplotR.sportsdataverse.org/">cfbplotR</a></li>
+    <li><a class="dropdown-item" href="https://cfbplotR.sportsdataverse.org/">cfbplotR</a></li>
     <li><a class="external-link dropdown-item" href="https://camdenk.github.io/mlbplotR/">mlbplotR</a></li>
     <li><a class="external-link dropdown-item" href="https://github.com/sportsdataverse/softballR/">softballR</a></li>
     <li><a class="external-link dropdown-item" href="https://cfb4th.sportsdataverse.org/">cfb4th</a></li>
@@ -98,7 +97,7 @@ A set of functions to visualize College Football analysis in 'ggplot2'."><meta p
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>cfbplotR: CFB Logo Plots in 'ggplot2'</h1>
-      <small class="dont-index">Source: <a href="https://github.com/sportsdataverse/cfbplotR/blob/main/R/cfbplotR-package.R" class="external-link"><code>R/cfbplotR-package.R</code></a>, <a href="https://github.com/sportsdataverse/cfbplotR/blob/main/R/geom_cfb_wordmarks.R" class="external-link"><code>R/geom_cfb_wordmarks.R</code></a>, <a href="https://github.com/sportsdataverse/cfbplotR/blob/main/R/geom_from_path.R" class="external-link"><code>R/geom_from_path.R</code></a>, and 1 more</small>
+      <small class="dont-index">Source: <a href="https://github.com/sportsdataverse/cfbplotR/blob/main/R/cfbplotR-package.R" class="external-link"><code>R/cfbplotR-package.R</code></a>, <a href="https://github.com/sportsdataverse/cfbplotR/blob/main/R/geom_cfb_wordmarks.R" class="external-link"><code>R/geom_cfb_wordmarks.R</code></a></small>
       <div class="d-none name"><code>cfbplotR-package.Rd</code></div>
     </div>
 
@@ -109,22 +108,16 @@ A set of functions to visualize College Football analysis in 'ggplot2'."><meta p
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">GeomCFBwordmark</span></span>
-<span></span>
-<span><span class="va">GeomFromPath</span></span>
-<span></span>
-<span><span class="va">GeomRefLines</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="va">GeomCFBwordmark</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
     <p>An object of class <code>GeomCFBwordmark</code> (inherits from <code>Geom</code>, <code>ggproto</code>, <code>gg</code>) of length 5.</p>
-<p>An object of class <code>GeomFromPath</code> (inherits from <code>Geom</code>, <code>ggproto</code>, <code>gg</code>) of length 5.</p>
-<p>An object of class <code>GeomRefLines</code> (inherits from <code>Geom</code>, <code>ggproto</code>, <code>gg</code>) of length 5.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p>Useful links:</p><ul><li><p><a href="https://cfbplotR.sportsdataverse.org" class="external-link">https://cfbplotR.sportsdataverse.org</a></p></li>
+    <div class="dont-index"><p>Useful links:</p><ul><li><p><a href="https://cfbplotR.sportsdataverse.org">https://cfbplotR.sportsdataverse.org</a></p></li>
 <li><p><a href="https://github.com/sportsdataverse/cfbplotR" class="external-link">https://github.com/sportsdataverse/cfbplotR</a></p></li>
 <li><p>Report bugs at <a href="https://github.com/sportsdataverse/cfbplotR/issues" class="external-link">https://github.com/sportsdataverse/cfbplotR/issues</a></p></li>
 </ul></div>

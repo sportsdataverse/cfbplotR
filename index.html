@@ -34,7 +34,7 @@
 
     <a class="navbar-brand me-2" href="index.html">cfbplotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,8 +52,7 @@
     <li><h6 class="dropdown-header" data-toc-skip>Plots</h6></li>
     <li><a class="dropdown-item" href="reference/geom_cfb_logos.html">Plot Logos</a></li>
     <li><a class="dropdown-item" href="reference/geom_cfb_headshots.html">Plot Headshots</a></li>
-    <li><a class="dropdown-item" href="reference/geom_from_path.html">Plot from Path</a></li>
-    <li><a class="dropdown-item" href="reference/geom_median_lines.html">Add Median Lines</a></li>
+    <li><a class="dropdown-item" href="reference/reexports.html">ggpath Re-exports</a></li>
     <li><a class="dropdown-item" href="reference/scale_color_cfb.html">Team Colors</a></li>
     <li><a class="dropdown-item" href="reference/ggtitle_image.html">Title Image</a></li>
     <li><a class="dropdown-item" href="reference/scale_axes_cfb.html">Axis Logos</a></li>
@@ -93,7 +92,7 @@
     <li><a class="external-link dropdown-item" href="https://jaseziv.github.io/chessR/">chessR</a></li>
     <li><a class="external-link dropdown-item" href="https://oddsapiR.sportsdataverse.org/">oddsapiR</a></li>
     <li><a class="external-link dropdown-item" href="https://sportyR.sportsdataverse.org/">sportyR</a></li>
-    <li><a class="external-link dropdown-item" href="https://cfbplotR.sportsdataverse.org/">cfbplotR</a></li>
+    <li><a class="dropdown-item" href="https://cfbplotR.sportsdataverse.org/">cfbplotR</a></li>
     <li><a class="external-link dropdown-item" href="https://camdenk.github.io/mlbplotR/">mlbplotR</a></li>
     <li><a class="external-link dropdown-item" href="https://github.com/sportsdataverse/softballR/">softballR</a></li>
     <li><a class="external-link dropdown-item" href="https://cfb4th.sportsdataverse.org/">cfb4th</a></li>
@@ -133,90 +132,153 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
 <div class="page-header">
-<img src="logo.svg" class="logo" alt=""><h1 id="cfbplotr-">cfbplotR 
+<img src="logo.svg" class="logo" alt=""><h1 id="cfbplotr-">
+<strong>cfbplotR</strong> 
 <a class="anchor" aria-label="anchor" href="#cfbplotr-"></a>
 </h1>
 </div>
 <!-- badges: start -->
-<!-- [![CRAN status](https://img.shields.io/cran/v/cfbplotR?style=flat-square&logo=R&label=CRAN)](https://CRAN.R-project.org/package=cfbplotR) -->
+<!-- [![CRAN version](https://img.shields.io/cran/v/cfbplotR?style=for-the-badge&logo=R&label=CRAN)](https://CRAN.R-project.org/package=cfbplotR) -->
+<!-- [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/cfbplotR?style=for-the-badge)](https://CRAN.R-project.org/package=cfbplotR) -->
 
-<p>The code for this package was copied heavily from <a href="https://nflplotr.nflverse.com/index.html" class="external-link">nflplotR</a> with minor changes to support college football team logos.</p>
-<p>The goal of <code>cfbplotR</code> is to provide functions and geoms that help visualization of CFB related analysis. It provides a ggplot2 geom that does the heavy lifting of plotting CFB logos in high quality, with correct aspect ratio and possible transparency.</p>
+<p><a href="https://cfbplotR.sportsdataverse.org/"><strong><code>cfbplotR</code></strong></a> is an R package for plotting College Football (CFB) team logos, player headshots, wordmarks, and conference logos in <a href="https://ggplot2.tidyverse.org/" class="external-link"><strong><code>ggplot2</code></strong></a> graphics and <a href="https://gt.rstudio.com/" class="external-link"><strong><code>gt</code></strong></a> tables. It is built on the <a href="https://mrcaseb.github.io/ggpath/" class="external-link"><strong><code>ggpath</code></strong></a> package and follows the conventions established by <a href="https://nflplotr.nflverse.com/" class="external-link">nflplotR</a> — porting that proven approach to college football.</p>
+<p>Part of the <a href="https://sportsdataverse.org/" class="external-link">SportsDataverse</a> family of R packages for sports analytics.</p>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+<h2 id="installation">
+<strong>Installation</strong><a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<!-- You can install the released version of cfbplotR from [CRAN](https://CRAN.R-project.org) with: -->
-<!-- ``` r -->
-<!-- install.packages("cfbplotR") -->
-<!-- ``` -->
-<!-- And the development version from [GitHub](https://github.com/) with: -->
-<!-- ``` r -->
-<!-- # install.packages("devtools") -->
-<!-- devtools::install_github("Kazink36/cfbplotR") -->
-<!-- ``` -->
-<p>You can install the development version from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
+<p>You can install the development version of <a href="https://github.com/sportsdataverse/cfbplotR" class="external-link"><strong><code>cfbplotR</code></strong></a> from <a href="https://github.com/sportsdataverse/cfbplotR" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://remotes.r-lib.org" class="external-link">"remotes"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></span>
-<span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"sportsdataverse/cfbplotR"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># using the pak package (recommended):</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">'pak'</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'pak'</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"sportsdataverse/cfbplotR"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># or using the devtools package:</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">'devtools'</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">'devtools'</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span>repo <span class="op">=</span> <span class="st">"sportsdataverse/cfbplotR"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># or clone and install locally</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>git clone https<span class="sc">:</span><span class="er">//</span>github.com<span class="sc">/</span>sportsdataverse<span class="sc">/</span>cfbplotR</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>cd cfbplotR</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>Rscript <span class="sc">-</span>e <span class="st">"pak::local_install()"</span>  <span class="co"># or: Rscript -e "devtools::install()"</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="using-cfbplotr">Using cfbplotR<a class="anchor" aria-label="anchor" href="#using-cfbplotr"></a>
+<h2 id="usage">
+<strong>Usage</strong><a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
-<p><a href="https://cfbplotR.sportsdataverse.org/articles/tutorial.html" class="external-link">You can follow this tutorial to see several different uses for <code>cfbplotR</code>.</a> The key function in the package is <code>geom_cfb_logo()</code> which will add college football team logos to a ggplot.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cfbplotR.sportsdataverse.org" class="external-link">cfbplotR</a></span><span class="op">)</span></span>
+<p><a href="https://cfbplotR.sportsdataverse.org/articles/tutorial.html">You can follow the package tutorial for several detailed examples.</a></p>
+<p>The core function <code><a href="reference/geom_cfb_logos.html">geom_cfb_logos()</a></code> adds CFB team logos to a ggplot. Axis helpers (<code><a href="reference/scale_axes_cfb.html">scale_x_cfb()</a></code>, <code><a href="reference/scale_axes_cfb.html">scale_y_cfb()</a></code>) replace axis labels with team logos via <code><a href="reference/element.html">element_cfb_logo()</a></code>. The <code><a href="reference/gt_cfb.html">gt_fmt_cfb_logo()</a></code> helper adds logos inside <code>gt</code> table cells.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cfbplotR.sportsdataverse.org">cfbplotR</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="va">team</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/valid_team_names.html">valid_team_names</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">team</span> <span class="op">&lt;-</span> <span class="va">team</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">32</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># grab the first 32 valid team abbreviations</span></span>
+<span><span class="va">team</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/valid_team_names.html">valid_team_names</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">32</span><span class="op">]</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
-<span>  a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="fl">4</span><span class="op">)</span>,</span>
-<span>  b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
+<span>  a     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">8</span>, <span class="fl">4</span><span class="op">)</span>,</span>
+<span>  b     <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sort.html" class="external-link">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="fl">8</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,</span>
 <span>  teams <span class="op">=</span> <span class="va">team</span></span>
 <span><span class="op">)</span></span>
 <span></span>
-<span><span class="co"># keep alpha == 1 for all teams including an "A"</span></span>
-<span><span class="va">matches</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="va">team</span><span class="op">)</span></span>
-<span><span class="va">df</span><span class="op">$</span><span class="va">alpha</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">matches</span>, <span class="fl">1</span>, <span class="fl">0.9</span><span class="op">)</span></span>
-<span><span class="co"># change color of all teams including an "o" to black and white</span></span>
-<span><span class="va">matches</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/grep.html" class="external-link">grepl</a></span><span class="op">(</span><span class="st">"o"</span>, <span class="va">team</span><span class="op">)</span></span>
-<span><span class="va">df</span><span class="op">$</span><span class="va">color</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html" class="external-link">ifelse</a></span><span class="op">(</span><span class="va">matches</span>, <span class="st">"b/w"</span>, <span class="cn">NA</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">a</span>, y <span class="op">=</span> <span class="va">b</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="reference/geom_cfb_logos.html">geom_cfb_logos</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">teams</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">0.075</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">teams</span><span class="op">)</span>, nudge_y <span class="op">=</span> <span class="op">-</span><span class="fl">0.35</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cfbplotR.sportsdataverse.org">cfbplotR</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
-<span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">a</span>, y <span class="op">=</span> <span class="va">b</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>   <span class="fu"><a href="reference/geom_cfb_logos.html">geom_cfb_logos</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>team <span class="op">=</span> <span class="va">teams</span>, color <span class="op">=</span> <span class="va">color</span>, alpha <span class="op">=</span> <span class="va">alpha</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">0.075</span><span class="op">)</span> <span class="op">+</span></span>
-<span>   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_label</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">teams</span><span class="op">)</span>, nudge_y <span class="op">=</span> <span class="op">-</span><span class="fl">0.35</span>, alpha <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span> <span class="op">+</span></span>
-<span>   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_identity.html" class="external-link">scale_color_identity</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_identity.html" class="external-link">scale_alpha_identity</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_void</a></span><span class="op">(</span><span class="op">)</span> </span></code></pre></div>
-<p><img src="reference/figures/README-example-1.png" width="100%"></p>
+<span><span class="co"># logos on the x-axis via scale_x_cfb() + element_cfb_logo()</span></span>
+<span><span class="va">df2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  team  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Alabama"</span>, <span class="st">"Georgia"</span>, <span class="st">"Ohio State"</span>, <span class="st">"Michigan"</span><span class="op">)</span>,</span>
+<span>  score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">42</span>, <span class="fl">38</span>, <span class="fl">35</span>, <span class="fl">30</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">df2</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">team</span>, y <span class="op">=</span> <span class="va">score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">team</span><span class="op">)</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="reference/scale_axes_cfb.html">scale_x_cfb</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="st">"logo"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span></span>
+<span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="reference/element.html">element_cfb_logo</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://cfbplotR.sportsdataverse.org">cfbplotR</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gt.rstudio.com" class="external-link">gt</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># logos inside a gt table</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span></span>
+<span>  team  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Alabama"</span>, <span class="st">"Georgia"</span>, <span class="st">"Ohio State"</span><span class="op">)</span>,</span>
+<span>  wins  <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">13</span>, <span class="fl">12</span>, <span class="fl">11</span><span class="op">)</span></span>
+<span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://gt.rstudio.com/reference/gt.html" class="external-link">gt</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="reference/gt_cfb.html">gt_fmt_cfb_logo</a></span><span class="op">(</span>columns <span class="op">=</span> <span class="st">"team"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="getting-help">Getting help<a class="anchor" aria-label="anchor" href="#getting-help"></a>
+<h2 id="documentation">
+<strong>Documentation</strong><a class="anchor" aria-label="anchor" href="#documentation"></a>
 </h2>
-<p>The best places to get help on this package are:</p>
-<ul>
-<li>messaging <a href="https://twitter.com/JaredDLee" class="external-link">Jared Lee on twitter</a>
-</li>
-<li>opening <a href="https://github.com/sportsdataverse/cfbplotR/issues/new/choose" class="external-link">an issue</a>
-</li>
-</ul>
+<p>For more information on the package and function reference, please see the <a href="https://cfbplotR.sportsdataverse.org"><strong><code>cfbplotR</code></strong> documentation website</a>.</p>
 </div>
 <div class="section level2">
-<h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
+<h2 id="the-sportsdataverse">
+<strong>The SportsDataverse</strong><a class="anchor" aria-label="anchor" href="#the-sportsdataverse"></a>
 </h2>
-<p>Many hands make light work! Here are some ways you can contribute to this project:</p>
-<ul>
-<li>You can <a href="https://github.com/sportsdataverse/cfbplotR/issues/new/choose" class="external-link">open an issue</a> if you’d like to request specific data or report a bug/error.</li>
-</ul>
+<p><code>cfbplotR</code> is part of the <a href="https://sportsdataverse.org/" class="external-link"><strong>SportsDataverse</strong></a>, a family of open-source R, Python, and Node.js packages for sports data.</p>
+<table class="table">
+<colgroup>
+<col width="77%">
+<col width="22%">
+</colgroup>
+<thead><tr>
+<th>Package</th>
+<th>Sport / Scope</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><a href="https://cfbfastR.sportsdataverse.org/" class="external-link"><strong>cfbfastR</strong></a></td>
+<td>College football</td>
+</tr>
+<tr>
+<td><a href="https://hoopR.sportsdataverse.org/" class="external-link"><strong>hoopR</strong></a></td>
+<td>Men’s basketball (NBA &amp; NCAA)</td>
+</tr>
+<tr>
+<td><a href="https://wehoop.sportsdataverse.org/" class="external-link"><strong>wehoop</strong></a></td>
+<td>Women’s basketball (WNBA &amp; NCAA)</td>
+</tr>
+<tr>
+<td><a href="https://fastRhockey.sportsdataverse.org/" class="external-link"><strong>fastRhockey</strong></a></td>
+<td>Hockey (NHL &amp; PWHL)</td>
+</tr>
+<tr>
+<td><a href="https://billpetti.github.io/baseballr/" class="external-link"><strong>baseballr</strong></a></td>
+<td>Baseball (MLB, MiLB, NCAA)</td>
+</tr>
+<tr>
+<td><a href="https://oddsapiR.sportsdataverse.org/" class="external-link"><strong>oddsapiR</strong></a></td>
+<td>Sports betting odds (The Odds API)</td>
+</tr>
+<tr>
+<td><a href="https://r.sportsdataverse.org/" class="external-link"><strong>sportsdataverse-R</strong></a></td>
+<td>Umbrella R metapackage</td>
+</tr>
+<tr>
+<td>
+<a href="https://py.sportsdataverse.org/" class="external-link"><strong>sportsdataverse-py</strong></a> · <a href="https://js.sportsdataverse.org/" class="external-link"><strong>sportsdataverse.js</strong></a>
+</td>
+<td>Python &amp; Node.js</td>
+</tr>
+</tbody>
+</table>
+<p>See the full ecosystem at <a href="https://sportsdataverse.org/" class="external-link">sportsdataverse.org</a>.</p>
 </div>
 <div class="section level2">
-<h2 id="terms-of-use">Terms of Use<a class="anchor" aria-label="anchor" href="#terms-of-use"></a>
+<h2 id="follow-cfbplotr-and-the-sportsdataverse-on-twitter-and-star-this-repo">Follow <a href="https://twitter.com/cfbfastR" class="external-link">cfbplotR</a> and the <a href="https://twitter.com/SportsDataverse" class="external-link">SportsDataverse</a> on Twitter and star this repo<a class="anchor" aria-label="anchor" href="#follow-cfbplotr-and-the-sportsdataverse-on-twitter-and-star-this-repo"></a>
 </h2>
-<p>The R code for this package is released as open source under the <a href="https://cfbplotR.sportsdataverse.org/LICENSE.html" class="external-link">MIT License</a>. CFB data accessed by this package belong to their respective owners, and are governed by their terms of use.</p>
-</div>
-<div class="section level2">
-<h2 id="follow-cfbfastr-and-the-sportsdataverse-on-twitter-and-star-this-repo">Follow <a href="https://twitter.com/cfbfastR" class="external-link">cfbfastR</a> and the <a href="https://twitter.com/SportsDataverse" class="external-link">SportsDataverse</a> on Twitter and star this repo<a class="anchor" aria-label="anchor" href="#follow-cfbfastr-and-the-sportsdataverse-on-twitter-and-star-this-repo"></a>
-</h2>
-<p><a href="https://twitter.com/cfbfastR" class="external-link"><img src="https://img.shields.io/twitter/follow/cfbfastR?color=blue&amp;label=%40cfbfastR&amp;logo=twitter&amp;style=for-the-badge" alt="Twitter Follow"></a></p>
+<p><a href="https://twitter.com/JaredDLee" class="external-link"><img src="https://img.shields.io/twitter/follow/JaredDLee?color=blue&amp;label=%40JaredDLee&amp;logo=twitter&amp;style=for-the-badge" alt="Twitter Follow"></a></p>
 <p><a href="https://twitter.com/SportsDataverse" class="external-link"><img src="https://img.shields.io/twitter/follow/SportsDataverse?color=blue&amp;label=%40SportsDataverse&amp;logo=twitter&amp;style=for-the-badge" alt="Twitter Follow"></a></p>
 <p><a href="https://github.com/sportsdataverse/cfbplotR/stargazers/" class="external-link"><img src="https://img.shields.io/github/stars/sportsdataverse/cfbplotR.svg?color=eee&amp;logo=github&amp;style=for-the-badge&amp;label=Star%20cfbplotR&amp;maxAge=2592000" alt="GitHub stars"></a></p>
 </div>
@@ -226,31 +288,22 @@
 </h2>
 <ul>
 <li><p><a href="https://twitter.com/JaredDLee" class="external-link">Jared Lee</a>  <a href="https://twitter.com/JaredDLee" target="blank" class="external-link"><img src="https://img.shields.io/twitter/follow/JaredDLee?color=blue&amp;label=%40JaredDLee&amp;logo=twitter&amp;style=for-the-badge" alt="@JaredDLee"></a> <a href="https://github.com/Kazink36" target="blank" class="external-link"><img src="https://img.shields.io/github/followers/Kazink36?color=eee&amp;logo=Github&amp;style=for-the-badge" alt="@Kazink36"></a></p></li>
-<li><p><a href="https://twitter.com/mrcaseb" class="external-link">Sebastian Carl</a><br><a href="https://twitter.com/mrcaseb" target="blank" class="external-link"><img src="https://img.shields.io/twitter/follow/mrcaseb?color=blue&amp;label=%40mrcaseb&amp;logo=twitter&amp;style=for-the-badge" alt="@mrcaseb"></a> <a href="https://github.com/mrcaseb" target="blank" class="external-link"><img src="https://img.shields.io/github/followers/mrcaseb?color=eee&amp;logo=Github&amp;style=for-the-badge" alt="@mrcaseb"></a></p></li>
-</ul>
-</div>
-<div class="section level2">
-<h2 id="our-contributors-theyre-awesome">
-<strong>Our Contributors (they’re awesome)</strong><a class="anchor" aria-label="anchor" href="#our-contributors-theyre-awesome"></a>
-</h2>
-<ul>
-<li>
-<a href="https://twitter.com/saiemgilani" class="external-link">Saiem Gilani</a><br><a href="https://twitter.com/saiemgilani" target="blank" class="external-link"><img src="https://img.shields.io/twitter/follow/saiemgilani?color=blue&amp;label=%40saiemgilani&amp;logo=twitter&amp;style=for-the-badge" alt="@saiemgilani"></a> <a href="https://github.com/saiemgilani" target="blank" class="external-link"><img src="https://img.shields.io/github/followers/saiemgilani?color=eee&amp;logo=Github&amp;style=for-the-badge" alt="@saiemgilani"></a>
-</li>
+<li><p><a href="https://twitter.com/saiemgilani" class="external-link">Saiem Gilani</a>  <a href="https://twitter.com/saiemgilani" target="blank" class="external-link"><img src="https://img.shields.io/twitter/follow/saiemgilani?color=blue&amp;label=%40saiemgilani&amp;logo=twitter&amp;style=for-the-badge" alt="@saiemgilani"></a> <a href="https://github.com/saiemgilani" target="blank" class="external-link"><img src="https://img.shields.io/github/followers/saiemgilani?color=eee&amp;logo=Github&amp;style=for-the-badge" alt="@saiemgilani"></a></p></li>
+<li><p><a href="https://twitter.com/mrcaseb" class="external-link">Sebastian Carl</a>  <a href="https://twitter.com/mrcaseb" target="blank" class="external-link"><img src="https://img.shields.io/twitter/follow/mrcaseb?color=blue&amp;label=%40mrcaseb&amp;logo=twitter&amp;style=for-the-badge" alt="@mrcaseb"></a> <a href="https://github.com/mrcaseb" target="blank" class="external-link"><img src="https://img.shields.io/github/followers/mrcaseb?color=eee&amp;logo=Github&amp;style=for-the-badge" alt="@mrcaseb"></a></p></li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="citations">
 <strong>Citations</strong><a class="anchor" aria-label="anchor" href="#citations"></a>
 </h2>
-<p>To cite the <a href="https://cfbplotR.sportsdataverse.org/" class="external-link"><strong><code>cfbplotR</code></strong></a> R package in publications, use:</p>
+<p>To cite the <a href="https://cfbplotR.sportsdataverse.org/"><strong><code>cfbplotR</code></strong></a> R package in publications, use:</p>
 <p>BibTex Citation</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">lee_carl_2021_cfbplotr</span>,</span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="dt">author</span> = {Jared Lee and Sebastian Carl},</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>  <span class="dt">title</span> = {cfbplotR: The SportsDataverse's R Package for College Football Plotting.},</span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>  <span class="dt">url</span> = {https://cfbplotR.sportsdataverse.org/},</span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>  <span class="dt">year</span> = {2021}</span>
-<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">lee_carl_gilani_cfbplotR</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a>  <span class="dt">author</span> = {Lee, Jared and Gilani, Saiem and Carl, Sebastian},</span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>  <span class="dt">title</span> = {cfbplotR: The SportsDataverse's R Package for College Football Plotting.},</span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>  <span class="dt">url</span> = {https://cfbplotR.sportsdataverse.org},</span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>  <span class="dt">year</span> = {2021}</span>
+<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a>}</span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -269,6 +322,13 @@
 </ul>
 </div>
 
+<div class="community">
+<h2 data-toc-skip>Community</h2>
+<ul class="list-unstyled">
+<li><a href="CONTRIBUTING.html">Contributing guide</a></li>
+<li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
+</ul>
+</div>
 
 <div class="citation">
 <h2 data-toc-skip>Citation</h2>
@@ -293,9 +353,11 @@
 <ul class="list-unstyled">
 <li><a href="https://github.com/sportsdataverse/cfbplotR/" class="external-link"><img src="https://img.shields.io/github/r-package/v/sportsdataverse/cfbplotR?label=cfbplotR&amp;logo=R&amp;style=for-the-badge" alt="Version-Number"></a></li>
 <li><a href="https://github.com/sportsdataverse/cfbplotR/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://img.shields.io/github/actions/workflow/status/sportsdataverse/cfbplotR/R-CMD-check.yaml?branch=main&amp;label=R-CMD-Check&amp;logo=R&amp;logoColor=white&amp;style=for-the-badge" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/sportsdataverse/cfbplotR/actions/workflows/pkgdown.yaml" class="external-link"><img src="https://img.shields.io/github/actions/workflow/status/sportsdataverse/cfbplotR/pkgdown.yaml?branch=main&amp;label=pkgdown&amp;logo=github&amp;style=for-the-badge" alt="pkgdown"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental" class="external-link"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg?style=for-the-badge&amp;logo=github" alt="Lifecycle: experimental"></a></li>
+<li><a href="https://sportsdataverse.r-universe.dev/cfbplotR" class="external-link"><img src="https://img.shields.io/badge/dynamic/json?style=for-the-badge&amp;color=success&amp;label=r-universe&amp;prefix=v&amp;query=%24.Version&amp;url=https%3A%2F%2Fsportsdataverse.r-universe.dev%2Fapi%2Fpackages%2FcfbplotR" alt="R-universe"></a></li>
 <li><a href="https://github.com/sportsdataverse/cfbplotR/graphs/contributors" class="external-link"><img src="https://img.shields.io/github/contributors/sportsdataverse/cfbplotR?style=for-the-badge" alt="Contributors"></a></li>
-<li><a href="https://twitter.com/JaredDLee" class="external-link"><img src="https://img.shields.io/twitter/follow/JaredDLee.svg?color=blue&amp;label=%40JaredDLee&amp;logo=twitter&amp;style=for-the-badge" alt="Twitter Follow"></a></li>
+<li><a href="https://twitter.com/JaredDLee" class="external-link"><img src="https://img.shields.io/twitter/follow/JaredDLee?color=blue&amp;label=%40JaredDLee&amp;logo=twitter&amp;style=for-the-badge" alt="Twitter Follow"></a></li>
 <li><a href="https://twitter.com/SportsDataverse" class="external-link"><img src="https://img.shields.io/twitter/follow/SportsDataverse?color=blue&amp;label=%40SportsDataverse&amp;logo=twitter&amp;style=for-the-badge" alt="Twitter Follow"></a></li>
 </ul>
 </div>

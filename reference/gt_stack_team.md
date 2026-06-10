@@ -41,7 +41,7 @@ gt_merge_stack_team_color(
 - team_col:
 
   The column of team names that match
-  [`valid_team_names()`](https://cfbplotr.sportsdataverse.org/reference/valid_team_names.md)
+  [`valid_team_names()`](https://cfbplotR.sportsdataverse.org/reference/valid_team_names.md)
   for the color of the bottom.
 
 - font_size_top:

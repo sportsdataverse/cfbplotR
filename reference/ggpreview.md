@@ -29,10 +29,10 @@ ggpreview(
 
   Plot to save, defaults to last plot displayed.
 
-- width, height, units:
+- width, height:
 
-  Plot size in `units` ("in", "cm", "mm", or "px"). If not supplied,
-  uses the size of current graphics device.
+  Plot size in units expressed by the `units` argument. If not supplied,
+  uses the size of the current graphics device.
 
 - asp:
 
@@ -43,14 +43,21 @@ ggpreview(
 - dpi:
 
   Plot resolution. Also accepts a string input: "retina" (320), "print"
-  (300), or "screen" (72). Applies only to raster output types.
+  (300), or "screen" (72). Only applies when converting pixel units, as
+  is typical for raster output types.
 
 - device:
 
   Device to use. Can either be a device function (e.g.
   [png](https://rdrr.io/r/grDevices/png.html)), or one of "eps", "ps",
   "tex" (pictex), "pdf", "jpeg", "tiff", "png", "bmp", "svg" or "wmf"
-  (windows only).
+  (windows only). If `NULL` (default), the device is guessed based on
+  the `filename` extension.
+
+- units:
+
+  One of the following units in which the `width` and `height` arguments
+  are expressed: `"in"`, `"cm"`, `"mm"` or `"px"`.
 
 - scale:
 

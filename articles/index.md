@@ -3,4 +3,4 @@
 ### All vignettes
 
 - [Using
-  cfbplotR](https://cfbplotr.sportsdataverse.org/articles/tutorial.md):
+  cfbplotR](https://cfbplotR.sportsdataverse.org/articles/tutorial.md):

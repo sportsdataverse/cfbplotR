@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">cfbplotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,8 +23,7 @@
     <li><h6 class="dropdown-header" data-toc-skip>Plots</h6></li>
     <li><a class="dropdown-item" href="../reference/geom_cfb_logos.html">Plot Logos</a></li>
     <li><a class="dropdown-item" href="../reference/geom_cfb_headshots.html">Plot Headshots</a></li>
-    <li><a class="dropdown-item" href="../reference/geom_from_path.html">Plot from Path</a></li>
-    <li><a class="dropdown-item" href="../reference/geom_median_lines.html">Add Median Lines</a></li>
+    <li><a class="dropdown-item" href="../reference/reexports.html">ggpath Re-exports</a></li>
     <li><a class="dropdown-item" href="../reference/scale_color_cfb.html">Team Colors</a></li>
     <li><a class="dropdown-item" href="../reference/ggtitle_image.html">Title Image</a></li>
     <li><a class="dropdown-item" href="../reference/scale_axes_cfb.html">Axis Logos</a></li>
@@ -62,7 +61,7 @@
     <li><a class="external-link dropdown-item" href="https://jaseziv.github.io/chessR/">chessR</a></li>
     <li><a class="external-link dropdown-item" href="https://oddsapiR.sportsdataverse.org/">oddsapiR</a></li>
     <li><a class="external-link dropdown-item" href="https://sportyR.sportsdataverse.org/">sportyR</a></li>
-    <li><a class="external-link dropdown-item" href="https://cfbplotR.sportsdataverse.org/">cfbplotR</a></li>
+    <li><a class="dropdown-item" href="https://cfbplotR.sportsdataverse.org/">cfbplotR</a></li>
     <li><a class="external-link dropdown-item" href="https://camdenk.github.io/mlbplotR/">mlbplotR</a></li>
     <li><a class="external-link dropdown-item" href="https://github.com/sportsdataverse/softballR/">softballR</a></li>
     <li><a class="external-link dropdown-item" href="https://cfb4th.sportsdataverse.org/">cfb4th</a></li>
@@ -99,9 +98,9 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="logos-wordmarks-headshots">Logos, Wordmarks &amp; Headshots<a class="anchor" aria-label="anchor" href="#logos-wordmarks-headshots"></a></h2>
 
-
+      <div class="section-desc"><p>ggplot2 geoms and ggproto objects for rendering CFB team logos, wordmarks, and player headshots on plots.</p></div>
 
       <dl></dl></div><div class="section level2">
 
@@ -110,38 +109,10 @@
 
       <dl><dt>
 
-          <code><a href="add_athlete_id_col.html">add_athlete_id_col()</a></code>
+          <code><a href="geom_cfb_logos.html">GeomCFBheads</a></code> <code><a href="geom_cfb_logos.html">geom_cfb_logos()</a></code> <code><a href="geom_cfb_logos.html">GeomCFBlogo</a></code>
 
         </dt>
-        <dd>Add Athlete ID's to data frame</dd>
-
-        <dt>
-
-          <code><a href="cfb_team_tiers.html">cfb_team_tiers()</a></code>
-
-        </dt>
-        <dd>Create CFB Team Tiers</dd>
-
-        <dt>
-
-          <code><a href="clean_school_names.html">clean_school_names()</a></code>
-
-        </dt>
-        <dd>Standardize NCAA School Names</dd>
-
-        <dt>
-
-          <code><a href="data.html">logo_ref</a></code> <code><a href="data.html">team_name_mapping</a></code>
-
-        </dt>
-        <dd><strong>Data in the package for reference</strong></dd>
-
-        <dt>
-
-          <code><a href="element.html">element_cfb_logo()</a></code> <code><a href="element.html">element_cfb_wordmark()</a></code> <code><a href="element.html">element_cfb_headshot()</a></code> <code><a href="element.html">element_path()</a></code> <code><a href="element.html">element_grob(<i>&lt;element_cfb_logo&gt;</i>)</a></code> <code><a href="element.html">element_grob(<i>&lt;element_cfb_wordmark&gt;</i>)</a></code> <code><a href="element.html">element_grob(<i>&lt;element_cfb_headshot&gt;</i>)</a></code> <code><a href="element.html">element_grob(<i>&lt;element_path&gt;</i>)</a></code>
-
-        </dt>
-        <dd>Theme Elements for Image Grobs</dd>
+        <dd>ggplot2 Layer for Visualizing CFB Team Logos</dd>
 
         <dt>
 
@@ -152,73 +123,42 @@
 
         <dt>
 
-          <code><a href="geom_cfb_logos.html">GeomCFBheads</a></code> <code><a href="geom_cfb_logos.html">geom_cfb_logos()</a></code> <code><a href="geom_cfb_logos.html">GeomCFBlogo</a></code>
-
-        </dt>
-        <dd>ggplot2 Layer for Visualizing CFB Team Logos</dd>
-
-        <dt>
-
           <code><a href="geom_cfb_wordmarks.html">geom_cfb_wordmarks()</a></code>
 
         </dt>
         <dd>ggplot2 Layer for Visualizing CFB Team Wordmarks</dd>
+      </dl></div><div class="section level2">
+      <h2 id="theme-elements">Theme Elements<a class="anchor" aria-label="anchor" href="#theme-elements"></a></h2>
 
-        <dt>
+      <div class="section-desc"><p>Image-based ggplot2 theme elements for axis text — replace tick labels with CFB logos, wordmarks, or headshots.</p></div>
 
-          <code><a href="geom_from_path.html">geom_from_path()</a></code>
+      <dl></dl></div><div class="section level2">
 
-        </dt>
-        <dd>ggplot2 Layer for Visualizing Images from URLs or Local Paths</dd>
 
-        <dt>
 
-          <code><a href="geom_lines.html">geom_median_lines()</a></code> <code><a href="geom_lines.html">geom_mean_lines()</a></code>
 
-        </dt>
-        <dd>ggplot2 Layer for Horizontal and Vertical Reference Lines</dd>
+      <dl><dt>
 
-        <dt>
-
-          <code><a href="ggpreview.html">ggpreview()</a></code>
+          <code><a href="element.html">element_cfb_logo()</a></code> <code><a href="element.html">element_cfb_wordmark()</a></code> <code><a href="element.html">element_cfb_headshot()</a></code> <code><a href="element.html">element_grob(<i>&lt;element_cfb_logo&gt;</i>)</a></code> <code><a href="element.html">element_grob(<i>&lt;element_cfb_wordmark&gt;</i>)</a></code> <code><a href="element.html">element_grob(<i>&lt;element_cfb_headshot&gt;</i>)</a></code>
 
         </dt>
-        <dd>Preview ggplot in Specified Dimensions</dd>
+        <dd>Theme Elements for Image Grobs</dd>
+      </dl></div><div class="section level2">
+      <h2 id="scales-axes">Scales &amp; Axes<a class="anchor" aria-label="anchor" href="#scales-axes"></a></h2>
 
-        <dt>
+      <div class="section-desc"><p>CFB color/fill scales and logo/headshot axis annotation scales.</p></div>
 
-          <code><a href="ggtitle_image.html">ggtitle_image()</a></code> <code><a href="ggtitle_image.html">theme_title_image()</a></code>
+      <dl></dl></div><div class="section level2">
 
-        </dt>
-        <dd>Functions for adding an image to the title of a ggplot</dd>
 
-        <dt>
 
-          <code><a href="grobHeight.axisImageGrob.html">grobHeight.axisImageGrob()</a></code>
 
-        </dt>
-        <dd>grobHeight</dd>
+      <dl><dt>
 
-        <dt>
-
-          <code><a href="grobWidth.axisImageGrob.html">grobWidth.axisImageGrob()</a></code>
+          <code><a href="scale_color_cfb.html">scale_color_cfb()</a></code> <code><a href="scale_color_cfb.html">scale_colour_cfb()</a></code> <code><a href="scale_color_cfb.html">scale_fill_cfb()</a></code>
 
         </dt>
-        <dd>grobWidth</dd>
-
-        <dt>
-
-          <code><a href="gt_cfb.html">gt_fmt_cfb_logo()</a></code> <code><a href="gt_cfb.html">gt_fmt_cfb_wordmark()</a></code> <code><a href="gt_cfb.html">gt_fmt_cfb_headshot()</a></code>
-
-        </dt>
-        <dd>Add logos into rows of a <code>gt</code> table</dd>
-
-        <dt>
-
-          <code><a href="gt_stack_team.html">gt_merge_stack_team_color()</a></code>
-
-        </dt>
-        <dd>Merge and stack text from two columns in <code>gt</code> and color one with school colors</dd>
+        <dd>Scale for college football team colors</dd>
 
         <dt>
 
@@ -229,26 +169,165 @@
 
         <dt>
 
-          <code><a href="scale_color_cfb.html">scale_color_cfb()</a></code> <code><a href="scale_color_cfb.html">scale_colour_cfb()</a></code> <code><a href="scale_color_cfb.html">scale_fill_cfb()</a></code>
-
-        </dt>
-        <dd>Scale for college football team colors</dd>
-
-        <dt>
-
           <code><a href="theme_cfb.html">theme_x_cfb()</a></code> <code><a href="theme_cfb.html">theme_y_cfb()</a></code>
 
         </dt>
         <dd>Theme for CFB Team Logos</dd>
+      </dl></div><div class="section level2">
+      <h2 id="gt-table-helpers">gt Table Helpers<a class="anchor" aria-label="anchor" href="#gt-table-helpers"></a></h2>
+
+      <div class="section-desc"><p>Embed CFB team logos, wordmarks, and player headshots inside gt table cells or column labels.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="gt_cfb.html">gt_fmt_cfb_logo()</a></code> <code><a href="gt_cfb.html">gt_fmt_cfb_wordmark()</a></code> <code><a href="gt_cfb.html">gt_fmt_cfb_headshot()</a></code>
+
+        </dt>
+        <dd>Add logos into rows of a <code>gt</code> table</dd>
 
         <dt>
+
+          <code><a href="gt_cfb_cols_label.html">gt_cfb_cols_label()</a></code>
+
+        </dt>
+        <dd>Render CFB logos in gt column labels</dd>
+
+        <dt>
+
+          <code><a href="gt_stack_team.html">gt_merge_stack_team_color()</a></code>
+
+        </dt>
+        <dd>Merge and stack text from two columns in <code>gt</code> and color one with school colors</dd>
+      </dl></div><div class="section level2">
+      <h2 id="team-utilities">Team Utilities<a class="anchor" aria-label="anchor" href="#team-utilities"></a></h2>
+
+      <div class="section-desc"><p>Validate, clean, and factor-order CFB team names and abbreviations; look up athlete IDs; control the image cache.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
 
           <code><a href="valid_team_names.html">valid_team_names()</a></code>
 
         </dt>
         <dd>Output Valid CFB Team Names and Abbreviations</dd>
+
+        <dt>
+
+          <code><a href="clean_school_names.html">clean_school_names()</a></code>
+
+        </dt>
+        <dd>Standardize NCAA School Names</dd>
+
+        <dt>
+
+          <code><a href="clean_team_abbrs.html">clean_team_abbrs()</a></code>
+
+        </dt>
+        <dd>Clean CFB team abbreviations</dd>
+
+        <dt>
+
+          <code><a href="cfb_team_factor.html">cfb_team_factor()</a></code>
+
+        </dt>
+        <dd>Order CFB teams as a factor</dd>
+
+        <dt>
+
+          <code><a href="add_athlete_id_col.html">add_athlete_id_col()</a></code>
+
+        </dt>
+        <dd>Add Athlete ID's to data frame</dd>
+
+        <dt>
+
+          <code><a href="dot-cfbplotR_clear_cache.html">.cfbplotR_clear_cache()</a></code>
+
+        </dt>
+        <dd>Clear the cfbplotR (ggpath) image cache</dd>
+      </dl></div><div class="section level2">
+      <h2 id="premade-plots">Premade Plots<a class="anchor" aria-label="anchor" href="#premade-plots"></a></h2>
+
+      <div class="section-desc"><p>High-level functions that build complete CFB-branded plots.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="cfb_team_tiers.html">cfb_team_tiers()</a></code>
+
+        </dt>
+        <dd>Create CFB Team Tiers</dd>
+      </dl></div><div class="section level2">
+      <h2 id="plot-titles-preview">Plot Titles &amp; Preview<a class="anchor" aria-label="anchor" href="#plot-titles-preview"></a></h2>
+
+      <div class="section-desc"><p>Add images to ggplot2 titles and preview plots at exact output dimensions.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="ggtitle_image.html">ggtitle_image()</a></code> <code><a href="ggtitle_image.html">theme_title_image()</a></code>
+
+        </dt>
+        <dd>Functions for adding an image to the title of a ggplot</dd>
+
+        <dt>
+
+          <code><a href="ggpreview.html">ggpreview()</a></code>
+
+        </dt>
+        <dd>Preview ggplot in Specified Dimensions</dd>
+      </dl></div><div class="section level2">
+      <h2 id="package-data">Package Data<a class="anchor" aria-label="anchor" href="#package-data"></a></h2>
+
+      <div class="section-desc"><p>Built-in reference datasets shipped with cfbplotR.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="data.html">logo_ref</a></code> <code><a href="data.html">team_name_mapping</a></code>
+
+        </dt>
+        <dd><strong>Data in the package for reference</strong></dd>
+      </dl></div><div class="section level2">
+      <h2 id="re-exported-from-ggpath">Re-exported from ggpath<a class="anchor" aria-label="anchor" href="#re-exported-from-ggpath"></a></h2>
+
+      <div class="section-desc"><p>Generic image geoms and theme elements provided by the ggpath backend.</p></div>
+
+      <dl></dl></div><div class="section level2">
+
+
+
+
+      <dl><dt>
+
+          <code><a href="reexports.html">reexports</a></code> <code><a href="reexports.html">geom_from_path</a></code> <code><a href="reexports.html">GeomFromPath</a></code> <code><a href="reexports.html">element_path</a></code> <code><a href="reexports.html">element_raster</a></code> <code><a href="reexports.html">geom_mean_lines</a></code> <code><a href="reexports.html">geom_median_lines</a></code> <code><a href="reexports.html">GeomRefLines</a></code>
+
+        </dt>
+        <dd>Objects exported from other packages</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

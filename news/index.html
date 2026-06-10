@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">cfbplotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,8 +23,7 @@
     <li><h6 class="dropdown-header" data-toc-skip>Plots</h6></li>
     <li><a class="dropdown-item" href="../reference/geom_cfb_logos.html">Plot Logos</a></li>
     <li><a class="dropdown-item" href="../reference/geom_cfb_headshots.html">Plot Headshots</a></li>
-    <li><a class="dropdown-item" href="../reference/geom_from_path.html">Plot from Path</a></li>
-    <li><a class="dropdown-item" href="../reference/geom_median_lines.html">Add Median Lines</a></li>
+    <li><a class="dropdown-item" href="../reference/reexports.html">ggpath Re-exports</a></li>
     <li><a class="dropdown-item" href="../reference/scale_color_cfb.html">Team Colors</a></li>
     <li><a class="dropdown-item" href="../reference/ggtitle_image.html">Title Image</a></li>
     <li><a class="dropdown-item" href="../reference/scale_axes_cfb.html">Axis Logos</a></li>
@@ -62,7 +61,7 @@
     <li><a class="external-link dropdown-item" href="https://jaseziv.github.io/chessR/">chessR</a></li>
     <li><a class="external-link dropdown-item" href="https://oddsapiR.sportsdataverse.org/">oddsapiR</a></li>
     <li><a class="external-link dropdown-item" href="https://sportyR.sportsdataverse.org/">sportyR</a></li>
-    <li><a class="external-link dropdown-item" href="https://cfbplotR.sportsdataverse.org/">cfbplotR</a></li>
+    <li><a class="dropdown-item" href="https://cfbplotR.sportsdataverse.org/">cfbplotR</a></li>
     <li><a class="external-link dropdown-item" href="https://camdenk.github.io/mlbplotR/">mlbplotR</a></li>
     <li><a class="external-link dropdown-item" href="https://github.com/sportsdataverse/softballR/">softballR</a></li>
     <li><a class="external-link dropdown-item" href="https://cfb4th.sportsdataverse.org/">cfb4th</a></li>
@@ -100,9 +99,21 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="cfbplotr-development-version">cfbplotR (development version)<a class="anchor" aria-label="anchor" href="#cfbplotr-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.1.0" id="cfbplotr-010">cfbplotR 0.1.0<a class="anchor" aria-label="anchor" href="#cfbplotr-010"></a></h2>
+<ul><li>
+<strong>Rebuilt on the <a href="https://mrcaseb.github.io/ggpath/" class="external-link">ggpath</a> foundation</strong> (the nflplotR/nbaplotR pattern). cfbplotR now resolves a CFB identifier to an image path and delegates all rendering — caching, aspect ratio, alpha, colorization — to ggpath.</li>
+<li>Dropped the <code>magick</code>, <code>RCurl</code>, <code>base64enc</code>, and <code>purrr</code> dependencies; added <code>ggpath (&gt;= 1.1.0)</code>. Raised the requirements to <code>R (&gt;= 4.1.0)</code> and <code>ggplot2 (&gt;= 4.0.0)</code> (matching ggpath’s S7 theme elements).</li>
+<li>The public API is preserved: <code><a href="https://mrcaseb.github.io/ggpath/reference/geom_from_path.html" class="external-link">geom_from_path()</a></code>, <code><a href="https://mrcaseb.github.io/ggpath/reference/element_path.html" class="external-link">element_path()</a></code>, <code><a href="../reference/ggpreview.html">ggpreview()</a></code>, and related generics remain available (<code><a href="https://mrcaseb.github.io/ggpath/reference/geom_from_path.html" class="external-link">geom_from_path()</a></code> and friends are now re-exported from ggpath).</li>
+<li>
+<strong>Breaking (minor):</strong> <code><a href="https://mrcaseb.github.io/ggpath/reference/geom_lines.html" class="external-link">geom_mean_lines()</a></code> / <code><a href="https://mrcaseb.github.io/ggpath/reference/geom_lines.html" class="external-link">geom_median_lines()</a></code> are now re-exported from ggpath and use ggpath’s aesthetics <code>x0</code> / <code>y0</code> (a vertical line at <code>x0</code>, a horizontal line at <code>y0</code>) instead of cfbplotR’s former <code>v_var</code> / <code>h_var</code>. Update calls accordingly, e.g. <code>geom_median_lines(aes(x0 = pass_epa, y0 = rush_epa))</code>.</li>
+<li>gt image helpers (<code><a href="../reference/gt_cfb.html">gt_fmt_cfb_logo()</a></code>/<code><a href="../reference/gt_cfb.html">gt_fmt_cfb_headshot()</a></code>/<code><a href="../reference/gt_cfb.html">gt_fmt_cfb_wordmark()</a></code>) now embed via <code><a href="https://gt.rstudio.com/reference/web_image.html" class="external-link">gt::web_image()</a></code>.</li>
+<li>New family-parity conveniences: <code><a href="../reference/gt_cfb_cols_label.html">gt_cfb_cols_label()</a></code>, <code><a href="../reference/cfb_team_factor.html">cfb_team_factor()</a></code>, <code><a href="../reference/clean_team_abbrs.html">clean_team_abbrs()</a></code>, and <code><a href="../reference/dot-cfbplotR_clear_cache.html">.cfbplotR_clear_cache()</a></code>.</li>
+<li>Added repository community-health files (CLAUDE.md, Copilot instructions, issue/PR templates, CONTRIBUTING, Code of Conduct), normalized badges, a standard SportsDataverse README, a <code><a href="https://rdrr.io/r/utils/bibentry.html" class="external-link">bibentry()</a></code> citation, and a richer pkgdown reference.</li>
+</ul></div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.0.1" id="cfbplotr-001-pre-release-history">cfbplotR 0.0.1 (pre-release history)<a class="anchor" aria-label="anchor" href="#cfbplotr-001-pre-release-history"></a></h2>
 <ul><li>Added the <code><a href="../reference/geom_cfb_logos.html">geom_cfb_logos()</a></code> geom.</li>
-<li>Added the <code><a href="../reference/geom_lines.html">geom_mean_lines()</a></code> and <code><a href="../reference/geom_lines.html">geom_median_lines()</a></code> geoms.</li>
+<li>Added the <code><a href="https://mrcaseb.github.io/ggpath/reference/geom_lines.html" class="external-link">geom_mean_lines()</a></code> and <code><a href="https://mrcaseb.github.io/ggpath/reference/geom_lines.html" class="external-link">geom_median_lines()</a></code> geoms.</li>
 <li>Added the <code><a href="../reference/scale_color_cfb.html">scale_color_cfb()</a></code> and <code><a href="../reference/scale_color_cfb.html">scale_fill_cfb()</a></code> functions.</li>
 <li>Added FCS team logos. (v0.0.0.9002)</li>
 <li>Added the <code>gt_fmt_cfb()</code> function. (this function is now <code><a href="../reference/gt_cfb.html">gt_fmt_cfb_logo()</a></code>) (v0.0.0.9003)</li>
@@ -114,7 +125,7 @@
 <li>Added DII &amp; DIII Logos</li>
 <li>Added input to <code><a href="../reference/valid_team_names.html">valid_team_names()</a></code> to allow filtering by division (FBS, FCS, DII, DIII, or Conference logos) (v0.0.0.9008)</li>
 <li>Added the function <code><a href="../reference/cfb_team_tiers.html">cfb_team_tiers()</a></code> that build an NFL team tiers ggplot, thanks to <a href="https://twitter.com/PFF_Moo" class="external-link">Timo Riske</a> for the suggestion.</li>
-<li>Fixed a bug in <code><a href="../reference/geom_lines.html">geom_median_lines()</a></code> and <code><a href="../reference/geom_lines.html">geom_mean_lines()</a></code> that caused <code>alpha</code> to not work properly.</li>
+<li>Fixed a bug in <code><a href="https://mrcaseb.github.io/ggpath/reference/geom_lines.html" class="external-link">geom_median_lines()</a></code> and <code><a href="https://mrcaseb.github.io/ggpath/reference/geom_lines.html" class="external-link">geom_mean_lines()</a></code> that caused <code>alpha</code> to not work properly.</li>
 <li>Added the <code><a href="../reference/geom_cfb_headshots.html">geom_cfb_headshots()</a></code> geom that plots headshots for valid ESPN player IDs. (v0.0.9009)</li>
 <li>Added cleaning function <code><a href="../reference/clean_school_names.html">clean_school_names()</a></code> which attempts to correct common name issues to names in <code><a href="../reference/valid_team_names.html">valid_team_names()</a></code>. The plotting functions call this internally to automatically attempt to fix errors.</li>
 <li>Added experimental function <code><a href="../reference/add_athlete_id_col.html">add_athlete_id_col()</a></code> that adds a column to a data frame called <code>athlete_id</code> from the rosters data from the cfbfastR-data repo based on a player name. This ID can be used with headshot plotting functions</li>
@@ -122,8 +133,8 @@
 <li>Added the <code><a href="../reference/gt_cfb.html">gt_fmt_cfb_headshot()</a></code> function. (v0.0.0.9010)</li>
 <li>Added colleges from <code>hoopR</code> package (v0.0.0.9011)</li>
 <li>Brought package up to date with nflplotR v1.0.0</li>
-<li>Added the <code><a href="../reference/geom_from_path.html">geom_from_path()</a></code> geom that plots images from urls, local paths and more.</li>
-<li>Added the ggplot2 theme-elements <code><a href="../reference/element.html">element_cfb_logo()</a></code>, <code><a href="../reference/element.html">element_cfb_headshot()</a></code>, and <code><a href="../reference/element.html">element_path()</a></code> which translate college team names or player IDs into team logos and player headshots. These elements feature a major speed improvement over the axis scales <code><a href="../reference/scale_axes_cfb.html">scale_x_cfb_headshots()</a></code> and <code><a href="../reference/scale_axes_cfb.html">scale_y_cfb_headshots()</a></code> and make the package less dependent on an underlying package.</li>
+<li>Added the <code><a href="https://mrcaseb.github.io/ggpath/reference/geom_from_path.html" class="external-link">geom_from_path()</a></code> geom that plots images from urls, local paths and more.</li>
+<li>Added the ggplot2 theme-elements <code><a href="../reference/element.html">element_cfb_logo()</a></code>, <code><a href="../reference/element.html">element_cfb_headshot()</a></code>, and <code><a href="https://mrcaseb.github.io/ggpath/reference/element_path.html" class="external-link">element_path()</a></code> which translate college team names or player IDs into team logos and player headshots. These elements feature a major speed improvement over the axis scales <code><a href="../reference/scale_axes_cfb.html">scale_x_cfb_headshots()</a></code> and <code><a href="../reference/scale_axes_cfb.html">scale_y_cfb_headshots()</a></code> and make the package less dependent on an underlying package.</li>
 <li>added <code>P5</code> and <code>G5</code> catagories to <code><a href="../reference/valid_team_names.html">valid_team_names()</a></code>
 </li>
 <li>added the <code><a href="../reference/gt_stack_team.html">gt_merge_stack_team_color()</a></code> function (v0.0.0.9012)</li>
@@ -132,7 +143,8 @@
 <li>added <code><a href="../reference/geom_cfb_wordmarks.html">geom_cfb_wordmarks()</a></code> geom, <code><a href="../reference/element.html">element_cfb_wordmark()</a></code> element, and <code><a href="../reference/gt_cfb.html">gt_fmt_cfb_wordmark()</a></code> function to implement new wordmarks. (v0.0.0.9014)</li>
 <li>added PFF team names (thanks to Tej Seth) to <code><a href="../reference/clean_school_names.html">clean_school_names()</a></code> which is run internally for plotting (v0.0.0.9015)</li>
 </ul></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">

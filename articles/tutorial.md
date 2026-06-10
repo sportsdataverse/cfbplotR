@@ -83,17 +83,11 @@ The default of 1 will create extremely large logos.
 ``` r
 
 ggplot(team_plot_data, aes(x = pass_epa, y = rush_epa)) +
-  geom_median_lines(aes(v_var = pass_epa, h_var = rush_epa)) +
+  geom_median_lines(aes(x0 = pass_epa, y0 = rush_epa)) +
   geom_cfb_logos(aes(team = team), width = 0.075) +
   labs(x = "EPA per Pass",y = "EPA per Rush") +
   theme_bw()
 ```
-
-    ## Warning: Using the `size` aesthetic with geom_segment was deprecated in ggplot2 3.4.0.
-    ## ℹ Please use the `linewidth` aesthetic instead.
-    ## This warning is displayed once per session.
-    ## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was
-    ## generated.
 
 ![](tutorial_files/figure-html/epa_plot-1.png)
 
@@ -110,7 +104,7 @@ team_plot_data %>%
   dplyr::mutate(color = if_else(conference == "Pac-12",NA_character_,"b/w"),
          alpha = if_else(conference == "Pac-12",1,.6)) %>% 
   ggplot(aes(x = pass_epa, y = rush_epa)) +
-  geom_median_lines(aes(v_var = pass_epa, h_var = rush_epa)) +
+  geom_median_lines(aes(x0 = pass_epa, y0 = rush_epa)) +
   geom_cfb_logos(aes(team = team, alpha = alpha, color = color), width = 0.075) +
   scale_alpha_identity() +
   scale_color_identity() +
@@ -124,21 +118,21 @@ Finally let’s make a bar chart showing the Pac-12 EPA per pass for each
 team. Because `cfbplotR` creates a custom geom for ggplot, we can use
 [`annotate()`](https://ggplot2.tidyverse.org/reference/annotate.html) to
 place a log anywhere we’d like.
-[`scale_color_cfb()`](https://cfbplotr.sportsdataverse.org/reference/scale_color_cfb.md)
+[`scale_color_cfb()`](https://cfbplotR.sportsdataverse.org/reference/scale_color_cfb.md)
 and
-[`scale_fill_cfb()`](https://cfbplotr.sportsdataverse.org/reference/scale_color_cfb.md)
+[`scale_fill_cfb()`](https://cfbplotR.sportsdataverse.org/reference/scale_color_cfb.md)
 let us automatically use a teams primary color on a plot. The
 `alt_colors` argument lets us pass through a vector of team names that
 we want to use an alternate color for. ~~`sacle_x_cfb()` and
-[`scale_y_cfb()`](https://cfbplotr.sportsdataverse.org/reference/scale_axes_cfb.md)
+[`scale_y_cfb()`](https://cfbplotR.sportsdataverse.org/reference/scale_axes_cfb.md)
 change the axis labels that are team names into logos. Due to the way
 ggplot works, you have to add the corresponding theme function
-[`theme_x_cfb()`](https://cfbplotr.sportsdataverse.org/reference/theme_cfb.md)
+[`theme_x_cfb()`](https://cfbplotR.sportsdataverse.org/reference/theme_cfb.md)
 or
-[`theme_y_cfb()`](https://cfbplotr.sportsdataverse.org/reference/theme_cfb.md).~~
-[`element_cfb_logo()`](https://cfbplotr.sportsdataverse.org/reference/element.md)
+[`theme_y_cfb()`](https://cfbplotR.sportsdataverse.org/reference/theme_cfb.md).~~
+[`element_cfb_logo()`](https://cfbplotR.sportsdataverse.org/reference/element.md)
 and
-[`element_cfb_headshot()`](https://cfbplotr.sportsdataverse.org/reference/element.md)
+[`element_cfb_headshot()`](https://cfbplotR.sportsdataverse.org/reference/element.md)
 can be used for the axis.text argument in the theme function for
 improved performance in using logos and headshots as axis labels.
 
@@ -205,14 +199,14 @@ player_plot_data %>%
 The `gt` package offers an easy way to create nice tables of data and
 the `gtExtras` package from Tom Mock provides a number of convenient
 functions for styling those tables. The
-[`gt_fmt_cfb_logo()`](https://cfbplotr.sportsdataverse.org/reference/gt_cfb.md)
+[`gt_fmt_cfb_logo()`](https://cfbplotR.sportsdataverse.org/reference/gt_cfb.md)
 and
-[`gt_fmt_cfb_wordmark()`](https://cfbplotr.sportsdataverse.org/reference/gt_cfb.md)
+[`gt_fmt_cfb_wordmark()`](https://cfbplotR.sportsdataverse.org/reference/gt_cfb.md)
 functions are slightly modified versions of `gtExtras::gt_image_rows()`
 to easily add team and conference logos or wordmarks based on names from
-[`valid_team_names()`](https://cfbplotr.sportsdataverse.org/reference/valid_team_names.md).
+[`valid_team_names()`](https://cfbplotR.sportsdataverse.org/reference/valid_team_names.md).
 The
-[`gt_merge_stack_team_color()`](https://cfbplotr.sportsdataverse.org/reference/gt_stack_team.md)
+[`gt_merge_stack_team_color()`](https://cfbplotR.sportsdataverse.org/reference/gt_stack_team.md)
 function is a slightly modified version of `gtExtras::gt_merge_stack()`
 that merges two columns together and colors the text of the bottom row
 with the color of the team referenced in a third column. We can quickly
@@ -243,7 +237,7 @@ team_plot_data %>%
 [TABLE]
 
 We can also use the
-[`gt_fmt_cfb_headshot()`](https://cfbplotr.sportsdataverse.org/reference/gt_cfb.md)
+[`gt_fmt_cfb_headshot()`](https://cfbplotR.sportsdataverse.org/reference/gt_cfb.md)
 function to add headshots to a gt using the player_id or headshot_url
 available through `cfbfastR`.
 
