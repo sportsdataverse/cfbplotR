@@ -44,6 +44,64 @@ authors:
   Saiem Gilani:
     href: https://twitter.com/saiemgilani
 
+reference:
+  - title: "Logos, Wordmarks & Headshots"
+    desc: >
+      ggplot2 geoms and ggproto objects for rendering CFB team logos,
+      wordmarks, and player headshots on plots.
+    contents:
+      - geom_cfb_headshots
+      - geom_cfb_wordmarks
+      - GeomCFBheads
+  - title: "Theme Elements"
+    desc: >
+      Image-based ggplot2 theme elements for axis text — replace tick labels
+      with CFB logos, wordmarks, or headshots.
+    contents:
+      - element
+  - title: "Scales & Axes"
+    desc: >
+      CFB color/fill scales and logo/headshot axis annotation scales.
+    contents:
+      - scale_color_cfb
+      - scale_axes_cfb
+      - theme_cfb
+  - title: "gt Table Helpers"
+    desc: >
+      Embed CFB team logos, wordmarks, and player headshots inside gt table
+      cells or column labels.
+    contents:
+      - gt_cfb
+      - gt_cfb_cols_label
+      - gt_stack_team
+  - title: "Team Utilities"
+    desc: >
+      Validate, clean, and factor-order CFB team names and abbreviations;
+      look up athlete IDs; control the image cache.
+    contents:
+      - valid_team_names
+      - clean_school_names
+      - clean_team_abbrs
+      - cfb_team_factor
+      - add_athlete_id_col
+      - ".cfbplotR_clear_cache"
+  - title: "Premade Plots"
+    desc: >
+      High-level functions that build complete CFB-branded plots.
+    contents:
+      - cfb_team_tiers
+  - title: "Plot Titles & Preview"
+    desc: >
+      Add images to ggplot2 titles and preview plots at exact output dimensions.
+    contents:
+      - ggtitle_image
+      - ggpreview
+  - title: "Package Data"
+    desc: >
+      Built-in reference datasets shipped with cfbplotR.
+    contents:
+      - data
+
 
 navbar:
   structure:
