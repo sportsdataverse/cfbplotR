@@ -138,6 +138,37 @@ gt_cfbplotR_image <- function(gt_object,
 
 }
 
+#' Render CFB logos in gt column labels
+#' @description Replace gt column label text with CFB team logos. Each bare
+#'   column name passed via `...` is treated as a team name; the label for that
+#'   column is replaced with the corresponding logo image.
+#' @param gt_object a `gt_tbl`.
+#' @param ... `<tidy-select>`-style bare column names whose labels are team
+#'   names to replace with logos.
+#' @param height image height in px.
+#' @return A `gt_tbl`.
+#' @export
+#' @examples
+#' \donttest{
+#' library(gt)
+#' library(cfbplotR)
+#'
+#' df <- data.frame(Georgia = 1:3, Alabama = 4:6)
+#' gt(df) |> gt_cfb_cols_label(Georgia, Alabama)
+#' }
+gt_cfb_cols_label <- function(gt_object, ..., height = 30) {
+  rlang::check_installed("gt (>= 0.8.0)", "to render images in gt column labels.")
+
+  cols <- rlang::ensyms(...)
+  for (col in cols) {
+    nm <- rlang::as_string(col)
+    img <- gt::web_image(url = logo_from_school(nm), height = height)
+    gt_object <- gt::cols_label(gt_object, !!rlang::sym(nm) := gt::html(as.character(img)))
+  }
+  gt_object
+}
+
+
 #' @rdname gt_cfb
 #' @export
 

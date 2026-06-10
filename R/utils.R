@@ -74,6 +74,22 @@ most_recent_cfb_season <- function() {
   )
 }
 
+#' Clear the cfbplotR (ggpath) image cache
+#' @description Clears the image cache used by the ggpath rendering backend.
+#'   ggpath (as of its current release) does not expose a public cache-clearing
+#'   function, so this is a safe no-op that is forward-compatible: if a future
+#'   ggpath version exports `clear_cache()` this will call it automatically.
+#' @return Invisibly `NULL`.
+#' @export
+.cfbplotR_clear_cache <- function() {
+  if (requireNamespace("ggpath", quietly = TRUE) &&
+      "clear_cache" %in% getNamespaceExports("ggpath")) {
+    ggpath::clear_cache()
+  }
+  invisible(NULL)
+}
+
+
 # Resolve CFB team names to logo image paths (vectorised). Invalid names warn
 # and fall back to the generic NCAA logo. ggpath renders the returned paths.
 logo_from_school <- function(team) {

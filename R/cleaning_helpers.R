@@ -35,6 +35,20 @@ clean_school_names <- function(school, keep_non_matches = TRUE) {
 }
 
 
+#' Clean CFB team abbreviations
+#' @description Alias of [clean_school_names()] for naming parity with the
+#'   nflplotR/nbaplotR family.
+#' @param school a character vector of names.
+#' @param keep_non_matches If `TRUE` (the default) an element of `school` that
+#'   can't be matched to any of the internal mapping vectors will be kept as is.
+#'   Otherwise it will be replaced with `NA`.
+#' @return A character vector of cleaned team names.
+#' @export
+clean_team_abbrs <- function(school, keep_non_matches = TRUE) {
+  clean_school_names(school = school, keep_non_matches = keep_non_matches)
+}
+
+
 #' @title Add Athlete ID's to data frame
 #' @description
 #' This function attempts to add ESPN athlete ID's to a data frame using the roster data

@@ -2,6 +2,20 @@
 # Based on a suggestion by Timo Riske (https://twitter.com/PFF_Moo)
 ###
 
+#' Order CFB teams as a factor
+#' @description Creates a factor of cleaned, valid CFB team names. Levels are
+#'   restricted to teams present in [valid_team_names()] so that downstream
+#'   ggplot2 scales drop invalid entries gracefully.
+#' @param teams character vector of team names.
+#' @return An ordered `factor` of the cleaned, valid team names.
+#' @export
+#' @examples
+#' cfb_team_factor(c("Georgia", "Alabama", "ohio state"))
+cfb_team_factor <- function(teams) {
+  teams <- clean_school_names(as.character(teams))
+  factor(teams, levels = sort(unique(teams[teams %in% valid_team_names()])))
+}
+
 #' Create CFB Team Tiers
 #'
 #' @description This function sets up a ggplot to visualize CFB team tiers.
