@@ -6,7 +6,10 @@
 
 ## Goal
 
-Re-platform cfbplotR so it sits on top of the **ggpath** foundation package — exactly as nbaplotR/nflplotR do — instead of carrying its own image-grob machinery and heavy image dependencies. The public API is preserved (zero breaking changes); the internals get smaller, faster, and inherit ggpath's caching/aspect-ratio/alpha handling. As a side effect this removes `magick`, which eliminates the libtiff CI fragility.
+Two parts, sequenced:
+
+- **Part 1 — Re-platform cfbplotR onto ggpath** so it sits on the **ggpath** foundation package — exactly as nbaplotR/nflplotR do — instead of carrying its own image-grob machinery and heavy image dependencies. The public API is preserved (zero breaking changes); the internals get smaller, faster, and inherit ggpath's caching/aspect-ratio/alpha handling. As a side effect this removes `magick`, which eliminates the libtiff CI fragility.
+- **Part 2 — Repo professionalization** so cfbplotR matches the SDV repo standard: community-health files (CLAUDE.md, copilot instructions, issue/PR templates, CONTRIBUTING, CODE_OF_CONDUCT), usethis-managed badges, a full SDV-style README with citations/links, and a rich pkgdown reference that reflects the new API. Part 2 runs **after** Part 1 because the README/pkgdown must document the final (post-migration) surface.
 
 ## Background — the gap
 
@@ -106,8 +109,59 @@ Deleted: `R/geom_from_path.R`, `R/ggpreview.R`, `R/build_grobs.R`, `R/geom_lines
 - Bump to `0.1.0`; `NEWS.md`: built on ggpath; dropped magick/RCurl/base64enc/purrr; `R (>= 4.1.0)`; public API preserved via re-exports; new `gt_cfb_cols_label`/`cfb_team_factor`/`.cfbplotR_clear_cache`/`clean_team_abbrs`; runner pins reverted.
 - Update `_pkgdown.yml` reference index for the new exports; `cran-comments.md` for the dependency change.
 
+## Part 2 — Repo professionalization
+
+cfbplotR is GitHub-only (not on CRAN; not yet on the SDV r-universe), version `0.0.1.9000`. Bring it to the SDV repo standard, mirroring oddsapiR/cfbfastR. **All of Part 2 follows Part 1** (it documents the post-migration API).
+
+### Community-health files (new)
+
+- **`CLAUDE.md`** — cfbplotR dev guide: the ggpath-based architecture (cfbplotR resolves CFB id → path, ggpath renders), function-naming families (`geom_cfb_*`, `element_cfb_*`, `scale_*_cfb`, `gt_fmt_cfb_*`), the ggpath re-export pattern, ESPN headshot URL building, CFB team data in `sysdata.rda`, testing (vdiffr/snapshot), the doctoc TOC + `build_readme` + `use_tidy_description` workflow, Conventional Commits, and the **no-AI-coauthor** rule. Carries a doctoc TOC.
+- **`.github/copilot-instructions.md`** — condensed mirror of CLAUDE.md (doctoc TOC).
+- **`.github/ISSUE_TEMPLATE/bug_report.md`** — SDV bug template (reprex + `sessionInfo()` ask).
+- **`.github/ISSUE_TEMPLATE/feature_request.md`** — SDV feature template.
+- **`.github/ISSUE_TEMPLATE/config.yml`** — disables blank issues, links to SDV Discord/discussions.
+- **`.github/pull_request_template.md`** — SDV PR template (doctoc TOC per convention).
+- **`CONTRIBUTING.md`** — SDV contributing guide: branch/PR workflow, `devtools::document()/test()/check()`, the conventions above. doctoc TOC.
+- **`CODE_OF_CONDUCT.md`** — Contributor Covenant via `usethis::use_code_of_conduct()`.
+
+### Badges (via usethis, between the `<!-- badges: start/end -->` markers)
+
+cfbplotR is **not on CRAN**, so keep the CRAN version/downloads badges commented out (uncomment on first CRAN release). Add/normalize via usethis so they also populate the pkgdown sidebar: `use_lifecycle_badge("experimental")`, R-package version, R-CMD-check workflow status, pkgdown deploy status, **r-universe version** (`sportsdataverse.r-universe.dev` — a static shields URL that resolves once cfbplotR is added to the universe), contributors, and Twitter (maintainer + `@SportsDataverse`). Fixes the stale hand-written badge block.
+
+### README.Rmd → README.md (re-render with `devtools::build_readme()`)
+
+Adopt the standard SDV section set (mirroring the oddsapiR README built this session):
+1. Title + logo + badges block.
+2. One-paragraph description — CFB ggplot2 logo/headshot/wordmark plotting, **built on ggpath**.
+3. Installation — pak / devtools / local clone.
+4. Usage — runnable examples: `geom_cfb_logos()`, an axis with `element_cfb_logo()` via `scale_x_cfb()`, and `gt_fmt_cfb_logo()`.
+5. Documentation — link to the pkgdown site.
+6. **The SportsDataverse package-network table** (R/Python/Node families, canonical links — matching the network sweep done this session).
+7. Our Authors.
+8. Citations — BibTeX + textVersion, matching `inst/CITATION`.
+9. Follow / star (Twitter, GitHub stars).
+
+Commit `README.Rmd` + regenerated `README.md` together.
+
+### inst/CITATION
+
+Modernize to `bibentry()` (drop deprecated `citEntry` if present), self-dating, matching the oddsapiR pattern; authors per `DESCRIPTION`.
+
+### `_pkgdown.yml` — rich docs reflecting the new API
+
+- Rebuild the `reference:` index into organized sections: **Logos / Wordmarks / Headshots geoms**, **Theme elements**, **Scales & axes**, **gt helpers**, **Team utilities & cleaning**, **Tiers**, **Image titles**, **ggpath re-exports**. Include the new exports (`gt_cfb_cols_label`, `cfb_team_factor`, `clean_team_abbrs`, `.cfbplotR_clear_cache`, `element_raster`) and the re-exports.
+- Keep the canonicalized SDV network navbar menu (done this session).
+- Articles: ensure the getting-started vignette is listed; add a short "plotting with cfbplotR" article for rich docs.
+- Bootstrap 5 template + opengraph + authors (already present).
+- Preview with `pkgdown::build_site()`; the doctoc TOCs regenerate via the repo's doctoc step.
+
+### Part 2 validation
+
+`devtools::check()` clean (templates/CoC/CONTRIBUTING don't break check; `docs/` Rbuildignored), `build_readme()` renders, `build_site()` builds, doctoc idempotent on the TOC'd files.
+
 ## Out of scope
 
 - Changing CFB team data / colors / logo sources.
 - The recruitR/cfb4th issues from the prior task (tracked separately).
 - Any new plotting features beyond the listed parity conveniences.
+- Publishing cfbplotR to CRAN or adding it to the r-universe (the badges are ready for it, but the act of publishing is the maintainer's call).
