@@ -18,7 +18,12 @@ gt_fmt_cfb_headshot(gt_object, columns, height = 30)
 
 \item{columns}{The columns wherein changes to cell data colors should occur.}
 
-\item{height}{The absolute height (px) of the image in the table cell.}
+\item{height}{\emph{Height of image}
+
+\verb{scalar<numeric|integer>} // \emph{default:} \code{30}
+
+The absolute height of the image in the table cell (in \code{"px"} units). By
+default, this is set to \code{"30px"}.}
 }
 \value{
 An object of class \code{gt_tbl}.

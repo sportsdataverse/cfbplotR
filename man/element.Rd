@@ -4,7 +4,6 @@
 \alias{element_cfb_logo}
 \alias{element_cfb_wordmark}
 \alias{element_cfb_headshot}
-\alias{element_path}
 \alias{element_grob.element_cfb_logo}
 \alias{element_grob.element_cfb_wordmark}
 \alias{element_grob.element_cfb_headshot}
@@ -30,15 +29,6 @@ element_cfb_wordmark(
 )
 
 element_cfb_headshot(
-  alpha = NULL,
-  colour = NA,
-  hjust = NULL,
-  vjust = NULL,
-  color = NULL,
-  size = 0.5
-)
-
-element_path(
   alpha = NULL,
   colour = NA,
   hjust = NULL,

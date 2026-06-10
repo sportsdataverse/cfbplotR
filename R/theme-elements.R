@@ -167,17 +167,6 @@ element_cfb_headshot <- function(alpha = NULL, colour = NA, hjust = NULL, vjust 
 
 #' @export
 #' @rdname element
-element_path <- function(alpha = NULL, colour = NA, hjust = NULL, vjust = NULL,
-                         color = NULL, size = 0.5) {
-  if (!is.null(color))  colour <- color
-  structure(
-    list(alpha = alpha, colour = colour, hjust = hjust, vjust = vjust, size = size),
-    class = c("element_path", "element_text", "element")
-  )
-}
-
-#' @export
-#' @rdname element
 element_grob.element_cfb_logo <- function(element, label = "", x = NULL, y = NULL,
                                           alpha = NULL, colour = NULL,
                                           hjust = NULL, vjust = NULL,

@@ -20,12 +20,13 @@ Description: A set of functions to visualize College Football analysis in 'ggplo
 License: MIT + file LICENSE
 URL: https://cfbplotR.sportsdataverse.org, https://github.com/sportsdataverse/cfbplotR
 BugReports: https://github.com/sportsdataverse/cfbplotR/issues
-Depends: 
-    R (>= 3.5.0)
-Imports: 
+Depends:
+    R (>= 4.1.0)
+Imports:
     base64enc,
     cli (>= 3.0.0),
     dplyr,
+    ggpath (>= 1.0.0),
     ggplot2 (>= 3.3.0),
     glue,
     gt,
@@ -35,7 +36,7 @@ Imports:
     RCurl,
     rlang (>= 0.4.11),
     scales (>= 1.1.0)
-Suggests: 
+Suggests:
     cfbfastR,
     forcats,
     ggtext (>= 0.1.1),
@@ -47,9 +48,10 @@ Suggests:
     rstudioapi (>= 0.13),
     sjmisc (>= 2.8.7),
     testthat (>= 3.0.0),
-    tidyr (>= 1.0.0)
+    tidyr (>= 1.0.0),
+    vdiffr
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.3
 Config/testthat/edition: 3
 LazyData: true

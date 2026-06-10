@@ -43,9 +43,6 @@ scale_y_cfb_headshots(
 \item{...}{
   Arguments passed on to \code{\link[ggplot2:discrete_scale]{discrete_scale}}
   \describe{
-    \item{\code{palette}}{A palette function that when called with a single integer
-argument (the number of levels in the scale) returns the values that
-they should take (e.g., \code{\link[scales:hue_pal]{scales::hue_pal()}}).}
     \item{\code{breaks}}{One of:
 \itemize{
 \item \code{NULL} for no breaks
@@ -66,7 +63,8 @@ notation.
 }}
     \item{\code{drop}}{Should unused factor levels be omitted from the scale?
 The default, \code{TRUE}, uses the levels that appear in the data;
-\code{FALSE} uses all the levels in the factor.}
+\code{FALSE} includes the levels in the factor. Please note that to display
+every level in a legend, the layer should use \code{show.legend = TRUE}.}
     \item{\code{na.translate}}{Unlike continuous scales, discrete scales can easily show
 missing values, and do so by default. If you want to remove missing values
 from a discrete scale, specify \code{na.translate = FALSE}.}
@@ -74,13 +72,20 @@ from a discrete scale, specify \code{na.translate = FALSE}.}
 missing values be displayed as? Does not apply to position scales
 where \code{NA} is always placed at the far right.}
     \item{\code{aesthetics}}{The names of the aesthetics that this scale works with.}
-    \item{\code{scale_name}}{The name of the scale that should be used for error messages
-associated with this scale.}
-    \item{\code{name}}{The name of the scale. Used as the axis or legend title. If
-\code{waiver()}, the default, the name of the scale is taken from the first
-mapping used for that aesthetic. If \code{NULL}, the legend title will be
-omitted.}
-    \item{\code{labels}}{One of:
+    \item{\code{minor_breaks}}{One of:
+\itemize{
+\item \code{NULL} for no minor breaks
+\item \code{waiver()} for the default breaks (none for discrete, one minor break
+between each major break for continuous)
+\item A numeric vector of positions
+\item A function that given the limits returns a vector of minor breaks. Also
+accepts rlang \link[rlang:as_function]{lambda} function notation. When
+the function has two arguments, it will be given the limits and major
+break positions.
+}}
+    \item{\code{labels}}{One of the options below. Please note that when \code{labels} is a
+vector, it is highly recommended to also set the \code{breaks} argument as a
+vector to protect against unintended mismatches.
 \itemize{
 \item \code{NULL} for no labels
 \item \code{waiver()} for the default labels computed by the
@@ -91,6 +96,7 @@ transformation object
 as output. Also accepts rlang \link[rlang:as_function]{lambda} function
 notation.
 }}
+    \item{\code{call}}{The \code{call} used to construct the scale for reporting messages.}
     \item{\code{super}}{The super class to use for the constructed scale}
   }}
 
@@ -117,7 +123,7 @@ them available as axis labels
 \details{
 The scale translates the CFB team names into raw image
 html and places the html as axis labels. Because of the way ggplots are
-constructed, it is necessary to adjust the \code{\link[=theme]{theme()}} after calling this
+constructed, it is necessary to adjust the \code{\link[ggplot2:theme]{ggplot2::theme()}} after calling this
 scale. This can be done by calling \code{\link[=theme_x_cfb]{theme_x_cfb()}} or \code{\link[=theme_y_cfb]{theme_y_cfb()}}
 or alternatively by manually changing the relevant \code{axis.text} to
 \code{\link[ggtext:element_markdown]{ggtext::element_markdown()}}.
