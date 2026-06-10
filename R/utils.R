@@ -62,11 +62,6 @@ headshot_id_to_url <- function(x) {
 headshot_html <- function(player_id, type = c("height", "width"), size = 25){
   type <- rlang::arg_match(type)
   url <- headshot_id_to_url(player_id)
-  url <- ifelse(RCurl::url.exists(url),url,"http://a.espncdn.com/i/headshots/nophoto.png")
-  # if(!RCurl::url.exists(url)) {
-  #   #cli::cli_warn("{data$player_id[i]} is not a valid player id (row {i})")
-  #   url <- "http://a.espncdn.com/i/headshots/nophoto.png"
-  # }
   sprintf("<img src='%s' %s = '%s'>", url, type, size)
 }
 

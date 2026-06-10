@@ -138,31 +138,6 @@ gt_cfbplotR_image <- function(gt_object,
 
 }
 
-# Taken from gt and nflplotR package
-# Get image URIs from image lists as a vector Base64-encoded image strings
-#' @importFrom base64enc base64encode
-get_image_uri <- function(team_abbr, type = c("cfb_logo", "wordmark")) {
-
-  lookup_list <- switch(type,
-                        "cfb_logo" = logo_list,
-                        "wordmark" = wordmark_list
-  )
-
-  vapply(
-    team_abbr,
-    FUN.VALUE = character(1),
-    USE.NAMES = FALSE,
-    FUN = function(school) {
-      paste0(
-        "data:", "image/png",
-        ";base64,", base64enc::base64encode(lookup_list[[school]])
-      )
-    }
-  )
-}
-
-
-
 #' @rdname gt_cfb
 #' @export
 

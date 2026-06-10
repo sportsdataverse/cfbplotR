@@ -88,7 +88,7 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
       cli::cli_alert_info("No valid seasons (2009-{.val most_recent_cfb_season()}) in season column, using {.val most_recent_cfb_season()} rosters")
       seasons <- most_recent_cfb_season()
     }
-    rosters <- purrr::map_df(seasons, function(x){
+    rosters <- dplyr::bind_rows(lapply(seasons, function(x){
       readRDS(
         url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))
       ) %>%
@@ -101,11 +101,11 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
         ) %>%
         return()
       }
-    )
+    ))
   } else {
     season_col_present <- FALSE
     cli::cli_alert_info("No season column, using {.val most_recent_cfb_season()} rosters")
-    rosters <- purrr::map_df(most_recent_cfb_season(), function(x){
+    rosters <- dplyr::bind_rows(lapply(most_recent_cfb_season(), function(x){
       readRDS(
         url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))
       ) %>%
@@ -118,7 +118,7 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
         ) %>%
         return()
     }
-    )
+    ))
   }
   if (isFALSE(headshot_urls)) {
     rosters <- rosters %>%
