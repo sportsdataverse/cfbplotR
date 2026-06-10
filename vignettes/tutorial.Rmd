@@ -69,7 +69,7 @@ Now that the data is prepped, we can being to use `cfbplotR`. First we'll plot a
 
 ```{r epa_plot}
 ggplot(team_plot_data, aes(x = pass_epa, y = rush_epa)) +
-  geom_median_lines(aes(v_var = pass_epa, h_var = rush_epa)) +
+  geom_median_lines(aes(x0 = pass_epa, y0 = rush_epa)) +
   geom_cfb_logos(aes(team = team), width = 0.075) +
   labs(x = "EPA per Pass",y = "EPA per Rush") +
   theme_bw()
@@ -82,7 +82,7 @@ team_plot_data %>%
   dplyr::mutate(color = if_else(conference == "Pac-12",NA_character_,"b/w"),
          alpha = if_else(conference == "Pac-12",1,.6)) %>% 
   ggplot(aes(x = pass_epa, y = rush_epa)) +
-  geom_median_lines(aes(v_var = pass_epa, h_var = rush_epa)) +
+  geom_median_lines(aes(x0 = pass_epa, y0 = rush_epa)) +
   geom_cfb_logos(aes(team = team, alpha = alpha, color = color), width = 0.075) +
   scale_alpha_identity() +
   scale_color_identity() +
