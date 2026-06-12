@@ -2,6 +2,7 @@ url: https://cfbplotR.sportsdataverse.org/
 
 template:
   bootstrap: 5
+  light-switch: true
   bootswatch: cosmo
   includes:
     in_header: |
@@ -112,7 +113,7 @@ reference:
 navbar:
   structure:
     left: [home, reference, articles, news, games, network, data]
-    right: [twitter, github]
+    right: [search, twitter, github, lightswitch]
   components:
     home:
       title: cfbplotR • Plot CFB Team Logos
@@ -121,6 +122,7 @@ navbar:
         analysis in 'ggplot2'.
       icon: fa-home
       href: index.html
+      aria-label: Home
     reference:
       icon: "fas fa-code"
       text: "Funcs"
@@ -249,6 +251,8 @@ navbar:
     twitter:
       icon: "fab fa-x-twitter fa-lg"
       href: https://x.com/cfbfastR
+      aria-label: X (Twitter)
     github:
       icon: "fab fa-github fa-lg"
       href: https://github.com/sportsdataverse/cfbplotR/
+      aria-label: GitHub
