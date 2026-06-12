@@ -2,11 +2,11 @@
 
 ## Authors
 
-- **[Sebastian Carl](https://twitter.com/mrcaseb)**. Author.
+- **[Sebastian Carl](https://x.com/mrcaseb)**. Author.
 
-- **[Jared Lee](https://twitter.com/JaredDLee)**. Author, maintainer.
+- **[Jared Lee](https://x.com/JaredDLee)**. Author, maintainer.
 
-- **[Saiem Gilani](https://twitter.com/saiemgilani)**. Contributor.
+- **[Saiem Gilani](https://x.com/saiemgilani)**. Contributor.
 
 ## Citation
 
