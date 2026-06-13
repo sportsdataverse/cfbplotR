@@ -67,7 +67,7 @@ head(team_plot_data)
 
 Now that the data is prepped, we can being to use `cfbplotR`. First we'll plot all the teams with Passing EPA on the x-axis and Rushing EPA on the y-axis with lines showing the median value for each. It's important to set width or height in `geom_cfb_logos` to small values. The default of 1 will create extremely large logos.
 
-```{r epa_plot}
+```{r epa_plot, fig.alt="Scatter plot of EPA per pass versus EPA per rush for all Power 5 teams in week 1 of the 2021 season, with each team represented by its logo and median reference lines on both axes."}
 ggplot(team_plot_data, aes(x = pass_epa, y = rush_epa)) +
   geom_median_lines(aes(x0 = pass_epa, y0 = rush_epa)) +
   geom_cfb_logos(aes(team = team), width = 0.075) +
@@ -77,8 +77,8 @@ ggplot(team_plot_data, aes(x = pass_epa, y = rush_epa)) +
 
 This is still pretty messy because of the large number of teams. Let's try to focus in on the Pac-12 teams with a couple of handy tools. We're going to add two columns to our data: one for the color and one for the alpha. Then we just add those two columns as aesthetics to `geom_cfb_logos` to turn the logos of non-Pac-12 teams black and white and lower the alpha.
 
-```{r gray}
-team_plot_data %>% 
+```{r gray, fig.alt="Scatter plot of EPA per pass versus EPA per rush with Pac-12 team logos shown in full color and all other Power 5 team logos shown in black and white at reduced opacity to highlight the Pac-12."}
+team_plot_data %>%
   dplyr::mutate(color = if_else(conference == "Pac-12",NA_character_,"b/w"),
          alpha = if_else(conference == "Pac-12",1,.6)) %>% 
   ggplot(aes(x = pass_epa, y = rush_epa)) +
@@ -92,8 +92,8 @@ team_plot_data %>%
 
 Finally let's make a bar chart showing the Pac-12 EPA per pass for each team. Because `cfbplotR` creates a custom geom for ggplot, we can use `annotate()` to place a log anywhere we'd like. `scale_color_cfb()` and `scale_fill_cfb()` let us automatically use a teams primary color on a plot. The `alt_colors` argument lets us pass through a vector of team names that we want to use an alternate color for. ~~`sacle_x_cfb()` and `scale_y_cfb()` change the axis labels that are team names into logos. Due to the way ggplot works, you have to add the corresponding theme function `theme_x_cfb()` or `theme_y_cfb()`.~~ `element_cfb_logo()` and `element_cfb_headshot()` can be used for the axis.text argument in the theme function for improved performance in using logos and headshots as axis labels.
 
-```{r bar_chart}
-team_plot_data %>% 
+```{r bar_chart, fig.alt="Bar chart of EPA per pass for each Pac-12 team in week 1 of 2021, with bars colored by team color, team logos as the x-axis labels, and a faded Pac-12 conference logo annotated on the plot."}
+team_plot_data %>%
   dplyr::filter(conference == "Pac-12") %>% 
   dplyr::mutate(team = fct_reorder(team,pass_epa)) %>% 
   ggplot(aes(x = team, y = pass_epa)) +
@@ -112,8 +112,8 @@ team_plot_data %>%
 
 `cfbplotR` also allows you to plot player headshots. Let's look at the top 10 rushing EPA players with more than 10 rushes for week 1.
 
-```{r headshots}
-player_plot_data <- pbp %>% 
+```{r headshots, fig.alt="Horizontal bar chart of the top 10 rushers by EPA per rush with at least 10 rushes in week 1 of 2021, with bars colored by team color, each player's name labeled on the bar, and the player's headshot at the end of the bar."}
+player_plot_data <- pbp %>%
   dplyr::filter(!is.na(rush_player_id)) %>% 
   dplyr::group_by(rush_player_id) %>% 
   dplyr::summarize(epa = mean(EPA, na.rm = TRUE),
