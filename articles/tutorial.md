@@ -89,7 +89,10 @@ ggplot(team_plot_data, aes(x = pass_epa, y = rush_epa)) +
   theme_bw()
 ```
 
-![](tutorial_files/figure-html/epa_plot-1.png)
+![Scatter plot of EPA per pass versus EPA per rush for all Power 5 teams
+in week 1 of the 2021 season, with each team represented by its logo and
+median reference lines on both
+axes.](tutorial_files/figure-html/epa_plot-1.png)
 
 This is still pretty messy because of the large number of teams. Let’s
 try to focus in on the Pac-12 teams with a couple of handy tools. We’re
@@ -100,7 +103,7 @@ and lower the alpha.
 
 ``` r
 
-team_plot_data %>% 
+team_plot_data %>%
   dplyr::mutate(color = if_else(conference == "Pac-12",NA_character_,"b/w"),
          alpha = if_else(conference == "Pac-12",1,.6)) %>% 
   ggplot(aes(x = pass_epa, y = rush_epa)) +
@@ -112,7 +115,10 @@ team_plot_data %>%
   theme_bw()
 ```
 
-![](tutorial_files/figure-html/gray-1.png)
+![Scatter plot of EPA per pass versus EPA per rush with Pac-12 team
+logos shown in full color and all other Power 5 team logos shown in
+black and white at reduced opacity to highlight the
+Pac-12.](tutorial_files/figure-html/gray-1.png)
 
 Finally let’s make a bar chart showing the Pac-12 EPA per pass for each
 team. Because `cfbplotR` creates a custom geom for ggplot, we can use
@@ -138,7 +144,7 @@ improved performance in using logos and headshots as axis labels.
 
 ``` r
 
-team_plot_data %>% 
+team_plot_data %>%
   dplyr::filter(conference == "Pac-12") %>% 
   dplyr::mutate(team = fct_reorder(team,pass_epa)) %>% 
   ggplot(aes(x = team, y = pass_epa)) +
@@ -157,14 +163,17 @@ team_plot_data %>%
     ## Warning in geom_col(aes(fill = team, color = team), size = 1.5):
     ## Ignoring unknown parameters: `size`
 
-![](tutorial_files/figure-html/bar_chart-1.png)
+![Bar chart of EPA per pass for each Pac-12 team in week 1 of 2021, with
+bars colored by team color, team logos as the x-axis labels, and a faded
+Pac-12 conference logo annotated on the
+plot.](tutorial_files/figure-html/bar_chart-1.png)
 
 `cfbplotR` also allows you to plot player headshots. Let’s look at the
 top 10 rushing EPA players with more than 10 rushes for week 1.
 
 ``` r
 
-player_plot_data <- pbp %>% 
+player_plot_data <- pbp %>%
   dplyr::filter(!is.na(rush_player_id)) %>% 
   dplyr::group_by(rush_player_id) %>% 
   dplyr::summarize(epa = mean(EPA, na.rm = TRUE),
@@ -192,7 +201,10 @@ player_plot_data %>%
   theme(axis.text.y = element_cfb_logo())
 ```
 
-![](tutorial_files/figure-html/headshots-1.png)
+![Horizontal bar chart of the top 10 rushers by EPA per rush with at
+least 10 rushes in week 1 of 2021, with bars colored by team color, each
+player's name labeled on the bar, and the player's headshot at the end
+of the bar.](tutorial_files/figure-html/headshots-1.png)
 
 ## Tables with cfbplotR
 
