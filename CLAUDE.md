@@ -21,11 +21,12 @@
 
 ## Package Overview
 
-`cfbplotR` is a **GitHub-only** R package (not on CRAN) that provides ggplot2 geoms, theme elements, scales, and gt table helpers for visualizing college-football logos, wordmarks, and player headshots. It is built on top of the [`ggpath`](https://github.com/mrcaseb/ggpath) package, which handles image fetching, caching, colorizing, and alpha-transparency rendering.
+`cfbplotR` provides ggplot2 geoms, theme elements, scales, and gt table helpers for visualizing college-football logos, wordmarks, and player headshots — the CFB analogue of [`nflplotR`](https://nflplotr.nflverse.com). It is built on top of the [`ggpath`](https://github.com/mrcaseb/ggpath) package (the nflplotR/nbaplotR pattern), which handles image fetching, caching, colorizing, and alpha-transparency rendering. Companion package: [`cfbfastR`](https://cfbfastR.sportsdataverse.org) (Suggests) for CFB data.
 
-- **Version**: 0.0.1.9000 (development)
-- **R Requirement**: >= 4.1.0
+- **Version**: 0.1.0 (per `DESCRIPTION`)
+- **R Requirement**: >= 4.1.0; `ggplot2 (>= 4.0.0)`, `ggpath (>= 1.1.0)` (S7 theme elements)
 - **License**: MIT
+- **Distribution**: r-universe (`sportsdataverse.r-universe.dev`); CRAN badges in `README.Rmd` are commented out (not yet on CRAN)
 - **Repository**: <https://github.com/sportsdataverse/cfbplotR>
 - **Maintainer**: Jared Lee (`13jaredlee@gmail.com`)
 - **Branch**: `main` is the default and release branch.
@@ -49,24 +50,26 @@ devtools::install_github("sportsdataverse/cfbplotR")
 3. **Theme elements** (`R/theme-elements.R`): `element_cfb_logo()`, `element_cfb_wordmark()`, and `element_cfb_headshot()` are S3 element objects (class `element_cfb_*`). Their `element_grob.*` methods resolve the label to a path/URL and then call the internal helper `.cfb_element_to_path_grob()`, which constructs a proper `ggpath::element_path` S7 object (via `ggpath::element_path(...)`) and calls `ggplot2::element_grob()` on it.
    - **Critical**: `ggpath::element_path` is an **S7 object** -- the helper must construct it via `ggpath::element_path(alpha=..., colour=..., hjust=..., vjust=..., size=...)`. Do NOT try to `structure()` a plain list and re-class it; S7 property access would break.
 4. **Scales** (`R/scale_cfb.R`): `scale_color_cfb()`, `scale_fill_cfb()`, `scale_x_cfb()`, `scale_y_cfb()` -- map team names to CFB primary/alt colors or logo positions.
-5. **gt helpers** (`R/gt_fmt_cfb.R`, `R/gt_stack_team.R`): `gt_fmt_cfb_logo()`, `gt_fmt_cfb_wordmark()`, `gt_fmt_cfb_headshot()`, `gt_fmt_cfb_dot_logo()`, `gt_cfb_cols_label()` -- format cells in a gt table with logos, wordmarks, or headshots.
-6. **Team utilities** (`R/cfb_team_tiers.R`): `cfb_team_tiers()`, `cfb_team_factor()` -- factor utilities for ordering teams in plots.
+5. **gt helpers** (`R/gt_fmt_cfb.R`, `R/gt_stack_team.R`): `gt_fmt_cfb_logo()`, `gt_fmt_cfb_wordmark()`, `gt_fmt_cfb_headshot()`, `gt_cfb_cols_label()`, `gt_merge_stack_team_color()` -- format cells in a gt table with logos, wordmarks, headshots, or team-colored stacked text.
+6. **Team utilities** (`R/cfb_team_tiers.R`): `cfb_team_tiers()` (premade tier plot), `cfb_team_factor()` (factor-orders teams), plus `add_athlete_id_col()` (`R/utils.R`).
 7. **Cleaning helpers** (`R/cleaning_helpers.R`): `clean_school_names()`, `clean_team_abbrs()` -- standardize user-supplied team name strings to cfbplotR's internal keys.
 8. **Re-exports** (`R/reexports.R`): a set of ggpath symbols (`geom_from_path`, `GeomFromPath`, `element_path`, `element_raster`, `geom_mean_lines`, `geom_median_lines`, `GeomRefLines`) are re-exported so users do not need to attach ggpath directly.
-9. **Team data** (`R/sysdata.rda`): internal named lists `logo_list` and `wordmark_list` map school names to image URLs. The reference data frame `logo_ref` carries `school`, `type`, and URL columns and powers `valid_team_names()`. Updated via `data-raw/`.
+9. **Team data**: internal named lists `logo_list` and `wordmark_list` (in `R/sysdata.rda`) map school names to image URLs. **Exported** `data/` objects — `logo_ref` (`school`, `color`, `alt_color`, logo URLs; powers `valid_team_names()`), `team_name_mapping`, and `team_colors` — are documented in `R/data.R`. All regenerated via `data-raw/build_logo_list.R` / `build_wordmark_list.R` / `build_team_colors.R`.
 
 ## Function Families
 
+All names below are verified against `NAMESPACE`.
+
 | Family | Functions |
 |--------|-----------|
-| Geoms | `geom_cfb_logos()`, `geom_cfb_wordmarks()`, `geom_cfb_headshots()` |
+| Geoms | `geom_cfb_logos()`, `geom_cfb_wordmarks()`, `geom_cfb_headshots()` (ggproto: `GeomCFBlogo`, `GeomCFBwordmark`, `GeomCFBheads`) |
 | Theme elements | `element_cfb_logo()`, `element_cfb_wordmark()`, `element_cfb_headshot()` |
-| Color/fill scales | `scale_color_cfb()`, `scale_fill_cfb()` |
-| Position scales | `scale_x_cfb()`, `scale_y_cfb()` |
-| gt formatters | `gt_fmt_cfb_logo()`, `gt_fmt_cfb_wordmark()`, `gt_fmt_cfb_headshot()`, `gt_fmt_cfb_dot_logo()`, `gt_cfb_cols_label()`, `gt_stack_team_column()` |
-| Team utilities | `cfb_team_tiers()`, `cfb_team_factor()` |
+| Color/fill scales | `scale_color_cfb()` / `scale_colour_cfb()`, `scale_fill_cfb()` |
+| Axis logo/headshot scales | `scale_x_cfb()`, `scale_y_cfb()`, `scale_x_cfb_headshots()`, `scale_y_cfb_headshots()`, `theme_x_cfb()`, `theme_y_cfb()` |
+| gt formatters | `gt_fmt_cfb_logo()`, `gt_fmt_cfb_wordmark()`, `gt_fmt_cfb_headshot()`, `gt_cfb_cols_label()`, `gt_merge_stack_team_color()` |
+| Team utilities | `cfb_team_tiers()`, `cfb_team_factor()`, `add_athlete_id_col()` |
 | Name cleaners | `clean_school_names()`, `clean_team_abbrs()`, `valid_team_names()` |
-| Title helpers | `ggtitle_image()`, `theme_title_image()` |
+| Title / preview helpers | `ggtitle_image()`, `theme_title_image()`, `ggpreview()` |
 | ggpath re-exports | `geom_from_path`, `GeomFromPath`, `element_path`, `element_raster`, `geom_mean_lines`, `geom_median_lines`, `GeomRefLines` |
 | Cache | `.cfbplotR_clear_cache()` |
 
@@ -94,20 +97,19 @@ These return character vectors of image URLs/paths. ggpath fetches, caches, and 
 
 ## Team Data in `sysdata.rda`
 
-`R/sysdata.rda` is produced by the scripts in `data-raw/` and baked into the package binary. It contains:
+Two storage tiers, both built by `data-raw/` scripts:
 
-- `logo_list` -- named character vector `name -> logo URL`
-- `wordmark_list` -- named character vector `name -> wordmark URL`
-- `logo_ref` -- data frame with `school`, `type`, and URL columns
+- **Internal** (`R/sysdata.rda`, `usethis::use_data(..., internal = TRUE)`): `logo_list` and `wordmark_list` -- named character vectors `name -> image URL`. Accessed as bare names inside the package.
+- **Exported** (`data/*.rda`, lazy-loaded, documented in `R/data.R`): `logo_ref` (`school`, `color`, `alt_color`, logo URLs; powers `valid_team_names()`), `team_name_mapping`, and `team_colors`.
 
-Regenerate after updating team data:
+Regenerate after updating team data (`build_logo_list.R` writes both `logo_ref` and the internal lists):
 
 ```r
-source("data-raw/<relevant-script>.R")
+source("data-raw/build_logo_list.R")
 devtools::document()
 ```
 
-**Never edit `sysdata.rda` by hand.**
+**Never edit `sysdata.rda` or `data/*.rda` by hand.**
 
 ## Build & Development Commands
 
@@ -244,7 +246,8 @@ Prefer scoped subjects when useful (`feat(geom):`, `fix(elements):`, `docs(readm
 ## Common Pitfalls
 
 - `ggpath::element_path` is an **S7 object**. Always construct it via `ggpath::element_path(alpha=..., colour=..., ...)`. Never `structure(list(...), class="element_path")`.
-- `logo_list` and `wordmark_list` live in `sysdata.rda` (not exported). Access them as bare names inside the package; outside tests use `cfbplotR:::logo_list`.
+- `logo_list` and `wordmark_list` live in `sysdata.rda` (internal, not exported). Access them as bare names inside the package; in tests use `cfbplotR:::logo_list`. `logo_ref` / `team_name_mapping` / `team_colors` ARE exported (`cfbplotR::logo_ref`).
+- `.cfbplotR_clear_cache()` only delegates to `ggpath::clear_cache()` when that symbol is exported by the installed ggpath (`getNamespaceExports("ggpath")` guard) — image caching itself is owned by ggpath, not cfbplotR.
 - `valid_team_names()` calls `clean_school_names()` internally -- do not call both in sequence or you will double-normalize.
 - `geom_cfb_*` geoms delegate to `ggpath::GeomFromPath$draw_panel()`; do not re-implement rendering logic inside cfbplotR.
 - Never hand-edit `NAMESPACE`, `man/`, or `R/sysdata.rda`.
