@@ -124,13 +124,15 @@
 
 <div class="section level2">
 <h2 id="package-overview">Package Overview<a class="anchor" aria-label="anchor" href="#package-overview"></a></h2>
-<p><code>cfbplotR</code> is a <strong>GitHub-only</strong> R package (not on CRAN) that provides ggplot2 geoms, theme elements, scales, and gt table helpers for visualizing college-football logos, wordmarks, and player headshots. It is built on top of the <a href="https://github.com/mrcaseb/ggpath" class="external-link"><code>ggpath</code></a> package, which handles image fetching, caching, colorizing, and alpha-transparency rendering.</p>
+<p><code>cfbplotR</code> provides ggplot2 geoms, theme elements, scales, and gt table helpers for visualizing college-football logos, wordmarks, and player headshots — the CFB analogue of <a href="https://nflplotr.nflverse.com" class="external-link"><code>nflplotR</code></a>. It is built on top of the <a href="https://github.com/mrcaseb/ggpath" class="external-link"><code>ggpath</code></a> package (the nflplotR/nbaplotR pattern), which handles image fetching, caching, colorizing, and alpha-transparency rendering. Companion package: <a href="https://cfbfastR.sportsdataverse.org" class="external-link"><code>cfbfastR</code></a> (Suggests) for CFB data.</p>
 <ul><li>
-<strong>Version</strong>: 0.0.1.9000 (development)</li>
+<strong>Version</strong>: 0.1.0 (per <code>DESCRIPTION</code>)</li>
 <li>
-<strong>R Requirement</strong>: &gt;= 4.1.0</li>
+<strong>R Requirement</strong>: &gt;= 4.1.0; <code>ggplot2 (&gt;= 4.0.0)</code>, <code>ggpath (&gt;= 1.1.0)</code> (S7 theme elements)</li>
 <li>
 <strong>License</strong>: MIT</li>
+<li>
+<strong>Distribution</strong>: r-universe (<code>sportsdataverse.r-universe.dev</code>); CRAN badges in <code>README.Rmd</code> are commented out (not yet on CRAN)</li>
 <li>
 <strong>Repository</strong>: <a href="https://github.com/sportsdataverse/cfbplotR" class="external-link uri">https://github.com/sportsdataverse/cfbplotR</a>
 </li>
@@ -161,51 +163,51 @@
 <li>
 <strong>Scales</strong> (<code>R/scale_cfb.R</code>): <code><a href="reference/scale_color_cfb.html">scale_color_cfb()</a></code>, <code><a href="reference/scale_color_cfb.html">scale_fill_cfb()</a></code>, <code><a href="reference/scale_axes_cfb.html">scale_x_cfb()</a></code>, <code><a href="reference/scale_axes_cfb.html">scale_y_cfb()</a></code> – map team names to CFB primary/alt colors or logo positions.</li>
 <li>
-<strong>gt helpers</strong> (<code>R/gt_fmt_cfb.R</code>, <code>R/gt_stack_team.R</code>): <code><a href="reference/gt_cfb.html">gt_fmt_cfb_logo()</a></code>, <code><a href="reference/gt_cfb.html">gt_fmt_cfb_wordmark()</a></code>, <code><a href="reference/gt_cfb.html">gt_fmt_cfb_headshot()</a></code>, <code>gt_fmt_cfb_dot_logo()</code>, <code><a href="reference/gt_cfb_cols_label.html">gt_cfb_cols_label()</a></code> – format cells in a gt table with logos, wordmarks, or headshots.</li>
+<strong>gt helpers</strong> (<code>R/gt_fmt_cfb.R</code>, <code>R/gt_stack_team.R</code>): <code><a href="reference/gt_cfb.html">gt_fmt_cfb_logo()</a></code>, <code><a href="reference/gt_cfb.html">gt_fmt_cfb_wordmark()</a></code>, <code><a href="reference/gt_cfb.html">gt_fmt_cfb_headshot()</a></code>, <code><a href="reference/gt_cfb_cols_label.html">gt_cfb_cols_label()</a></code>, <code><a href="reference/gt_stack_team.html">gt_merge_stack_team_color()</a></code> – format cells in a gt table with logos, wordmarks, headshots, or team-colored stacked text.</li>
 <li>
-<strong>Team utilities</strong> (<code>R/cfb_team_tiers.R</code>): <code><a href="reference/cfb_team_tiers.html">cfb_team_tiers()</a></code>, <code><a href="reference/cfb_team_factor.html">cfb_team_factor()</a></code> – factor utilities for ordering teams in plots.</li>
+<strong>Team utilities</strong> (<code>R/cfb_team_tiers.R</code>): <code><a href="reference/cfb_team_tiers.html">cfb_team_tiers()</a></code> (premade tier plot), <code><a href="reference/cfb_team_factor.html">cfb_team_factor()</a></code> (factor-orders teams), plus <code><a href="reference/add_athlete_id_col.html">add_athlete_id_col()</a></code> (<code>R/utils.R</code>).</li>
 <li>
 <strong>Cleaning helpers</strong> (<code>R/cleaning_helpers.R</code>): <code><a href="reference/clean_school_names.html">clean_school_names()</a></code>, <code><a href="reference/clean_team_abbrs.html">clean_team_abbrs()</a></code> – standardize user-supplied team name strings to cfbplotR’s internal keys.</li>
 <li>
 <strong>Re-exports</strong> (<code>R/reexports.R</code>): a set of ggpath symbols (<code>geom_from_path</code>, <code>GeomFromPath</code>, <code>element_path</code>, <code>element_raster</code>, <code>geom_mean_lines</code>, <code>geom_median_lines</code>, <code>GeomRefLines</code>) are re-exported so users do not need to attach ggpath directly.</li>
 <li>
-<strong>Team data</strong> (<code>R/sysdata.rda</code>): internal named lists <code>logo_list</code> and <code>wordmark_list</code> map school names to image URLs. The reference data frame <code>logo_ref</code> carries <code>school</code>, <code>type</code>, and URL columns and powers <code><a href="reference/valid_team_names.html">valid_team_names()</a></code>. Updated via <code>data-raw/</code>.</li>
+<strong>Team data</strong>: internal named lists <code>logo_list</code> and <code>wordmark_list</code> (in <code>R/sysdata.rda</code>) map school names to image URLs. <strong>Exported</strong> <code>data/</code> objects — <code>logo_ref</code> (<code>school</code>, <code>color</code>, <code>alt_color</code>, logo URLs; powers <code><a href="reference/valid_team_names.html">valid_team_names()</a></code>), <code>team_name_mapping</code>, and <code>team_colors</code> — are documented in <code>R/data.R</code>. All regenerated via <code>data-raw/build_logo_list.R</code> / <code>build_wordmark_list.R</code> / <code>build_team_colors.R</code>.</li>
 </ol></div>
 <div class="section level2">
 <h2 id="function-families">Function Families<a class="anchor" aria-label="anchor" href="#function-families"></a></h2>
+<p>All names below are verified against <code>NAMESPACE</code>.</p>
 <table class="table"><colgroup><col width="42%"><col width="57%"></colgroup><thead><tr><th>Family</th>
 <th>Functions</th>
 </tr></thead><tbody><tr><td>Geoms</td>
 <td>
-<code><a href="reference/geom_cfb_logos.html">geom_cfb_logos()</a></code>, <code><a href="reference/geom_cfb_wordmarks.html">geom_cfb_wordmarks()</a></code>, <code><a href="reference/geom_cfb_headshots.html">geom_cfb_headshots()</a></code>
-</td>
+<code><a href="reference/geom_cfb_logos.html">geom_cfb_logos()</a></code>, <code><a href="reference/geom_cfb_wordmarks.html">geom_cfb_wordmarks()</a></code>, <code><a href="reference/geom_cfb_headshots.html">geom_cfb_headshots()</a></code> (ggproto: <code>GeomCFBlogo</code>, <code>GeomCFBwordmark</code>, <code>GeomCFBheads</code>)</td>
 </tr><tr><td>Theme elements</td>
 <td>
 <code><a href="reference/element.html">element_cfb_logo()</a></code>, <code><a href="reference/element.html">element_cfb_wordmark()</a></code>, <code><a href="reference/element.html">element_cfb_headshot()</a></code>
 </td>
 </tr><tr><td>Color/fill scales</td>
 <td>
-<code><a href="reference/scale_color_cfb.html">scale_color_cfb()</a></code>, <code><a href="reference/scale_color_cfb.html">scale_fill_cfb()</a></code>
+<code><a href="reference/scale_color_cfb.html">scale_color_cfb()</a></code> / <code><a href="reference/scale_color_cfb.html">scale_colour_cfb()</a></code>, <code><a href="reference/scale_color_cfb.html">scale_fill_cfb()</a></code>
 </td>
-</tr><tr><td>Position scales</td>
+</tr><tr><td>Axis logo/headshot scales</td>
 <td>
-<code><a href="reference/scale_axes_cfb.html">scale_x_cfb()</a></code>, <code><a href="reference/scale_axes_cfb.html">scale_y_cfb()</a></code>
+<code><a href="reference/scale_axes_cfb.html">scale_x_cfb()</a></code>, <code><a href="reference/scale_axes_cfb.html">scale_y_cfb()</a></code>, <code><a href="reference/scale_axes_cfb.html">scale_x_cfb_headshots()</a></code>, <code><a href="reference/scale_axes_cfb.html">scale_y_cfb_headshots()</a></code>, <code><a href="reference/theme_cfb.html">theme_x_cfb()</a></code>, <code><a href="reference/theme_cfb.html">theme_y_cfb()</a></code>
 </td>
 </tr><tr><td>gt formatters</td>
 <td>
-<code><a href="reference/gt_cfb.html">gt_fmt_cfb_logo()</a></code>, <code><a href="reference/gt_cfb.html">gt_fmt_cfb_wordmark()</a></code>, <code><a href="reference/gt_cfb.html">gt_fmt_cfb_headshot()</a></code>, <code>gt_fmt_cfb_dot_logo()</code>, <code><a href="reference/gt_cfb_cols_label.html">gt_cfb_cols_label()</a></code>, <code>gt_stack_team_column()</code>
+<code><a href="reference/gt_cfb.html">gt_fmt_cfb_logo()</a></code>, <code><a href="reference/gt_cfb.html">gt_fmt_cfb_wordmark()</a></code>, <code><a href="reference/gt_cfb.html">gt_fmt_cfb_headshot()</a></code>, <code><a href="reference/gt_cfb_cols_label.html">gt_cfb_cols_label()</a></code>, <code><a href="reference/gt_stack_team.html">gt_merge_stack_team_color()</a></code>
 </td>
 </tr><tr><td>Team utilities</td>
 <td>
-<code><a href="reference/cfb_team_tiers.html">cfb_team_tiers()</a></code>, <code><a href="reference/cfb_team_factor.html">cfb_team_factor()</a></code>
+<code><a href="reference/cfb_team_tiers.html">cfb_team_tiers()</a></code>, <code><a href="reference/cfb_team_factor.html">cfb_team_factor()</a></code>, <code><a href="reference/add_athlete_id_col.html">add_athlete_id_col()</a></code>
 </td>
 </tr><tr><td>Name cleaners</td>
 <td>
 <code><a href="reference/clean_school_names.html">clean_school_names()</a></code>, <code><a href="reference/clean_team_abbrs.html">clean_team_abbrs()</a></code>, <code><a href="reference/valid_team_names.html">valid_team_names()</a></code>
 </td>
-</tr><tr><td>Title helpers</td>
+</tr><tr><td>Title / preview helpers</td>
 <td>
-<code><a href="reference/ggtitle_image.html">ggtitle_image()</a></code>, <code><a href="reference/ggtitle_image.html">theme_title_image()</a></code>
+<code><a href="reference/ggtitle_image.html">ggtitle_image()</a></code>, <code><a href="reference/ggtitle_image.html">theme_title_image()</a></code>, <code><a href="reference/ggpreview.html">ggpreview()</a></code>
 </td>
 </tr><tr><td>ggpath re-exports</td>
 <td>
@@ -237,20 +239,16 @@
 <div class="section level2">
 <h2 id="team-data-in-sysdatarda">Team Data in <code>sysdata.rda</code>
 <a class="anchor" aria-label="anchor" href="#team-data-in-sysdatarda"></a></h2>
-<p><code>R/sysdata.rda</code> is produced by the scripts in <code>data-raw/</code> and baked into the package binary. It contains:</p>
+<p>Two storage tiers, both built by <code>data-raw/</code> scripts:</p>
 <ul><li>
-<code>logo_list</code> – named character vector <code>name -&gt; logo URL</code>
-</li>
+<strong>Internal</strong> (<code>R/sysdata.rda</code>, <code>usethis::use_data(..., internal = TRUE)</code>): <code>logo_list</code> and <code>wordmark_list</code> – named character vectors <code>name -&gt; image URL</code>. Accessed as bare names inside the package.</li>
 <li>
-<code>wordmark_list</code> – named character vector <code>name -&gt; wordmark URL</code>
-</li>
-<li>
-<code>logo_ref</code> – data frame with <code>school</code>, <code>type</code>, and URL columns</li>
-</ul><p>Regenerate after updating team data:</p>
+<strong>Exported</strong> (<code>data/*.rda</code>, lazy-loaded, documented in <code>R/data.R</code>): <code>logo_ref</code> (<code>school</code>, <code>color</code>, <code>alt_color</code>, logo URLs; powers <code><a href="reference/valid_team_names.html">valid_team_names()</a></code>), <code>team_name_mapping</code>, and <code>team_colors</code>.</li>
+</ul><p>Regenerate after updating team data (<code>build_logo_list.R</code> writes both <code>logo_ref</code> and the internal lists):</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"data-raw/&lt;relevant-script&gt;.R"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="st">"data-raw/build_logo_list.R"</span><span class="op">)</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">document</span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><strong>Never edit <code>sysdata.rda</code> by hand.</strong></p>
+<p><strong>Never edit <code>sysdata.rda</code> or <code>data/*.rda</code> by hand.</strong></p>
 </div>
 <div class="section level2">
 <h2 id="build--development-commands">Build &amp; Development Commands<a class="anchor" aria-label="anchor" href="#build--development-commands"></a></h2>
@@ -374,7 +372,9 @@ ci: update R CMD check workflow to ubuntu-latest</code></pre>
 <ul><li>
 <code><a href="https://mrcaseb.github.io/ggpath/reference/element_path.html" class="external-link">ggpath::element_path</a></code> is an <strong>S7 object</strong>. Always construct it via <code>ggpath::element_path(alpha=..., colour=..., ...)</code>. Never <code>structure(list(...), class="element_path")</code>.</li>
 <li>
-<code>logo_list</code> and <code>wordmark_list</code> live in <code>sysdata.rda</code> (not exported). Access them as bare names inside the package; outside tests use <code>cfbplotR:::logo_list</code>.</li>
+<code>logo_list</code> and <code>wordmark_list</code> live in <code>sysdata.rda</code> (internal, not exported). Access them as bare names inside the package; in tests use <code>cfbplotR:::logo_list</code>. <code>logo_ref</code> / <code>team_name_mapping</code> / <code>team_colors</code> ARE exported (<code><a href="reference/data.html">cfbplotR::logo_ref</a></code>).</li>
+<li>
+<code><a href="reference/dot-cfbplotR_clear_cache.html">.cfbplotR_clear_cache()</a></code> only delegates to <code>ggpath::clear_cache()</code> when that symbol is exported by the installed ggpath (<code>getNamespaceExports("ggpath")</code> guard) — image caching itself is owned by ggpath, not cfbplotR.</li>
 <li>
 <code><a href="reference/valid_team_names.html">valid_team_names()</a></code> calls <code><a href="reference/clean_school_names.html">clean_school_names()</a></code> internally – do not call both in sequence or you will double-normalize.</li>
 <li>
