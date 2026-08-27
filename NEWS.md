@@ -16,6 +16,11 @@
 * gt image helpers (`gt_fmt_cfb_logo()`/`gt_fmt_cfb_headshot()`/`gt_fmt_cfb_wordmark()`) now embed via `gt::web_image()`.
 * New family-parity conveniences: `gt_cfb_cols_label()`, `cfb_team_factor()`, `clean_team_abbrs()`, and `.cfbplotR_clear_cache()`.
 * Added repository community-health files (CLAUDE.md, Copilot instructions, issue/PR templates, CONTRIBUTING, Code of Conduct), normalized badges, a standard SportsDataverse README, a `bibentry()` citation, and a richer pkgdown reference.
+* `add_athlete_id_col()` no longer aborts when cfbfastR-data has not published the
+  current season's roster file yet. `most_recent_cfb_season()` rolls over on August 15,
+  but the roster file lands when the season starts, so every August the default call
+  died with `cannot open the connection`. Unavailable seasons are now named and
+  skipped, and a season-less request falls back to the previous season.
 
 # cfbplotR 0.0.1 (pre-release history)
 
