@@ -25,9 +25,11 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Jared Lee <13jaredlee@gmail.com>
+**Maintainer**: Saiem Gilani <saiem.gilani@gmail.com>
 
 Authors:
+
+- Jared Lee <13jaredlee@gmail.com>
 
 - Sebastian Carl <mrcaseb@gmail.com>
 

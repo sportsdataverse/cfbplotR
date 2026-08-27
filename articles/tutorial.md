@@ -3,7 +3,7 @@
 This is a quick tutorial on how to use cfbplotR to quickly and easily
 include college football team logos in your ggplot.
 
-## Load and Process Data
+### Load and Process Data
 
 First we need to load the necessary libraries.
 [`cfbfastR`](https://cfbfastR.sportsdataverse.org/) will get us the data
@@ -72,9 +72,9 @@ head(team_plot_data)
     ## 5 Auburn          0.299      63   0.156      65 SEC        Tigers      
     ## 6 Baylor          0.185      86  -0.372      41 Big 12     Bears
 
-## Plotting with cfbplotR
+### Plotting with cfbplotR
 
-Now that the data is prepped, we can being to use `cfbplotR`. First
+Now that the data is prepped, we can begin to use `cfbplotR`. First
 we’ll plot all the teams with Passing EPA on the x-axis and Rushing EPA
 on the y-axis with lines showing the median value for each. It’s
 important to set width or height in `geom_cfb_logos` to small values.
@@ -206,7 +206,7 @@ least 10 rushes in week 1 of 2021, with bars colored by team color, each
 player's name labeled on the bar, and the player's headshot at the end
 of the bar.](tutorial_files/figure-html/headshots-1.png)
 
-## Tables with cfbplotR
+### Tables with cfbplotR
 
 The `gt` package offers an easy way to create nice tables of data and
 the `gtExtras` package from Tom Mock provides a number of convenient
@@ -265,3 +265,46 @@ player_plot_data %>%
 ```
 
 [TABLE]
+
+## **Our Authors**
+
+- [Sebastian Carl](https://x.com/mrcaseb)
+  [![@mrcaseb](https://img.shields.io/twitter/follow/mrcaseb?color=blue&label=%40mrcaseb&logo=x&style=for-the-badge)](https://x.com/mrcaseb)
+  [![@mrcaseb](https://img.shields.io/github/followers/mrcaseb?color=eee&logo=Github&style=for-the-badge)](https://github.com/mrcaseb)
+- [Jared Lee](https://x.com/JaredDLee)
+  [![@JaredDLee](https://img.shields.io/twitter/follow/JaredDLee?color=blue&label=%40JaredDLee&logo=x&style=for-the-badge)](https://x.com/JaredDLee)
+  [![@Kazink36](https://img.shields.io/github/followers/Kazink36?color=eee&logo=Github&style=for-the-badge)](https://github.com/Kazink36)
+- [Saiem Gilani](https://x.com/saiemgilani)
+  [![@saiemgilani](https://img.shields.io/twitter/follow/saiemgilani?color=blue&label=%40saiemgilani&logo=x&style=for-the-badge)](https://x.com/saiemgilani)
+  [![@saiemgilani](https://img.shields.io/github/followers/saiemgilani?color=eee&logo=Github&style=for-the-badge)](https://github.com/saiemgilani)
+
+### **Citation**
+
+To cite the [**`cfbplotR`**](https://cfbplotR.sportsdataverse.org/) R
+package in publications, use:
+
+BibTeX Citation
+
+``` bibtex
+@misc{cfbplotr,
+  author = {Sebastian Carl and Jared Lee and Saiem Gilani},
+  title = {cfbplotR: The SportsDataverse},
+  url = {https://cfbplotR.sportsdataverse.org/},
+  year = {2026}
+}
+```
+
+### **Related SportsDataverse packages**
+
+- [**cfbfastR**](https://cfbfastR.sportsdataverse.org/) - college
+  football
+- [**hoopR**](https://hoopR.sportsdataverse.org/) - men’s basketball
+- [**wehoop**](https://wehoop.sportsdataverse.org/) - women’s basketball
+- [**baseballr**](https://baseballr.sportsdataverse.org/) - baseball
+- [**fastRhockey**](https://fastRhockey.sportsdataverse.org/) - hockey
+- [**oddsapiR**](https://oddsapiR.sportsdataverse.org/) - betting odds
+- [**sportyR**](https://sportyR.sportsdataverse.org/) - playing surfaces
+- [**sportsdataverse-py**](https://py.sportsdataverse.org/) - the Python
+  package
+- [**sportsdataverse-R**](https://r.sportsdataverse.org/) - the R
+  meta-package

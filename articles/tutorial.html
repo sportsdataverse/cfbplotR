@@ -17,6 +17,13 @@
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><link href="../extra.css" rel="stylesheet">
 <meta property="og:title" content="Using cfbplotR">
+<meta name="description" content="Putting college football team logos, wordmarks and colours into &lt;code&gt;ggplot2&lt;/code&gt; with &lt;code&gt;geom_cfb_logos()&lt;/code&gt; and the &lt;code&gt;scale_*_cfb()&lt;/code&gt; family.">
+<meta property="og:description" content="Putting college football team logos, wordmarks and colours into &lt;code&gt;ggplot2&lt;/code&gt; with &lt;code&gt;geom_cfb_logos()&lt;/code&gt; and the &lt;code&gt;scale_*_cfb()&lt;/code&gt; family.">
+<meta property="og:image" content="https://raw.githubusercontent.com/sportsdataverse/cfbfastR-data/main/themes/social_card_cfbplotR.png">
+<meta property="og:image:alt" content="cfbplotR social preview card">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@saiemgilani">
+<meta name="twitter:site" content="@cfbfastR">
 <script defer data-domain="cfbplotr.sportsdataverse.org" src="https://plausible.io/js/plausible.js"></script>
 </head>
 <body>
@@ -140,8 +147,11 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.svg" class="logo" alt=""><h1>Using cfbplotR</h1>
-                        <h4 data-toc-skip class="author">Jared Lee
-<br><a href="https://twitter.com/JaredDLee" target="blank" class="external-link"><img src="https://img.shields.io/twitter/follow/JaredDLee?color=blue&amp;label=%40JaredDLee&amp;logo=twitter&amp;style=for-the-badge" alt="@JaredDLee"></a>
+                        <h4 data-toc-skip class="author">Sebastian Carl,
+Jared Lee, Saiem Gilani
+<br><a href="https://x.com/mrcaseb" target="blank" class="external-link"><img src="https://img.shields.io/twitter/follow/mrcaseb?color=blue&amp;label=%40mrcaseb&amp;logo=x&amp;style=for-the-badge" alt="@mrcaseb"></a>
+<a href="https://github.com/mrcaseb" target="blank" class="external-link"><img src="https://img.shields.io/github/followers/mrcaseb?color=eee&amp;logo=Github&amp;style=for-the-badge" alt="@mrcaseb"></a>
+<a href="https://x.com/JaredDLee" target="blank" class="external-link"><img src="https://img.shields.io/twitter/follow/JaredDLee?color=blue&amp;label=%40JaredDLee&amp;logo=x&amp;style=for-the-badge" alt="@JaredDLee"></a>
 <a href="https://github.com/Kazink36" target="blank" class="external-link"><img src="https://img.shields.io/github/followers/Kazink36?color=eee&amp;logo=Github&amp;style=for-the-badge" alt="@Kazink36"></a>
 </h4>
             
@@ -154,9 +164,9 @@
     
 <p>This is a quick tutorial on how to use cfbplotR to quickly and easily
 include college football team logos in your ggplot.</p>
-<div class="section level2">
-<h2 id="load-and-process-data">Load and Process Data<a class="anchor" aria-label="anchor" href="#load-and-process-data"></a>
-</h2>
+<div class="section level3">
+<h3 id="load-and-process-data">Load and Process Data<a class="anchor" aria-label="anchor" href="#load-and-process-data"></a>
+</h3>
 <p>First we need to load the necessary libraries. <a href="https://cfbfastR.sportsdataverse.org/" class="external-link"><code>cfbfastR</code></a>
 will get us the data we want to use for analysis. <a href="https://cfbplotR.sportsdataverse.org/"><code>cfbplotR</code></a>
 will help us easily plot the results. <code>tidyverse</code> will help
@@ -212,10 +222,10 @@ data.</p>
 <span><span class="co">## <span style="color: #BCBCBC;">5</span> Auburn          0.299      63   0.156      65 SEC        Tigers      </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">6</span> Baylor          0.185      86  -<span style="color: #BB0000;">0.372</span>      41 Big 12     Bears</span></span></code></pre>
 </div>
-<div class="section level2">
-<h2 id="plotting-with-cfbplotr">Plotting with cfbplotR<a class="anchor" aria-label="anchor" href="#plotting-with-cfbplotr"></a>
-</h2>
-<p>Now that the data is prepped, we can being to use
+<div class="section level3">
+<h3 id="plotting-with-cfbplotr">Plotting with cfbplotR<a class="anchor" aria-label="anchor" href="#plotting-with-cfbplotr"></a>
+</h3>
+<p>Now that the data is prepped, we can begin to use
 <code>cfbplotR</code>. First we’ll plot all the teams with Passing EPA
 on the x-axis and Rushing EPA on the y-axis with lines showing the
 median value for each. It’s important to set width or height in
@@ -310,9 +320,9 @@ look at the top 10 rushing EPA players with more than 10 rushes for week
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text.y <span class="op">=</span> <span class="fu"><a href="../reference/element.html">element_cfb_logo</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="tutorial_files/figure-html/headshots-1.png" class="r-plt" alt="Horizontal bar chart of the top 10 rushers by EPA per rush with at least 10 rushes in week 1 of 2021, with bars colored by team color, each player's name labeled on the bar, and the player's headshot at the end of the bar." width="700"></p>
 </div>
-<div class="section level2">
-<h2 id="tables-with-cfbplotr">Tables with cfbplotR<a class="anchor" aria-label="anchor" href="#tables-with-cfbplotr"></a>
-</h2>
+<div class="section level3">
+<h3 id="tables-with-cfbplotr">Tables with cfbplotR<a class="anchor" aria-label="anchor" href="#tables-with-cfbplotr"></a>
+</h3>
 <p>The <code>gt</code> package offers an easy way to create nice tables
 of data and the <code>gtExtras</code> package from Tom Mock provides a
 number of convenient functions for styling those tables. The
@@ -1485,6 +1495,76 @@ through <code>cfbfastR</code>.</p>
 </table>
 </div>
 </div>
+<div class="section level2">
+<h2 id="our-authors">
+<strong>Our Authors</strong><a class="anchor" aria-label="anchor" href="#our-authors"></a>
+</h2>
+<ul>
+<li>
+<a href="https://x.com/mrcaseb" class="external-link">Sebastian Carl</a>
+<a href="https://x.com/mrcaseb" target="blank" class="external-link"><img src="https://img.shields.io/twitter/follow/mrcaseb?color=blue&amp;label=%40mrcaseb&amp;logo=x&amp;style=for-the-badge" alt="@mrcaseb"></a>
+<a href="https://github.com/mrcaseb" target="blank" class="external-link"><img src="https://img.shields.io/github/followers/mrcaseb?color=eee&amp;logo=Github&amp;style=for-the-badge" alt="@mrcaseb"></a>
+</li>
+<li>
+<a href="https://x.com/JaredDLee" class="external-link">Jared Lee</a>
+<a href="https://x.com/JaredDLee" target="blank" class="external-link"><img src="https://img.shields.io/twitter/follow/JaredDLee?color=blue&amp;label=%40JaredDLee&amp;logo=x&amp;style=for-the-badge" alt="@JaredDLee"></a>
+<a href="https://github.com/Kazink36" target="blank" class="external-link"><img src="https://img.shields.io/github/followers/Kazink36?color=eee&amp;logo=Github&amp;style=for-the-badge" alt="@Kazink36"></a>
+</li>
+<li>
+<a href="https://x.com/saiemgilani" class="external-link">Saiem Gilani</a>
+<a href="https://x.com/saiemgilani" target="blank" class="external-link"><img src="https://img.shields.io/twitter/follow/saiemgilani?color=blue&amp;label=%40saiemgilani&amp;logo=x&amp;style=for-the-badge" alt="@saiemgilani"></a>
+<a href="https://github.com/saiemgilani" target="blank" class="external-link"><img src="https://img.shields.io/github/followers/saiemgilani?color=eee&amp;logo=Github&amp;style=for-the-badge" alt="@saiemgilani"></a>
+</li>
+</ul>
+<div class="section level3">
+<h3 id="citation">
+<strong>Citation</strong><a class="anchor" aria-label="anchor" href="#citation"></a>
+</h3>
+<p>To cite the <a href="https://cfbplotR.sportsdataverse.org/"><strong><code>cfbplotR</code></strong></a>
+R package in publications, use:</p>
+<p>BibTeX Citation</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bibtex"><code class="sourceCode bibtex"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">cfbplotr</span>,</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="dt">author</span> = {Sebastian Carl and Jared Lee and Saiem Gilani},</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="dt">title</span> = {cfbplotR: The SportsDataverse},</span>
+<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="dt">url</span> = {https://cfbplotR.sportsdataverse.org/},</span>
+<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="dt">year</span> = {2026}</span>
+<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="related-sportsdataverse-packages">
+<strong>Related SportsDataverse packages</strong><a class="anchor" aria-label="anchor" href="#related-sportsdataverse-packages"></a>
+</h3>
+<ul>
+<li>
+<a href="https://cfbfastR.sportsdataverse.org/" class="external-link"><strong>cfbfastR</strong></a>
+- college football</li>
+<li>
+<a href="https://hoopR.sportsdataverse.org/" class="external-link"><strong>hoopR</strong></a> -
+men’s basketball</li>
+<li>
+<a href="https://wehoop.sportsdataverse.org/" class="external-link"><strong>wehoop</strong></a> -
+women’s basketball</li>
+<li>
+<a href="https://baseballr.sportsdataverse.org/" class="external-link"><strong>baseballr</strong></a>
+- baseball</li>
+<li>
+<a href="https://fastRhockey.sportsdataverse.org/" class="external-link"><strong>fastRhockey</strong></a>
+- hockey</li>
+<li>
+<a href="https://oddsapiR.sportsdataverse.org/" class="external-link"><strong>oddsapiR</strong></a>
+- betting odds</li>
+<li>
+<a href="https://sportyR.sportsdataverse.org/" class="external-link"><strong>sportyR</strong></a>
+- playing surfaces</li>
+<li>
+<a href="https://py.sportsdataverse.org/" class="external-link"><strong>sportsdataverse-py</strong></a>
+- the Python package</li>
+<li>
+<a href="https://r.sportsdataverse.org/" class="external-link"><strong>sportsdataverse-R</strong></a>
+- the R meta-package</li>
+</ul>
+</div>
+</div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
@@ -1492,11 +1572,11 @@ through <code>cfbfastR</code>.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by <a href="https://x.com/mrcaseb" class="external-link">Sebastian Carl</a>, <a href="https://x.com/JaredDLee" class="external-link">Jared Lee</a>.</p>
+  <p>Developed by <a href="https://x.com/mrcaseb" class="external-link">Sebastian Carl</a>, <a href="https://x.com/JaredDLee" class="external-link">Jared Lee</a>, <a href="https://x.com/saiemgilani" class="external-link">Saiem Gilani</a>.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

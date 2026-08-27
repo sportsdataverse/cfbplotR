@@ -4,9 +4,9 @@
 
 - **[Sebastian Carl](https://x.com/mrcaseb)**. Author.
 
-- **[Jared Lee](https://x.com/JaredDLee)**. Author, maintainer.
+- **[Jared Lee](https://x.com/JaredDLee)**. Author.
 
-- **[Saiem Gilani](https://x.com/saiemgilani)**. Contributor.
+- **[Saiem Gilani](https://x.com/saiemgilani)**. Author, maintainer.
 
 ## Citation
 

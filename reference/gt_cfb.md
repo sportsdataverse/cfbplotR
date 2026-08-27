@@ -71,7 +71,13 @@ df <- data.frame(
 ) %>%
  add_athlete_id_col(player)
 #> ℹ No season column, using "most_recent_cfb_season()" rosters
+#> Warning: cannot open URL 'https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_2026.rds?raw=true': HTTP status was '404 Not Found'
+#> Error in readRDS(url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))): cannot open the connection to 'https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_2026.rds?raw=true'
 table_2 <- df %>%
  gt() %>%
  gt_fmt_cfb_headshot(athlete_id)
+#> Error in gt::text_transform(data = gt_object, locations = if (isTRUE(grp_var %in%     column_names)) {    gt::cells_row_groups()} else if (isTRUE(stub_var %in% column_names)) {    gt::cells_stub(rows = gt::everything())} else {    gt::cells_body({        {            columns        }    })}, fn = function(x) {    for (i in 1:length(x)) {        url_or_id <- headshot_id_or_url(x[i])        if (url_or_id == "ID") {            x[i] <- headshot_id_to_url(x[i])        }        else if (url_or_id == "NA") {            x[i] <- "http://a.espncdn.com/i/headshots/nophoto.png"        }    }    x <- paste0("<img src=\"", x, "\" style=\"height:", height,         ";\" onerror=\"this.onerror=null;this.src='http://a.espncdn.com/i/headshots/nophoto.png';\" />")}): Failed to resolve location.
+#> Caused by error in `cells_body()`:
+#> ! Can't select columns that don't exist.
+#> ✖ Column `athlete_id` doesn't exist.
 ```
