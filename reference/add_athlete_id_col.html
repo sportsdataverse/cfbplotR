@@ -164,8 +164,11 @@ column called "headshot_url" with links for player headshots.</p></dd>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu">add_athlete_id_col</span><span class="op">(</span><span class="va">x</span>, <span class="va">player_name</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> No season column, using <span style="color: #0000BB;">"most_recent_cfb_season()"</span> rosters</span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>cannot open URL 'https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_2026.rds?raw=true': HTTP status was '404 Not Found'</span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in readRDS(url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))):</span> cannot open the connection to 'https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_2026.rds?raw=true'</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #BBBB00;">!</span> No published cfbfastR-data roster file for season <span style="color: #0000BB;">2026</span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Rosters for <span style="color: #0000BB;">2026</span> are not published yet, using <span style="color: #0000BB;">2025</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>     player_name season athlete_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Britain Covey     NA       &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2    JT Daniels     NA       &lt;NA&gt;</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">x</span><span class="op">$</span><span class="va">season</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">2021</span>,<span class="fl">2021</span><span class="op">)</span></span></span>

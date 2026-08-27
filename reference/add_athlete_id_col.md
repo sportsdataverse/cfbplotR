@@ -56,8 +56,11 @@ x <- data.frame(
 
 add_athlete_id_col(x, player_name)
 #> ℹ No season column, using "most_recent_cfb_season()" rosters
-#> Warning: cannot open URL 'https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_2026.rds?raw=true': HTTP status was '404 Not Found'
-#> Error in readRDS(url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))): cannot open the connection to 'https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_2026.rds?raw=true'
+#> ! No published cfbfastR-data roster file for season 2026
+#> ℹ Rosters for 2026 are not published yet, using 2025
+#>     player_name season athlete_id
+#> 1 Britain Covey     NA       <NA>
+#> 2    JT Daniels     NA       <NA>
 
 
 x$season <- c(2021,2021)

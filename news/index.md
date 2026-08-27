@@ -39,6 +39,13 @@
   normalized badges, a standard SportsDataverse README, a
   [`bibentry()`](https://rdrr.io/r/utils/bibentry.html) citation, and a
   richer pkgdown reference.
+- [`add_athlete_id_col()`](https://cfbplotR.sportsdataverse.org/reference/add_athlete_id_col.md)
+  no longer aborts when cfbfastR-data has not published the current
+  season’s roster file yet. `most_recent_cfb_season()` rolls over on
+  August 15, but the roster file lands when the season starts, so every
+  August the default call died with `cannot open the connection`.
+  Unavailable seasons are now named and skipped, and a season-less
+  request falls back to the previous season.
 
 ## cfbplotR 0.0.1 (pre-release history)
 
