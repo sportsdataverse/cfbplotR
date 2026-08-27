@@ -26,10 +26,11 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Jared Lee \email{13jaredlee@gmail.com}
+\strong{Maintainer}: Saiem Gilani \email{saiem.gilani@gmail.com}
 
 Authors:
 \itemize{
+  \item Jared Lee \email{13jaredlee@gmail.com}
   \item Sebastian Carl \email{mrcaseb@gmail.com}
 }
 

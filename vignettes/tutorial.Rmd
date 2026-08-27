@@ -1,7 +1,7 @@
 ---
 title: "Using cfbplotR"
 output: rmarkdown::html_vignette
-author: "Jared Lee <br><a href='https://twitter.com/JaredDLee' target='blank'><img src='https://img.shields.io/twitter/follow/JaredDLee?color=blue&label=%40JaredDLee&logo=twitter&style=for-the-badge' alt='@JaredDLee' /></a> <a href='https://github.com/Kazink36' target='blank'><img src='https://img.shields.io/github/followers/Kazink36?color=eee&logo=Github&style=for-the-badge' alt='@Kazink36' /></a>"
+author: "Sebastian Carl, Jared Lee, Saiem Gilani <br><a href='https://x.com/mrcaseb' target='blank'><img src='https://img.shields.io/twitter/follow/mrcaseb?color=blue&amp;label=%40mrcaseb&amp;logo=x&amp;style=for-the-badge' alt='@mrcaseb'/></a> <a href='https://github.com/mrcaseb' target='blank'><img src='https://img.shields.io/github/followers/mrcaseb?color=eee&amp;logo=Github&amp;style=for-the-badge' alt='@mrcaseb'/></a> <a href='https://x.com/JaredDLee' target='blank'><img src='https://img.shields.io/twitter/follow/JaredDLee?color=blue&amp;label=%40JaredDLee&amp;logo=x&amp;style=for-the-badge' alt='@JaredDLee'/></a> <a href='https://github.com/Kazink36' target='blank'><img src='https://img.shields.io/github/followers/Kazink36?color=eee&amp;logo=Github&amp;style=for-the-badge' alt='@Kazink36'/></a>"
 vignette: >
  %\VignetteIndexEntry{Using cfbplotR}
  %\VignetteEngine{knitr::rmarkdown} 
@@ -72,7 +72,7 @@ head(team_plot_data)
 
 ## Plotting with cfbplotR
 
-Now that the data is prepped, we can being to use `cfbplotR`. First we'll plot all the teams with Passing EPA on the x-axis and Rushing EPA on the y-axis with lines showing the median value for each. It's important to set width or height in `geom_cfb_logos` to small values. The default of 1 will create extremely large logos.
+Now that the data is prepped, we can begin to use `cfbplotR`. First we'll plot all the teams with Passing EPA on the x-axis and Rushing EPA on the y-axis with lines showing the median value for each. It's important to set width or height in `geom_cfb_logos` to small values. The default of 1 will create extremely large logos.
 
 ```{r epa_plot, fig.alt="Scatter plot of EPA per pass versus EPA per rush for all Power 5 teams in week 1 of the 2021 season, with each team represented by its logo and median reference lines on both axes."}
 ggplot(team_plot_data, aes(x = pass_epa, y = rush_epa)) +
@@ -193,22 +193,21 @@ player_plot_data %>%
 <a href='https://github.com/mrcaseb' target='blank'><img src='https://img.shields.io/github/followers/mrcaseb?color=eee&amp;logo=Github&amp;style=for-the-badge' alt='@mrcaseb'/></a>
 -   [Jared Lee](https://x.com/JaredDLee)
 <a href='https://x.com/JaredDLee' target='blank'><img src='https://img.shields.io/twitter/follow/JaredDLee?color=blue&amp;label=%40JaredDLee&amp;logo=x&amp;style=for-the-badge' alt='@JaredDLee'/></a>
-<a href='https://github.com/JaredDLee' target='blank'><img src='https://img.shields.io/github/followers/JaredDLee?color=eee&amp;logo=Github&amp;style=for-the-badge' alt='@JaredDLee'/></a>
-
-## **Our Contributors**
+<a href='https://github.com/Kazink36' target='blank'><img src='https://img.shields.io/github/followers/Kazink36?color=eee&amp;logo=Github&amp;style=for-the-badge' alt='@Kazink36'/></a>
 -   [Saiem Gilani](https://x.com/saiemgilani)
 <a href='https://x.com/saiemgilani' target='blank'><img src='https://img.shields.io/twitter/follow/saiemgilani?color=blue&amp;label=%40saiemgilani&amp;logo=x&amp;style=for-the-badge' alt='@saiemgilani'/></a>
+<a href='https://github.com/saiemgilani' target='blank'><img src='https://img.shields.io/github/followers/saiemgilani?color=eee&amp;logo=Github&amp;style=for-the-badge' alt='@saiemgilani'/></a>
 
 ## **Citation**
 
 To cite the [**`cfbplotR`**](https://cfbplotR.sportsdataverse.org/) R package in publications, use:
 
-BibTex Citation
+BibTeX Citation
 
 ```bibtex
 @misc{cfbplotr,
-  author = {Sebastian Carl, Jared Lee},
-  title = {cfbplotR: CFB Logo Plots in 'ggplot2'},
+  author = {Sebastian Carl and Jared Lee and Saiem Gilani},
+  title = {cfbplotR: The SportsDataverse},
   url = {https://cfbplotR.sportsdataverse.org/},
   year = {2026}
 }
