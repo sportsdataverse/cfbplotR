@@ -101,18 +101,46 @@ clean_team_abbrs <- function(school, keep_non_matches = TRUE) {
 #' @keywords internal
 #' @noRd
 load_cfb_rosters <- function(seasons) {
+  # The documented schema, so a request whose seasons are all unpublished
+  # returns a frame the caller can still select() and join() against rather
+  # than the 0x0 frame bind_rows() gives for an all-NULL list.
+  empty <- data.frame(
+    season = numeric(0),
+    athlete_id = character(0),
+    name = character(0),
+    team = character(0),
+    headshot_url = character(0),
+    stringsAsFactors = FALSE
+  )
+
   frames <- lapply(seasons, function(x) {
-    roster <- tryCatch(
-      suppressWarnings(
+    notes <- character()
+    roster <- withCallingHandlers(
+      tryCatch(
         readRDS(
           url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))
-        )
+        ),
+        error = function(e) e
       ),
-      error = function(e) NULL
+      warning = function(w) {
+        notes <<- c(notes, conditionMessage(w))
+        invokeRestart("muffleWarning")
+      }
     )
-    if (is.null(roster)) {
+
+    if (inherits(roster, "condition")) {
+      # readRDS() reports every failed connection as "cannot open the
+      # connection" regardless of cause; the HTTP status reaches the warning
+      # only. Treat a 404 as a season that is not published yet, and let
+      # anything else - a timeout, a DNS failure, a GitHub 5xx, a corrupt
+      # file - surface, so a transient outage is never silently mistaken for
+      # missing data and quietly answered with another season's rosters.
+      if (!any(grepl("404 Not Found", notes, fixed = TRUE))) {
+        stop(roster)
+      }
       return(NULL)
     }
+
     roster %>%
       dplyr::transmute(
         season = x,
@@ -128,6 +156,11 @@ load_cfb_rosters <- function(seasons) {
     cli::cli_alert_warning(
       "No published cfbfastR-data roster file for {cli::qty(length(unavailable))}season{?s} {.val {unavailable}}"
     )
+  }
+
+  frames <- Filter(Negate(is.null), frames)
+  if (length(frames) == 0) {
+    return(empty)
   }
 
   dplyr::bind_rows(frames)
