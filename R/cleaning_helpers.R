@@ -87,6 +87,85 @@ clean_team_abbrs <- function(school, keep_non_matches = TRUE) {
 #' add_athlete_id_col(x, player_name, team, headshot_urls = TRUE)
 #'}
 
+#' Load cfbfastR-data rosters for one or more seasons
+#'
+#' `most_recent_cfb_season()` rolls over to the new season on August 15, but
+#' cfbfastR-data does not publish that season's roster file until the season
+#' actually starts. Reading the file that does not exist yet used to abort the
+#' whole call with a bare `cannot open the connection` error. Skip the seasons
+#' that are not published and name them, so a multi-season request still
+#' returns the seasons that do exist.
+#'
+#' @param seasons Numeric vector of seasons.
+#' @return A data frame of rosters; zero rows if no season was available.
+#' @keywords internal
+#' @noRd
+load_cfb_rosters <- function(seasons) {
+  # The documented schema, so a request whose seasons are all unpublished
+  # returns a frame the caller can still select() and join() against rather
+  # than the 0x0 frame bind_rows() gives for an all-NULL list.
+  empty <- data.frame(
+    season = numeric(0),
+    athlete_id = character(0),
+    name = character(0),
+    team = character(0),
+    headshot_url = character(0),
+    stringsAsFactors = FALSE
+  )
+
+  frames <- lapply(seasons, function(x) {
+    notes <- character()
+    roster <- withCallingHandlers(
+      tryCatch(
+        readRDS(
+          url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))
+        ),
+        error = function(e) e
+      ),
+      warning = function(w) {
+        notes <<- c(notes, conditionMessage(w))
+        invokeRestart("muffleWarning")
+      }
+    )
+
+    if (inherits(roster, "condition")) {
+      # readRDS() reports every failed connection as "cannot open the
+      # connection" regardless of cause; the HTTP status reaches the warning
+      # only. Treat a 404 as a season that is not published yet, and let
+      # anything else - a timeout, a DNS failure, a GitHub 5xx, a corrupt
+      # file - surface, so a transient outage is never silently mistaken for
+      # missing data and quietly answered with another season's rosters.
+      if (!any(grepl("404 Not Found", notes, fixed = TRUE))) {
+        stop(roster)
+      }
+      return(NULL)
+    }
+
+    roster %>%
+      dplyr::transmute(
+        season = x,
+        .data$athlete_id,
+        name = paste(.data$first_name, .data$last_name),
+        .data$team,
+        .data$headshot_url
+      )
+  })
+
+  unavailable <- seasons[vapply(frames, is.null, logical(1))]
+  if (length(unavailable) > 0) {
+    cli::cli_alert_warning(
+      "No published cfbfastR-data roster file for {cli::qty(length(unavailable))}season{?s} {.val {unavailable}}"
+    )
+  }
+
+  frames <- Filter(Negate(is.null), frames)
+  if (length(frames) == 0) {
+    return(empty)
+  }
+
+  dplyr::bind_rows(frames)
+}
+
 add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FALSE) {
   name_col <- dplyr::enquo(name_col)
   team_col <- dplyr::enquo(team_col)
@@ -102,37 +181,18 @@ add_athlete_id_col <- function(df, name_col,team_col = NULL, headshot_urls = FAL
       cli::cli_alert_info("No valid seasons (2009-{.val most_recent_cfb_season()}) in season column, using {.val most_recent_cfb_season()} rosters")
       seasons <- most_recent_cfb_season()
     }
-    rosters <- dplyr::bind_rows(lapply(seasons, function(x){
-      readRDS(
-        url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))
-      ) %>%
-        dplyr::transmute(
-          season = x,
-          .data$athlete_id,
-          name = paste(.data$first_name, .data$last_name),
-          .data$team,
-          .data$headshot_url
-        ) %>%
-        return()
-      }
-    ))
+    rosters <- load_cfb_rosters(seasons)
   } else {
     season_col_present <- FALSE
     cli::cli_alert_info("No season column, using {.val most_recent_cfb_season()} rosters")
-    rosters <- dplyr::bind_rows(lapply(most_recent_cfb_season(), function(x){
-      readRDS(
-        url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))
-      ) %>%
-        dplyr::transmute(
-          season = x,
-          .data$athlete_id,
-          name = paste(.data$first_name, .data$last_name),
-          .data$team,
-          .data$headshot_url
-        ) %>%
-        return()
+    rosters <- load_cfb_rosters(most_recent_cfb_season())
+    if (nrow(rosters) == 0) {
+      fallback <- most_recent_cfb_season() - 1
+      cli::cli_alert_info(
+        "Rosters for {.val {most_recent_cfb_season()}} are not published yet, using {.val {fallback}}"
+      )
+      rosters <- load_cfb_rosters(fallback)
     }
-    ))
   }
   if (isFALSE(headshot_urls)) {
     rosters <- rosters %>%
