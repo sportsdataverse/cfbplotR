@@ -6,7 +6,7 @@ vignette: >
  %\VignetteIndexEntry{Using cfbplotR}
  %\VignetteEngine{knitr::rmarkdown} 
 
-description: "This is a quick tutorial on how to use cfbplotR to quickly and easily include college football team logos in your ggplot."
+description: "Putting college football team logos, wordmarks and colours into <code>ggplot2</code> with <code>geom_cfb_logos()</code> and the <code>scale_*_cfb()</code> family."
 opengraph:
   image:
     src: "https://raw.githubusercontent.com/sportsdataverse/cfbfastR-data/main/themes/social_card_cfbplotR.png"
