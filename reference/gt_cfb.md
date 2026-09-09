@@ -71,8 +71,6 @@ df <- data.frame(
 ) %>%
  add_athlete_id_col(player)
 #> ℹ No season column, using "most_recent_cfb_season()" rosters
-#> ! No published cfbfastR-data roster file for season 2026
-#> ℹ Rosters for 2026 are not published yet, using 2025
 table_2 <- df %>%
  gt() %>%
  gt_fmt_cfb_headshot(athlete_id)

@@ -56,8 +56,6 @@ x <- data.frame(
 
 add_athlete_id_col(x, player_name)
 #> ℹ No season column, using "most_recent_cfb_season()" rosters
-#> ! No published cfbfastR-data roster file for season 2026
-#> ℹ Rosters for 2026 are not published yet, using 2025
 #>     player_name season athlete_id
 #> 1 Britain Covey     NA       <NA>
 #> 2    JT Daniels     NA       <NA>

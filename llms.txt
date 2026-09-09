@@ -119,6 +119,11 @@ For more information on the package and function reference, please see
 the [**`cfbplotR`** documentation
 website](https://cfbplotR.sportsdataverse.org).
 
+There is also a printable [**`cfbplotR` cheat sheet
+(PDF)**](https://sportsdataverse.org/cheatsheets/cfbplotR-cfb4th-cfbseedR.pdf),
+one of [a set covering every SportsDataverse
+package](https://sportsdataverse.org/cheatsheets).
+
 ## **The SportsDataverse**
 
 `cfbplotR` is part of the
@@ -163,6 +168,19 @@ stars](https://img.shields.io/github/stars/sportsdataverse/cfbplotR.svg?color=ee
 - [Sebastian Carl](https://twitter.com/mrcaseb)
   [![@mrcaseb](https://img.shields.io/twitter/follow/mrcaseb?color=blue&label=%40mrcaseb&logo=twitter&style=for-the-badge)](https://twitter.com/mrcaseb)
   [![@mrcaseb](https://img.shields.io/github/followers/mrcaseb?color=eee&logo=Github&style=for-the-badge)](https://github.com/mrcaseb)
+
+## **Cheat sheet**
+
+A printable one-page reference covering **cfbplotR, cfb4th and
+cfbseedR** — the function families, the loaders, and what each one
+returns.
+
+📄 **[Download the cfbplotR cheat sheet
+(PDF)](https://sportsdataverse.org/cheatsheets/cfbplotR-cfb4th-cfbseedR.pdf)**
+
+Free to download, print and hand out; light and dark, US Letter
+landscape. Every SportsDataverse package has one — browse them all at
+**[sportsdataverse.org/cheatsheets](https://sportsdataverse.org/cheatsheets)**.
 
 ## **Citations**
 
