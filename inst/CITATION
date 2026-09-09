@@ -8,7 +8,8 @@ bibentry(
   key      = "lee_gilani_carl_cfbplotR",
   author   = c(
     person("Jared",     "Lee",    email = "13jaredlee@gmail.com"),
-    person("Saiem",     "Gilani", email = "saiem.gilani@gmail.com"),
+    person("Saiem",     "Gilani", email = "saiem.gilani@gmail.com",
+           comment = c(ORCID = "0000-0002-7194-9067")),
     person("Sebastian", "Carl",   email = "mrcaseb@gmail.com")
   ),
   title    = "cfbplotR: The SportsDataverse's R Package for College Football Plotting.",

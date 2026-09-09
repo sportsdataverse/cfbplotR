@@ -4,7 +4,8 @@ Version: 0.1.0
 Authors@R: c(
     person("Sebastian", "Carl", , "mrcaseb@gmail.com", role = "aut"),
     person("Jared", "Lee", , "13jaredlee@gmail.com", role = "aut"),
-    person("Saiem", "Gilani", , "saiem.gilani@gmail.com", role = c("aut", "cre"))
+    person("Saiem", "Gilani", , "saiem.gilani@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-7194-9067"))
   )
 Description: A set of functions to visualize College Football analysis in
     'ggplot2'.

@@ -253,3 +253,10 @@ Prefer scoped subjects when useful (`feat(geom):`, `fix(elements):`, `docs(readm
 - Never hand-edit `NAMESPACE`, `man/`, or `R/sysdata.rda`.
 - vdiffr snapshots live in `tests/testthat/_snaps/`. After intentional visual changes, run `vdiffr::manage_cases()` to accept the new snapshot; do not delete `.svg` files manually.
 - `devtools::build_readme()` must be re-run after any edit to `README.Rmd`.
+
+## Cheat sheet
+
+There is a printable one-page reference for this package at
+<https://sportsdataverse.org/cheatsheets/cfbplotR-cfb4th-cfbseedR.pdf>, one of [a set covering every SportsDataverse package](https://sportsdataverse.org/cheatsheets).
+Keep it in mind when adding or renaming an exported function: the sheet is a
+hand-built canvas, so a surface change means the sheet needs a revision too.
