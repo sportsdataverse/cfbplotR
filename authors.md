@@ -14,7 +14,7 @@
 Source:
 [`inst/CITATION`](https://github.com/sportsdataverse/cfbplotR/blob/main/inst/CITATION)
 
-Jared Lee, Saiem Gilani, and Sebastian Carl (2026). cfbplotR: The
+Jared Lee, Saiem Gilani, and Sebastian Carl (2021). cfbplotR: The
 SportsDataverse's R Package for College Football Plotting. R package
 version 0.1.0. Retrieved from https://cfbplotR.sportsdataverse.org
 
@@ -22,6 +22,6 @@ version 0.1.0. Retrieved from https://cfbplotR.sportsdataverse.org
       author = {Jared Lee and Saiem Gilani and Sebastian Carl},
       title = {cfbplotR: The SportsDataverse's R Package for College Football Plotting.},
       url = {https://cfbplotR.sportsdataverse.org},
-      year = {2026},
+      year = {2021},
       note = {R package version 0.1.0},
     }
