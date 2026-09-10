@@ -201,6 +201,6 @@ BibTex Citation
   author = {Lee, Jared and Gilani, Saiem and Carl, Sebastian},
   title = {cfbplotR: The SportsDataverse's R Package for College Football Plotting.},
   url = {https://cfbplotR.sportsdataverse.org},
-  year = {2021}
+  year = {2026}
 }
 ```
