@@ -13,6 +13,9 @@ approach to college football.
 Part of the [SportsDataverse](https://sportsdataverse.org/) family of R
 packages for sports analytics.
 
+Data freshness and pipeline status for every SportsDataverse dataset:
+[sportsdataverse.org/status](https://sportsdataverse.org/status).
+
 ## **Installation**
 
 You can install the development version of
