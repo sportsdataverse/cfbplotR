@@ -124,7 +124,7 @@ reference:
 
 navbar:
   structure:
-    left: [home, reference, articles, news, games, network, data]
+    left: [home, reference, articles, news, games, network, data, status]
     right: [search, twitter, github, lightswitch]
   components:
     home:
@@ -262,6 +262,9 @@ navbar:
         href: https://github.com/sportsdataverse/cfbfastR-data
       - text: "Raw Data Repository"
         href: https://github.com/sportsdataverse/cfbfastR-raw
+    status:
+      text: "Data status"
+      href: https://sportsdataverse.org/status
     twitter:
       icon: "fab fa-x-twitter fa-lg"
       href: https://x.com/cfbfastR
