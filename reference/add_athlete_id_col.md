@@ -56,26 +56,16 @@ x <- data.frame(
 
 add_athlete_id_col(x, player_name)
 #> ℹ No season column, using "most_recent_cfb_season()" rosters
-#>     player_name season athlete_id
-#> 1 Britain Covey     NA       <NA>
-#> 2    JT Daniels     NA       <NA>
+#> Error in readRDS(url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))): cannot open the connection to 'https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_2026.rds?raw=true'
 
 
 x$season <- c(2021,2021)
 add_athlete_id_col(x, player_name)
-#>     player_name season athlete_id
-#> 1 Britain Covey   2021    3926231
-#> 2    JT Daniels   2021    4374303
-#> 3    JT Daniels   2021    4374303
+#> Error in readRDS(url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))): cannot open the connection to 'https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_2021.rds?raw=true'
 
 
 x$team = c("Utah","Georgia")
 add_athlete_id_col(x, player_name, team, headshot_urls = TRUE)
-#>     player_name season    team athlete_id
-#> 1 Britain Covey   2021    Utah    3926231
-#> 2    JT Daniels   2021 Georgia    4374303
-#>                                                                  headshot_url
-#> 1 https://a.espncdn.com/i/headshots/college-football/players/full/3926231.png
-#> 2 https://a.espncdn.com/i/headshots/college-football/players/full/4374303.png
+#> Error in readRDS(url(glue::glue("https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_{x}.rds?raw=true"))): cannot open the connection to 'https://github.com/sportsdataverse/cfbfastR-data/blob/main/rosters/rds/cfb_rosters_2021.rds?raw=true'
 # }
 ```

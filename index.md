@@ -190,7 +190,7 @@ landscape. Every SportsDataverse package has one — browse them all at
 To cite the [**`cfbplotR`**](https://cfbplotR.sportsdataverse.org/) R
 package in publications, use:
 
-BibTex Citation
+BibTeX Citation
 
 ``` bibtex
 @misc{lee_carl_gilani_cfbplotR,
