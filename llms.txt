@@ -158,6 +158,9 @@ Follow](https://img.shields.io/twitter/follow/SportsDataverse?color=blue&label=%
 [![GitHub
 stars](https://img.shields.io/github/stars/sportsdataverse/cfbplotR.svg?color=eee&logo=github&style=for-the-badge&label=Star%20cfbplotR&maxAge=2592000)](https://github.com/sportsdataverse/cfbplotR/stargazers/)
 
+[![Star history of
+sportsdataverse/cfbplotR](https://raw.githubusercontent.com/sportsdataverse/cfbplotR/star-history/star-history.png)](https://github.com/sportsdataverse/cfbplotR/stargazers)
+
 ## **Our Authors**
 
 - [Jared Lee](https://twitter.com/JaredDLee)
