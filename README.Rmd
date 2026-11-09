@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# **cfbplotR** <a href='https://cfbplotR.sportsdataverse.org/'><img src='https://raw.githubusercontent.com/sportsdataverse/cfbplotR/main/man/figures/logo.png' align="right" width="25%" min-width="120px" /></a>
+# **cfbplotR** <a href='https://cfbplotR.sportsdataverse.org/'><img alt="cfbplotR hex logo" src='https://raw.githubusercontent.com/sportsdataverse/cfbplotR/main/man/figures/logo.png' align="right" width="25%" min-width="120px" /></a>
 
 <!-- badges: start -->
 
@@ -25,9 +25,8 @@ knitr::opts_chunk$set(
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg?style=for-the-badge&logo=github)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://github.com/sportsdataverse/cfbplotR/blob/main/LICENSE.md)
 [![Contributors](https://img.shields.io/github/contributors/sportsdataverse/cfbplotR?style=for-the-badge)](https://github.com/sportsdataverse/cfbplotR/graphs/contributors)
-[![GitHub stars](https://img.shields.io/github/stars/sportsdataverse/cfbplotR?style=for-the-badge&logo=github)](https://github.com/sportsdataverse/cfbplotR/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/sportsdataverse/cfbplotR?style=for-the-badge&logo=github)](https://github.com/sportsdataverse/cfbplotR)
 [![X Follow](https://img.shields.io/twitter/follow/SportsDataverse?color=blue&label=%40SportsDataverse&logo=x&style=for-the-badge)](https://x.com/SportsDataverse)
-[![X Follow](https://img.shields.io/twitter/follow/JaredDLee?color=blue&label=%40JaredDLee&logo=x&style=for-the-badge)](https://x.com/JaredDLee)
 
 <!-- badges: end -->
 
@@ -167,13 +166,12 @@ See the full ecosystem at [sportsdataverse.org](https://sportsdataverse.org/).
 
 ## **Follow the [SportsDataverse](https://x.com/SportsDataverse) on X and star this repo**
 
-[![X Follow](https://img.shields.io/twitter/follow/JaredDLee?color=blue&label=%40JaredDLee&logo=x&style=for-the-badge)](https://x.com/JaredDLee)
 
 [![X Follow](https://img.shields.io/twitter/follow/SportsDataverse?color=blue&label=%40SportsDataverse&logo=x&style=for-the-badge)](https://x.com/SportsDataverse)
 
-[![GitHub stars](https://img.shields.io/github/stars/sportsdataverse/cfbplotR.svg?color=eee&logo=github&style=for-the-badge&label=Star%20cfbplotR&maxAge=2592000)](https://github.com/sportsdataverse/cfbplotR/stargazers/)
+[![GitHub stars](https://img.shields.io/github/stars/sportsdataverse/cfbplotR.svg?color=eee&logo=github&style=for-the-badge&label=Star%20cfbplotR&maxAge=2592000)](https://github.com/sportsdataverse/cfbplotR)
 
-<a href="https://github.com/sportsdataverse/cfbplotR/stargazers">
+<a href="https://github.com/sportsdataverse/cfbplotR">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sportsdataverse/cfbplotR/star-history/star-history-dark.svg">
     <img alt="Star history of sportsdataverse/cfbplotR" src="https://raw.githubusercontent.com/sportsdataverse/cfbplotR/star-history/star-history.png" width="600">
@@ -182,8 +180,7 @@ See the full ecosystem at [sportsdataverse.org](https://sportsdataverse.org/).
 
 ## **Our Authors**
 
--   [Jared Lee](https://x.com/JaredDLee) </br>
-<a href="https://x.com/JaredDLee" target="blank"><img src="https://img.shields.io/twitter/follow/JaredDLee?color=blue&label=%40JaredDLee&logo=x&style=for-the-badge" alt="@JaredDLee" /></a>
+-   [Jared Lee](https://github.com/Kazink36) </br>
 <a href="https://github.com/Kazink36" target="blank"><img src="https://img.shields.io/github/followers/Kazink36?color=eee&logo=Github&style=for-the-badge" alt="@Kazink36" /></a>
 
 -   [Saiem Gilani](https://x.com/saiemgilani) </br>
