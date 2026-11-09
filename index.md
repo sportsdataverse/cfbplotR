@@ -18,6 +18,14 @@ Data freshness and pipeline status for every SportsDataverse dataset:
 
 ## **Installation**
 
+You can install the latest build from
+[R-universe](https://sportsdataverse.r-universe.dev/cfbplotR) with:
+
+``` r
+
+install.packages("cfbplotR", repos = c("https://sportsdataverse.r-universe.dev", getOption("repos")))
+```
+
 You can install the development version of
 [**`cfbplotR`**](https://github.com/sportsdataverse/cfbplotR) from
 [GitHub](https://github.com/sportsdataverse/cfbplotR) with:
@@ -122,10 +130,28 @@ For more information on the package and function reference, please see
 the [**`cfbplotR`** documentation
 website](https://cfbplotR.sportsdataverse.org).
 
+- [Function
+  reference](https://cfbplotR.sportsdataverse.org/reference/index.html)
+- Vignette: [Using
+  cfbplotR](https://cfbplotR.sportsdataverse.org/articles/tutorial.html)
+- [NEWS /
+  changelog](https://cfbplotR.sportsdataverse.org/news/index.html)
+
 There is also a printable [**`cfbplotR` cheat sheet
 (PDF)**](https://sportsdataverse.org/cheatsheets/cfbplotR-cfb4th-cfbseedR.pdf),
 one of [a set covering every SportsDataverse
 package](https://sportsdataverse.org/cheatsheets).
+
+## **Companion packages**
+
+- [**`cfbfastR`**](https://cfbfastR.sportsdataverse.org/) supplies the
+  college football play-by-play, team and player data to plot.
+- [**`sdvplotR`**](https://sdvplotR.sportsdataverse.org/) brings the
+  same logo, color and table toolkit to 49 leagues, college football
+  included.
+- [**`ggpath`**](https://mrcaseb.github.io/ggpath/) is the image engine
+  underneath, and [**`nflplotR`**](https://nflplotr.nflverse.com/) is
+  the NFL counterpart whose conventions `cfbplotR` follows.
 
 ## **The SportsDataverse**
 
@@ -147,46 +173,48 @@ open-source R, Python, and Node.js packages for sports data.
 See the full ecosystem at
 [sportsdataverse.org](https://sportsdataverse.org/).
 
-## Follow [cfbplotR](https://twitter.com/cfbfastR) and the [SportsDataverse](https://twitter.com/SportsDataverse) on Twitter and star this repo
+## **Follow the [SportsDataverse](https://x.com/SportsDataverse) on X and star this repo**
 
-[![Twitter
-Follow](https://img.shields.io/twitter/follow/JaredDLee?color=blue&label=%40JaredDLee&logo=twitter&style=for-the-badge)](https://twitter.com/JaredDLee)
-
-[![Twitter
-Follow](https://img.shields.io/twitter/follow/SportsDataverse?color=blue&label=%40SportsDataverse&logo=twitter&style=for-the-badge)](https://twitter.com/SportsDataverse)
+[![X
+Follow](https://img.shields.io/twitter/follow/SportsDataverse?color=blue&label=%40SportsDataverse&logo=x&style=for-the-badge)](https://x.com/SportsDataverse)
 
 [![GitHub
-stars](https://img.shields.io/github/stars/sportsdataverse/cfbplotR.svg?color=eee&logo=github&style=for-the-badge&label=Star%20cfbplotR&maxAge=2592000)](https://github.com/sportsdataverse/cfbplotR/stargazers/)
+stars](https://img.shields.io/github/stars/sportsdataverse/cfbplotR.svg?color=eee&logo=github&style=for-the-badge&label=Star%20cfbplotR&maxAge=2592000)](https://github.com/sportsdataverse/cfbplotR)
 
 [![Star history of
-sportsdataverse/cfbplotR](https://raw.githubusercontent.com/sportsdataverse/cfbplotR/star-history/star-history.png)](https://github.com/sportsdataverse/cfbplotR/stargazers)
+sportsdataverse/cfbplotR](https://raw.githubusercontent.com/sportsdataverse/cfbplotR/star-history/star-history.png)](https://github.com/sportsdataverse/cfbplotR)
 
 ## **Our Authors**
 
-- [Jared Lee](https://twitter.com/JaredDLee)
-  [![@JaredDLee](https://img.shields.io/twitter/follow/JaredDLee?color=blue&label=%40JaredDLee&logo=twitter&style=for-the-badge)](https://twitter.com/JaredDLee)
+- [Jared Lee](https://github.com/Kazink36)
   [![@Kazink36](https://img.shields.io/github/followers/Kazink36?color=eee&logo=Github&style=for-the-badge)](https://github.com/Kazink36)
 
-- [Saiem Gilani](https://twitter.com/saiemgilani)
-  [![@saiemgilani](https://img.shields.io/twitter/follow/saiemgilani?color=blue&label=%40saiemgilani&logo=twitter&style=for-the-badge)](https://twitter.com/saiemgilani)
+- [Saiem Gilani](https://x.com/saiemgilani)
+  [![@saiemgilani](https://img.shields.io/twitter/follow/saiemgilani?color=blue&label=%40saiemgilani&logo=x&style=for-the-badge)](https://x.com/saiemgilani)
   [![@saiemgilani](https://img.shields.io/github/followers/saiemgilani?color=eee&logo=Github&style=for-the-badge)](https://github.com/saiemgilani)
 
-- [Sebastian Carl](https://twitter.com/mrcaseb)
-  [![@mrcaseb](https://img.shields.io/twitter/follow/mrcaseb?color=blue&label=%40mrcaseb&logo=twitter&style=for-the-badge)](https://twitter.com/mrcaseb)
+- [Sebastian Carl](https://x.com/mrcaseb)
+  [![@mrcaseb](https://img.shields.io/twitter/follow/mrcaseb?color=blue&label=%40mrcaseb&logo=x&style=for-the-badge)](https://x.com/mrcaseb)
   [![@mrcaseb](https://img.shields.io/github/followers/mrcaseb?color=eee&logo=Github&style=for-the-badge)](https://github.com/mrcaseb)
 
 ## **Cheat sheet**
 
-A printable one-page reference covering **cfbplotR, cfb4th and
-cfbseedR** — the function families, the loaders, and what each one
-returns.
+A printable one-page reference for **`cfbplotR`**, shared with
+**`cfb4th`** and **`cfbseedR`**.
 
-📄 **[Download the cfbplotR cheat sheet
+📄 **[Download the cfbplotR / cfb4th / cfbseedR cheat sheet
 (PDF)](https://sportsdataverse.org/cheatsheets/cfbplotR-cfb4th-cfbseedR.pdf)**
 
 Free to download, print and hand out; light and dark, US Letter
 landscape. Every SportsDataverse package has one — browse them all at
 **[sportsdataverse.org/cheatsheets](https://sportsdataverse.org/cheatsheets)**.
+
+## **Code of Conduct**
+
+Please note that the cfbplotR project is released with a [Contributor
+Code of
+Conduct](https://cfbplotR.sportsdataverse.org/CODE_OF_CONDUCT.html). By
+contributing to this project, you agree to abide by its terms.
 
 ## **Citations**
 
@@ -203,3 +231,8 @@ BibTeX Citation
   year = {2026}
 }
 ```
+
+## **License**
+
+`cfbplotR` is released under the MIT License; see
+[LICENSE.md](https://github.com/sportsdataverse/cfbplotR/blob/main/LICENSE.md).
